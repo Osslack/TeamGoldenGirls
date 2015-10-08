@@ -1,3 +1,0 @@
-i5 4200M
-8 GB RAM
-Intel HD4600
