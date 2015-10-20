@@ -1,0 +1,7 @@
+Die Klasse Engine bietet Funktionen zum Starten, Laufen und Beenden der Engine. SIe, genau wie alle weiteren Komponenten, als Singleton implementiert. Sie enthält deren Instanzen und bietet Funktionen zum Erhalten von Referenzen auf diese.
+Die Klasse Graphics verwaltet alle Objecte die von Graphicsobject erben. Sie zeichnet alle Objekte. Es können Objekte hinzugefügt oder gelöscht werden. 
+DIe Klasse Physics verwaltet all Objekte, die von Physicsobject erben. Hier wird das nächste Frame simuliert und auf Kollisionen geprüft. Physicsobjects können hinzugefügt oder gelöscht werden, 
+Die Klasse Timer dient zum frequenziellen Ablauf des Programms. 
+Die Klasse Processmanager verwaltet alle Prozesse. Ihr können solche hinzugefügt oder entfernt werden. Ein Processowner besitzt eine Callback-Methode und der Process eine Tickrate und einen Processowner. Alle Processe werden über runProcesses durchlaufen. 
+Die Klasse Eventmanager verwaltet alle Objekte, die von Eventlistener erben. Solche können hinzugefügt oder entfernt werden. Events werden über queueEvent eingereiht und abgearbeitet durch Aufrufen der Callback-Methoden der Eventlistener über einen Vektor. 
+Die Klasse Controller verwaltet Controls. Diese enthalten einen Vektor, der Tastenids auf Eventids mappt. Der Kontroller prüft in run auf Tastenveränderungen und sendet bei solchen ein Event mit entsprechnder ID. 
