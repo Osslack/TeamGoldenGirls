@@ -1,2 +1,7 @@
 ~$*
 *.tmp
+*.synctex.gz
+*.aux
+*.log
+*.out
+flugbahn.tex
