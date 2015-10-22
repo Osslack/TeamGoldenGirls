@@ -1,7 +1,14 @@
 ~$*
 *.tmp
+
+build.fxbuild
+*.iml
+.classpath
+.project
+
 *.synctex.gz
 *.aux
 *.log
 *.out
+
 flugbahn.tex
