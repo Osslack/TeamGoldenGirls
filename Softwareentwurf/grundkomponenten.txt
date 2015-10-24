@@ -10,4 +10,4 @@ In unserem Fall unterteilt sich der Controller nochmal in 2 Subkomponenten, näm
 
 Die Engine kümmert sich um grundlegende Aufgaben wie z.B. Eventmanagement oder Prozessmanagement.
 
-Die Spielfeldelemente sind die logische repräsentation der grafischen Obejekte wie z.B. der Kugel oder des Katapults.
+Die Spielfeldelemente sind die logische Repräsentation der grafischen Obejekte wie z.B. der Kugel oder des Katapults.
