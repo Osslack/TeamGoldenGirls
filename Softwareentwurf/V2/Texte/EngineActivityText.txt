@@ -1,0 +1,8 @@
+Beim erstmaligen Aufrufen von getInstance aller EngineElements durch getInstance im Konstruktor der Engine, werden die run-Prozesse erstellt und die Funktionen startup und shutdown als Eventcallbacks registriert. 
+Anschliessend wird das StartupEvent dem Eventmanager gesendet, wodurch sich alle EngineElements in ihren startup-Funktionen initialisieren. Womöglich muss dieser Vorgang etwas unsauber gelöst werden, da der EventManager noch nicht initilisiert ist. 
+Nun ist die Engine gestartet und es beginnt eine Schleife, die erst beim Senden Shutdown-Events wieder verlassen wird. Innerhalb dieser Schleife wird zuerst die Funktion ProcessManager::runProcesses ausgeführt, in der die Processe einzeln verarbeitet werden. 
+Die Tickrate der Processe wird mit der bereits gewarteten Zeit verglichen und die Callback-Funktion des Processowners entsprechend aufgerufen. 
+EventManager::processEvents ist einer dieser Prozesse. Alle eingereihten Events werden abgearbeitet und die entsprechend registrierten Listener mit ihren Callback-Funktionen aufgerufen. 
+Innerhalb dieser Funktionen wird die Spiellogik ausgeführt, die Grafik gezeichnet und auf Eingaben überprüft. Hier können wiederrum Prozesse erstellt oder gelöscht werden. Ebenfalls können hier Events erstellt werden. Die Kommunikation mit dem EventManager und dem ProcessManager erfolgt über die Getter-Funktionen der Engine. 
+Ist das Shutdown-Event gesendet, so werden die shutdown-Funktionen aufgerufen und alle EngineElements beenden sich selbst. 
+Am Schluss werden ihre Destruktoren aufgerufen. 
