@@ -1,13 +1,13 @@
-Grundlegende Komponenten
+﻿Grundlegende Komponenten
 
-Wenn eine Software nicht in Komponenten unterteilt wird, kann es zu verschlechterter Wartbarkeit, Übersichtlichkeit sowie Wiederverwendbarkeit führen.   
-Deshalb orientert sich unsere Grundarchitektut an dem MVC-Prinzip, d.h.:
+Eine Software nicht in Komponenten zu unterteilen kann zu verschlechterter Wartbarkeit, Übersichtlichkeit sowie Wiederverwendbarkeit führen.
+Deshalb orientiert sich unsere Grundarchitektur an dem MVC-Prinzip, d. h.:
 1. Es gibt eine Komponente für alles, was dem Benutzer angezeigt wird (View)
 2. Es gibt eine Komponente für die Logik des Programmes (Controller)
-3. Es gibt eine Komponente zum Speicher und Laden der Daten (Model)   
+3. Es gibt eine Komponente zum Halten, Speichern und Laden der Daten (Model)   
 
-In unserem Fall unterteilt sich der Controller nochmal in 2 Subkomponenten, nämlich die Engine und das Spielfeld bzw. die Spielfeldelemente.
+In unserem Fall unterteilt sich der Controller nochmals in 2 Subkomponenten, die Engine und das Spielfeld bzw. die Spielfeldelemente.
 
-Die Engine kümmert sich um grundlegende Aufgaben wie z.B. Eventmanagement oder Prozessmanagement.
+Die Engine kümmert sich um grundlegende Aufgaben wie z. B. Eventmanagement oder Prozessmanagement.
 
-Die Spielfeldelemente sind die logische Repräsentation der grafischen Obejekte wie z.B. der Kugel oder des Katapults.
+Die Spielfeldelemente sind die logische Repräsentation der grafischen Objekte wie z. B. der Kugel oder des Katapults.
