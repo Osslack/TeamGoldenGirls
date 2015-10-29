@@ -24,7 +24,8 @@ class Catapult extends Observable
 	
 	Catapult()
 	{
-		final double tipPositionX = rulerLength - minRulerOverhang + 0.5;
+		final double paddingToLeftScreenEdge = 0.5;
+		final double tipPositionX = rulerLength - minRulerOverhang + paddingToLeftScreenEdge;
 		final double rubberHeight = Math.sqrt(3) * rubberSidelength / 2;
 		rubber = new Polygon(); // equilateral triangle
 		rubber.getPoints().addAll(new Double[] {tipPositionX                     , rubberHeight,
