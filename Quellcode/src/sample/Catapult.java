@@ -1,5 +1,5 @@
 /**
- * @author: Nils Wende
+ * @author Nils Wende
  */
 
 import javafx.collections.ObservableList;
@@ -17,11 +17,11 @@ class Catapult extends Observable
 	Line     ruler;
 	Vector2D pivotPoint;
 
-	private final double rulerLength      = 15.0; // in cm
-	private final double rubberSideLength = 3.0; // in cm
-	private final double rubberLeftVertexX;
-	private final double minRulerOverhang = rulerLength * 0.1;
-	private final double step             = 0.1; // in cm
+	private final double rulerLength = 15.0, // in cm
+			rubberSideLength         = 3.0, // in cm
+			rubberLeftVertexX,
+			minRulerOverhang         = rulerLength * 0.1,
+			step                     = 0.1; // in cm
 
 	Catapult()
 	{
