@@ -8,4 +8,11 @@ public class TargetCircle extends Circle{
 	public TargetCircle(Vector2D center,double dampening,double radius){
 		super(center,dampening,radius);
 	}
+		@Override 
+	public String toString(){
+		return "TargetCircle ( Center " + getCenter() + " | Radius " + mRadius + " | Dampening " + mDampening + " )"; 
+	}
+	public static void main(String[] args){
+		System.out.println(new TargetCircle());
+	}
 }

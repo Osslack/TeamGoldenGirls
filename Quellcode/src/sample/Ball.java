@@ -17,5 +17,11 @@ public class Ball extends Circle{
 		mSpeed = speed;
 		mWeight = weight;
 	}
-
+	@Override
+	public String toString(){
+		return "Ball ( Center " + getCenter() + " | Radius " + mRadius + " | Direction " + mDirection + " | Speed " + mSpeed + " | Weight " + mWeight + " )";
+	}
+	public static void main(String[] args){
+		System.out.println(new Ball());
+	}
 }

@@ -14,4 +14,11 @@ public class Circle extends Entity{
 	public Vector2D getCenter(){
 		return mPositions.get(0);
 	}
+	@Override 
+	public String toString(){
+		return "Circle ( Center " + getCenter() + " | Radius " + mRadius + " | Dampening " + mDampening + " )"; 
+	}
+	public static void main(String[] args){
+		System.out.println(new Circle());
+	}
 }

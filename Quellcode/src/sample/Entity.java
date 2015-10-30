@@ -18,5 +18,11 @@ public class Entity{
 		mPositions = listPositions;
 		mDampening = dampening;
 	}
-
+	@Override
+	public String toString(){
+		return "Entity ( Positions: " + mPositions.toString() + " | Dampening " + mDampening + " )";
+	}
+	public static void main(String[] args){
+		System.out.println(new Entity());
+	}
 }
