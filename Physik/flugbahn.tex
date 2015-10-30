@@ -1,0 +1,82 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{setspace}
+
+\newcommand{\mod}{\;\texttt{\%}\;}
+\newcommand{\hoare}[3]{\bigl\{#1\bigr\}\quad\texttt{#2}\quad\bigl\{#3\bigr\}}
+\newcommand{\folge}[1]{\bigl(#1\bigr)_{n\in\mathbb{N}}}
+\newcommand{\bruch}[2]{{\displaystyle \frac{\displaystyle \raisebox{1pt}[0pt][-0pt]{$\,#1\,$}}{\displaystyle \raisebox{0pt}[10pt]{$\,#2\,$}}}}
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\Oh}{\mathcal{O}}
+\newcommand{\Java}{\textsl{Java}}
+\newcommand{\Bin}{\mathcal{B}}
+\newcommand{\AVL}{\mathcal{A}}
+\newcommand{\head}{\mbox{\tt head}}
+\newcommand{\tail}{\mbox{\tt tail}}
+\newcommand{\conclude}{\hspace*{\fill} $\Box$}
+\newcommand{\nodes}{{\mathbb V}}
+\newcommand{\edges}{{\mathbb E}}
+\newcommand{\paths}{{\mathbb P}}
+\newcommand{\weight}[1]{\|#1\|}
+\newcommand{\Weight}[1]{\bigl\|#1\bigr\|}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\df}{\;:=\;}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\source}{\mbox{\tt source}}
+\newcommand{\target}{\mbox{\tt target}}
+\newcommand{\spath}{\mbox{\tt sp}}
+\newcommand{\el}{\!\in\!}
+\newcommand{\BT}{\mathrm{BT}}
+\def\pair(#1,#2){\langle #1, #2 \rangle}
+\newcommand{\qed}{\hspace*{\fill} $\Box$}
+\newcommand{\eox}{\hspace*{\fill} $\diamond$}
+\newcommand{\lb}{\hspace*{\fill} \linebreak}
+
+\pagenumbering{gobble}
+
+\begin{document}
+{
+Numerische Berechnung der Kurve
+\begin{enumerate}
+	\item Parameter bestimmen:
+		\begin{itemize}
+			\item $m$, Masse der Kugel
+			\item $A$, Querschnittsfläche der Kugel von vorne ($\pi \cdot radius^2$)
+			\item $C$, LW-Koeffizient (für eine Kugel $0,5$)
+			\item $\rho$, Luftdichte ($1,2 kg/m^3$ normal)
+			\item $D = \rho \cdot C \cdot A / 2$
+		\end{itemize}
+	\item Zeitintervall der Berechnung $\Delta t$ und Startwerte von $x, y, v_{x}, v_{y}$ wählen.
+	\item Loop, bis Kollision erkannt:
+	\begin{enumerate}
+		\item Beschleunigungskomponenten berechnen:
+			\begin{itemize}
+				\item $a_{x} = -(D/m) \cdot v \cdot v_{x}$
+				\item $a_{y} = -g-(D/m) \cdot v \cdot v_{y}$
+				\item mit $v = \sqrt{v_x^2 + v_y^2}$, $g = 9,81 m/s^2$
+			\end{itemize}
+		\item Geschwindigkeitskomponenten berechnen:
+			\begin{itemize}
+				\item $v_{x, neu} = v_{x} + \Delta t \cdot a_{x}$
+				\item $v_{y, neu} = v_{y} + \Delta t \cdot a_{y}$
+			\end{itemize}
+		\item Neue Koordinaten berechnen:
+			\begin{itemize}
+				\item $x_{neu} = x + \Delta t \cdot v_{x} + a_x (\Delta t)^2 / 2$
+				\item $y_{neu} = y + \Delta t \cdot v_{y} + a_y (\Delta t)^2 / 2$
+			\end{itemize}
+	\end{enumerate}
+\end{enumerate}
+
+
+Um Wind zu berücksichtigen, muss der Geschwindigkeitsvektor des Winds von dem der Kugel abgezogen werden, d. h.:
+	\begin{itemize}
+		\item $v_x = v_{x, Kugel} - v_{x, Wind}$
+		\item $v_y = v_{y, Kugel} - v_{y, Wind}$
+	\end{itemize}
+}
+\end{document}
