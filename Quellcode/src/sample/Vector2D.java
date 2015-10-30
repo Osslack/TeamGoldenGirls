@@ -13,22 +13,25 @@ public class Vector2D{
 		mY = y;
 	}
 	public static Vector2D addVector2D(Vector2D a,Vector2D b){
-		a.mX = a.mX + b.mX;
-		a.mY = a.mY + b.mY;
-		return a;
+		Vector2D result = new Vector2D();
+		result.mX = a.mX + b.mX;
+		result.mY = a.mY + b.mY;
+		return result;
 	}
 	public static Vector2D subVector2D(Vector2D a,Vector2D b){
-		a.mX = a.mX - b.mX;
-		a.mY = a.mY - b.mY;
-		return a;
+		Vector2D result = new Vector2D();
+		result.mX = a.mX - b.mX;
+		result.mY = a.mY - b.mY;
+		return result;
 	}
 	public static double scalarProduct(Vector2D a,Vector2D b){
 		return a.mX * b.mX + a.mY * b.mY;
 	}
 	public static Vector2D scalarMultiplication(Vector2D a,double factor){
-		a.mX = a.mX * factor;
-		a.mY = a.mY * factor;
-		return a;
+		Vector2D result = new Vector2D();
+		result.mX = a.mX * factor;
+		result.mY = a.mY * factor;
+		return result;
 	}
 	// if Vector2D is a line
 	public static double lengthVector2D(Vector2D a){
