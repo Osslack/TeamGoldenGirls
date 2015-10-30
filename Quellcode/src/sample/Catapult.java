@@ -35,9 +35,9 @@ class Catapult extends Observable
 		); // equilateral triangle
 
 		final double deltaX = Math.sqrt(rulerLength * rulerLength / 4 - rubberHeight * rubberHeight);
-		final double xStart = tipPositionX - deltaX;
-		final double xEnd = tipPositionX + deltaX;
-		ruler = new Line(xStart, 0, xEnd, 2 * rubberHeight); // tip of rubber is at half of ruler length, yStart is always 0
+		final double startX = tipPositionX - deltaX;
+		final double endX = tipPositionX + deltaX;
+		ruler = new Line(startX, 0, endX, 2 * rubberHeight); // tip of rubber is at half of ruler length, yStart is always 0
 
 		pivotPoint = new Vector2D(tipPositionX, rubberHeight); // set to tip of rubber
 
