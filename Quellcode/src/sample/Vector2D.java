@@ -1,4 +1,4 @@
-public class Vector2D2D{
+public class Vector2D{
 	public double mX;
 	public double mY; 
 	public Vector2D(){
@@ -9,12 +9,12 @@ public class Vector2D2D{
 		mX = x;
 		mY = y;
 	}
-	public static Vector2D2D addVector2D(Vector2D a,Vector2D b){
+	public static Vector2D addVector2D(Vector2D a,Vector2D b){
 		a.mX = a.mX + b.mX;
 		a.mY = a.mY + b.mY;
 		return a;
 	}
-	public static Vector2D2D subVector2D(Vector2D a,Vector2D b){
+	public static Vector2D subVector2D(Vector2D a,Vector2D b){
 		a.mX = a.mX - b.mX;
 		a.mY = a.mY - b.mY;
 		return a;
@@ -42,7 +42,7 @@ public class Vector2D2D{
 	}
 	private static double square(double a){
 		return a*a;
-	}git c
+	}
 	public static void main(String[] args){
 		Vector2D a = new Vector2D(0.0,0.0);
 		Vector2D b = new Vector2D(10.0,10.0);
