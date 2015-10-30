@@ -1,6 +1,7 @@
-// Create by Simon on  30/10
-// Worked on by:
-// Simon
+/**
+ * @author Simon
+ */
+
 import java.util.ArrayList;
 public class TargetRectangle extends Rectangle{
 	public TargetRectangle(){

@@ -1,6 +1,7 @@
-// Create by Simon on  30/10
-// Worked on by:
-// Simon
+/**
+ * @author Simon
+ */
+
 import java.util.ArrayList;
 public class Playingfield{
 	public ArrayList<Entity> mObstacles;

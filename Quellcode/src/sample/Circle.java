@@ -1,6 +1,7 @@
-// Create by Simon on  30/10
-// Worked on by:
-// Simon
+/**
+ * @author Simon
+ */
+
 public class Circle extends Entity{
 	public double mRadius;
 	public Circle(){

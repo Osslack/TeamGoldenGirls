@@ -1,6 +1,4 @@
 /**
- * Created by Simon on 30/10
- *
  * @author Simon, Nils Wende
  */
 

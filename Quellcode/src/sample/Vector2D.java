@@ -1,6 +1,7 @@
-// Create by Simon on  30/10
-// Worked on by:
-// Simon
+/**
+ * @author Simon, Nils Wende
+ */
+
 public class Vector2D{
 	public double mX;
 	public double mY; 
