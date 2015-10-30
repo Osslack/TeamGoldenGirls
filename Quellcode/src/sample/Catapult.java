@@ -12,7 +12,7 @@ import javafx.scene.shape.Polygon;
 
 /** assuming coordinate system with point of origin in lower left corner
 */
-class Catapult extends Observable
+public class Catapult extends Observable
 {
 	Polygon rubber;
 	Line ruler;
