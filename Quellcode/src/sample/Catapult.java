@@ -6,12 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 
-import java.util.Observable;
-
 /**
  * assuming coordinate system with point of origin in lower left corner
  */
-class Catapult extends Observable
+class Catapult
 {
 	Polygon  rubber;
 	Line     ruler;
@@ -40,12 +38,9 @@ class Catapult extends Observable
 		ruler = new Line(startX, 0, endX, 2 * rubberHeight); // tip of rubber is at half of ruler length, yStart is always 0
 
 		pivotPoint = new Vector2D(tipPositionX, rubberHeight); // set to tip of rubber
-
-		this.setChanged();
-		this.notifyObservers();
 	}
 
-	void fire()
+	void fire(double power)
 	{
 		//TODO invoke the physics calculation for trajectory
 	}
@@ -61,16 +56,13 @@ class Catapult extends Observable
 			ruler.setStartX(startX - step);
 			// set the new end point
 			setNewLineEndpoint();
-
-			this.setChanged();
-			this.notifyObservers();
 		}
 	}
 
 	private double getDistanceBetween(Vector2D v, Vector2D w)
 	{
-		double deltaX = v.mX - w.mX;
-		double deltaY = v.mY - w.mY;
+		final double deltaX = v.mX - w.mX;
+		final double deltaY = v.mY - w.mY;
 		return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 	}
 
@@ -104,45 +96,40 @@ class Catapult extends Observable
 		{
 			// move the start point to the right
 			ruler.setStartX(startX + step);
-			// set the new end point
-			final Vector2D lineStart = new Vector2D(ruler.getStartX(), 0);
-			final Vector2D newLineEnd = getPointOnLine(lineStart, pivotPoint, rulerLength);
-			ruler.setEndX(newLineEnd.mX);
-			ruler.setEndY(newLineEnd.mY);
-
-			this.setChanged();
-			this.notifyObservers();
+			setNewLineEndpoint();
 		}
 	}
 
+	//TODO reasonable max height for rubber?
 	void enlargeRubber()
 	{
 		// increase the y-Coordinate of the rubber tip by the value of step
 		ObservableList<Double> points = rubber.getPoints();
 		final double yPos = points.get(1);
-		points.set(1, yPos + step);
-		// increase the y-Coordinate of the pivotPoint
-		pivotPoint.mY += step;
-		// move ruler
-		setNewLineEndpoint();
-
-		this.setChanged();
-		this.notifyObservers();
+		if (yPos < 5.0)
+		{
+			points.set(1, yPos + step);
+			// increase the y-Coordinate of the pivotPoint
+			pivotPoint.mY += step;
+			// move ruler
+			setNewLineEndpoint();
+		}
 	}
 
+	//TODO reasonable min height for rubber?
 	void shrinkRubber()
 	{
 		// decrease the y-Coordinate of the rubber tip by the value of step
 		ObservableList<Double> points = rubber.getPoints();
 		final double yPos = points.get(1);
-		points.set(1, yPos - step);
-		// decrease the y-Coordinate of the pivotPoint
-		pivotPoint.mY -= step;
-		// move ruler
-		setNewLineEndpoint();
-
-		this.setChanged();
-		this.notifyObservers();
+		if (yPos > 0.0)
+		{
+			points.set(1, yPos - step);
+			// decrease the y-Coordinate of the pivotPoint
+			pivotPoint.mY -= step;
+			// move ruler
+			setNewLineEndpoint();
+		}
 	}
 
 
