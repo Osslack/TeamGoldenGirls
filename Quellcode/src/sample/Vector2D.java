@@ -4,6 +4,9 @@
  */
 
 public class Vector2D {
+	public static Vector2D X_AXIS = new Vector2D(1.0, 0.0);
+	public static Vector2D Y_AXIS = new Vector2D(0.0, 1.0);
+
 	public double mX;
 	public double mY;
 
@@ -42,24 +45,35 @@ public class Vector2D {
 		return result;
 	}
 
-	// if Vector2D is a line
 	public double length() {
 		return Math.sqrt(square(this.mX) + square(this.mY));
 	}
 
-	// if we have two Vector2Ds representing positions
-	public double distanceTo(Vector2D b) {
-		Vector2D ab = this.subtract(b);
-		return ab.length();
+	private double square(double a) {
+		return a * a;
+	}
+
+	public double distanceTo(Vector2D v) {
+		Vector2D connectingVector = this.subtract(v);
+		return connectingVector.length();
+	}
+
+	public double angleTo(Vector2D v) {
+		final double cosPhi = this.scalarProduct(v) / (this.length() * v.length());
+		return Math.acos(cosPhi);
+	}
+
+	public Vector2D getNormalToLeft() {
+		return new Vector2D(-this.mY, this.mX);
+	}
+
+	public Vector2D getNormalToRight() {
+		return new Vector2D(this.mY, -this.mX);
 	}
 
 	@Override
 	public String toString() {
-		return "(" + mX + "," + mY + ")";
-	}
-
-	private static double square(double a) {
-		return a * a;
+		return "(" + mX + ", " + mY + ")";
 	}
 
 	public static void main(String[] args) {
