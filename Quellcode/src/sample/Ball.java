@@ -1,26 +1,28 @@
 /**
  * @author Simon
+ * @author Nils Wende
  */
 
 public class Ball extends Circle{
-	public Vector2D mDirection;
-	public double mSpeed;
-	public double mWeight;
-	public Ball(){
+	public Vector2D mPosition;
+	public Vector2D mVelocity;
+	public double   mMass;
+
+	public Ball() {
 		super();
-		mDirection = new Vector2D();
-		mSpeed = 0.0;
-		mWeight = 0.0;
+		mPosition = new Vector2D();
+		mVelocity = new Vector2D();
+		mMass = 0.0;
 	}
-	public Ball(Vector2D center,double dampening,double radius,Vector2D direction,double speed,double weight){
+	public Ball(Vector2D center,double dampening,double radius,Vector2D position,Vector2D velocity,double mass){
 		super(center,dampening,radius);
-		mDirection = direction;
-		mSpeed = speed;
-		mWeight = weight;
+		mPosition = position;
+		mVelocity = velocity;
+		mMass = mass;
 	}
 	@Override
 	public String toString(){
-		return "Ball ( Center " + getCenter() + " | Radius " + mRadius + " | Direction " + mDirection + " | Speed " + mSpeed + " | Weight " + mWeight + " )";
+		return "Ball ( Center " + getCenter() + " | Radius " + mRadius + " | Direction " + mPosition + " | Speed " + mVelocity + " | Mass " + mMass + " )";
 	}
 	public static void main(String[] args){
 		System.out.println(new Ball());
