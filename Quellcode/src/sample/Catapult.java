@@ -9,8 +9,7 @@ import javafx.scene.shape.Polygon;
 /**
  * assuming coordinate system with point of origin in lower left corner
  */
-class Catapult
-{
+class Catapult {
 	Polygon  rubber;
 	Line     ruler;
 	Vector2D pivotPoint;
@@ -21,8 +20,7 @@ class Catapult
 			minRulerOverhang         = rulerLength * 0.1,
 			step                     = 0.1; // in cm
 
-	Catapult()
-	{
+	Catapult() {
 		final double paddingToLeftScreenEdge = 0.5;
 		final double tipPositionX = rulerLength - minRulerOverhang + paddingToLeftScreenEdge;
 		final double rubberHeight = Math.sqrt(3) * rubberSideLength / 2;
@@ -40,17 +38,14 @@ class Catapult
 		pivotPoint = new Vector2D(tipPositionX, rubberHeight); // set to tip of rubber
 	}
 
-	void fire(double power)
-	{
+	void fire(double power) {
 		//TODO invoke the physics calculation for trajectory
 	}
 
-	void moveRulerToLeft()
-	{
+	void moveRulerToLeft() {
 		final Vector2D lineEnd = new Vector2D(ruler.getEndX(), ruler.getEndY());
 		final double remainingLength = getDistanceBetween(pivotPoint, lineEnd);
-		if (remainingLength > minRulerOverhang)
-		{
+		if (remainingLength > minRulerOverhang) {
 			// move the start point to the left
 			final double startX = ruler.getStartX();
 			ruler.setStartX(startX - step);
@@ -59,23 +54,20 @@ class Catapult
 		}
 	}
 
-	private double getDistanceBetween(Vector2D v, Vector2D w)
-	{
+	private double getDistanceBetween(Vector2D v, Vector2D w) {
 		final double deltaX = v.mX - w.mX;
 		final double deltaY = v.mY - w.mY;
 		return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 	}
 
-	private void setNewLineEndpoint()
-	{
+	private void setNewLineEndpoint() {
 		final Vector2D lineStart = new Vector2D(ruler.getStartX(), 0);
 		final Vector2D newLineEnd = getPointOnLine(lineStart, pivotPoint, rulerLength);
 		ruler.setEndX(newLineEnd.mX);
 		ruler.setEndY(newLineEnd.mY);
 	}
 
-	private Vector2D getPointOnLine(Vector2D v, Vector2D w, double distanceFromV)
-	{
+	private Vector2D getPointOnLine(Vector2D v, Vector2D w, double distanceFromV) {
 		final double length = getDistanceBetween(v, w);
 		double deltaX = v.mX - w.mX;
 		double deltaY = v.mY - w.mY;
@@ -89,11 +81,9 @@ class Catapult
 		return new Vector2D(v.mX + deltaX, v.mY + deltaY);
 	}
 
-	void moveRulerToRight()
-	{
+	void moveRulerToRight() {
 		final double startX = ruler.getStartX();
-		if (rubberLeftVertexX - step > startX)
-		{
+		if (rubberLeftVertexX - step > startX) {
 			// move the start point to the right
 			ruler.setStartX(startX + step);
 			setNewLineEndpoint();
@@ -101,13 +91,11 @@ class Catapult
 	}
 
 	//TODO reasonable max height for rubber?
-	void enlargeRubber()
-	{
+	void enlargeRubber() {
 		// increase the y-Coordinate of the rubber tip by the value of step
 		ObservableList<Double> points = rubber.getPoints();
 		final double yPos = points.get(1);
-		if (yPos < 5.0)
-		{
+		if (yPos < 5.0) {
 			points.set(1, yPos + step);
 			// increase the y-Coordinate of the pivotPoint
 			pivotPoint.mY += step;
@@ -117,13 +105,11 @@ class Catapult
 	}
 
 	//TODO reasonable min height for rubber?
-	void shrinkRubber()
-	{
+	void shrinkRubber() {
 		// decrease the y-Coordinate of the rubber tip by the value of step
 		ObservableList<Double> points = rubber.getPoints();
 		final double yPos = points.get(1);
-		if (yPos > 0.0)
-		{
+		if (yPos > 0.0) {
 			points.set(1, yPos - step);
 			// decrease the y-Coordinate of the pivotPoint
 			pivotPoint.mY -= step;
@@ -135,8 +121,7 @@ class Catapult
 
 	/* method overloads: */
 
-	private Vector2D getPointOnLine(double x1, double y1, double x2, double y2, double distanceFrom1)
-	{
+	private Vector2D getPointOnLine(double x1, double y1, double x2, double y2, double distanceFrom1) {
 		final double length = getDistanceBetween(x1, y1, x2, y2);
 		double deltaX = x1 - x2;
 		double deltaY = y1 - y2;
@@ -150,8 +135,7 @@ class Catapult
 		return new Vector2D(x1 + deltaX, y1 + deltaY);
 	}
 
-	private double getDistanceBetween(double x1, double y1, double x2, double y2)
-	{
+	private double getDistanceBetween(double x1, double y1, double x2, double y2) {
 		double deltaX = x1 - x2;
 		double deltaY = y1 - y2;
 		return Math.sqrt(deltaX * deltaX + deltaY * deltaY);

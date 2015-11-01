@@ -2,12 +2,14 @@
  * @author Simon
  */
 
-public class Scoreboard{
+public class Scoreboard {
 	public int mScore;
-	public Scoreboard(){
+
+	public Scoreboard() {
 		mScore = 0;
 	}
-	public Scoreboard(int score){
+
+	public Scoreboard(int score) {
 		mScore = score;
 	}
 }
