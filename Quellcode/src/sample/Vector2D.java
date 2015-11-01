@@ -53,12 +53,12 @@ public class Vector2D {
 		return a * a;
 	}
 
-	public double distanceTo(Vector2D v) {
+	public double getDistanceTo(Vector2D v) {
 		Vector2D connectingVector = this.subtract(v);
 		return connectingVector.length();
 	}
 
-	public double angleTo(Vector2D v) {
+	public double getAngleTo(Vector2D v) {
 		final double cosPhi = this.scalarProduct(v) / (this.length() * v.length());
 		return Math.acos(cosPhi);
 	}

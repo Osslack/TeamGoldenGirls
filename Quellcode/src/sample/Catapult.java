@@ -52,7 +52,7 @@ class Catapult {
 		}
 		Vector2D line = pivotPoint.subtract(newEnd);
 		Vector2D normal = line.getNormalToRight();
-		final double launchingAngle = normal.angleTo(Vector2D.X_AXIS);
+		final double launchingAngle = normal.getAngleTo(Vector2D.X_AXIS);
 		final double velX = power * Math.cos(launchingAngle);
 		final double velY = power * Math.sin(launchingAngle);
 
@@ -61,7 +61,7 @@ class Catapult {
 
 	private double getRemainingLength() {
 		final Vector2D lineEnd = new Vector2D(ruler.getEndX(), ruler.getEndY());
-		return pivotPoint.distanceTo(lineEnd);
+		return pivotPoint.getDistanceTo(lineEnd);
 	}
 
 	private Vector2D getEndPointOnYAxis(double distance) {
@@ -89,7 +89,7 @@ class Catapult {
 	}
 
 	private Vector2D getPointOnLine(Vector2D v, Vector2D w, double distanceFromV) {
-		final double length = v.distanceTo(w);
+		final double length = v.getDistanceTo(w);
 		double deltaX = v.mX - w.mX;
 		double deltaY = v.mY - w.mY;
 		// normalize the vectors
