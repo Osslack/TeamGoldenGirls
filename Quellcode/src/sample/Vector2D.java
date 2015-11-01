@@ -1,5 +1,6 @@
 /**
  * @author Simon
+ * @author Nils Wende
  */
 
 public class Vector2D {
@@ -16,40 +17,40 @@ public class Vector2D {
 		mY = y;
 	}
 
-	public static Vector2D addVector2D(Vector2D a, Vector2D b) {
+	public Vector2D add(Vector2D v) {
 		Vector2D result = new Vector2D();
-		result.mX = a.mX + b.mX;
-		result.mY = a.mY + b.mY;
+		result.mX = this.mX + v.mX;
+		result.mY = this.mY + v.mY;
 		return result;
 	}
 
-	public static Vector2D subVector2D(Vector2D a, Vector2D b) {
+	public Vector2D subtract(Vector2D v) {
 		Vector2D result = new Vector2D();
-		result.mX = a.mX - b.mX;
-		result.mY = a.mY - b.mY;
+		result.mX = this.mX - v.mX;
+		result.mY = this.mY - v.mY;
 		return result;
 	}
 
-	public static double scalarProduct(Vector2D a, Vector2D b) {
-		return a.mX * b.mX + a.mY * b.mY;
+	public double scalarProduct(Vector2D v) {
+		return this.mX * v.mX + this.mY * v.mY;
 	}
 
-	public static Vector2D scalarMultiplication(Vector2D a, double factor) {
+	public Vector2D scalarMultiplication(double factor) {
 		Vector2D result = new Vector2D();
-		result.mX = a.mX * factor;
-		result.mY = a.mY * factor;
+		result.mX = this.mX * factor;
+		result.mY = this.mY * factor;
 		return result;
 	}
 
 	// if Vector2D is a line
-	public static double lengthVector2D(Vector2D a) {
-		return Math.sqrt(square(a.mX) + square(a.mY));
+	public double length() {
+		return Math.sqrt(square(this.mX) + square(this.mY));
 	}
 
 	// if we have two Vector2Ds representing positions
-	public static double lengthVector2D(Vector2D a, Vector2D b) {
-		Vector2D ab = subVector2D(b, a);
-		return lengthVector2D(ab);
+	public double distanceTo(Vector2D b) {
+		Vector2D ab = this.subtract(b);
+		return ab.length();
 	}
 
 	@Override
@@ -62,13 +63,5 @@ public class Vector2D {
 	}
 
 	public static void main(String[] args) {
-		Vector2D a = new Vector2D(0.0, 0.0);
-		Vector2D b = new Vector2D(10.0, 10.0);
-		Vector2D c = new Vector2D(0.0, 1.0);
-		System.out.println(lengthVector2D(subVector2D(a, b)));
-		System.out.println(lengthVector2D(b, a));
-		//System.out.println(lengthVector2D(b));
-		System.out.println(lengthVector2D(a, c));
-		System.out.println(lengthVector2D(c));
 	}
 }
