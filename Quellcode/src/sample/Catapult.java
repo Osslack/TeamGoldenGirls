@@ -25,12 +25,12 @@ class Catapult {
 		final double rubberTipPositionX = rulerLength - minRulerOverhang + paddingToLeftScreenEdge;
 		final double rubberHeight = Math.sqrt(3) * rubberSideLength / 2.0;
 
-		setRubberAt(rubberTipPositionX, rubberHeight);
-		setRulerAt(rubberTipPositionX, rubberHeight);
+		setRubberTo(rubberTipPositionX, rubberHeight);
+		setRulerTo(rubberTipPositionX, rubberHeight);
 		setPivotPointTo(rubberTipPositionX, rubberHeight);
 	}
 
-	private void setRubberAt(double tipPositionX, double rubberHeight) {
+	private void setRubberTo(double tipPositionX, double rubberHeight) {
 		rubberLeftVertexX = tipPositionX - rubberSideLength / 2.0;
 		rubber = new Polygon(tipPositionX, rubberHeight,
 							 tipPositionX + rubberSideLength / 2.0, 0.0,
@@ -38,7 +38,7 @@ class Catapult {
 		); // equilateral triangle
 	}
 
-	private void setRulerAt(double tipPositionX, double rubberHeight) {
+	private void setRulerTo(double tipPositionX, double rubberHeight) {
 		final double deltaX = Math.sqrt(rulerLength * rulerLength / 4.0 - rubberHeight * rubberHeight);
 		final double startX = tipPositionX - deltaX;
 		final double endX = tipPositionX + deltaX;
