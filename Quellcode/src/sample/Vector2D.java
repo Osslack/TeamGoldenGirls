@@ -11,8 +11,6 @@ public class Vector2D {
 	public double mY;
 
 	public Vector2D() {
-		mX = 0.0;
-		mY = 0.0;
 	}
 
 	public Vector2D(double x, double y) {

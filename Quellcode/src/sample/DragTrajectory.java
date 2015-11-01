@@ -30,20 +30,19 @@ class DragTrajectory {
 	}
 
 	Vector2D[] simulateNext(Vector2D velocity, Vector2D position) {
-		/* since we only simulate, we dont want to change the objects referenced by the parameters directly
-		 * if only call is from simulateNextSteps(), declarations can be put there */
+		/* since we only simulate, we dont want to change the objects referenced by the parameters directly */
 		Vector2D newVel = new Vector2D(velocity.mX, velocity.mY),
 				newPos = new Vector2D(position.mX, position.mY);
-		double freq,
+		double factor,
 				acc;
 		for (int i = 0; i < iterationsPerFrame; ++i) {
-			freq = capitalD * Math.sqrt(newVel.mX * newVel.mX + newVel.mY * newVel.mY);
-			// x-coordinate
-			acc = freq * newVel.mX;
+			factor = capitalD * Math.sqrt(newVel.mX * newVel.mX + newVel.mY * newVel.mY);
+			// x-coordinates
+			acc = factor * newVel.mX;
 			newVel.mX += acc * deltaT;
 			newPos.mX += (newVel.mX * deltaT) + (acc * timeFactor);
-			// y-coordinate
-			acc = freq * newVel.mY - GRAV_CONST;
+			// y-coordinates
+			acc = factor * newVel.mY - GRAV_CONST;
 			newVel.mY += acc * deltaT;
 			newPos.mY += (newVel.mY * deltaT) + (acc * timeFactor);
 		}
