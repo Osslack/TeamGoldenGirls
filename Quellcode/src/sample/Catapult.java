@@ -39,12 +39,39 @@ class Catapult {
 	}
 
 	void fire(double power) {
+		final double remainingLength = getRemainingLength();
+		Vector2D newEnd;
+		if (remainingLength > rubberSideLength) { //endpoint hits yPos=0
+			newEnd = getEndPointOnYAxis(remainingLength);
+		}
+		else { //endpoint on rubberside
+			final double positionX = rubber.getPoints().get(5);
+			final double positionY = rubber.getPoints().get(6);
+			Vector2D rubberRightVertex = new Vector2D(positionX, positionY);
+			newEnd = getPointOnLine(pivotPoint, rubberRightVertex, remainingLength);
+		}
+		Vector2D line = pivotPoint.subtract(newEnd);
+		Vector2D normal = line.getNormalToRight();
+		final double launchingAngle = normal.angleTo(Vector2D.X_AXIS);
+		final double velX = power * Math.cos(launchingAngle);
+		final double velY = power * Math.sin(launchingAngle);
+
 		//TODO invoke the physics calculation for trajectory
 	}
 
-	void moveRulerToLeft() {
+	private double getRemainingLength() {
 		final Vector2D lineEnd = new Vector2D(ruler.getEndX(), ruler.getEndY());
-		final double remainingLength = getDistanceBetween(pivotPoint, lineEnd);
+		return pivotPoint.distanceTo(lineEnd);
+	}
+
+	private Vector2D getEndPointOnYAxis(double distance) {
+		final double radicand = distance * distance - pivotPoint.mY * pivotPoint.mY;
+		final double positionX = pivotPoint.mX + Math.sqrt(radicand);
+		return new Vector2D(positionX, 0);
+	}
+
+	void moveRulerToLeft() {
+		final double remainingLength = getRemainingLength();
 		if (remainingLength > minRulerOverhang) {
 			// move the start point to the left
 			final double startX = ruler.getStartX();
@@ -52,12 +79,6 @@ class Catapult {
 			// set the new end point
 			setNewLineEndpoint();
 		}
-	}
-
-	private double getDistanceBetween(Vector2D v, Vector2D w) {
-		final double deltaX = v.mX - w.mX;
-		final double deltaY = v.mY - w.mY;
-		return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 	}
 
 	private void setNewLineEndpoint() {
@@ -68,7 +89,7 @@ class Catapult {
 	}
 
 	private Vector2D getPointOnLine(Vector2D v, Vector2D w, double distanceFromV) {
-		final double length = getDistanceBetween(v, w);
+		final double length = v.distanceTo(w);
 		double deltaX = v.mX - w.mX;
 		double deltaY = v.mY - w.mY;
 		// normalize the vectors
