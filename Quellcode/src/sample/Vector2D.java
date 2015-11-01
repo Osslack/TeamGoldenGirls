@@ -4,8 +4,8 @@
  */
 
 public class Vector2D {
-	public static Vector2D X_AXIS = new Vector2D(1.0, 0.0);
-	public static Vector2D Y_AXIS = new Vector2D(0.0, 1.0);
+	public static final Vector2D X_AXIS = new Vector2D(1.0, 0.0);
+	public static final Vector2D Y_AXIS = new Vector2D(0.0, 1.0);
 
 	public double mX;
 	public double mY;
@@ -54,7 +54,7 @@ public class Vector2D {
 	}
 
 	public double getDistanceTo(Vector2D v) {
-		Vector2D connectingVector = this.subtract(v);
+		final Vector2D connectingVector = this.subtract(v);
 		return connectingVector.length();
 	}
 

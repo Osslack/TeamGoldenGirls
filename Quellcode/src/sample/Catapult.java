@@ -23,25 +23,25 @@ class Catapult {
 	Catapult() {
 		final double paddingToLeftScreenEdge = 0.5;
 		final double tipPositionX = rulerLength - minRulerOverhang + paddingToLeftScreenEdge;
-		final double rubberHeight = Math.sqrt(3) * rubberSideLength / 2;
-		rubberLeftVertexX = tipPositionX - rubberSideLength / 2;
+		final double rubberHeight = Math.sqrt(3) * rubberSideLength / 2.0;
+		rubberLeftVertexX = tipPositionX - rubberSideLength / 2.0;
 		rubber = new Polygon(tipPositionX, rubberHeight,
-							 tipPositionX + rubberSideLength / 2, 0.0,
+							 tipPositionX + rubberSideLength / 2.0, 0.0,
 							 rubberLeftVertexX, 0.0
 		); // equilateral triangle
 
-		final double deltaX = Math.sqrt(rulerLength * rulerLength / 4 - rubberHeight * rubberHeight);
+		final double deltaX = Math.sqrt(rulerLength * rulerLength / 4.0 - rubberHeight * rubberHeight);
 		final double startX = tipPositionX - deltaX;
 		final double endX = tipPositionX + deltaX;
-		ruler = new Line(startX, 0, endX, 2 * rubberHeight); // tip of rubber is at half of ruler length, yStart is always 0
+		ruler = new Line(startX, 0.0, endX, 2.0 * rubberHeight); // tip of rubber is at half of ruler length, yStart is always 0
 
 		pivotPoint = new Vector2D(tipPositionX, rubberHeight); // set to tip of rubber
 	}
 
 	void fire(double power) {
 		final double remainingLength = getRemainingLength();
-		Vector2D newEnd;
-		if (remainingLength > rubberSideLength) { //endpoint hits yPos=0
+		final Vector2D newEnd;
+		if (remainingLength > rubberSideLength) { //endpoint hits x-Axis
 			newEnd = getEndPointOnYAxis(remainingLength);
 		}
 		else { //endpoint on rubberside
@@ -50,8 +50,8 @@ class Catapult {
 			Vector2D rubberRightVertex = new Vector2D(positionX, positionY);
 			newEnd = getPointOnLine(pivotPoint, rubberRightVertex, remainingLength);
 		}
-		Vector2D line = pivotPoint.subtract(newEnd);
-		Vector2D normal = line.getNormalToRight();
+		final Vector2D line = pivotPoint.subtract(newEnd);
+		final Vector2D normal = line.getNormalToRight();
 		final double launchingAngle = normal.getAngleTo(Vector2D.X_AXIS);
 		final double velX = power * Math.cos(launchingAngle);
 		final double velY = power * Math.sin(launchingAngle);
@@ -67,7 +67,7 @@ class Catapult {
 	private Vector2D getEndPointOnYAxis(double distance) {
 		final double radicand = distance * distance - pivotPoint.mY * pivotPoint.mY;
 		final double positionX = pivotPoint.mX + Math.sqrt(radicand);
-		return new Vector2D(positionX, 0);
+		return new Vector2D(positionX, 0.0);
 	}
 
 	void moveRulerToLeft() {
@@ -82,7 +82,7 @@ class Catapult {
 	}
 
 	private void setNewLineEndpoint() {
-		final Vector2D lineStart = new Vector2D(ruler.getStartX(), 0);
+		final Vector2D lineStart = new Vector2D(ruler.getStartX(), 0.0);
 		final Vector2D newLineEnd = getPointOnLine(lineStart, pivotPoint, rulerLength);
 		ruler.setEndX(newLineEnd.mX);
 		ruler.setEndY(newLineEnd.mY);
