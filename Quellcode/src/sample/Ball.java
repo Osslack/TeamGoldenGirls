@@ -6,7 +6,7 @@
 public class Ball extends Circle{
 	public Vector2D mPosition;
 	public Vector2D mVelocity;
-	public double   mMass;
+	public final double   mMass;
 
 	public Ball() {
 		super();
@@ -14,7 +14,7 @@ public class Ball extends Circle{
 		mVelocity = new Vector2D();
 		mMass = 0.0;
 	}
-	public Ball(Vector2D center,double dampening,double radius,Vector2D position,Vector2D velocity,double mass){
+	public Ball(Vector2D center, double dampening, double radius, Vector2D position, Vector2D velocity, double mass){
 		super(center,dampening,radius);
 		mPosition = position;
 		mVelocity = velocity;
