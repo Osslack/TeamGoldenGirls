@@ -1,3 +1,6 @@
+/**
+ * @author Jendrik
+ */
 package engine;
 import java.awt.event.KeyEvent;
 

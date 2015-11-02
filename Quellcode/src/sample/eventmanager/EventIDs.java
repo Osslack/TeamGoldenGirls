@@ -1,3 +1,6 @@
+/**
+ * @author Jendrik
+ */
 package eventmanager;
 
 public interface EventIDs {

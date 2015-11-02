@@ -1,3 +1,6 @@
+/**
+ * @author Jendrik
+ */
 package input;
 
 import java.awt.event.KeyEvent;

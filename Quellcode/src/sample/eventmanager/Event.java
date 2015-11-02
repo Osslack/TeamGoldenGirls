@@ -1,3 +1,6 @@
+/**
+ * @author Jendrik
+ */
 package eventmanager;
 import eventmanager.Eventdata;
 public class Event {

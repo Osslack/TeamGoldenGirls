@@ -1,3 +1,6 @@
+/**
+ * @author Jendrik
+ */
 package timer;
 
 import eventmanager.*;
