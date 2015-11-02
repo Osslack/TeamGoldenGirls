@@ -1,3 +1,5 @@
+import model.Vector2D;
+
 /**
  * @author Simon
  */
@@ -17,7 +19,7 @@ public class Circle extends Entity{
 	}
 	@Override 
 	public String toString(){
-		return "Circle ( Center " + getCenter() + " | Radius " + mRadius + " | Dampening " + mDampening + " )"; 
+		return "Circle ( Center " + getCenter() + " | Radius " + mRadius + " | Dampening " + mDampening + " )";
 	}
 	public static void main(String[] args){
 		System.out.println(new Circle());

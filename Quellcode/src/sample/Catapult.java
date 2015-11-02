@@ -1,15 +1,13 @@
-/**
- * @author Nils Wende
- */
-
 import javafx.collections.ObservableList;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
+import model.Vector2D;
 
 /**
+ * @author Nils Wende
  * assuming coordinate system with point of origin in lower left corner
  */
-class Catapult {
+public class Catapult {
 	Polygon  rubber;
 	Line     ruler;
 	Vector2D pivotPoint;
@@ -20,7 +18,7 @@ class Catapult {
 			step                     = 0.1; // in cm
 	private double rubberLeftVertexX;
 
-	Catapult() {
+	public Catapult() {
 		final double paddingToLeftScreenEdge = 0.5;
 		final double rubberTipPositionX = rulerLength - minRulerOverhang + paddingToLeftScreenEdge;
 		final double rubberHeight = Math.sqrt(3) * rubberSideLength / 2.0;
@@ -51,7 +49,7 @@ class Catapult {
 	}
 
 
-	void fire(double power) {
+	public void fire(double power) {
 		final double remainingLength = getRemainingLength();
 		final Vector2D newEnd;
 		if (remainingLength > rubberSideLength) {
@@ -89,13 +87,12 @@ class Catapult {
 	}
 
 
-	void moveRulerToLeft() {
+	public void moveRulerToLeft() {
 		final double remainingLength = getRemainingLength();
 		if (remainingLength > minRulerOverhang) {
 			// move the start point to the left
 			final double startX = ruler.getStartX();
 			ruler.setStartX(startX - step);
-			// set the new end point
 			setNewLineEndpoint();
 		}
 	}
@@ -108,21 +105,14 @@ class Catapult {
 	}
 
 	private Vector2D getPointOnLine(Vector2D v, Vector2D w, double distanceFromV) {
-		final double length = v.getDistanceTo(w);
-		double deltaX = v.mX - w.mX;
-		double deltaY = v.mY - w.mY;
-		// normalize the vectors
-		deltaX /= length;
-		deltaY /= length;
-		// scale the vectors with the desired length
-		deltaX *= distanceFromV;
-		deltaY *= distanceFromV;
-
-		return new Vector2D(v.mX + deltaX, v.mY + deltaY);
+		Vector2D result = w.subtract(v);
+		result = result.normalize();
+		result = result.scalarMultiplication(distanceFromV);
+		return v.add(result);
 	}
 
 
-	void moveRulerToRight() {
+	public void moveRulerToRight() {
 		final double startX = ruler.getStartX();
 		if (rubberLeftVertexX - step > startX) {
 			// move the start point to the right
@@ -132,7 +122,7 @@ class Catapult {
 	}
 
 	//TODO reasonable max height for rubber?
-	void enlargeRubber() {
+	public void enlargeRubber() {
 		// increase the y-Coordinate of the rubber tip by the value of step
 		ObservableList<Double> points = rubber.getPoints();
 		final double yPos = points.get(1);
@@ -146,7 +136,7 @@ class Catapult {
 	}
 
 	//TODO reasonable min height for rubber?
-	void shrinkRubber() {
+	public void shrinkRubber() {
 		// decrease the y-Coordinate of the rubber tip by the value of step
 		ObservableList<Double> points = rubber.getPoints();
 		final double yPos = points.get(1);

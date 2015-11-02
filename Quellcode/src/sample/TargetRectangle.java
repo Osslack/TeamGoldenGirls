@@ -3,6 +3,7 @@
  */
 
 import java.util.ArrayList;
+import model.Vector2D;
 
 public class TargetRectangle extends Rectangle {
 	public TargetRectangle() {

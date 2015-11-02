@@ -1,12 +1,14 @@
+import model.Vector2D;
+
 /**
  * @author Simon
  */
 
 public class Windmeter{
 	public Vector2D mDirection;
-	public double mStrength;
+	public double   mStrength;
 
-	public Windmeter(){
+	public Windmeter() {
 		mStrength = 0.0;
 		mDirection = new Vector2D();
 	}

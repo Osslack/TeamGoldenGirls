@@ -1,8 +1,11 @@
+package model;
+
 /**
  * @author Simon
  * @author Nils Wende
+ * This class represents a vector in a two-dimensional cartesian coordinate system.
+ * It provides several methods for vector operations.
  */
-
 public class Vector2D {
 	public static final Vector2D X_AXIS = new Vector2D(1.0, 0.0);
 	public static final Vector2D Y_AXIS = new Vector2D(0.0, 1.0);
@@ -67,6 +70,11 @@ public class Vector2D {
 
 	public Vector2D getNormalToRight() {
 		return new Vector2D(this.mY, -this.mX);
+	}
+
+	public Vector2D normalize() {
+		final double factor = 1 / this.length();
+		return this.scalarMultiplication(factor);
 	}
 
 	@Override
