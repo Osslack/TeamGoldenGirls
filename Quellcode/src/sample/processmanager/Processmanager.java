@@ -1,3 +1,6 @@
+/**
+ * @author Jendrik
+ */
 package processmanager;
 
 import eventmanager.*;

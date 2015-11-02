@@ -1,3 +1,6 @@
+/**
+ * @author Jendrik
+ */
 package input;
 
 public class ControlSet {
