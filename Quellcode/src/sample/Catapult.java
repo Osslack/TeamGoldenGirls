@@ -5,7 +5,7 @@ import model.Vector2D;
 
 /**
  * @author Nils Wende
- * Assuming coordinate system with point of origin in lower left corner
+ *         Assuming coordinate system with point of origin in lower left corner
  */
 public class Catapult {
 	Polygon  rubber;
@@ -97,7 +97,7 @@ public class Catapult {
 
 	public void moveRulerToLeft() {
 		final double remainingLength = getRemainingLength();
-		if (remainingLength > minRulerOverhang) {
+		if (remainingLength > minRulerOverhang + step) {
 			// move the start point to the left
 			final double startX = ruler.getStartX();
 			ruler.setStartX(startX - step);
