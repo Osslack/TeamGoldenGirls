@@ -5,7 +5,7 @@ import model.Vector2D;
 
 /**
  * @author Nils Wende
- * assuming coordinate system with point of origin in lower left corner
+ * Assuming coordinate system with point of origin in lower left corner
  */
 public class Catapult {
 	Polygon  rubber;
@@ -50,21 +50,20 @@ public class Catapult {
 
 
 	public void fire(double power) {
-		final double remainingLength = getRemainingLength();
-		final Vector2D newEnd;
-		if (remainingLength > rubberSideLength) {
-			newEnd = getEndPointOnXAxis(remainingLength);
-		}
-		else {
-			newEnd = getEndPointOnRubber(remainingLength);
-		}
-		final Vector2D line = pivotPoint.subtract(newEnd);
-		final Vector2D normal = line.getNormalToRight();
-		final double launchingAngle = normal.getAngleTo(Vector2D.X_AXIS);
-		final double velX = power * Math.cos(launchingAngle);
-		final double velY = power * Math.sin(launchingAngle);
+		final Vector2D newEnd = getEndPoint();
+		final Vector2D initialVelocity = getInitialVelocity(power, newEnd);
 
 		//TODO invoke the physics calculation for trajectory
+	}
+
+	private Vector2D getEndPoint() {
+		final double remainingLength = getRemainingLength();
+		if (remainingLength > rubberSideLength) {
+			return getEndPointOnXAxis(remainingLength);
+		}
+		else {
+			return getEndPointOnRubber(remainingLength);
+		}
 	}
 
 	private double getRemainingLength() {
@@ -86,6 +85,15 @@ public class Catapult {
 		return getPointOnLine(pivotPoint, rubberRightVertex, remainingLength);
 	}
 
+	private Vector2D getInitialVelocity(double power, Vector2D endPoint) {
+		final Vector2D line = pivotPoint.subtract(endPoint);
+		final Vector2D normal = line.getNormalToRight();
+		final double launchingAngle = normal.getAngleTo(Vector2D.X_AXIS);
+		final double velX = power * Math.cos(launchingAngle);
+		final double velY = power * Math.sin(launchingAngle);
+		return new Vector2D(velX, velY);
+	}
+
 
 	public void moveRulerToLeft() {
 		final double remainingLength = getRemainingLength();
@@ -105,10 +113,10 @@ public class Catapult {
 	}
 
 	private Vector2D getPointOnLine(Vector2D v, Vector2D w, double distanceFromV) {
-		Vector2D result = w.subtract(v);
-		result = result.normalize();
-		result = result.scalarMultiplication(distanceFromV);
-		return v.add(result);
+		Vector2D vToW = w.subtract(v);
+		Vector2D unitVector = vToW.normalize();
+		Vector2D toNewPoint = unitVector.scalarMultiplication(distanceFromV);
+		return v.add(toNewPoint);
 	}
 
 
