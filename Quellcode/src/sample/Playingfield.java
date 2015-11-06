@@ -8,6 +8,8 @@ import javafx.scene.shape.Shape;
 import java.util.ArrayList;
 
 public class Playingfield {
+	public static final double scene_width = 800;
+	public static final double scene_height = 600;
 	public ArrayList<Shape> mObstacles;
 	public Ball              mBall;
 	public Shape            mTarget;
