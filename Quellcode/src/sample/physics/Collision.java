@@ -12,10 +12,7 @@ public class Collision {
 	//TODO change Ball to extend javafx.scene.shape.Circle
 	public boolean collisionDetected(Ball ball, Shape obstacle) {
 		Shape intersection = Shape.intersect(ball, obstacle);
-		if (intersection.getBoundsInLocal().getWidth() != -1) {
-			return true;
-		}
-		return false;
+		return intersection.getBoundsInLocal().getWidth() != -1;
 	}
 
 	/**
@@ -28,7 +25,7 @@ public class Collision {
 	 */
 	public Vector2D getPostCollisionVelocity(Vector2D velocity, double dampening, Vector2D normalUnitVector) {
 		final double length = (1 + dampening) * velocity.scalarProduct(normalUnitVector);
-		final Vector2D movement = normalUnitVector.scalarMultiplication(length);
-		return velocity.subtract(movement);
+		final Vector2D direction = normalUnitVector.scalarMultiplication(length);
+		return velocity.subtract(direction);
 	}
 }
