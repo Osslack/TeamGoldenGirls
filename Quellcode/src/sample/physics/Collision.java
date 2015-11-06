@@ -1,11 +1,22 @@
 package sample.physics;
 
+import javafx.scene.shape.Shape;
+import sample.Ball;
 import sample.model.Vector2D;
 
 /**
  * @author Nils Wende
  */
 public class Collision {
+
+	//TODO change Ball to extend javafx.scene.shape.Circle
+	public boolean collisionDetected(Ball ball, Shape obstacle) {
+		Shape intersection = Shape.intersect(ball, obstacle);
+		if (intersection.getBoundsInLocal().getWidth() != -1) {
+			return true;
+		}
+		return false;
+	}
 
 	/**
 	 * @param velocity velocity vector of the ball
