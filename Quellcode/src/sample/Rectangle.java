@@ -7,29 +7,30 @@ package sample;
 import java.util.ArrayList;
 import sample.model.Vector2D;
 
-public class Rectangle extends Entity {
+public class Rectangle extends javafx.scene.shape.Rectangle{
+	public double mDampening;
+	public ArrayList<Vector2D> mCorners;
 	public Rectangle() {
 		super();
-		ArrayList<Vector2D> corners = new ArrayList<Vector2D>();
-		corners.add(new Vector2D());
-		corners.add(new Vector2D());
-		corners.add(new Vector2D());
-		corners.add(new Vector2D());
-		mPositions = corners;
-
+		mDampening = 1.0;
 	}
 
-	public Rectangle(ArrayList<Vector2D> corners, double dampening) {
-		super(corners, dampening);
+	public Rectangle(double x,double y,double width,double height, double dampening) {
+		super(x,y,width,height);
+		mDampening = dampening;
+		mCorners.add(new Vector2D(x,y));
+		mCorners.add(new Vector2D(x,y-height));
+		mCorners.add(new Vector2D(x+width,y));
+		mCorners.add(new Vector2D(x+width,y-height));
 	}
 
 	public ArrayList<Vector2D> getCorners() {
-		return mPositions;
+		return mCorners;
 	}
 
 	@Override
 	public String toString() {
-		return "Rectangle( Corners: " + (mPositions.get(0)) + " " + (mPositions.get(1)) + " " + (mPositions.get(2)) + " " + (mPositions.get(3)) + " | Dampening: " + mDampening + " )";
+		return "Rectangle( Corners: " + (mCorners.get(0)) + " " + (mCorners.get(1)) + " " + (mCorners.get(2)) + " " + (mCorners.get(3)) + " | Dampening: " + mDampening + " )";
 	}
 
 	public static void main(String[] args) {

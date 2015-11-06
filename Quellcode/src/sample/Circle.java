@@ -6,22 +6,23 @@ import sample.model.Vector2D;
  * @author Simon
  */
 
-public class Circle extends Entity{
-	public double mRadius;
+public class Circle extends javafx.scene.shape.Circle{
+	public double mDampening;
 	public Circle(){
 		super();
-		mRadius = 0.0;
+		mDampening = 1.0;
 	}
 	public Circle(Vector2D center,double dampening,double radius){
-		super(center,dampening);
-		mRadius = radius;
+		super(center.mX,center.mY,radius);
+		mDampening = dampening;
 	}
 	public Vector2D getCenter(){
-		return mPositions.get(0);
+		Vector2D center = new Vector2D(this.getCenterX(),this.getCenterY());
+		return center;
 	}
 	@Override 
 	public String toString(){
-		return "Circle ( Center " + getCenter() + " | Radius " + mRadius + " | Dampening " + mDampening + " )";
+		return "Circle ( Center " + getCenter() + " | Radius " + this.getRadius() + " | Dampening " + mDampening + " )";
 	}
 	public static void main(String[] args){
 		System.out.println(new Circle());

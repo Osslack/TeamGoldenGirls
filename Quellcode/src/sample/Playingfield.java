@@ -3,12 +3,14 @@
  */
 package sample;
 
+import javafx.scene.shape.Shape;
+
 import java.util.ArrayList;
 
 public class Playingfield {
-	public ArrayList<Entity> mObstacles;
+	public ArrayList<Shape> mObstacles;
 	public Ball              mBall;
-	public Entity            mTarget;
+	public Shape            mTarget;
 	public Powerbar          mPowerbar;
 	public Scoreboard        mScoreboard;
 	public Windmeter         mWindmeter;
@@ -16,7 +18,7 @@ public class Playingfield {
 	public double            mAirDensity;
 
 	public Playingfield() {
-		mObstacles = new ArrayList<Entity>();
+		mObstacles = new ArrayList<Shape>();
 		mObstacles.add(new Rectangle());
 		mBall = new Ball();
 		mTarget = new TargetRectangle();
@@ -27,7 +29,7 @@ public class Playingfield {
 		mAirDensity = 0.0;
 	}
 
-	public Playingfield(ArrayList<Entity> obstacles, Ball ball, Entity target, Powerbar powerbar, Scoreboard scoreboard, Windmeter windmeter, Catapult catapult, double airdensity) {
+	public Playingfield(ArrayList<Shape> obstacles, Ball ball, Shape target, Powerbar powerbar, Scoreboard scoreboard, Windmeter windmeter, Catapult catapult, double airdensity) {
 		mObstacles = obstacles;
 		mBall = ball;
 		mTarget = target;
