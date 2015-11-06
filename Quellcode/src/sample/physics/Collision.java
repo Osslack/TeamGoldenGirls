@@ -10,22 +10,21 @@ import sample.model.Vector2D;
  * @author Simon Oswald
  */
 public class Collision {
-	public static final Vector2D normalUnitVectorWallLeft = new Vector2D(1.0,0.0);
-	public static final Vector2D normalUnitVectorWallRight = new Vector2D(-1.0,0.0);
-	public static final Vector2D normalUnitVectorFloor = new Vector2D(0.0,1.0);
-	public static final Vector2D normalUnitVectorCeiling = new Vector2D(0.0,-1.0);
+	public static final Vector2D normalUnitVectorTopBorder    = new Vector2D(0.0, -1.0);
+	public static final Vector2D normalUnitVectorLeftBorder   = new Vector2D(1.0, 0.0);
+	public static final Vector2D normalUnitVectorRightBorder  = new Vector2D(-1.0, 0.0);
+	public static final Vector2D normalUnitVectorBottomBorder = new Vector2D(0.0, 1.0);
 
-	//TODO change Ball to extend javafx.scene.shape.Circle DONE BITCH
 	public boolean collisionDetected(Ball ball, Shape obstacle) {
-		Shape intersection = Shape.intersect(ball, obstacle);
+		final Shape intersection = Shape.intersect(ball, obstacle);
 		return intersection.getBoundsInLocal().getWidth() != -1;
 	}
 
 	/**
-	 * @param velocity velocity vector of the ball
-	 * @param dampening == 0 => ball will stop					(no speed)
-	 *                  == 1 => fully elastical collision		(same speed)
-	 *                   > 1 => positive acceleration of ball	(more speed)
+	 * @param velocity         velocity vector of the ball
+	 * @param dampening        == 0 => ball will stop					  (no speed)
+	 *                         == 1 => fully elastical collision		(same speed)
+	 *                         > 1 => positive acceleration of ball	(more speed)
 	 * @param normalUnitVector the normal unit vector of the line, facing the ball
 	 * @return the new velocity vector
 	 */
@@ -34,17 +33,31 @@ public class Collision {
 		final Vector2D direction = normalUnitVector.scalarMultiplication(length);
 		return velocity.subtract(direction);
 	}
-	public boolean checkBorderCollision(Ball ball) {
-		double radius = ball.getRadius();
-		double x_coord = ball.getCenterX();
-		double y_coord = ball.getCenterY();
 
-		if (x_coord - radius >= 0.0									//left wall
-			|| x_coord + radius >= Playingfield.scene_width 		//right wall
-			||y_coord - radius >= 0									//floor
-			|| y_coord + radius >= Playingfield.scene_height ) { 	//ceiling
-			return true;
-		}
-	 	else return false;
+	public boolean checkBorderCollision(Ball ball) {
+		final double radius = ball.getRadius();
+		final double posX = ball.getCenterX();
+		final double posY = ball.getCenterY();
+
+		return checkTopBorderCollision(posY + radius)
+				|| checkLeftBorderCollision(posX - radius)
+				|| checkRightBorderCollision(posX + radius)
+				|| checkBottomBorderCollision(posY - radius);
+	}
+
+	private boolean checkTopBorderCollision(double ballEdge) {
+		return ballEdge >= Playingfield.scene_height;
+	}
+
+	private boolean checkLeftBorderCollision(double ballEdge) {
+		return ballEdge >= 0.0;
+	}
+
+	private boolean checkRightBorderCollision(double ballEdge) {
+		return ballEdge >= Playingfield.scene_width;
+	}
+
+	private boolean checkBottomBorderCollision(double ballEdge) {
+		return ballEdge >= 0.0;
 	}
 }
