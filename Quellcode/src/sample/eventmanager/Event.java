@@ -1,8 +1,8 @@
 /**
  * @author Jendrik
  */
-package eventmanager;
-import eventmanager.Eventdata;
+package sample.eventmanager;
+import sample.eventmanager.Eventdata;
 public class Event {
 	private Eventdata m_Data;
 	private int m_ID;

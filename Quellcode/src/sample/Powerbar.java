@@ -2,6 +2,7 @@
  * @author Simon
  * @author Nils Wende
  */
+package sample;
 
 public class Powerbar {
 	public static final double MAX_POWER = 100.0;

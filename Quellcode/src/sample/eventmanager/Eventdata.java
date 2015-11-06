@@ -1,7 +1,7 @@
 /**
  * @author Jendrik
  */
-package eventmanager;
+package sample.eventmanager;
 
 public class Eventdata {
 	public int m_ID;

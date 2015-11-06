@@ -1,7 +1,7 @@
 /**
  * @author Jendrik
  */
-package eventmanager;
+package sample.eventmanager;
 
 public interface EventIDs {
 	public static final int STARTUP = 1;

@@ -2,8 +2,10 @@
  * @author Simon
  */
 
+package sample;
+
 import java.util.ArrayList;
-import model.Vector2D;
+import sample.model.Vector2D;
 
 public class Entity {
 	protected ArrayList<Vector2D> mPositions = new ArrayList<Vector2D>();

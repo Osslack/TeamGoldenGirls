@@ -1,10 +1,12 @@
 /**
  * @author Jendrik
  */
-package eventmanager;
+package sample.eventmanager;
 
-import processmanager.*;
-import engine.Engine;
+import sample.processmanager.*;
+import sample.engine.Engine;
+import sample.processmanager.Processowner;
+
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Vector;
@@ -69,7 +71,7 @@ public class Eventmanager implements EventListener, Processowner {
 	public void EventCallback(Eventdata data) {
 		switch(data.m_ID){
 			case EventIDs.STARTUP:
-				processmanager.Process process = new processmanager.Process(50,(Processowner)this);
+				sample.processmanager.Process process = new sample.processmanager.Process(50,(Processowner)this);
 				Processmanager.getInstance().addProcess(process);
 				registerforEvent((EventListener)this,EventIDs.SHUTDOWN);
 				break;

@@ -1,8 +1,11 @@
-import model.Vector2D;
+package sample;
+
+import sample.model.Vector2D;
 
 /**
  * @author Simon
  */
+import sample.model.Vector2D;
 
 public class Windmeter{
 	public Vector2D mDirection;

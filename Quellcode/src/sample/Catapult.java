@@ -1,7 +1,9 @@
+package sample;
+
 import javafx.collections.ObservableList;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
-import model.Vector2D;
+import sample.model.Vector2D;
 
 /**
  * @author Nils Wende

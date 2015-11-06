@@ -2,6 +2,8 @@
  * @author Simon
  */
 
+package sample;
+
 public class Scoreboard {
 	public int mScore;
 

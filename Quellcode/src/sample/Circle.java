@@ -1,4 +1,6 @@
-import model.Vector2D;
+package sample;
+
+import sample.model.Vector2D;
 
 /**
  * @author Simon

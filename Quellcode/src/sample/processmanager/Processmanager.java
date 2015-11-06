@@ -1,9 +1,12 @@
 /**
  * @author Jendrik
  */
-package processmanager;
+package sample.processmanager;
 
-import eventmanager.*;
+import sample.eventmanager.*;
+import sample.eventmanager.EventListener;
+//import sample.timer.Timer;
+
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Timer;
@@ -34,7 +37,7 @@ public class Processmanager implements EventListener {
 		Process process;
 		long elapsed;
 		while(m_Running == true){
-			elapsed = timer.Timer.getInstance().waitTimer(); // Timer
+			elapsed = sample.timer.Timer.getInstance().waitTimer(); // Timer
 			for(ListIterator<Process> it = m_Processlist.listIterator();it.hasNext();){
 				process = it.next();
 				process.Run(elapsed);
@@ -61,7 +64,7 @@ public class Processmanager implements EventListener {
 		switch(data.m_ID){
 			case EventIDs.STARTUP:
 				Eventmanager.getInstance().registerforEvent((EventListener)this,EventIDs.SHUTDOWN);
-				timer.Timer.getInstance().setTickdelay(50);
+				sample.timer.Timer.getInstance().setTickdelay(50);
 				break;
 			case EventIDs.SHUTDOWN:
 				m_Running = false; 

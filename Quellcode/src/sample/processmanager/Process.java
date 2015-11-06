@@ -1,7 +1,7 @@
 /**
  * @author Jendrik
  */
-package processmanager;
+package sample.processmanager;
 
 public class Process {
 	int m_ID;

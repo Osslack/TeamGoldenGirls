@@ -1,6 +1,7 @@
 /**
  * @author Simon
  */
+package sample;
 
 import java.util.ArrayList;
 

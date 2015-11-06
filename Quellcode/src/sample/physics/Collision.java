@@ -1,6 +1,6 @@
-package physics;
+package sample.physics;
 
-import model.Vector2D;
+import sample.model.Vector2D;
 
 /**
  * @author Nils Wende

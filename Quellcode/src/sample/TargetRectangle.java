@@ -1,9 +1,10 @@
 /**
  * @author Simon
  */
+package sample;
 
 import java.util.ArrayList;
-import model.Vector2D;
+import sample.model.Vector2D;
 
 public class TargetRectangle extends Rectangle {
 	public TargetRectangle() {

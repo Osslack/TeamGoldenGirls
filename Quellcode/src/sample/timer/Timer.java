@@ -1,9 +1,9 @@
 /**
  * @author Jendrik
  */
-package timer;
+package sample.timer;
 
-import eventmanager.*;
+import sample.eventmanager.*;
 import java.lang.System;
 import java.lang.Thread;
 

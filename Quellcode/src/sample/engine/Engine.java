@@ -1,13 +1,13 @@
 /**
  * @author Jendrik
  */
-package engine;
+package sample.engine;
 import java.awt.event.KeyEvent;
 
-import eventmanager.*;
-import input.*;
-import processmanager.*;
-import timer.*;
+import sample.eventmanager.*;
+import sample.input.*;
+import sample.processmanager.*;
+import sample.timer.*;
 
 
 public class Engine implements EventListener{

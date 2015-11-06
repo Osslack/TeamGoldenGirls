@@ -1,16 +1,18 @@
 /**
  * @author Jendrik
  */
-package input;
+package sample.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 
-import eventmanager.*;
+import sample.eventmanager.*;
+import sample.eventmanager.*;
+
 import java.util.Vector;
 
-public class KeyboardManager implements EventListener{
+public class KeyboardManager implements EventListener {
 	private static KeyboardManager m_Instance;
 	private int m_activeControlSet;
 	private Vector<ControlSet> m_Controls;
@@ -59,7 +61,7 @@ public class KeyboardManager implements EventListener{
 			            		if(m_activeControlSet != -1){
 			            			int eventid = m_Controls.get(m_activeControlSet).onKeyPressed(keyevent.getKeyCode());
 			            			if(eventid != -1){
-			            				eventmanager.Eventmanager.getInstance().queueEvent(new Event(eventid,new Eventdata()));
+			            				sample.eventmanager.Eventmanager.getInstance().queueEvent(new Event(eventid,new Eventdata()));
 			            			}
 			            		}
 			                    break;
@@ -68,7 +70,7 @@ public class KeyboardManager implements EventListener{
 			            		if(m_activeControlSet != -1){
 			            			int eventid = m_Controls.get(m_activeControlSet).onKeyReleased(keyevent.getKeyCode());
 			            			if(eventid != -1){
-			            				eventmanager.Eventmanager.getInstance().queueEvent(new Event(eventid,new Eventdata()));
+			            				sample.eventmanager.Eventmanager.getInstance().queueEvent(new Event(eventid,new Eventdata()));
 			            			}
 			            		}
 			                    break;
@@ -83,5 +85,4 @@ public class KeyboardManager implements EventListener{
 		}
 
 	}
-
 }
