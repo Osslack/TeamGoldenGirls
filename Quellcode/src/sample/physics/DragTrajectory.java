@@ -17,6 +17,9 @@ public class DragTrajectory {
 
 	private final int iterationsPerFrame = 400;
 
+	/**
+	 * @param airDensity Set to 0.0 for a drag-free calculation
+	 */
 	public DragTrajectory(double mass, double radius, double airDensity) {
 		final double area = Math.PI * radius * radius;
 		capitalD = -(airDensity * DRAG_CONST * area) / (2 * mass);
