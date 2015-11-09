@@ -1,4 +1,4 @@
-package input;
+package sample.input;
 
 public class ControlSet {
 	private int[][] m_actions;

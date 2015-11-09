@@ -1,5 +1,5 @@
-package input;
-import engine.*;
+package sample.input;
+import sample.engine.*;
 
 import java.awt.event.KeyEvent;
 import java.awt.KeyEventDispatcher;

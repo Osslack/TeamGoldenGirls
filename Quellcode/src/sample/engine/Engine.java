@@ -1,6 +1,6 @@
-package engine;
+package sample.engine;
 import java.awt.event.KeyEvent;
-import input.*;
+import sample.input.*;
 import processmanager.*;
 import timer.*;
 
