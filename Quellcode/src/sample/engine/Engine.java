@@ -1,8 +1,8 @@
 package sample.engine;
 import java.awt.event.KeyEvent;
 import sample.input.*;
-import processmanager.*;
-import timer.*;
+import sample.processmanager.*;
+import sample.timer.*;
 
 
 public class Engine {

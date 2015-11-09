@@ -1,4 +1,4 @@
-package timer;
+package sample.timer;
 
 import sample.engine.*;
 import java.lang.System;
