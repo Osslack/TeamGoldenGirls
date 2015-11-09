@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.GameController">
+   <children>
+      <Rectangle fx:id="s_rectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" layoutX="90.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+      <Circle fx:id="c_circle" fill="DODGERBLUE" layoutX="237.0" layoutY="452.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</Pane>
