@@ -3,6 +3,7 @@ package sample;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,14 +16,15 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-	final int xScreenSize = 500;
+	final int xScreenSize = 800;
 	final int yScreenSize = 280;
+
 	Scene s_mainMenu, s_newGame, s_loadGame, s_settings, s_highscore, s_game, s_difficulty;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Kugellineal");
+
 		//primaryStage.setMaximized(true);
-		//AnchorPane root = FXMLLoader.load(Controller.class.getResource("settings.fxml"));
 
 		//--Main Menu--
 		//Text in Window
@@ -46,6 +48,20 @@ public class Main extends Application {
 		s_mainMenu = new Scene(layout1, xScreenSize, yScreenSize);
 		//ImageIcon imgIco = new ImageIcon(getClass().getResource("images/Kugel.png"));
 
+		//--Game--
+		//Text in Window
+		Group groot = new Group();
+		Path level1 = new Path();
+		javafx.scene.shape.Rectangle goal = new javafx.scene.shape.Rectangle(20,20,40,60);
+		goal.setFill(Color.BLACK);
+		Ellipse ball = new Ellipse();
+		ball.setCenterX(10);
+		ball.setCenterY(40);
+		ball.setRadiusX(5);
+		ball.setRadiusY(5);
+		ball.setFill(Color.BLACK);
+		groot.getChildren().addAll(ball,goal);
+		s_game = new Scene(groot, xScreenSize, yScreenSize);
 
 		//--New Game--
 		//Text in Window
@@ -77,17 +93,7 @@ public class Main extends Application {
 		s_difficulty = new Scene(layout7, xScreenSize, yScreenSize);
 
 
-		//--Game--
-		//Text in Window
-		StackPane root = new StackPane();
-		Path level1 = new Path();
-		javafx.scene.shape.Rectangle goal = new javafx.scene.shape.Rectangle(20,20,40,60);
-		goal.setFill(Color.BLACK);
-		Ellipse ball = new Ellipse(10,200,30,30);
-		ball.setFill(Color.BLACK);
-		level1.getElements().addAll();
-		root.getChildren().addAll(level1);
-		s_game = new Scene(root, xScreenSize, yScreenSize);
+
 
 
 		//--Load Game--
@@ -138,6 +144,10 @@ public class Main extends Application {
 
 
 	public static void main(String[] args) {
+		int x = 10;
 		launch(args);
+		while(true){
+			x+=1;
+		}
 	}
 }
