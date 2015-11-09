@@ -1,33 +1,53 @@
-/**
- * @author Jendrik
- */
-package sample.input;
+package input;
+import engine.*;
 
 import java.awt.event.KeyEvent;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 
-import sample.eventmanager.*;
-import sample.eventmanager.*;
-
 import java.util.Vector;
 
-public class KeyboardManager implements EventListener {
-	private static KeyboardManager m_Instance;
+public class KeyboardManager {
 	private int m_activeControlSet;
 	private Vector<ControlSet> m_Controls;
+	private Engine m_engine;
 	
-	private KeyboardManager(){
+	public KeyboardManager(Engine engine){
+		m_engine = engine;
 		m_Controls = new Vector<ControlSet>();
 		m_activeControlSet = -1;
-		Eventmanager.getInstance().registerforEvent((EventListener)this, EventIDs.STARTUP);
+		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent keyevent) {
+                switch (keyevent.getID()) {
+	                case KeyEvent.KEY_PRESSED:
+	            		if(m_activeControlSet != -1){
+	            			int id = m_Controls.get(m_activeControlSet).onKeyPressed(keyevent.getKeyCode());
+	            			if(id != -1){
+	            				evalKeyboardAction(id);
+	            			}
+	            		}
+	                    break;
+	                case KeyEvent.KEY_RELEASED:
+	            		if(m_activeControlSet != -1){
+	            			int id = m_Controls.get(m_activeControlSet).onKeyReleased(keyevent.getKeyCode());
+	            			if(id != -1){
+	            				evalKeyboardAction(id);
+	            			}
+	            		}
+	                    break;
+                }
+                return false;
+            }
+        });
 	}
 	
-	public static KeyboardManager getInstance(){
-		if(m_Instance == null){
-			m_Instance = new KeyboardManager();
+	public void evalKeyboardAction(int id)
+	{
+		switch(id){
+			case KeyboardActions.ESCAPE:
+				m_engine.shutdown();
 		}
-		return m_Instance;
 	}
 	
 	public int addControlSet(ControlSet controlset){
@@ -43,46 +63,5 @@ public class KeyboardManager implements EventListener {
 		if(i<m_Controls.size()){
 			m_activeControlSet = i;
 		}
-	}
-	
-	
-
-	@Override
-	public void EventCallback(Eventdata data) {
-		switch(data.m_ID){
-			case EventIDs.STARTUP:
-				Eventmanager.getInstance().registerforEvent((EventListener)this, EventIDs.SHUTDOWN);
-				KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
-		            @Override
-		            public boolean dispatchKeyEvent(KeyEvent keyevent) {
-		                switch (keyevent.getID()) {
-			                case KeyEvent.KEY_PRESSED:
-			                	System.out.println("keypressed");
-			            		if(m_activeControlSet != -1){
-			            			int eventid = m_Controls.get(m_activeControlSet).onKeyPressed(keyevent.getKeyCode());
-			            			if(eventid != -1){
-			            				sample.eventmanager.Eventmanager.getInstance().queueEvent(new Event(eventid,new Eventdata()));
-			            			}
-			            		}
-			                    break;
-			                case KeyEvent.KEY_RELEASED:
-			                	System.out.println("keyreleased");
-			            		if(m_activeControlSet != -1){
-			            			int eventid = m_Controls.get(m_activeControlSet).onKeyReleased(keyevent.getKeyCode());
-			            			if(eventid != -1){
-			            				sample.eventmanager.Eventmanager.getInstance().queueEvent(new Event(eventid,new Eventdata()));
-			            			}
-			            		}
-			                    break;
-		                }
-		                return false;
-		            }
-		        });
-				break;
-			case EventIDs.SHUTDOWN:
-				
-				break;
-		}
-
 	}
 }

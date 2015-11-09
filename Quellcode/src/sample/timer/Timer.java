@@ -1,21 +1,18 @@
-/**
- * @author Jendrik
- */
-package sample.timer;
+package timer;
 
-import sample.eventmanager.*;
+import engine.*;
 import java.lang.System;
 import java.lang.Thread;
 
-public class Timer implements EventListener{
+public class Timer {
 	long m_tickdelay;
 	long m_starttick;
-	private static Timer m_Instance;
+	Engine m_engine;
 	
-	private Timer(){
+	public Timer(Engine engine){
+		m_engine = engine;
 		m_tickdelay=50;
 		m_starttick=System.currentTimeMillis();
-		Eventmanager.getInstance().registerforEvent((EventListener)this,EventIDs.STARTUP);
 	}
 	
 	public void setTickdelay(long delay){
@@ -43,24 +40,5 @@ public class Timer implements EventListener{
 			elapsed = delta;
 		}
 		return elapsed;
-	}
-	
-	public static Timer getInstance(){
-		if(m_Instance == null){
-			m_Instance = new Timer();
-		}
-		return m_Instance;
-	}
-	
-	@Override
-	public void EventCallback(Eventdata data) {
-		switch(data.m_ID){
-			case EventIDs.STARTUP:
-				Eventmanager.getInstance().registerforEvent((EventListener)this,EventIDs.SHUTDOWN);
-				break;
-			case EventIDs.SHUTDOWN:
-				//do stuff here
-				break;
-		}
 	}
 }

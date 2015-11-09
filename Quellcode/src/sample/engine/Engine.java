@@ -1,52 +1,39 @@
-/**
- * @author Jendrik
- */
-package sample.engine;
+package engine;
 import java.awt.event.KeyEvent;
-
-import sample.eventmanager.*;
-import sample.input.*;
-import sample.processmanager.*;
-import sample.timer.*;
+import input.*;
+import processmanager.*;
+import timer.*;
 
 
-public class Engine implements EventListener{
+public class Engine {
+	private Processmanager m_processmanager;
+	private Timer m_timer;
+	private KeyboardManager m_keyboardmanager;
 	
-	private static Engine m_Instance;
-	
-	private Engine(){
-		Eventmanager.getInstance().registerforEvent((EventListener)this, EventIDs.STARTUP);
-		Processmanager.getInstance();
-		Timer.getInstance();
-		KeyboardManager.getInstance();
+	public Engine(){
+		System.out.println("starting up");
+		m_processmanager = new Processmanager(this);
+		m_timer = new Timer(this);
+		m_keyboardmanager = new KeyboardManager(this);
+		ControlSet cs1 = new ControlSet();
+		cs1.setControl(KeyEvent.VK_ESCAPE, -1, KeyboardActions.ESCAPE);
+		m_keyboardmanager.addControlSet(cs1);
 	}
 	
-	public static Engine getInstance(){
-		if(m_Instance == null){
-			m_Instance = new Engine();
-		}
-		return m_Instance;
+	public Processmanager getProcessmanager(){
+		return m_processmanager;
 	}
 	
-	@Override
-	public void EventCallback(Eventdata data){
-		switch(data.m_ID){
-			case EventIDs.STARTUP:
-				Eventmanager.getInstance().registerforEvent((EventListener)this, EventIDs.SHUTDOWN);
-				ControlSet cs1 = new ControlSet();
-				cs1.setControl(KeyEvent.VK_ESCAPE, -1, EventIDs.SHUTDOWN);
-				KeyboardManager.getInstance().addControlSet(cs1);
-				System.out.println("Startup");
-				break;
-			case EventIDs.SHUTDOWN:
-				System.out.println("Shutdown");
-				break;
-		}	
-	} 
+	public Timer getTimer(){
+		return m_timer;
+	}
 	
-	public static void main(String[] args) {
-		Engine engine = Engine.getInstance(); //initialize Engine
-		Eventmanager.getInstance().triggerEvent(new Event(EventIDs.STARTUP,new Eventdata()));
-		Processmanager.getInstance().Run();
+	public KeyboardManager getKeyboardManager(){
+		return m_keyboardmanager;
+	}
+	
+	public void shutdown(){
+		System.out.println("shutting down");
+		m_processmanager.setRunning(false);
 	}
 }

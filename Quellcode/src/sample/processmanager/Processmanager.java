@@ -1,43 +1,29 @@
-/**
- * @author Jendrik
- */
-package sample.processmanager;
-
-import sample.eventmanager.*;
-import sample.eventmanager.EventListener;
-//import sample.timer.Timer;
+package processmanager;
 
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Timer;
 import java.util.LinkedList;
+import engine.*;
 
-public class Processmanager implements EventListener {
+public class Processmanager {
 	private List<Process> m_Processlist;
-	private static Processmanager m_Instance;
-	private int m_Processcounter;
-	private boolean m_Running;
+	private int m_processcounter;
+	private boolean m_running;
+	private Engine m_engine;
 	
-	
-	private Processmanager(){
-		m_Processcounter = 0;
-		m_Running = true;
+	public Processmanager(Engine engine){
+		m_engine = engine;
+		m_processcounter = 0;
+		m_running = true;
 		m_Processlist = new LinkedList<Process>();
-		Eventmanager.getInstance().registerforEvent((EventListener)this,EventIDs.STARTUP);
-	}
-	
-	public static Processmanager getInstance(){
-		if(m_Instance == null){
-			m_Instance = new Processmanager();
-		}
-		return m_Instance;
 	}
 	
 	public void Run(){
 		Process process;
 		long elapsed;
-		while(m_Running == true){
-			elapsed = sample.timer.Timer.getInstance().waitTimer(); // Timer
+		while(m_running == true){
+			elapsed = m_engine.getTimer().waitTimer(); // Timer
 			for(ListIterator<Process> it = m_Processlist.listIterator();it.hasNext();){
 				process = it.next();
 				process.Run(elapsed);
@@ -46,8 +32,8 @@ public class Processmanager implements EventListener {
 	}
 	
 	public void addProcess(Process process){
-		m_Processcounter += 1;
-		process.setID(m_Processcounter);
+		m_processcounter += 1;
+		process.setID(m_processcounter);
 		m_Processlist.add(process);
 	}
 	
@@ -58,18 +44,7 @@ public class Processmanager implements EventListener {
 			}
 		}
 	}
-	
-	@Override
-	public void EventCallback(Eventdata data) {
-		switch(data.m_ID){
-			case EventIDs.STARTUP:
-				Eventmanager.getInstance().registerforEvent((EventListener)this,EventIDs.SHUTDOWN);
-				sample.timer.Timer.getInstance().setTickdelay(50);
-				break;
-			case EventIDs.SHUTDOWN:
-				m_Running = false; 
-				break;
-		}
+	public void setRunning(boolean x){
+		m_running = x;
 	}
-
 }

@@ -1,7 +1,4 @@
-/**
- * @author Jendrik
- */
-package sample.processmanager;
+package processmanager;
 
 public interface Processowner {
 	public void ProcessCallback(long elapsed);

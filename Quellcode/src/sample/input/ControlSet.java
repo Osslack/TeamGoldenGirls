@@ -1,7 +1,4 @@
-/**
- * @author Jendrik
- */
-package sample.input;
+package input;
 
 public class ControlSet {
 	private int[][] m_actions;
