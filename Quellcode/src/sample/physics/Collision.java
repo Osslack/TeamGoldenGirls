@@ -22,8 +22,8 @@ public class Collision {
 
 	/**
 	 * @param velocity         velocity vector of the ball
-	 * @param dampening        == 0 => ball will stop					  (no speed)
-	 *                         == 1 => fully elastical collision		(same speed)
+	 * @param dampening        == 0 => ball will stop				  (no speed)
+	 *                         == 1 => fully elastical collision	(same speed)
 	 *                         > 1 => positive acceleration of ball	(more speed)
 	 * @param normalUnitVector the normal unit vector of the line, facing the ball
 	 * @return the new velocity vector

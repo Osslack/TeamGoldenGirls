@@ -4,11 +4,12 @@ import sample.model.Vector2D;
 
 /**
  * @author Nils Wende
- * Describes the trajectory of a sphere influenced by drag.
+ * Describes the trajectory of a sphere possibly influenced by drag.
  **/
 public class DragTrajectory {
-	private static final double DRAG_CONST = 0.5,
-			GRAV_CONST                     = -9.81;
+	private static final double DRAG_CONST = 0.5, // drag-coefficient for a sphere
+			GRAV_CONST                     = 9.81;
+
 
 	private final double capitalD;
 
@@ -18,7 +19,9 @@ public class DragTrajectory {
 	private final int iterationsPerFrame = 1;
 
 	/**
-	 * @param airDensity Set to 0.0 for a drag-free calculation
+	 * @param mass in kilograms
+	 * @param radius in meters
+	 * @param airDensity usually 1.2; Set to 0.0 for a drag-free calculation
 	 */
 	public DragTrajectory(double mass, double radius, double airDensity) {
 		final double area = Math.PI * radius * radius;
@@ -63,7 +66,7 @@ public class DragTrajectory {
 		velocity.mX += acc * timeelapsed;
 		position.mX += (velocity.mX * timeelapsed) + (acc * timeFactor2);
 			// y-coordinates
-		acc = factor * velocity.mY - GRAV_CONST;
+		acc = factor * velocity.mY + GRAV_CONST;
 		velocity.mY += acc * timeelapsed;
 		position.mY += (velocity.mY * timeelapsed) + (acc * timeFactor2);
 	}
