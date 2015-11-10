@@ -35,6 +35,11 @@ public class Vector2D {
 		return result;
 	}
 
+	public void rotate(double f){
+		mX = -Math.sin(f);
+		mY = Math.cos(f);
+	}
+
 	public double scalarProduct(Vector2D v) {
 		return this.mX * v.mX + this.mY * v.mY;
 	}
