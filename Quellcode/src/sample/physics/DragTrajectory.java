@@ -7,7 +7,7 @@ import sample.model.Vector2D;
  * Describes the trajectory of a sphere influenced by drag.
  **/
 public class DragTrajectory {
-	private static final double DRAG_CONST = 0.5,
+	private static final double DRAG_CONST = 0.5, // drag-coefficient for a sphere
 			GRAV_CONST                     = 9.81;
 
 	private final double capitalD;
@@ -18,7 +18,9 @@ public class DragTrajectory {
 	private final int iterationsPerFrame = 400;
 
 	/**
-	 * @param airDensity Set to 0.0 for a drag-free calculation
+	 * @param mass in kilograms
+	 * @param radius in meters
+	 * @param airDensity usually 1.2; Set to 0.0 for a drag-free calculation
 	 */
 	public DragTrajectory(double mass, double radius, double airDensity) {
 		final double area = Math.PI * radius * radius;
