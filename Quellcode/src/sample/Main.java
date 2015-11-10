@@ -182,6 +182,7 @@ public class Main extends Application {
 
 	@Override
 	public void stop() {
+		savegames.finalizeSavegame();
 		Serializer.save(savegames);
 	}
 
