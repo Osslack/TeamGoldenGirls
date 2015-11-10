@@ -4,7 +4,7 @@ import sample.model.Vector2D;
 
 /**
  * @author Nils Wende
- * Describes the trajectory of a sphere influenced by drag.
+ * Describes the trajectory of a sphere possibly influenced by drag.
  **/
 public class DragTrajectory {
 	private static final double DRAG_CONST = 0.5, // drag-coefficient for a sphere
