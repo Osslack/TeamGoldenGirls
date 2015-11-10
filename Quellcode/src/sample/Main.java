@@ -13,7 +13,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import sample.model.Vector2D;
+import sample.physics.Physics;
 
 import java.io.File;
 import java.util.HashMap;
@@ -23,10 +26,12 @@ import java.util.List;
 import java.io.IOException;
 import java.util.Map;
 
+
 public class Main extends Application {
 	private static Map<String,Scene> m_ScenesMap = new HashMap<>(); //unsauber!!!
 	private static Stage m_PrimaryStage;
-	private static AnimationTimer m_PhysicsProcess;
+	static private Physics m_Physics;
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		m_PrimaryStage = primaryStage;
@@ -35,27 +40,8 @@ public class Main extends Application {
 		primaryStage.setTitle("Kugellineal PhysX Sim");
 		primaryStage.show();
 
-		final long startNano = System.nanoTime();
+		m_Physics = new Physics(this);
 
-		//in solchen AnimationTimer Instanzen werden Sachen wie Physics etc gemacht -> vllt eine Physics Klasse schreiben und sie von AnimationTimer erben lassen
-		m_PhysicsProcess = new AnimationTimer()
-		{
-			public void handle(long nowNano)
-			{
-				double t = (nowNano - startNano) / 1000000000.0;
-				javafx.scene.shape.Circle circle = (javafx.scene.shape.Circle)m_PrimaryStage.getScene().lookup("#c_circle");
-				if(circle!=null){
-					circle.setCenterX(100 * Math.sin(t));
-					circle.setCenterY(100 * Math.cos(t));
-				}
-
-				javafx.scene.shape.Rectangle rect = (javafx.scene.shape.Rectangle)m_PrimaryStage.getScene().lookup("#s_rectangle");
-				if(rect!=null){
-					rect.setRotate(50 * Math.sin(t));
-				}
-
-			}
-		};
 	}
 
 	public Stage getPrimaryStage(){
@@ -65,13 +51,13 @@ public class Main extends Application {
 	public static void setScene(String name){ //unsauber!!!
 		m_PrimaryStage.setScene(getScene(name));
 		if(name == "MainGame"){
-			m_PhysicsProcess.start();
+			m_Physics.start();
 		}else{
-			m_PhysicsProcess.stop();
+			m_Physics.stop();
 		}
 	}
 
-	private static Scene getScene(String name){ //unsauber!!!
+	public static Scene getScene(String name){ //unsauber!!!
 		return m_ScenesMap.get(name);
 	}
 

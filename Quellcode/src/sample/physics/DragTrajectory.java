@@ -10,12 +10,13 @@ public class DragTrajectory {
 	private static final double DRAG_CONST = 0.5, // drag-coefficient for a sphere
 			GRAV_CONST                     = 9.81;
 
+
 	private final double capitalD;
 
 	private final double deltaT = 0.000001,
 			timeFactor          = deltaT * deltaT / 2;
 
-	private final int iterationsPerFrame = 400;
+	private final int iterationsPerFrame = 1;
 
 	/**
 	 * @param mass in kilograms
@@ -24,7 +25,7 @@ public class DragTrajectory {
 	 */
 	public DragTrajectory(double mass, double radius, double airDensity) {
 		final double area = Math.PI * radius * radius;
-		capitalD = -(airDensity * DRAG_CONST * area) / (2 * mass);
+		capitalD = -(airDensity * DRAG_CONST * area) / (((double)2) * mass);
 	}
 
 	public Vector2D[] simulateNextSteps(Vector2D velocity, Vector2D position, int steps) {
@@ -54,4 +55,20 @@ public class DragTrajectory {
 		}
 		return new Vector2D[]{newVel, newPos};
 	}
+
+	public void simNext(Vector2D velocity, Vector2D position, double timeelapsed) {
+		double factor,
+				acc;
+		double timeFactor2 = timeelapsed * timeelapsed / 2;
+		factor = capitalD * Math.sqrt(velocity.mX * velocity.mX + velocity.mY * velocity.mY);
+			// x-coordinates
+		acc = factor * velocity.mX;
+		velocity.mX += acc * timeelapsed;
+		position.mX += (velocity.mX * timeelapsed) + (acc * timeFactor2);
+			// y-coordinates
+		acc = factor * velocity.mY + GRAV_CONST;
+		velocity.mY += acc * timeelapsed;
+		position.mY += (velocity.mY * timeelapsed) + (acc * timeFactor2);
+	}
+
 }
