@@ -19,12 +19,16 @@ public class Savegames implements Serializable {
 	/**
 	 * is called everytime a level is finished
 	 */
-	public void cacheSavegame(Object obj) {
+	public void cacheSavegame(int level, int score, String username, String form, String difficulty) {
 		if (tempSave == null) {
 			tempSave = new Savegame();
 		}
 		tempSave.date = getTimestamp();
-		//TODO get other data
+		tempSave.difficulty = difficulty;
+		tempSave.form = form;
+		tempSave.level = level;
+		tempSave.score = score;
+		tempSave.username = username;
 	}
 
 	/**

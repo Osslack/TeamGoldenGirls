@@ -1,36 +1,23 @@
 package sample;
 
-import javafx.animation.AnimationTimer;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import sample.model.Vector2D;
+import sample.model.Savegames;
+import sample.model.Serializer;
 import sample.physics.Physics;
-
-import java.io.File;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-
-import java.io.IOException;
-import java.util.Map;
 
 
 public class Main extends Application {
-	private static Map<String,Scene> m_ScenesMap = new HashMap<>(); //unsauber!!!
-	private static Stage m_PrimaryStage;
-	static private Physics m_Physics;
+	private static Map<String, Scene> m_ScenesMap = new HashMap<>(); //unsauber!!!
+	private static Stage   m_PrimaryStage;
+	private static Physics m_Physics;
+
+	private Savegames savegames;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -41,47 +28,50 @@ public class Main extends Application {
 		primaryStage.show();
 
 		m_Physics = new Physics(this);
-
+		savegames = Serializer.load();
 	}
 
-	public Stage getPrimaryStage(){
+	public Stage getPrimaryStage() {
 		return m_PrimaryStage;
 	}
 
-	public static void setScene(String name){ //unsauber!!!
+	public static void setScene(String name) { //unsauber!!!
 		m_PrimaryStage.setScene(getScene(name));
-		if(name == "MainGame"){
+		if (name == "MainGame") {
 			m_Physics.start();
-		}else{
+		}
+		else {
 			m_Physics.stop();
 		}
 	}
 
-	public static Scene getScene(String name){ //unsauber!!!
+	public static Scene getScene(String name) { //unsauber!!!
 		return m_ScenesMap.get(name);
 	}
 
-	private void loadScenes(){
+	private void loadScenes() {
 		String path = "";
 		try {
 			path = new File(".").getCanonicalPath();
 			System.out.println(path);
-		}catch (Exception e){
+		}
+		catch (Exception e) {
 
 		}
-		List<String> files = getallFilesofFolder(new File(path+"\\Quellcode\\src\\sample\\view"));
+		List<String> files = getallFilesOfFolder(new File(path + "\\Quellcode\\src\\sample\\view"));
 		String name;
 		for (String filename : files) {
 			try {
 				name = filename.split("\\.")[0];
-				m_ScenesMap.put(name,loadSceneFromFXML(filename));
-			} catch (IOException e) {
+				m_ScenesMap.put(name, loadSceneFromFXML(filename));
+			}
+			catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
-	public List<String> getallFilesofFolder(final File folder) {
+	public List<String> getallFilesOfFolder(final File folder) {
 		List<String> files = new LinkedList<>();
 		for (final File fileEntry : folder.listFiles()) {
 			if (!fileEntry.isDirectory()) {
@@ -92,7 +82,7 @@ public class Main extends Application {
 	}
 
 	private Scene loadSceneFromFXML(String name) throws IOException {
-		return new Scene(FXMLLoader.load(getClass().getResource("view/"+name)));
+		return new Scene(FXMLLoader.load(getClass().getResource("view/" + name)));
 	}
 
 //	private void setupScenes(Stage primaryStage){
@@ -189,6 +179,11 @@ public class Main extends Application {
 //		s_highscore = new Scene(layout4, xScreenSize, yScreenSize);
 //	}
 
+
+	@Override
+	public void stop() {
+		Serializer.save(savegames);
+	}
 
 	public static void main(String[] args) {
 		launch(args);
