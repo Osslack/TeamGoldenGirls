@@ -27,6 +27,7 @@ public class Main extends Application {
 	private static Stage m_PrimaryStage;
 	static private Physics m_Physics;
 	private static String OS = null;
+	public static String PATH_SEPARATOR = null;
 	private Savegames savegames;
 
 
@@ -81,10 +82,13 @@ public class Main extends Application {
 		}
 		List<String> files;
 		if(isWindows()) {
-			 files = getallFilesOfFolder(new File(path + "\\Quellcode\\src\\sample\\view"));
+			 PATH_SEPARATOR = "\\";
+			files = getallFilesOfFolder(new File(path + "\\Quellcode\\src\\sample\\view"));
 		} else {
-			 files = getallFilesOfFolder(new File(path + "/src/sample/view"));
+			 PATH_SEPARATOR = "/";
+			files = getallFilesOfFolder(new File(path + "/src/sample/view"));
 		}
+
 
 		String name;
 		for (String filename : files) {
