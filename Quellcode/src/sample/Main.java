@@ -27,13 +27,6 @@ public class Main extends Application {
 	private static Stage m_PrimaryStage;
 	static private Physics m_Physics;
 	private static String OS = null;
-
-
-public class Main extends Application {
-	private static Map<String, Scene> m_ScenesMap = new HashMap<>(); //unsauber!!!
-	private static Stage   m_PrimaryStage;
-	private static Physics m_Physics;
-
 	private Savegames savegames;
 
 
@@ -67,6 +60,16 @@ public class Main extends Application {
 		return m_ScenesMap.get(name);
 	}
 
+	public List<String> getallFilesOfFolder(final File folder) {
+		List<String> files = new LinkedList<>();
+		for (final File fileEntry : folder.listFiles()) {
+			if (!fileEntry.isDirectory()) {
+				files.add(fileEntry.getName());
+			}
+		}
+		return files;
+	}
+
 	private void loadScenes() {
 		String path = "";
 		try {
@@ -78,9 +81,9 @@ public class Main extends Application {
 		}
 		List<String> files;
 		if(isWindows()) {
-			 files = getallFilesofFolder(new File(path + "\\Quellcode\\src\\sample\\view"));
+			 files = getallFilesOfFolder(new File(path + "\\Quellcode\\src\\sample\\view"));
 		} else {
-			files = getallFilesofFolder(new File(path + "/src/sample/view"));
+			 files = getallFilesOfFolder(new File(path + "/src/sample/view"));
 		}
 
 		String name;
@@ -95,15 +98,7 @@ public class Main extends Application {
 		}
 	}
 
-	public List<String> getallFilesOfFolder(final File folder) {
-		List<String> files = new LinkedList<>();
-		for (final File fileEntry : folder.listFiles()) {
-			if (!fileEntry.isDirectory()) {
-				files.add(fileEntry.getName());
-			}
-		}
-		return files;
-	}
+
 
 	private Scene loadSceneFromFXML(String name) throws IOException {
 		return new Scene(FXMLLoader.load(getClass().getResource("view/" + name)));
