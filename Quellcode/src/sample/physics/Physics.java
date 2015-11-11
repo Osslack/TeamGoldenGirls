@@ -18,28 +18,32 @@ import java.io.File;
 public class Physics extends AnimationTimer {
 	private long lastNano;
 	private Main m_Main;
-	private Vector2D m_Velocity     = new Vector2D(20, -10);
+	private Vector2D m_Velocity     = new Vector2D(Math.random()*200-20, Math.random()*60-50);
 	private Vector2D m_lastPosition = new Vector2D();
 	private Vector2D m_Position     = new Vector2D(100, 100);
 	private DragTrajectory            m_DragTrajectory;
-	private javafx.scene.shape.Circle m_Ball;
-	private Shape                     m_Intersection;
+	private javafx.scene.shape.Circle m_Circle;
+	private javafx.scene.image.ImageView m_Paperball;
 	private int animCounter = 0;
-	private int randomized  = (int) (Math.random() * 100);
+	private Collision m_Collision;
 
 
 	public Physics(Main main) {
 		m_Main = main;
-		m_Ball = (javafx.scene.shape.Circle) m_Main.getScene("MainGame").lookup("#c_circle");
-		m_DragTrajectory = new DragTrajectory(5, (m_Ball.getRadius()) * (5 / 100), 1.2);
+		m_Circle = (javafx.scene.shape.Circle) m_Main.getScene("MainGame").lookup("#circle");
+		m_Paperball = (javafx.scene.image.ImageView) m_Main.getScene("MainGame").lookup("#paperball");
+		m_DragTrajectory = new DragTrajectory(5, (m_Circle.getRadius()) * (5 / 100), 1.2);
+		m_Collision = new Collision();
 	}
 
 	@Override
 	public void start() {
 		super.start();
 		lastNano = System.nanoTime();
-		m_Position.mX = m_Ball.getCenterX();
-		m_Position.mY = m_Ball.getCenterY();
+		m_Position.mX = m_Circle.getCenterX();
+		m_Position.mY = m_Circle.getCenterY();
+		m_Paperball.setLayoutX(m_Circle.getLayoutX());
+		m_Paperball.setLayoutY(m_Circle.getLayoutY());
 	}
 
 	public void handle(long nowNano) {
@@ -48,7 +52,7 @@ public class Physics extends AnimationTimer {
 
 		simBall(deltaSecs);
 
-		animateRects();
+		animBall();
 
 		checkShapeCollisions();
 
@@ -56,75 +60,51 @@ public class Physics extends AnimationTimer {
 
 	}
 
-	private void checkBounds() {
-		double x = m_Ball.getCenterX() + m_Ball.getLayoutX();
-		double y = m_Ball.getCenterY() + m_Ball.getLayoutY();
-		double r = m_Ball.getRadius();
-		if ((x < r) || (x > (800 - r))) {
-			m_Velocity.mX *= -1;
-			resetBall();
-		}
-		if ((y < r) || (y > (600 - r))) {
-			m_Velocity.mY *= -1;
-			resetBall();
-		}
+	private void checkBounds(){
+		boolean outsidehorizontalbounds = m_Collision.isOutsideHorizontalBounds(m_Circle.getCenterX()-m_Circle.getRadius()+m_Circle.getLayoutX(),800-m_Circle.getRadius());
+		boolean outsideverticalbounds = m_Collision.isOutsideVerticalBounds(m_Circle.getCenterY()-m_Circle.getRadius()+m_Circle.getLayoutY(),600-m_Circle.getRadius());
+		if(outsidehorizontalbounds){m_Velocity.mX *= -1;}
+		if(outsideverticalbounds){m_Velocity.mY *= -1;}
+		if(outsidehorizontalbounds || outsideverticalbounds){resetBall();}
 	}
 
-	private void animateRects() {
-		int randomizing = 0;
-		for (Node child : m_Main.getPrimaryStage().getScene().getRoot().getChildrenUnmodifiable()) {
-			randomizing += randomized;
-			if (child instanceof javafx.scene.shape.Rectangle) {
-//                javafx.scene.shape.Rectangle rect = (javafx.scene.shape.Rectangle)m_Main.getPrimaryStage().getScene().lookup("#s_rectangle");
-				javafx.scene.shape.Rectangle rect = (javafx.scene.shape.Rectangle) child;
-				rect.setRotate(((++animCounter) / 50) + randomizing);
-			}
-		}
+	private void animBall(){
+		m_Paperball.setRotate((++animCounter) );
 	}
 
 	private void simBall(double deltaSecs) {
 		m_lastPosition.mX = m_Position.mX;
 		m_lastPosition.mY = m_Position.mY;
 		m_DragTrajectory.simNext(m_Velocity, m_Position, deltaSecs * 4);
-		m_Ball.setCenterX(m_Position.mX);
-		m_Ball.setCenterY(m_Position.mY);
+		updateBallPos();
 	}
 
 	private void resetBall() {
 		m_Position.mX = m_lastPosition.mX;
 		m_Position.mY = m_lastPosition.mY;
-		m_Ball.setCenterX(m_Position.mX);
-		m_Ball.setCenterY(m_Position.mY);
+		updateBallPos();
+	}
+
+	private void updateBallPos(){
+		m_Circle.setCenterX(m_Position.mX);
+		m_Circle.setCenterY(m_Position.mY);
+		m_Paperball.setX(m_Position.mX-m_Circle.getRadius());
+		m_Paperball.setY(m_Position.mY-m_Circle.getRadius());
 	}
 
 	private void checkShapeCollisions() {
-
 		for (Node child : m_Main.getPrimaryStage().getScene().getRoot().getChildrenUnmodifiable()) {
-			if (child instanceof javafx.scene.shape.Rectangle) {
-//                javafx.scene.shape.Rectangle rect = (javafx.scene.shape.Rectangle)m_Main.getPrimaryStage().getScene().lookup("#s_rectangle");
-				javafx.scene.shape.Rectangle rect = (javafx.scene.shape.Rectangle) child;
-				m_Intersection = Shape.intersect(m_Ball, rect);
-				if (m_Intersection.getBoundsInLocal().getWidth() != -1) { //collision
+			if (child instanceof javafx.scene.shape.Line) {
+				javafx.scene.shape.Line line = (javafx.scene.shape.Line) child;
+				if (m_Collision.isColliding(m_Circle,line)) {
 					m_Main.getSoundmanager().playSound1();
 					resetBall();
 					Vector2D normal = new Vector2D();
-
-					double yx = rect.getLocalToSceneTransform().getMyx();
-					double yy = rect.getLocalToSceneTransform().getMyy();
+					double yx = line.getLocalToSceneTransform().getMyx();
+					double yy = line.getLocalToSceneTransform().getMyy();
 					double angle = Math.atan2(yx, yy);
-
-					angle = Math.toDegrees(angle);
-					angle = angle - 90;
-					angle = angle < 0 ? angle + 360 : angle;
-					if (angle > 360) {
-						angle = angle - 360;
-					}
-					angle = Math.toRadians(angle);
-
 					normal.rotate(angle);
-					double dotproduct = m_Velocity.scalarProduct(normal);
-					m_Velocity.mX = m_Velocity.mX - 2 * dotproduct * normal.mX;
-					m_Velocity.mY = m_Velocity.mY - 2 * dotproduct * normal.mY;
+					m_Collision.getPostCollisionVelocity(m_Velocity,0.5,normal);
 				}
 			}
 		}

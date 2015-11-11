@@ -35,6 +35,11 @@ public class Vector2D {
 		return result;
 	}
 
+	public void subtract2(Vector2D v) {
+		mX -= v.mX;
+		mY -= v.mY;
+	}
+
 	public void rotate(double f){
 		mX = -Math.sin(f);
 		mY = Math.cos(f);
