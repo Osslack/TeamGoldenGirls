@@ -105,9 +105,8 @@ public class Physics extends AnimationTimer {
 				javafx.scene.shape.Rectangle rect = (javafx.scene.shape.Rectangle) child;
 				m_Intersection = Shape.intersect(m_Ball, rect);
 				if (m_Intersection.getBoundsInLocal().getWidth() != -1) { //collision
+					m_Main.getSoundmanager().playSound1();
 					resetBall();
-					Soundmanager.playSound1();
-
 					Vector2D normal = new Vector2D();
 
 					double yx = rect.getLocalToSceneTransform().getMyx();

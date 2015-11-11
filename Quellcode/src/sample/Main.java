@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import sample.model.Savegames;
 import sample.model.Serializer;
 import sample.physics.Physics;
+import sample.sounds.Soundmanager;
 
 
 import java.io.File;
@@ -26,6 +27,7 @@ public class Main extends Application {
 	private static Map<String,Scene> m_ScenesMap = new HashMap<>(); //unsauber!!!
 	private static Stage m_PrimaryStage;
 	static private Physics m_Physics;
+	static private Soundmanager m_Soundmanager;
 	private static String OS = null;
 	public static String PATH_SEPARATOR = null;
 	private Savegames savegames;
@@ -40,12 +42,14 @@ public class Main extends Application {
 		primaryStage.show();
 
 		m_Physics = new Physics(this);
+		m_Soundmanager = new Soundmanager();
 		savegames = Serializer.load();
 	}
 
 	public Stage getPrimaryStage() {
 		return m_PrimaryStage;
 	}
+	public Soundmanager getSoundmanager(){return m_Soundmanager;}
 
 	public static void setScene(String name) { //unsauber!!!
 		m_PrimaryStage.setScene(getScene(name));
