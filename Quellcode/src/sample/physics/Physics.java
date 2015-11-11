@@ -18,7 +18,7 @@ import java.io.File;
 public class Physics extends AnimationTimer {
 	private long lastNano;
 	private Main m_Main;
-	private Vector2D m_Velocity     = new Vector2D(Math.random()*200-20, Math.random()*60-50);
+	private Vector2D m_Velocity     = new Vector2D(0, 10);
 	private Vector2D m_lastPosition = new Vector2D();
 	private Vector2D m_Position     = new Vector2D(100, 100);
 	private DragTrajectory            m_DragTrajectory;
