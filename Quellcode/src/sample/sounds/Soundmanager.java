@@ -1,10 +1,10 @@
 package sample.sounds;
 
 
+import javafx.scene.media.AudioClip;
 import sample.Main;
 
 import java.io.File;
-import javafx.scene.media.AudioClip;
 
 /**
  * Created by simon on 11.11.15.
@@ -13,7 +13,7 @@ public class Soundmanager {
     private String appendPathLinux = "src/sample/sounds/";
     private String appendPathWin = "Quellcode/src/sample/sounds/";
     private String appendPath = null;
-    private String FILE1 = "output.mp3";
+    private String FILE1 = "sound1.mp3";
     private AudioClip m_PlonkSound;
     public Soundmanager(){
         if(appendPath == null){

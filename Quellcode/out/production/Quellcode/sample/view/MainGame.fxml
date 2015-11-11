@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
@@ -7,17 +8,25 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.GameController">
    <children>
-      <Circle fx:id="c_circle" fill="DODGERBLUE" layoutX="237.0" layoutY="47.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="582.0" layoutY="345.0" rotate="29.1" stroke="BLACK" strokeType="INSIDE" width="6.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="687.0" layoutY="62.0" rotate="72.9" stroke="BLACK" strokeType="INSIDE" width="6.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="357.0" layoutY="438.0" rotate="52.1" stroke="BLACK" strokeType="INSIDE" width="6.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="711.0" layoutY="211.0" rotate="148.7" stroke="BLACK" strokeType="INSIDE" width="6.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="484.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="6.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="714.0" layoutY="368.0" stroke="BLACK" strokeType="INSIDE" width="6.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="210.0" layoutY="279.0" stroke="BLACK" strokeType="INSIDE" width="6.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="192.0" layoutY="445.0" stroke="BLACK" strokeType="INSIDE" width="6.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="478.0" layoutY="459.0" stroke="BLACK" strokeType="INSIDE" width="6.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="85.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" width="6.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="346.0" layoutY="300.0" stroke="BLACK" strokeType="INSIDE" width="6.0" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="237.0" layoutY="47.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="504.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@lehrer.jpg" />
+         </image>
+      </ImageView>
+      <Line endX="20.0" layoutX="563.0" layoutY="449.0" rotate="-21.8" startX="-16.0" visible="false" />
+      <Line endX="70.0" layoutX="532.0" layoutY="501.0" rotate="80.5" startX="-16.0" visible="false" />
+      <Line endX="100.0" layoutX="556.0" layoutY="490.0" rotate="-81.3" startX="-10.0" visible="false" />
+      <Line endX="15.0" layoutX="587.0" layoutY="417.0" startX="-10.0" visible="false" />
+      <Line endX="13.0" layoutX="604.0" layoutY="427.0" rotate="67.4" startX="-8.0" visible="false" />
+      <Line endX="13.0" layoutX="577.0" layoutY="431.0" rotate="-97.1" startX="-8.0" visible="false" />
+      <Line endX="13.0" layoutX="577.0" layoutY="546.0" startX="-8.0" visible="false" />
+      <ImageView fx:id="paperball" fitHeight="20.0" fitWidth="20.0" layoutX="313.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Kugel.png" />
+         </image>
+      </ImageView>
+      <Line endX="100.0" layoutX="494.0" layoutY="422.0" rotate="63.4" startX="-300.0" />
+      <Line endX="100.0" layoutX="840.0" layoutY="407.0" rotate="-72.6" startX="-300.0" />
    </children>
 </Pane>
