@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Author: Nils Wende -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.controller.HighController">
+    <center>
+        <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1">
+  <tabs>
+      <Tab text="Easy">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="400.0" prefWidth="800.0">
+                    <columns>
+                        <TableColumn prefWidth="237.0" text="Username" />
+                        <TableColumn prefWidth="192.0" text="Class" />
+                      <TableColumn prefWidth="150.0" text="Score" />
+                      <TableColumn prefWidth="220.0" text="Date" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Medium">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView prefHeight="400.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn prefWidth="237.0" text="Username" />
+                              <TableColumn prefWidth="192.0" text="Class" />
+                              <TableColumn prefWidth="150.0" text="Score" />
+                              <TableColumn prefWidth="220.0" text="Date" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+        </content>
+      </Tab>
+    <Tab text="Hard">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView prefHeight="400.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn prefWidth="237.0" text="Username" />
+                              <TableColumn prefWidth="192.0" text="Class" />
+                              <TableColumn prefWidth="150.0" text="Score" />
+                              <TableColumn prefWidth="220.0" text="Date" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="EXTREME">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView prefHeight="400.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn prefWidth="237.0" text="Username" />
+                              <TableColumn prefWidth="192.0" text="Class" />
+                              <TableColumn prefWidth="150.0" text="Score" />
+                              <TableColumn prefWidth="220.0" text="Date" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
+    </center>
+    <bottom>
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="cancelButton" cancelButton="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Back" />
+                    </children>
+                    <GridPane.margin>
+                  <Insets left="50.0" />
+                    </GridPane.margin>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="25.0" />
+            </BorderPane.margin>
+        </GridPane>
+    </bottom>
+</BorderPane>
