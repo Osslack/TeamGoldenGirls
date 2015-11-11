@@ -1,14 +1,13 @@
 package sample.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import sample.Main;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Nils
@@ -23,18 +22,9 @@ public class LoadController implements Initializable {
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        loadButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                ((Stage)loadButton.getScene().getWindow()).close();
-            }
-        });
-        cancelButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Main.setScene("MainMenu"); //unsauber!!!
-            }
-        });
+        loadButton.setOnAction(event -> ((Stage)loadButton.getScene().getWindow()).close());
+
+        cancelButton.setOnAction(event -> Main.setScene("MainMenu"));
     }
 
 }
