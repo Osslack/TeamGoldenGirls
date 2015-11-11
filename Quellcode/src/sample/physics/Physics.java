@@ -24,8 +24,8 @@ public class Physics extends AnimationTimer {
 
 	public Physics(Main main) {
 		m_Main = main;
-		m_Circle = (javafx.scene.shape.Circle) m_Main.getScene("Game").lookup("#circle");
-		m_Paperball = (javafx.scene.image.ImageView) m_Main.getScene("Game").lookup("#paperball");
+		m_Circle = (javafx.scene.shape.Circle) m_Main.getScene("MainGame").lookup("#circle");
+		m_Paperball = (javafx.scene.image.ImageView) m_Main.getScene("MainGame").lookup("#paperball");
 		m_DragTrajectory = new DragTrajectory(5, (m_Circle.getRadius()) * (5 / 100), 1.2);
 		m_Collision = new Collision();
 	}
