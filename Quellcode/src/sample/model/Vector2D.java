@@ -28,6 +28,11 @@ public class Vector2D {
 		return result;
 	}
 
+	public void add2(Vector2D v) {
+		mX += v.mX;
+		mY += v.mY;
+	}
+
 	public Vector2D subtract(Vector2D v) {
 		Vector2D result = new Vector2D();
 		result.mX = this.mX - v.mX;
@@ -54,6 +59,11 @@ public class Vector2D {
 		result.mX = this.mX * factor;
 		result.mY = this.mY * factor;
 		return result;
+	}
+
+	public void scalarMultiplication2(double factor) {
+		mX *= factor;
+		mY *= factor;
 	}
 
 	public double length() {

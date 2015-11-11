@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class
 Main extends Application {
-	private static Map<String,Scene> m_ScenesMap = new HashMap<>(); //unsauber!!!
+	private static Map<String,Scene> m_ScenesMap = new HashMap<>();
 	private static Stage m_PrimaryStage;
 	static private Physics m_Physics;
 	static private Soundmanager m_Soundmanager;
@@ -44,7 +44,7 @@ Main extends Application {
 	}
 	public Soundmanager getSoundmanager(){return m_Soundmanager;}
 
-	public static void setScene(String name) { //unsauber!!!
+	public static void setScene(String name) {
 		m_PrimaryStage.setScene(getScene(name));
 		if (name == "MainGame") {
 			m_Physics.start();

@@ -16,9 +16,13 @@ public class DiffController implements Initializable {
     @FXML
     private Button cancelButton;
 
+    @FXML
+    private Button easyButton;
+
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         cancelButton.setOnAction(event -> Main.setScene("UserScreen"));
+        easyButton.setOnAction(event -> Main.setScene("MainGame")); //provisorisch! will auch noch was testen können :D
     }
 
 }
