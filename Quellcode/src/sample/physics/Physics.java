@@ -2,14 +2,8 @@ package sample.physics;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
-import javafx.scene.shape.Shape;
 import sample.Main;
 import sample.model.Vector2D;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import sample.sounds.Soundmanager;
-
-import java.io.File;
 
 /**
  * Created by JJ on 10.11.2015.
@@ -30,8 +24,8 @@ public class Physics extends AnimationTimer {
 
 	public Physics(Main main) {
 		m_Main = main;
-		m_Circle = (javafx.scene.shape.Circle) m_Main.getScene("MainGame").lookup("#circle");
-		m_Paperball = (javafx.scene.image.ImageView) m_Main.getScene("MainGame").lookup("#paperball");
+		m_Circle = (javafx.scene.shape.Circle) m_Main.getScene("Game").lookup("#circle");
+		m_Paperball = (javafx.scene.image.ImageView) m_Main.getScene("Game").lookup("#paperball");
 		m_DragTrajectory = new DragTrajectory(5, (m_Circle.getRadius()) * (5 / 100), 1.2);
 		m_Collision = new Collision();
 	}

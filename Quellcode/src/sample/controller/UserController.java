@@ -11,17 +11,17 @@ import java.util.ResourceBundle;
 /**
  * @author Nils
  */
-public class LoadController implements Initializable {
+public class UserController implements Initializable {
 
     @FXML
-    private Button loadButton;
+    private Button nextButton;
 
     @FXML
     private Button cancelButton;
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        //loadButton.setOnAction(event -> );
+        nextButton.setOnAction(event -> Main.setScene("DifficultyScreen"));
 
         cancelButton.setOnAction(event -> Main.setScene("MainMenu"));
     }

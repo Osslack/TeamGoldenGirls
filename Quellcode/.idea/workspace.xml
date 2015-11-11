@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="317b8588-4eb0-4f41-b3f2-27a6a6c2834c" name="Default" comment="Nils: added Menu scenes">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/sounds/sound1.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/sounds/sound2.mp3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/MainController.java" afterPath="$PROJECT_DIR$/src/sample/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Quellcode/sample/view/MainGame.fxml" afterPath="$PROJECT_DIR$/out/production/Quellcode/sample/view/MainGame.fxml" />
+    <list default="true" id="317b8588-4eb0-4f41-b3f2-27a6a6c2834c" name="Default" comment="Nils: sound files">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/controller/DiffController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/controller/HighController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/controller/SettingsController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/controller/UserController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Quellcode/sample/view/MainGame.fxml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/sample/controller/MainController.java" afterPath="$PROJECT_DIR$/src/sample/controller/MainmenuController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/sample/view/Kugel.png" afterPath="$PROJECT_DIR$/src/sample/images/Kugel.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/sample/view/MainGame.fxml" afterPath="$PROJECT_DIR$/src/sample/view/Game.fxml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/sample/view/lehrer.jpg" afterPath="$PROJECT_DIR$/src/sample/images/lehrer.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/physics/Collision.java" afterPath="$PROJECT_DIR$/src/sample/physics/Collision.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/DifficultyScreen.fxml" afterPath="$PROJECT_DIR$/src/sample/view/DifficultyScreen.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/HighscoreScreen.fxml" afterPath="$PROJECT_DIR$/src/sample/view/HighscoreScreen.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/LoadController.java" afterPath="$PROJECT_DIR$/src/sample/controller/LoadController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Quellcode/sample/view/MainMenu.fxml" afterPath="$PROJECT_DIR$/out/production/Quellcode/sample/view/MainMenu.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/sounds/Soundmanager.java" afterPath="$PROJECT_DIR$/src/sample/sounds/Soundmanager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/MainMenu.fxml" afterPath="$PROJECT_DIR$/src/sample/view/MainMenu.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/physics/Physics.java" afterPath="$PROJECT_DIR$/src/sample/physics/Physics.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/SettingsScreen.fxml" afterPath="$PROJECT_DIR$/src/sample/view/SettingsScreen.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/UserScreen.fxml" afterPath="$PROJECT_DIR$/src/sample/view/UserScreen.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Quellcode.iws" />
@@ -30,44 +43,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoadController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/controller/LoadController.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+              <caret line="116" column="18" selection-start-line="116" selection-start-column="18" selection-end-line="116" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DiffController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/controller/DiffController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6253102">
+              <caret line="20" column="61" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Collision.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/physics/Collision.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadScreen.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/view/LoadScreen.fxml">
+      <file leaf-file-name="DifficultyScreen.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/view/DifficultyScreen.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.225806">
-              <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/controller/MainController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1712159">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state vertical-scroll-proportion="16.838709">
+              <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -99,18 +104,22 @@
         <option value="$PROJECT_DIR$/src/sample/TargetRectangle.java" />
         <option value="$PROJECT_DIR$/src/sample/TargetCircle.java" />
         <option value="$PROJECT_DIR$/src/sample/Playingfield.java" />
-        <option value="$PROJECT_DIR$/src/sample/physics/Collision.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/physics/Physics.java" />
-        <option value="$PROJECT_DIR$/src/sample/view/UserScreen.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/view/SettingsScreen.fxml" />
         <option value="$PROJECT_DIR$/src/sample/view/MainMenu.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/view/HighscoreScreen.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/view/DifficultyScreen.fxml" />
         <option value="$PROJECT_DIR$/src/sample/view/LoadScreen.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/controller/LoadController.java" />
-        <option value="$PROJECT_DIR$/src/sample/controller/MainController.java" />
         <option value="$PROJECT_DIR$/src/sample/sounds/Soundmanager.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/LoadController.java" />
+        <option value="$PROJECT_DIR$/src/sample/physics/Collision.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/HighController.java" />
+        <option value="$PROJECT_DIR$/src/sample/controller/SettingsController.java" />
+        <option value="$PROJECT_DIR$/src/sample/physics/Physics.java" />
+        <option value="$PROJECT_DIR$/src/sample/view/DifficultyScreen.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/view/HighscoreScreen.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/view/SettingsScreen.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/view/UserScreen.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/controller/DiffController.java" />
       </list>
     </option>
   </component>
@@ -272,6 +281,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quellcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quellcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sample" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -293,6 +324,14 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/sample/images" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="sample.controller" />
+    </key>
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
     <UpdatedFiles>
@@ -648,7 +687,7 @@
       <workItem from="1447180665216" duration="770000" />
       <workItem from="1447232698907" duration="3659000" />
       <workItem from="1447243346397" duration="817000" />
-      <workItem from="1447245461439" duration="3361000" />
+      <workItem from="1447245461439" duration="5907000" />
     </task>
     <task id="LOCAL-00001" summary="Nils: added Menu scenes">
       <created>1447252357203</created>
@@ -656,11 +695,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447252357203</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Nils: sound files">
+      <created>1447253490448</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1447253490448</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12344000" />
+    <option name="totallyTimeSpent" value="14890000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
@@ -706,7 +751,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Nils: added Menu scenes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nils: added Menu scenes" />
+    <MESSAGE value="Nils: sound files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nils: sound files" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -720,41 +766,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/Playingfield.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/physics/Collision.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/Vector2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="47" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Ball.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="81" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/TargetRectangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="133" selection-start-line="19" selection-start-column="133" selection-end-line="19" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/TargetCircle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -966,13 +977,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/Vector2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="47" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/model/Savegame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20487805">
@@ -997,40 +1001,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/physics/Physics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64935064">
-          <caret line="127" column="79" selection-start-line="127" selection-start-column="79" selection-end-line="127" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/timer/Timer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/view/UserScreen.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3225806">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="6" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/view/SettingsScreen.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.58064514">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1046,52 +1020,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/view/HighscoreScreen.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/sample/sounds/Soundmanager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.903226">
-          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/view/DifficultyScreen.fxml">
+    <entry file="file://$PROJECT_DIR$/src/sample/view/Game.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.612904">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        <state vertical-scroll-proportion="1.548387">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/images/Kugel.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/Vector2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6666667">
+          <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+          <folding>
+            <element signature="e#1667#1668#0" expanded="true" />
+            <element signature="e#1712#1713#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/physics/Collision.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/sounds/Soundmanager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        <state vertical-scroll-proportion="1.1555556">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62222224">
-          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#502#503#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1099,7 +1071,79 @@
     <entry file="file://$PROJECT_DIR$/src/sample/controller/LoadController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/MainmenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/HighController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="65" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/SettingsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/physics/Physics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4888889">
+          <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="116" column="18" selection-start-line="116" selection-start-column="18" selection-end-line="116" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/view/UserScreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5294118">
+          <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/view/SettingsScreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28877005">
+          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -1109,27 +1153,38 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.225806">
-          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.19251336">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/view/MainGame.fxml">
+    <entry file="file://$PROJECT_DIR$/src/sample/view/HighscoreScreen.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.82887703">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3368984">
+          <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controller/MainController.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/view/DifficultyScreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1712159">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state vertical-scroll-proportion="16.838709">
+          <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controller/DiffController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6253102">
+          <caret line="20" column="61" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
           <folding />
         </state>
       </provider>

@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class MainController implements Initializable {
+public class MainmenuController implements Initializable {
 
     @FXML
     private Button b_highscore;
@@ -30,7 +30,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         b_highscore.setOnAction(event -> Main.setScene("HighscoreScreen"));
-        b_newgame.setOnAction(event -> Main.setScene("MainGame"));
+        b_newgame.setOnAction(event -> Main.setScene("UserScreen"));
         b_settings.setOnAction(event -> Main.setScene("SettingsScreen"));
         b_loadgame.setOnAction(event -> Main.setScene("LoadScreen"));
         b_exit.setOnAction(event -> ((Stage)b_exit.getScene().getWindow()).close());

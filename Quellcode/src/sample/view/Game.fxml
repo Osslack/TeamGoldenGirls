@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.GameController">
    <children>
       <Circle fx:id="circle" fill="DODGERBLUE" layoutX="237.0" layoutY="47.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="504.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@lehrer.jpg" />
+            <Image url="@../images/lehrer.jpg" />
          </image>
       </ImageView>
       <Line endX="20.0" layoutX="563.0" layoutY="449.0" rotate="-21.8" startX="-16.0" visible="false" />
@@ -23,7 +21,7 @@
       <Line endX="13.0" layoutX="577.0" layoutY="546.0" startX="-8.0" visible="false" />
       <ImageView fx:id="paperball" fitHeight="20.0" fitWidth="20.0" layoutX="313.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Kugel.png" />
+            <Image url="@../images/Kugel.png" />
          </image>
       </ImageView>
       <Line endX="100.0" layoutX="494.0" layoutY="422.0" rotate="63.4" startX="-300.0" />
