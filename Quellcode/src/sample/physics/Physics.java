@@ -5,9 +5,15 @@ import javafx.scene.Node;
 import javafx.scene.shape.Shape;
 import sample.Main;
 import sample.model.Vector2D;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import sample.sounds.Soundmanager;
+
+import java.io.File;
 
 /**
  * Created by JJ on 10.11.2015.
+ * Worked on by Simon
  */
 public class Physics extends AnimationTimer {
 	private long lastNano;
@@ -20,6 +26,7 @@ public class Physics extends AnimationTimer {
 	private Shape                     m_Intersection;
 	private int animCounter = 0;
 	private int randomized  = (int) (Math.random() * 100);
+
 
 	public Physics(Main main) {
 		m_Main = main;
@@ -98,8 +105,8 @@ public class Physics extends AnimationTimer {
 				javafx.scene.shape.Rectangle rect = (javafx.scene.shape.Rectangle) child;
 				m_Intersection = Shape.intersect(m_Ball, rect);
 				if (m_Intersection.getBoundsInLocal().getWidth() != -1) { //collision
+					m_Main.getSoundmanager().playSound1();
 					resetBall();
-
 					Vector2D normal = new Vector2D();
 
 					double yx = rect.getLocalToSceneTransform().getMyx();
