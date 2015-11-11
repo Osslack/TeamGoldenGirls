@@ -16,16 +16,34 @@ public class Savegames implements Serializable {
 		savegames = new LinkedList<Savegame>();
 	}
 
+
 	/**
 	 * is called everytime a level is finished
 	 */
-	public void cacheSavegame(Object obj) {
+	public void cacheSavegame(int level, int score, String username, String form, String difficulty) {
 		if (tempSave == null) {
 			tempSave = new Savegame();
 		}
 		tempSave.date = getTimestamp();
-		//TODO get other data
+		tempSave.difficulty = difficulty;
+		tempSave.form = form;
+		tempSave.level = level;
+		tempSave.score = score;
+		tempSave.username = username;
 	}
+
+	private String getTimestamp() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+		Calendar cal = Calendar.getInstance();
+		Date now = cal.getTime();
+		return dateFormat.format(now);
+	}
+
+
+	public void deleteSavegame(Savegame save) {
+		savegames.remove(save);
+	}
+
 
 	/**
 	 * is called when game is exited
@@ -34,12 +52,5 @@ public class Savegames implements Serializable {
 		if (tempSave != null) {
 			savegames.add(tempSave);
 		}
-	}
-
-	private String getTimestamp() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-		Calendar cal = Calendar.getInstance();
-		Date now = cal.getTime();
-		return dateFormat.format(now);
 	}
 }
