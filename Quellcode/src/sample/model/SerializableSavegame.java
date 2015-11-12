@@ -10,12 +10,12 @@ public class SerializableSavegame implements Serializable {
 	private String username, form, date, difficulty;
 
 	public SerializableSavegame(Savegame save) {
-		this.level = save.getLevel().intValue();
-		this.score = save.getScore().intValue();
-		this.username = save.getUsername().getValue();
-		this.form = save.getForm().getValue();
-		this.date = save.getDate().getValue();
-		this.difficulty = save.getDifficulty().getValue();
+		this.level = save.getLevel();
+		this.score = save.getScore();
+		this.username = save.getUsername();
+		this.form = save.getForm();
+		this.date = save.getDate();
+		this.difficulty = save.getDifficulty();
 	}
 
 	public int getScore() {

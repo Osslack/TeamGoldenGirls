@@ -37,27 +37,52 @@ public class Savegame {
 		return new SimpleStringProperty(dateFormat.format(now));
 	}
 
-	public IntegerProperty getLevel() {
+	public IntegerProperty levelProperty() {
 		return level;
 	}
 
-	public IntegerProperty getScore() {
+	public IntegerProperty scoreProperty() {
 		return score;
 	}
 
-	public StringProperty getUsername() {
+	public StringProperty usernameProperty() {
 		return username;
 	}
 
-	public StringProperty getForm() {
+	public StringProperty formProperty() {
 		return form;
 	}
 
-	public StringProperty getDate() {
+	public StringProperty dateProperty() {
 		return date;
 	}
 
-	public StringProperty getDifficulty() {
+	public StringProperty difficultyProperty() {
 		return difficulty;
+	}
+
+
+	public int getLevel() {
+		return level.intValue();
+	}
+
+	public int getScore() {
+		return score.intValue();
+	}
+
+	public String getUsername() {
+		return username.getValue();
+	}
+
+	public String getForm() {
+		return form.getValue();
+	}
+
+	public String getDate() {
+		return date.getValue();
+	}
+
+	public String getDifficulty() {
+		return difficulty.getValue();
 	}
 }

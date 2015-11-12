@@ -32,10 +32,10 @@ public class TabMedController implements Initializable {
 
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-		userCol.setCellValueFactory(data -> data.getValue().getUsername());
-		classCol.setCellValueFactory(data -> data.getValue().getForm());
-		scoreCol.setCellValueFactory(data -> data.getValue().getScore().asObject());
-		dateCol.setCellValueFactory(data -> data.getValue().getDate());
+		userCol.setCellValueFactory(data -> data.getValue().usernameProperty());
+		classCol.setCellValueFactory(data -> data.getValue().formProperty());
+		scoreCol.setCellValueFactory(data -> data.getValue().scoreProperty().asObject());
+		dateCol.setCellValueFactory(data -> data.getValue().dateProperty());
 
 		ObservableList<Savegame> saves = Main.getSavegames().getMediumSavegames();
 		table.getItems().setAll(saves);

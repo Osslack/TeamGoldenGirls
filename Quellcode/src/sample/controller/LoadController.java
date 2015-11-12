@@ -6,8 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import sample.Difficulty;
 import sample.Main;
 import sample.model.Savegame;
+import sample.model.UserData;
 
 /**
  * @author Nils
@@ -43,18 +45,29 @@ public class LoadController implements Initializable {
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-		levelCol.setCellValueFactory(data -> data.getValue().getLevel().asObject());
-		scoreCol.setCellValueFactory(data -> data.getValue().getScore().asObject());
-		userCol.setCellValueFactory(data -> data.getValue().getUsername());
-		classCol.setCellValueFactory(data -> data.getValue().getForm());
-		diffCol.setCellValueFactory(data -> data.getValue().getDifficulty());
-		dateCol.setCellValueFactory(data -> data.getValue().getDate());
+		setTableViewContent();
 
-		ObservableList<Savegame> saves = Main.getSavegames().getSavegames();
-		table.getItems().setAll(saves);
-
-        //loadButton.setOnAction(event -> );
+		loadButton.setOnAction(event -> {
+			Savegame selected = table.getSelectionModel().getSelectedItem();
+			if (selected != null) {
+				Main.user = new UserData(selected.getUsername(), selected.getForm());
+				Main.setDifficulty(Difficulty.toDifficulty(selected.getDifficulty()));
+				Main.setScene("MainGame");
+			}
+		});
 
         cancelButton.setOnAction(event -> Main.setScene("MainMenu"));
     }
+
+	private void setTableViewContent() {
+		levelCol.setCellValueFactory(data -> data.getValue().levelProperty().asObject());
+		scoreCol.setCellValueFactory(data -> data.getValue().scoreProperty().asObject());
+		userCol.setCellValueFactory(data -> data.getValue().usernameProperty());
+		classCol.setCellValueFactory(data -> data.getValue().formProperty());
+		diffCol.setCellValueFactory(data -> data.getValue().difficultyProperty());
+		dateCol.setCellValueFactory(data -> data.getValue().dateProperty());
+
+		ObservableList<Savegame> saves = Main.getSavegames().getSavegames();
+		table.getItems().setAll(saves);
+	}
 }

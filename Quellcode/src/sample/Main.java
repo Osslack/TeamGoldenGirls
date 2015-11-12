@@ -7,8 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.model.Savegames;
-import sample.model.Serializer;
+import sample.model.*;
 import sample.physics.Physics;
 import sample.sounds.Soundmanager;
 
@@ -23,6 +22,7 @@ Main extends Application {
 
 	private static Savegames  savegames;
 	public static  Difficulty chosenDifficulty;
+	public static  UserData   user;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
