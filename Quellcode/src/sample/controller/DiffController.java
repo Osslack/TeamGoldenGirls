@@ -1,12 +1,12 @@
 package sample.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import sample.Difficulty;
 import sample.Main;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * @author Nils
@@ -19,10 +19,35 @@ public class DiffController implements Initializable {
     @FXML
     private Button easyButton;
 
+    @FXML
+    private Button medButton;
+
+    @FXML
+    private Button hardButton;
+
+    @FXML
+    private Button exButton;
+
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         cancelButton.setOnAction(event -> Main.setScene("UserScreen"));
-        easyButton.setOnAction(event -> Main.setScene("MainGame")); //provisorisch! will auch noch was testen können :D
+
+        easyButton.setOnAction(event -> {
+            Main.setDifficulty(Difficulty.EASY);
+            Main.setScene("MainGame");
+        });
+        medButton.setOnAction(event -> {
+            Main.setDifficulty(Difficulty.MEDIUM);
+            Main.setScene("MainGame");
+        });
+        hardButton.setOnAction(event -> {
+            Main.setDifficulty(Difficulty.HARD);
+            Main.setScene("MainGame");
+        });
+        exButton.setOnAction(event -> {
+            Main.setDifficulty(Difficulty.EXTREME);
+            Main.setScene("MainGame");
+        });
     }
 
 }

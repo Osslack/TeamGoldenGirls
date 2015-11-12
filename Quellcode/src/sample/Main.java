@@ -1,20 +1,16 @@
 package sample;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.model.Savegames;
-import sample.model.Serializer;
+import sample.model.*;
 import sample.physics.Physics;
 import sample.sounds.Soundmanager;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 public class
 Main extends Application {
@@ -24,10 +20,13 @@ Main extends Application {
 	static private Soundmanager m_Soundmanager;
 	private static String OS = null;
 	public static String PATH_SEPARATOR = null;
-	private Savegames savegames;
+
+	private static Savegames  savegames;
+	private static Difficulty chosenDifficulty;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		savegames = Serializer.load();
 		m_PrimaryStage = primaryStage;
 		loadScenes();
 		primaryStage.setScene(getScene("MainMenu"));
@@ -36,7 +35,7 @@ Main extends Application {
 
 		m_Physics = new Physics(this);
 		m_Soundmanager = new Soundmanager();
-		savegames = Serializer.load();
+
 	}
 
 	public Stage getPrimaryStage() {
@@ -46,7 +45,7 @@ Main extends Application {
 
 	public static void setScene(String name) {
 		m_PrimaryStage.setScene(getScene(name));
-		if (name == "MainGame") {
+		if (name.equals("MainGame")) {
 			m_Physics.start();
 		}
 		else {
@@ -111,9 +110,27 @@ Main extends Application {
 		return getOsName().startsWith("Windows");
 	}
 
+	public static ObservableList<Savegame> getSavegamesFor(Difficulty diff) {
+		switch (diff) {
+			case EASY:
+				return savegames.easySavegames;
+			case MEDIUM:
+				return savegames.mediumSavegames;
+			case HARD:
+				return savegames.hardSavegames;
+			case EXTREME:
+				return savegames.extremeSavegames;
+		}
+		return null;
+	}
+
+	public static void setDifficulty(Difficulty diff) {
+		chosenDifficulty = diff;
+	}
+
 	@Override
 	public void stop() {
-		savegames.finalizeSavegame();
+		savegames.finalizeSavegame(chosenDifficulty);
 		Serializer.save(savegames);
 	}
 

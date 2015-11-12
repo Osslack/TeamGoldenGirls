@@ -8,7 +8,7 @@ import java.io.*;
 public class Serializer {
 
 	private static final File path = new File(System.getProperty("user.dir") + "/savegames");
-	private static final File file = new File(path, "/saves.ser");
+	private static final File file = new File(path, "/saves.gg");
 
 	/**
 	 * is called everytime the application is started
@@ -17,13 +17,25 @@ public class Serializer {
 		if (file.exists()) {
 			try (FileInputStream fis = new FileInputStream(file);
 				 ObjectInputStream ois = new ObjectInputStream(fis)) {
-				return (Savegames) ois.readObject();
+				SerializationContainer box = (SerializationContainer) ois.readObject();
+				return wrapObservables(box);
 			}
-			catch (IOException | ClassNotFoundException | ClassCastException ex) {
+			catch (IOException | ClassNotFoundException ex) {
+				ex.printStackTrace();
+			}
+			catch (ClassCastException ex) {
+				file.delete();
 				ex.printStackTrace();
 			}
 		}
 		return new Savegames();
+	}
+
+	private static Savegames wrapObservables(SerializationContainer box) {
+		return new Savegames(box.easySavegames,
+							 box.mediumSavegames,
+							 box.hardSavegames,
+							 box.extremeSavegames);
 	}
 
 	/**
@@ -31,9 +43,10 @@ public class Serializer {
 	 */
 	public static void save(Savegames saves) {
 		createFileIfNecessary();
+		SerializationContainer output = unwrapObservables(saves);
 		try (FileOutputStream fos = new FileOutputStream(file);
 			 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-			oos.writeObject(saves);
+			oos.writeObject(output);
 		}
 		catch (IOException ex) {
 			ex.printStackTrace();
@@ -50,5 +63,12 @@ public class Serializer {
 				ex.printStackTrace();
 			}
 		}
+	}
+
+	private static SerializationContainer unwrapObservables(Savegames saves) {
+		return new SerializationContainer(saves.easySavegames,
+										  saves.mediumSavegames,
+										  saves.hardSavegames,
+										  saves.extremeSavegames);
 	}
 }

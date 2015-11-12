@@ -2,13 +2,11 @@
 
 <!-- Author: Nils Wende -->
 
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.DiffController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.DiffController">
     <center>
         <GridPane hgap="10.0" vgap="35.0" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -23,9 +21,12 @@
             </rowConstraints>
             <children>
                 <Button fx:id="easyButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Easy" />
-                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Medium" GridPane.rowIndex="1" />
-                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Hard" GridPane.rowIndex="2" />
-                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="EXTREME" GridPane.rowIndex="3" />
+                <Button fx:id="medButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Medium"
+                        GridPane.rowIndex="1"/>
+                <Button fx:id="hardButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Hard"
+                        GridPane.rowIndex="2"/>
+                <Button fx:id="exButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="EXTREME"
+                        GridPane.rowIndex="3"/>
                 <Label text="Beschreibung" GridPane.columnIndex="1" />
                 <Label text="Beschreibung" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label text="Beschreibung" GridPane.columnIndex="1" GridPane.rowIndex="2" />
