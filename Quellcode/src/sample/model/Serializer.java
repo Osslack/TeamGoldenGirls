@@ -17,7 +17,7 @@ public class Serializer {
 		if (file.exists()) {
 			try (FileInputStream fis = new FileInputStream(file);
 				 ObjectInputStream ois = new ObjectInputStream(fis)) {
-				SerializationContainer box = (SerializationContainer) ois.readObject();
+				SerializableSavegames box = (SerializableSavegames) ois.readObject();
 				return wrapObservables(box);
 			}
 			catch (IOException | ClassNotFoundException ex) {
@@ -31,11 +31,8 @@ public class Serializer {
 		return new Savegames();
 	}
 
-	private static Savegames wrapObservables(SerializationContainer box) {
-		return new Savegames(box.easySavegames,
-							 box.mediumSavegames,
-							 box.hardSavegames,
-							 box.extremeSavegames);
+	private static Savegames wrapObservables(SerializableSavegames box) {
+		return new Savegames(box.savegames);
 	}
 
 	/**
@@ -43,7 +40,7 @@ public class Serializer {
 	 */
 	public static void save(Savegames saves) {
 		createFileIfNecessary();
-		SerializationContainer output = unwrapObservables(saves);
+		SerializableSavegames output = new SerializableSavegames(saves.savegames);
 		try (FileOutputStream fos = new FileOutputStream(file);
 			 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 			oos.writeObject(output);
@@ -63,12 +60,5 @@ public class Serializer {
 				ex.printStackTrace();
 			}
 		}
-	}
-
-	private static SerializationContainer unwrapObservables(Savegames saves) {
-		return new SerializationContainer(saves.easySavegames,
-										  saves.mediumSavegames,
-										  saves.hardSavegames,
-										  saves.extremeSavegames);
 	}
 }

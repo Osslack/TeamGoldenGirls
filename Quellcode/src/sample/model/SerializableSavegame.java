@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class SerializableSavegame implements Serializable {
 	private int level, score;
-	private String username, form, date;
+	private String username, form, date, difficulty;
 
 	public SerializableSavegame(Savegame save) {
 		this.level = save.getLevel().intValue();
@@ -15,6 +15,7 @@ public class SerializableSavegame implements Serializable {
 		this.username = save.getUsername().getValue();
 		this.form = save.getForm().getValue();
 		this.date = save.getDate().getValue();
+		this.difficulty = save.getDifficulty().getValue();
 	}
 
 	public int getScore() {
@@ -35,5 +36,9 @@ public class SerializableSavegame implements Serializable {
 
 	public String getDate() {
 		return date;
+	}
+
+	public String getDifficulty() {
+		return difficulty;
 	}
 }

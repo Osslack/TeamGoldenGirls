@@ -10,32 +10,60 @@ import sample.Difficulty;
  */
 public class Savegames {
 
-	public  ObservableList<Savegame> easySavegames;
-	public  ObservableList<Savegame> mediumSavegames;
-	public  ObservableList<Savegame> hardSavegames;
-	public  ObservableList<Savegame> extremeSavegames;
+	public  ObservableList<Savegame> savegames;
 	private Savegame                 tempSave;
 
 	public Savegames() {
-		easySavegames = FXCollections.observableArrayList();
-		mediumSavegames = FXCollections.observableArrayList();
-		hardSavegames = FXCollections.observableArrayList();
-		extremeSavegames = FXCollections.observableArrayList();
+		savegames = FXCollections.observableArrayList();
 	}
 
-	public Savegames(List<SerializableSavegame> easy,
-					 List<SerializableSavegame> medium,
-					 List<SerializableSavegame> hard,
-					 List<SerializableSavegame> ex) {
-		easySavegames = convertSavegames(easy);
-		mediumSavegames = convertSavegames(medium);
-		hardSavegames = convertSavegames(hard);
-		extremeSavegames = convertSavegames(ex);
+	public Savegames(List<SerializableSavegame> in) {
+		savegames = FXCollections.observableArrayList();
+		in.forEach(savegame -> savegames.add(new Savegame(savegame)));
 	}
 
-	private ObservableList<Savegame> convertSavegames(List<SerializableSavegame> in) {
+
+	public ObservableList<Savegame> getSavegames() {
+		return savegames;
+	}
+
+	public ObservableList<Savegame> getEasySavegames() {
 		ObservableList<Savegame> out = FXCollections.observableArrayList();
-		in.forEach(savegame -> out.add(new Savegame(savegame)));
+		savegames.forEach(savegame -> {
+			if (savegame.getDifficulty().getValue().equals(Difficulty.EASY.toString())) {
+				out.add(savegame);
+			}
+		});
+		return out;
+	}
+
+	public ObservableList<Savegame> getMediumSavegames() {
+		ObservableList<Savegame> out = FXCollections.observableArrayList();
+		savegames.forEach(savegame -> {
+			if (savegame.getDifficulty().getValue().equals(Difficulty.MEDIUM.toString())) {
+				out.add(savegame);
+			}
+		});
+		return out;
+	}
+
+	public ObservableList<Savegame> getHardSavegames() {
+		ObservableList<Savegame> out = FXCollections.observableArrayList();
+		savegames.forEach(savegame -> {
+			if (savegame.getDifficulty().getValue().equals(Difficulty.HARD.toString())) {
+				out.add(savegame);
+			}
+		});
+		return out;
+	}
+
+	public ObservableList<Savegame> getExtremeSavegames() {
+		ObservableList<Savegame> out = FXCollections.observableArrayList();
+		savegames.forEach(savegame -> {
+			if (savegame.getDifficulty().getValue().equals(Difficulty.EXTREME.toString())) {
+				out.add(savegame);
+			}
+		});
 		return out;
 	}
 
@@ -43,30 +71,17 @@ public class Savegames {
 	/**
 	 * is called everytime a level is finished
 	 */
-	public void cacheSavegame(int level, int score, String username, String form) {
-		tempSave = new Savegame(level, score, username, form);
+	public void cacheSavegame(int level, int score, String username, String form, String diff) {
+		tempSave = new Savegame(level, score, username, form, diff);
 	}
 
 
 	/**
 	 * is called when game is exited
 	 */
-	public void finalizeSavegame(Difficulty difficulty) {
+	public void finalizeSavegame() {
 		if (tempSave != null) {
-			switch (difficulty) {
-				case EASY:
-					easySavegames.add(tempSave);
-					break;
-				case MEDIUM:
-					mediumSavegames.add(tempSave);
-					break;
-				case HARD:
-					hardSavegames.add(tempSave);
-					break;
-				case EXTREME:
-					extremeSavegames.add(tempSave);
-					break;
-			}
+			savegames.add(tempSave);
 		}
 	}
 }

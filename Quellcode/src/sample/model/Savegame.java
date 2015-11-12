@@ -10,7 +10,7 @@ import javafx.beans.property.*;
  */
 public class Savegame {
 	private IntegerProperty level, score;
-	private StringProperty username, form, date;
+	private StringProperty username, form, date, difficulty;
 
 	public Savegame(SerializableSavegame save) {
 		this.level = new SimpleIntegerProperty(save.getLevel());
@@ -18,14 +18,16 @@ public class Savegame {
 		this.username = new SimpleStringProperty(save.getUsername());
 		this.form = new SimpleStringProperty(save.getForm());
 		this.date = new SimpleStringProperty(save.getDate());
+		this.difficulty = new SimpleStringProperty(save.getDifficulty());
 	}
 
-	public Savegame(int level, int score, String username, String form) {
+	public Savegame(int level, int score, String username, String form, String diff) {
 		this.level = new SimpleIntegerProperty(level);
 		this.score = new SimpleIntegerProperty(score);
 		this.username = new SimpleStringProperty(username);
 		this.form = new SimpleStringProperty(form);
 		this.date = getTimestamp();
+		this.difficulty = new SimpleStringProperty(diff);
 	}
 
 	private SimpleStringProperty getTimestamp() {
@@ -53,5 +55,9 @@ public class Savegame {
 
 	public StringProperty getDate() {
 		return date;
+	}
+
+	public StringProperty getDifficulty() {
+		return difficulty;
 	}
 }

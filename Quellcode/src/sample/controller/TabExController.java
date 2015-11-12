@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import sample.Difficulty;
 import sample.Main;
 import sample.model.Savegame;
 
@@ -38,7 +37,7 @@ public class TabExController implements Initializable {
 		scoreCol.setCellValueFactory(data -> data.getValue().getScore().asObject());
 		dateCol.setCellValueFactory(data -> data.getValue().getDate());
 
-		ObservableList<Savegame> saves = Main.getSavegamesFor(Difficulty.EXTREME);
+		ObservableList<Savegame> saves = Main.getSavegames().getExtremeSavegames();
 		table.getItems().setAll(saves);
 	}
 }
