@@ -4,17 +4,18 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import sample.Main;
 
 /**
  * @author Nils
  */
-public class PauseMenuController implements Initializable {
-
-	public Button mainMenuButton;
-	public Button settingsButton;
-	public Button resumeButton;
+public class SettingsPauseController implements Initializable {
+	public Button cancelButton;
+	public Button saveButton;
 
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+		saveButton.setOnAction(event -> Main.setScene("MainGame"));
+		cancelButton.setOnAction(event -> Main.setScene("MainGame"));
 	}
 }

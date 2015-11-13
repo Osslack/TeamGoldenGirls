@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import sample.controller.SettingsController;
 import sample.model.*;
 import sample.physics.Physics;
 import sample.sounds.Soundmanager;
@@ -67,21 +66,9 @@ Main extends Application {
 		Button settingsButton = (Button) scene.lookup("#settingsButton");
 		Button resumeButton = (Button) scene.lookup("#resumeButton");
 
-		mainMenuButton.setOnAction(event -> {
-			final FXMLLoader loader = new FXMLLoader(
-					getClass().getResource("MainMenu.fxml"));
-			final SettingsController controller = loader.getController();
-			controller.setCaller("PauseMenu");
-			Main.setScene("MainMenu");
-		});
+		mainMenuButton.setOnAction(event -> Main.setScene("MainMenu"));
 
-		settingsButton.setOnAction(event -> {
-			final FXMLLoader loader = new FXMLLoader(
-					getClass().getResource("SettingsScreen.fxml"));
-			final SettingsController controller = loader.getController();
-			controller.setCaller("PauseMenu");
-			Main.setScene("SettingsScreen");
-		});
+		settingsButton.setOnAction(event -> Main.setScene("SettingsPause"));
 
 		resumeButton.setOnAction(event -> hidePauseMenuAndResume(pauseMenuPane));
 	}
@@ -98,8 +85,9 @@ Main extends Application {
 	public Soundmanager getSoundmanager(){return m_Soundmanager;}
 
 	public static void setScene(String name) {
-		m_PrimaryStage.setScene(getScene(name));
-		if (name.equals("MainGame")) {
+		Scene scene = getScene(name);
+		m_PrimaryStage.setScene(scene);
+		if (name.equals("MainGame") && !scene.lookup("#pauseMenuPane").isVisible()) {
 			m_Physics.start();
 		}
 		else {
