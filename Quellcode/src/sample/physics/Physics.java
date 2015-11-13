@@ -1,6 +1,7 @@
 package sample.physics;
 
 import javafx.animation.AnimationTimer;
+import javafx.geometry.Point3D;
 import javafx.scene.Node;
 import sample.Main;
 import sample.model.Vector2D;
@@ -12,9 +13,9 @@ import sample.model.Vector2D;
 public class Physics extends AnimationTimer {
 	private long lastNano;
 	private Main m_Main;
-	private Vector2D m_Velocity     = new Vector2D(Math.random() * 20 - 10, Math.random() * 40);
+	private Vector2D m_Velocity     = new Vector2D(Math.random() * 3 - 2, Math.random() * 60);
 	private Vector2D m_lastPosition = new Vector2D();
-	private Vector2D m_Position     = new Vector2D(100, 100);
+	private Vector2D m_Position     = new Vector2D(100+80, 200);
 	private DragTrajectory               m_DragTrajectory;
 	private javafx.scene.shape.Circle    m_Circle;
 	private javafx.scene.image.ImageView m_Paperball;
@@ -41,8 +42,13 @@ public class Physics extends AnimationTimer {
 	public void start() {
 		super.start();
 		lastNano = System.nanoTime();
-		m_Position.mX = m_Circle.getCenterX();
-		m_Position.mY = m_Circle.getCenterY();
+//		m_Position.mX = m_Circle.getCenterX();
+//		m_Position.mY = m_Circle.getCenterY();
+		System.out.println("layouty"+m_Circle.getLayoutY()+"centery"+m_Circle.getCenterX());
+		m_Circle.setLayoutX(0);
+		m_Circle.setLayoutY(0);
+		m_Circle.setCenterX(m_Position.mX);
+		m_Circle.setCenterY(m_Position.mY);
 		m_Paperball.setLayoutX(m_Circle.getLayoutX());
 		m_Paperball.setLayoutY(m_Circle.getLayoutY());
 		m_Paperball.setX(m_Circle.getCenterX());
@@ -117,7 +123,7 @@ public class Physics extends AnimationTimer {
 	private boolean isStopped() {
 		double distanceToLastPosition = m_Position.getDistanceTo(m_lastPosition);
 		if (distanceToLastPosition < 0.1) {
-			System.out.println("Distance:   " + distanceToLastPosition + "   Speed :" + m_Velocity.length() + "   |    Center Y:" + (m_Circle.getCenterY() - m_Circle.getRadius()));
+//			System.out.println("Distance:   " + distanceToLastPosition + "   Speed :" + m_Velocity.length() + "   |    Center Y:" + (m_Circle.getCenterY() - m_Circle.getRadius()));
 		}
 		return (((distanceToLastPosition < 1.2) || (m_Velocity.length() < 15.5)) && (m_Circle.getCenterY() - m_Circle.getRadius()) >= 377.0); //Check Speed and Position, if lying on floor and speed below threshhold->false
 	}
@@ -149,21 +155,25 @@ public class Physics extends AnimationTimer {
 					else {
 						m_Collision.getPostCollisionVelocity(m_Velocity, m_Dampening, normal);
 						if (line.getId() == m_Lineal.getId()) {
-							Vector2D linestart = new Vector2D();
-							Vector2D lineend = new Vector2D();
-							linestart.mX = line.getStartX();
-							linestart.mY = line.getStartY();
-							lineend.mX = line.getEndX();
-							lineend.mY = line.getEndY();
-							Vector2D linedelta = lineend.subtract(linestart);
-							linedelta.scalarMultiplication2(0.5);
-							Vector2D linecenter = linestart.add(linedelta);
-							double lineradius = linedelta.length();
-							double distance = linecenter.getDistanceTo(m_Position);
-							normal.scalarMultiplication2(-200 * m_LinealVelocity * (lineradius / distance));
-							m_Velocity.add2(normal);
+							Vector2D linestart = new Vector2D(line.getStartX()+line.getLayoutX(),line.getStartY()+line.getLayoutY());
+							Point3D rotaxis = line.getRotationAxis();
+							Vector2D linecenter = new Vector2D(rotaxis.getX()+line.getLayoutX(),rotaxis.getY()+line.getLayoutY());
+							double lineradius = linestart.subtract(linecenter).length();
+							Vector2D centertocircle = m_Position.subtract(linecenter);
+							double deltaangle = Math.toDegrees(normal.getAngleTo(centertocircle));
+							double distance = centertocircle.length();
+							Vector2D linevector = new Vector2D();
+							linevector.rotate((Math.PI/2.0)+angle);
+							double deltaangle2 = Math.toDegrees(linevector.getAngleTo(centertocircle));
+							boolean kickball = false;
+							if(deltaangle>90 && deltaangle2<90){kickball = true;}
+							if(deltaangle<90 && deltaangle2>90){kickball = true;}
+							if(kickball==true) {
+								normal.scalarMultiplication2(-100 * m_LinealVelocity * (distance / lineradius));
+								m_Velocity.add2(normal);
+							}
 						}
-						m_Main.getSoundmanager().playRandSound(1, 10);
+//						m_Main.getSoundmanager().playRandSound(1, 10);
 						resetBall();
 					}
 					m_hitlastframe = line.getId();
