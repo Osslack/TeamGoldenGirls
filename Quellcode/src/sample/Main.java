@@ -13,6 +13,12 @@ import javafx.stage.Stage;
 import sample.model.*;
 import sample.physics.Physics;
 import sample.sounds.Soundmanager;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class
 Main extends Application {
@@ -70,7 +76,10 @@ Main extends Application {
 
 		settingsButton.setOnAction(event -> Main.setScene("SettingsPause"));
 
-		resumeButton.setOnAction(event -> hidePauseMenuAndResume(pauseMenuPane));
+		resumeButton.setOnAction(event -> {
+			m_Soundmanager.playSound(Soundmanager.CLICK_SOUND);
+			hidePauseMenuAndResume(pauseMenuPane);
+		});
 	}
 
 	private void hidePauseMenuAndResume(Pane pauseMenuPane) {

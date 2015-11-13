@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
 import sample.Main;
 import sample.model.Vector2D;
+import sample.sounds.Soundmanager;
 
 /**
  * Created by JJ on 10.11.2015.
@@ -62,6 +63,11 @@ public class Physics extends AnimationTimer {
 
 		doAnimations();
 
+		if(!isMoving()){
+			m_Main.getSoundmanager().playSound(Soundmanager.CLICK_SOUND);
+		}else{
+			System.out.println((m_Circle.getCenterY()-m_Circle.getRadius()));
+		}
 	}
 
 	private void checkBounds(){
@@ -109,6 +115,11 @@ public class Physics extends AnimationTimer {
 		updateBallPos();
 	}
 
+	private boolean isMoving(){
+		return m_Velocity.length() >= 15.5 || (m_Circle.getCenterY() - m_Circle.getRadius() < 378.0); //Check Speed and Position, if lying on floor and speed below threshhold->false
+		}
+
+
 	private void updateBallPos(){
 		m_Circle.setCenterX(m_Position.mX);
 		m_Circle.setCenterY(m_Position.mY);
@@ -148,7 +159,7 @@ public class Physics extends AnimationTimer {
 							normal.scalarMultiplication2(-200*m_LinealVelocity*(lineradius/distance));
 							m_Velocity.add2(normal);
 						}
-						m_Main.getSoundmanager().playSound1();
+						m_Main.getSoundmanager().playRandSound();
 						resetBall();
 					}
 					m_hitlastframe = line.getId();

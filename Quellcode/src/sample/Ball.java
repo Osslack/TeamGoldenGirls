@@ -23,6 +23,7 @@ public class Ball extends Circle {
 		mMass = mass;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Ball ( Center " + getCenter() + " | Radius " + this.getRadius() + " | Speed " + mVelocity + " | Mass " + mMass + " )";
