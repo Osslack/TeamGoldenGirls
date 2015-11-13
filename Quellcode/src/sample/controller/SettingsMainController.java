@@ -27,14 +27,14 @@ public class SettingsMainController implements Initializable {
 
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-		initGridpaneChilds();
+		getGridpaneChilds();
 
 		saveButton.setOnAction(event -> {
-			Keyboard.setLaunchKey(KeyCode.valueOf(launchField.getText()));
-			Keyboard.setMoveLeftKey(KeyCode.valueOf(leftField.getText()));
-			Keyboard.setMoveRightKey(KeyCode.valueOf(rightField.getText()));
-			Keyboard.setMoveUpKey(KeyCode.valueOf(upField.getText()));
-			Keyboard.setMoveDownKey(KeyCode.valueOf(downField.getText()));
+			Keyboard.setLaunchKey(KeyCode.getKeyCode(launchField.getText()));
+			Keyboard.setMoveLeftKey(KeyCode.getKeyCode(leftField.getText()));
+			Keyboard.setMoveRightKey(KeyCode.getKeyCode(rightField.getText()));
+			Keyboard.setMoveUpKey(KeyCode.getKeyCode(upField.getText()));
+			Keyboard.setMoveDownKey(KeyCode.getKeyCode(downField.getText()));
 			//TODO set sound on or off
 			Main.setScene("MainMenu");
 		});
@@ -42,7 +42,7 @@ public class SettingsMainController implements Initializable {
 		cancelButton.setOnAction(event -> Main.setScene("MainMenu"));
 	}
 
-	private void initGridpaneChilds() {
+	private void getGridpaneChilds() {
 		launchField = (Label) settings.lookup("#launchField");
 		leftField = (Label) settings.lookup("#leftField");
 		rightField = (Label) settings.lookup("#rightField");

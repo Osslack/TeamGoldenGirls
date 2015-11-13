@@ -4,7 +4,6 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
 import sample.Main;
 import sample.model.Vector2D;
-import sample.sounds.Soundmanager;
 
 /**
  * Created by JJ on 10.11.2015.
@@ -13,21 +12,20 @@ import sample.sounds.Soundmanager;
 public class Physics extends AnimationTimer {
 	private long lastNano;
 	private Main m_Main;
-	private Vector2D m_Velocity     = new Vector2D(Math.random()*20-10, Math.random()*40);
+	private Vector2D m_Velocity     = new Vector2D(Math.random() * 20 - 10, Math.random() * 40);
 	private Vector2D m_lastPosition = new Vector2D();
 	private Vector2D m_Position     = new Vector2D(100, 100);
-	private DragTrajectory            m_DragTrajectory;
-	private javafx.scene.shape.Circle m_Circle;
+	private DragTrajectory               m_DragTrajectory;
+	private javafx.scene.shape.Circle    m_Circle;
 	private javafx.scene.image.ImageView m_Paperball;
-	private javafx.scene.shape.Line m_Lineal;
+	private javafx.scene.shape.Line      m_Lineal;
 	private int animCounter = 0;
 	private Collision m_Collision;
 	private double m_LinealVelocity = 2.0;
-	private double m_Dampening = 0.7;
-	private int m_Screenwidth = 800;
-	private int m_Screenheight = 600;
-	private String m_hitlastframe = "";
-
+	private double m_Dampening      = 0.7;
+	private int    m_Screenwidth    = 800;
+	private int    m_Screenheight   = 600;
+	private String m_hitlastframe   = "";
 
 
 	public Physics(Main main) {
@@ -63,44 +61,44 @@ public class Physics extends AnimationTimer {
 
 		doAnimations();
 
-		if(isStopped()){
-		//was just for testing m_Main.getSoundmanager().playSound(Soundmanager.CLICK_SOUND);
+		if (isStopped()) {
+			//was just for testing m_Main.getSoundmanager().playSound(Soundmanager.CLICK_SOUND);
 		}
 	}
 
-	private void checkBounds(){
-		boolean outsidehorizontalbounds = m_Collision.isOutsideHorizontalBounds(m_Circle.getCenterX()+m_Circle.getLayoutX(),m_Screenwidth);
-		boolean outsideverticalbounds = m_Collision.isOutsideVerticalBounds(m_Circle.getCenterY()+m_Circle.getLayoutY(),m_Screenheight);
+	private void checkBounds() {
+		boolean outsidehorizontalbounds = m_Collision.isOutsideHorizontalBounds(m_Circle.getCenterX() + m_Circle.getLayoutX(), m_Screenwidth);
+		boolean outsideverticalbounds = m_Collision.isOutsideVerticalBounds(m_Circle.getCenterY() + m_Circle.getLayoutY(), m_Screenheight);
 		Vector2D normal = new Vector2D();
-		if(outsidehorizontalbounds){
+		if (outsidehorizontalbounds) {
 			normal.mX = 1;
 			normal.mY = 0;
 		}
-		if(outsideverticalbounds){
+		if (outsideverticalbounds) {
 			normal.mX = 0;
 			normal.mY = 1;
 		}
-		if(outsidehorizontalbounds || outsideverticalbounds){
-			if(!isStopped()) {
+		if (outsidehorizontalbounds || outsideverticalbounds) {
+			if (!isStopped()) {
 				m_Main.getSoundmanager().playRandSound(1, 10);
 			}
 			resetBall();
-			m_Collision.getPostCollisionVelocity(m_Velocity,m_Dampening,normal);
+			m_Collision.getPostCollisionVelocity(m_Velocity, m_Dampening, normal);
 		}
 	}
 
-	private void doAnimations(){
+	private void doAnimations() {
 		++animCounter;
 		animBall();
 		animLineal();
 	}
 
-	private void animBall(){
+	private void animBall() {
 		m_Paperball.setRotate(animCounter);
 	}
 
-	private void animLineal(){
-		m_Lineal.setRotate(animCounter*m_LinealVelocity);
+	private void animLineal() {
+		m_Lineal.setRotate(animCounter * m_LinealVelocity);
 	}
 
 	private void simBall(double deltaSecs) {
@@ -116,20 +114,20 @@ public class Physics extends AnimationTimer {
 		updateBallPos();
 	}
 
-	private boolean isStopped(){
-		double distance = m_Position.getDistanceTo(m_lastPosition);
-		if(distance < 0.1){
-			System.out.println("Distance:   " + distance +  "   Speed :" + m_Velocity.length() + "   |    Center Y:" + (m_Circle.getCenterY() - m_Circle.getRadius()));
+	private boolean isStopped() {
+		double distanceToLastPosition = m_Position.getDistanceTo(m_lastPosition);
+		if (distanceToLastPosition < 0.1) {
+			System.out.println("Distance:   " + distanceToLastPosition + "   Speed :" + m_Velocity.length() + "   |    Center Y:" + (m_Circle.getCenterY() - m_Circle.getRadius()));
 		}
-		return (((distance < 1.2) || (m_Velocity.length() < 15.5)) && (m_Circle.getCenterY() - m_Circle.getRadius()) >= 377.0); //Check Speed and Position, if lying on floor and speed below threshhold->false
-		}
+		return (((distanceToLastPosition < 1.2) || (m_Velocity.length() < 15.5)) && (m_Circle.getCenterY() - m_Circle.getRadius()) >= 377.0); //Check Speed and Position, if lying on floor and speed below threshhold->false
+	}
 
 
-	private void updateBallPos(){
+	private void updateBallPos() {
 		m_Circle.setCenterX(m_Position.mX);
 		m_Circle.setCenterY(m_Position.mY);
-		m_Paperball.setX(m_Position.mX-m_Circle.getRadius());
-		m_Paperball.setY(m_Position.mY-m_Circle.getRadius());
+		m_Paperball.setX(m_Position.mX - m_Circle.getRadius());
+		m_Paperball.setY(m_Position.mY - m_Circle.getRadius());
 	}
 
 	private void checkShapeCollisions() {
@@ -137,19 +135,20 @@ public class Physics extends AnimationTimer {
 		for (Node child : m_Main.getPrimaryStage().getScene().getRoot().getChildrenUnmodifiable()) {
 			if (child instanceof javafx.scene.shape.Line) {
 				javafx.scene.shape.Line line = (javafx.scene.shape.Line) child;
-				if (m_Collision.isColliding(m_Circle,line)) {
+				if (m_Collision.isColliding(m_Circle, line)) {
 					Vector2D normal = new Vector2D();
 					double yx = line.getLocalToSceneTransform().getMyx();
 					double yy = line.getLocalToSceneTransform().getMyy();
 					double angle = Math.atan2(yx, yy);
 					normal.rotate(angle);
-					if(m_hitlastframe == line.getId()){
+					if (m_hitlastframe == line.getId()) {
 						Vector2D n2 = normal.scalarMultiplication(10);
 						m_Position.add2(n2);
-						m_Collision.getPostCollisionVelocity(m_Velocity,1,normal);
-					}else{
-						m_Collision.getPostCollisionVelocity(m_Velocity,m_Dampening,normal);
-						if(line.getId()==m_Lineal.getId()){
+						m_Collision.getPostCollisionVelocity(m_Velocity, 1, normal);
+					}
+					else {
+						m_Collision.getPostCollisionVelocity(m_Velocity, m_Dampening, normal);
+						if (line.getId() == m_Lineal.getId()) {
 							Vector2D linestart = new Vector2D();
 							Vector2D lineend = new Vector2D();
 							linestart.mX = line.getStartX();
@@ -161,10 +160,10 @@ public class Physics extends AnimationTimer {
 							Vector2D linecenter = linestart.add(linedelta);
 							double lineradius = linedelta.length();
 							double distance = linecenter.getDistanceTo(m_Position);
-							normal.scalarMultiplication2(-200*m_LinealVelocity*(lineradius/distance));
+							normal.scalarMultiplication2(-200 * m_LinealVelocity * (lineradius / distance));
 							m_Velocity.add2(normal);
 						}
-						m_Main.getSoundmanager().playRandSound(1,10);
+						m_Main.getSoundmanager().playRandSound(1, 10);
 						resetBall();
 					}
 					m_hitlastframe = line.getId();
@@ -172,7 +171,7 @@ public class Physics extends AnimationTimer {
 				}
 			}
 		}
-		if(collisionhappened==false){
+		if (collisionhappened == false) {
 			m_hitlastframe = "";
 		}
 	}

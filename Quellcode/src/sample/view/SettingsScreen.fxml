@@ -30,11 +30,11 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
                <children>
-                   <Label text="Launch"/>
-                   <Label text="Move Lineal Left" GridPane.rowIndex="1"/>
-                   <Label text="Move Lineal Right" GridPane.rowIndex="2"/>
-                   <Label text="Enlarge Rubber" GridPane.rowIndex="3"/>
-                   <Label text="Shrink Rubber" GridPane.rowIndex="4"/>
+                   <Label text="Launch:"/>
+                   <Label text="Move Lineal Left:" GridPane.rowIndex="1"/>
+                   <Label text="Move Lineal Right:" GridPane.rowIndex="2"/>
+                   <Label text="Enlarge Rubber:" GridPane.rowIndex="3"/>
+                   <Label text="Shrink Rubber:" GridPane.rowIndex="4"/>
                    <Label fx:id="launchField" text="specControl" GridPane.columnIndex="1"/>
                    <Label fx:id="leftField" text="specControl" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                    <Label fx:id="rightField" text="specControl" GridPane.columnIndex="1" GridPane.rowIndex="2"/>

@@ -85,7 +85,7 @@ public class SettingsController implements Initializable {
 	}
 
 	private boolean isAllowedKey(final KeyCode code) {
-		return code.isLetterKey() || code.isArrowKey() || code.isDigitKey();
+		return code.isLetterKey() || code.isArrowKey() || code.isDigitKey() || code.isWhitespaceKey();
 	}
 
 	private boolean alreadyAssigned(final String name) {

@@ -17,9 +17,9 @@ import sample.sounds.Soundmanager;
 public class
 Main extends Application {
 	private static Map<String,Scene> m_ScenesMap = new HashMap<>();
-	private static Stage m_PrimaryStage;
-	static private Physics m_Physics;
-	static private Soundmanager m_Soundmanager;
+	private static Stage        m_PrimaryStage;
+	private static Physics      m_Physics;
+	private static Soundmanager m_Soundmanager;
 	private static String OS = null;
 	public static String PATH_SEPARATOR = null;
 
