@@ -48,16 +48,38 @@ Main extends Application {
 
 		scene.setOnKeyReleased(event -> {
 			if (event.getCode() == KeyCode.ESCAPE) {
-				if (pauseMenuPane.isVisible()) {
-					hidePauseMenuAndResume(pauseMenuPane);
+				handleEscape(pauseMenuPane);
+			}
+			else if (!pauseMenuPane.isVisible()) {
+				if (event.getCode() == Keyboard.getLaunchKey()) {
+					//Catapult.fire();
 				}
-				else {
-					m_Physics.stop();
-					pauseMenuPane.setVisible(true);
+				else if (event.getCode() == Keyboard.getMoveLeftKey()) {
+					//Catapult.moveLeft();
+				}
+				else if (event.getCode() == Keyboard.getMoveRightKey()) {
+					//Catapult.moveRight();
+				}
+				else if (event.getCode() == Keyboard.getMoveUpKey()) {
+					//Catapult.enlargeRubber();
+				}
+				else if (event.getCode() == Keyboard.getMoveDownKey()) {
+					//Catapult.shrinkRubber();
 				}
 			}
 		});
 	}
+
+	private void handleEscape(Pane pauseMenuPane) {
+		if (pauseMenuPane.isVisible()) {
+			hidePauseMenuAndResume(pauseMenuPane);
+		}
+		else {
+			m_Physics.stop();
+			pauseMenuPane.setVisible(true);
+		}
+	}
+
 
 	public void setPauseListener() {
 		Scene scene = getScene("MainGame");

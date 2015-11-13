@@ -22,6 +22,8 @@ public class Collision {
     }
 
     public void getPostCollisionVelocity(Vector2D velocity, double dampening, Vector2D normalUnitVector) {
-        velocity.subtract2(normalUnitVector.scalarMultiplication((1 + dampening) * velocity.scalarProduct(normalUnitVector)));
-    }
+		final double factor = (1 + dampening) * velocity.scalarProduct(normalUnitVector);
+		final Vector2D vec = normalUnitVector.scalarMultiplication(factor);
+		velocity.subtract2(vec);
+	}
 }
