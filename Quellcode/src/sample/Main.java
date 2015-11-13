@@ -48,13 +48,7 @@ Main extends Application {
 
 		scene.setOnKeyReleased(event -> {
 			if (event.getCode() == KeyCode.ESCAPE) {
-				if (pauseMenuPane.isVisible()) {
-					hidePauseMenuAndResume(pauseMenuPane);
-				}
-				else {
-					m_Physics.stop();
-					pauseMenuPane.setVisible(true);
-				}
+				handleEscape(pauseMenuPane);
 			}
 			else if (!pauseMenuPane.isVisible()) {
 				if (event.getCode() == Keyboard.getLaunchKey()) {
@@ -75,6 +69,17 @@ Main extends Application {
 			}
 		});
 	}
+
+	private void handleEscape(Pane pauseMenuPane) {
+		if (pauseMenuPane.isVisible()) {
+			hidePauseMenuAndResume(pauseMenuPane);
+		}
+		else {
+			m_Physics.stop();
+			pauseMenuPane.setVisible(true);
+		}
+	}
+
 
 	public void setPauseListener() {
 		Scene scene = getScene("MainGame");
