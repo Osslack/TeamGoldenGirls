@@ -1,5 +1,8 @@
 package sample;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,19 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import sample.controller.SettingsController;
-import sample.model.Savegames;
-import sample.model.Serializer;
-import sample.model.UserData;
+import sample.model.*;
 import sample.physics.Physics;
 import sample.sounds.Soundmanager;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 public class
 Main extends Application {
@@ -73,23 +66,9 @@ Main extends Application {
 		Button settingsButton = (Button) scene.lookup("#settingsButton");
 		Button resumeButton = (Button) scene.lookup("#resumeButton");
 
-		mainMenuButton.setOnAction(event -> {
-			m_Soundmanager.playSound(Soundmanager.CLICK_SOUND);
-			final FXMLLoader loader = new FXMLLoader(
-					getClass().getResource("MainMenu.fxml"));
-			final SettingsController controller = loader.getController();
-			controller.setCaller("PauseMenu");
-			Main.setScene("MainMenu");
-		});
+		mainMenuButton.setOnAction(event -> Main.setScene("MainMenu"));
 
-		settingsButton.setOnAction(event -> {
-			m_Soundmanager.playSound(Soundmanager.CLICK_SOUND);
-			final FXMLLoader loader = new FXMLLoader(
-					getClass().getResource("SettingsScreen.fxml"));
-			final SettingsController controller = loader.getController();
-			controller.setCaller("PauseMenu");
-			Main.setScene("SettingsScreen");
-		});
+		settingsButton.setOnAction(event -> Main.setScene("SettingsPause"));
 
 		resumeButton.setOnAction(event -> {
 			m_Soundmanager.playSound(Soundmanager.CLICK_SOUND);
@@ -109,8 +88,9 @@ Main extends Application {
 	public Soundmanager getSoundmanager(){return m_Soundmanager;}
 
 	public static void setScene(String name) {
-		m_PrimaryStage.setScene(getScene(name));
-		if (name.equals("MainGame")) {
+		Scene scene = getScene(name);
+		m_PrimaryStage.setScene(scene);
+		if (name.equals("MainGame") && !scene.lookup("#pauseMenuPane").isVisible()) {
 			m_Physics.start();
 		}
 		else {
