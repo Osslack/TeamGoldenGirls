@@ -80,6 +80,11 @@ Main extends Application {
 		}
 	}
 
+	private void hidePauseMenuAndResume(Pane pauseMenuPane) {
+		pauseMenuPane.setVisible(false);
+		m_Physics.start();
+	}
+
 
 	public void setPauseListener() {
 		Scene scene = getScene("MainGame");
@@ -98,10 +103,6 @@ Main extends Application {
 		});
 	}
 
-	private void hidePauseMenuAndResume(Pane pauseMenuPane) {
-		pauseMenuPane.setVisible(false);
-		m_Physics.start();
-	}
 
 	public static Stage getPrimaryStage() {
 		return m_PrimaryStage;

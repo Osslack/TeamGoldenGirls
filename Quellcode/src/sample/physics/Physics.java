@@ -115,11 +115,13 @@ public class Physics extends AnimationTimer {
 	}
 
 	private boolean isStopped() {
-		double distanceToLastPosition = m_Position.getDistanceTo(m_lastPosition);
+		final double distanceToLastPosition = m_Position.getDistanceTo(m_lastPosition);
+		final double speed = m_Velocity.length();
+		final double lowestPointOfCircleY = m_Circle.getCenterY() - m_Circle.getRadius();
 		if (distanceToLastPosition < 0.1) {
-			System.out.println("Distance:   " + distanceToLastPosition + "   Speed :" + m_Velocity.length() + "   |    Center Y:" + (m_Circle.getCenterY() - m_Circle.getRadius()));
+			System.out.println("Distance: " + distanceToLastPosition + "   Speed: " + speed + "   |    CircleY: " + lowestPointOfCircleY);
 		}
-		return (((distanceToLastPosition < 1.2) || (m_Velocity.length() < 15.5)) && (m_Circle.getCenterY() - m_Circle.getRadius()) >= 377.0); //Check Speed and Position, if lying on floor and speed below threshhold->false
+		return ((distanceToLastPosition < 1.2 || speed < 15.5) && lowestPointOfCircleY >= 377.0); //Check Speed and Position, if lying on floor and speed below threshhold->false
 	}
 
 
