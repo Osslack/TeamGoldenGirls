@@ -15,7 +15,7 @@ public class Physics extends AnimationTimer {
 	private Main m_Main;
 	private Vector2D m_Velocity     = new Vector2D(Math.random() * 3 - 2, Math.random() * 60);
 	private Vector2D m_lastPosition = new Vector2D();
-	private Vector2D m_Position     = new Vector2D(100+80, 200);
+	private Vector2D m_Position     = new Vector2D(100, 200);
 	private DragTrajectory               m_DragTrajectory;
 	private javafx.scene.shape.Circle    m_Circle;
 	private javafx.scene.image.ImageView m_Paperball;
