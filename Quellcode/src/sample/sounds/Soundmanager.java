@@ -36,8 +36,10 @@ public class Soundmanager {
             sounds[number - 1].play();
         }
     }
-    public void playRandSound(){
-        sounds[(int)(Math.random()*number_of_sounds)].play();
+    public void playRandSound(int min,int max){
+        if(max <= number_of_sounds){
+            sounds[(int)(Math.random()*max)+min-1].play();
+        }
     }
 
 

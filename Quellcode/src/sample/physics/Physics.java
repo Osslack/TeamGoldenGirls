@@ -63,10 +63,8 @@ public class Physics extends AnimationTimer {
 
 		doAnimations();
 
-		if(!isMoving()){
-			m_Main.getSoundmanager().playSound(Soundmanager.CLICK_SOUND);
-		}else{
-			System.out.println((m_Circle.getCenterY()-m_Circle.getRadius()));
+		if(isStopped()){
+		//was just for testing m_Main.getSoundmanager().playSound(Soundmanager.CLICK_SOUND);
 		}
 	}
 
@@ -83,6 +81,9 @@ public class Physics extends AnimationTimer {
 			normal.mY = 1;
 		}
 		if(outsidehorizontalbounds || outsideverticalbounds){
+			if(!isStopped()) {
+				m_Main.getSoundmanager().playRandSound(1, 10);
+			}
 			resetBall();
 			m_Collision.getPostCollisionVelocity(m_Velocity,m_Dampening,normal);
 		}
@@ -115,8 +116,12 @@ public class Physics extends AnimationTimer {
 		updateBallPos();
 	}
 
-	private boolean isMoving(){
-		return m_Velocity.length() >= 15.5 || (m_Circle.getCenterY() - m_Circle.getRadius() < 378.0); //Check Speed and Position, if lying on floor and speed below threshhold->false
+	private boolean isStopped(){
+		double distance = m_Position.getDistanceTo(m_lastPosition);
+		if(distance < 0.1){
+			System.out.println("Distance:   " + distance +  "   Speed :" + m_Velocity.length() + "   |    Center Y:" + (m_Circle.getCenterY() - m_Circle.getRadius()));
+		}
+		return (((distance < 1.2) || (m_Velocity.length() < 15.5)) && (m_Circle.getCenterY() - m_Circle.getRadius()) >= 377.0); //Check Speed and Position, if lying on floor and speed below threshhold->false
 		}
 
 
@@ -159,7 +164,7 @@ public class Physics extends AnimationTimer {
 							normal.scalarMultiplication2(-200*m_LinealVelocity*(lineradius/distance));
 							m_Velocity.add2(normal);
 						}
-						m_Main.getSoundmanager().playRandSound();
+						m_Main.getSoundmanager().playRandSound(1,10);
 						resetBall();
 					}
 					m_hitlastframe = line.getId();
