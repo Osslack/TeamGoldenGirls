@@ -6,7 +6,11 @@ import java.util.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import sample.controller.SettingsController;
 import sample.model.*;
 import sample.physics.Physics;
 import sample.sounds.Soundmanager;
@@ -35,11 +39,62 @@ Main extends Application {
 
 		m_Physics = new Physics(this);
 		m_Soundmanager = new Soundmanager();
+		setIngameListener();
+		setPauseListener();
 	}
 
-	public Stage getPrimaryStage() {
+	public void setIngameListener() {
+		Scene scene = getScene("MainGame");
+		Pane pauseMenuPane = (Pane) scene.lookup("#pauseMenuPane");
+
+		scene.setOnKeyReleased(event -> {
+			if (event.getCode() == KeyCode.ESCAPE) {
+				if (pauseMenuPane.isVisible()) {
+					hidePauseMenuAndResume(pauseMenuPane);
+				}
+				else {
+					m_Physics.stop();
+					pauseMenuPane.setVisible(true);
+				}
+			}
+		});
+	}
+
+	public void setPauseListener() {
+		Scene scene = getScene("MainGame");
+		Pane pauseMenuPane = (Pane) scene.lookup("#pauseMenuPane");
+		Button mainMenuButton = (Button) scene.lookup("#mainMenuButton");
+		Button settingsButton = (Button) scene.lookup("#settingsButton");
+		Button resumeButton = (Button) scene.lookup("#resumeButton");
+
+		mainMenuButton.setOnAction(event -> {
+			final FXMLLoader loader = new FXMLLoader(
+					getClass().getResource("MainMenu.fxml"));
+			final SettingsController controller = loader.getController();
+			controller.setCaller("PauseMenu");
+			Main.setScene("MainMenu");
+		});
+
+		settingsButton.setOnAction(event -> {
+			final FXMLLoader loader = new FXMLLoader(
+					getClass().getResource("SettingsScreen.fxml"));
+			final SettingsController controller = loader.getController();
+			controller.setCaller("PauseMenu");
+			Main.setScene("SettingsScreen");
+		});
+
+		resumeButton.setOnAction(event -> hidePauseMenuAndResume(pauseMenuPane));
+	}
+
+	private void hidePauseMenuAndResume(Pane pauseMenuPane) {
+		pauseMenuPane.setVisible(false);
+		m_Physics.start();
+	}
+
+	public static Stage getPrimaryStage() {
 		return m_PrimaryStage;
 	}
+
 	public Soundmanager getSoundmanager(){return m_Soundmanager;}
 
 	public static void setScene(String name) {
