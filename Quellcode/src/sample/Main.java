@@ -56,6 +56,23 @@ Main extends Application {
 					pauseMenuPane.setVisible(true);
 				}
 			}
+			else if (!pauseMenuPane.isVisible()) {
+				if (event.getCode() == Keyboard.getLaunchKey()) {
+					//Catapult.fire();
+				}
+				else if (event.getCode() == Keyboard.getMoveLeftKey()) {
+					//Catapult.moveLeft();
+				}
+				else if (event.getCode() == Keyboard.getMoveRightKey()) {
+					//Catapult.moveRight();
+				}
+				else if (event.getCode() == Keyboard.getMoveUpKey()) {
+					//Catapult.enlargeRubber();
+				}
+				else if (event.getCode() == Keyboard.getMoveDownKey()) {
+					//Catapult.shrinkRubber();
+				}
+			}
 		});
 	}
 
