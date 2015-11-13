@@ -1,8 +1,5 @@
 package sample;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,9 +8,18 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sample.controller.SettingsController;
-import sample.model.*;
+import sample.model.Savegames;
+import sample.model.Serializer;
+import sample.model.UserData;
 import sample.physics.Physics;
 import sample.sounds.Soundmanager;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class
 Main extends Application {
@@ -68,6 +74,7 @@ Main extends Application {
 		Button resumeButton = (Button) scene.lookup("#resumeButton");
 
 		mainMenuButton.setOnAction(event -> {
+			m_Soundmanager.playSound(Soundmanager.CLICK_SOUND);
 			final FXMLLoader loader = new FXMLLoader(
 					getClass().getResource("MainMenu.fxml"));
 			final SettingsController controller = loader.getController();
@@ -76,6 +83,7 @@ Main extends Application {
 		});
 
 		settingsButton.setOnAction(event -> {
+			m_Soundmanager.playSound(Soundmanager.CLICK_SOUND);
 			final FXMLLoader loader = new FXMLLoader(
 					getClass().getResource("SettingsScreen.fxml"));
 			final SettingsController controller = loader.getController();
@@ -83,7 +91,10 @@ Main extends Application {
 			Main.setScene("SettingsScreen");
 		});
 
-		resumeButton.setOnAction(event -> hidePauseMenuAndResume(pauseMenuPane));
+		resumeButton.setOnAction(event -> {
+			m_Soundmanager.playSound(Soundmanager.CLICK_SOUND);
+			hidePauseMenuAndResume(pauseMenuPane);
+		});
 	}
 
 	private void hidePauseMenuAndResume(Pane pauseMenuPane) {
