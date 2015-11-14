@@ -1,7 +1,8 @@
-package sample.controller;
+package sample.controller.menu.highscore;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,11 +10,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sample.Main;
 import sample.model.Savegame;
+import sample.model.Savegames;
 
 /**
  * @author Nils
  */
-public class TabExController implements Initializable {
+public class TabEasyController implements Initializable {
 
 	@FXML
 	private TableView<Savegame> table;
@@ -37,7 +39,10 @@ public class TabExController implements Initializable {
 		scoreCol.setCellValueFactory(data -> data.getValue().scoreProperty().asObject());
 		dateCol.setCellValueFactory(data -> data.getValue().dateProperty());
 
-		ObservableList<Savegame> saves = Main.getSavegames().getExtremeSavegames();
-		table.getItems().setAll(saves);
+		Savegames saves = Main.getSavegames();
+		ObservableList<Savegame> allSaves = saves.getSavegames();
+		allSaves.addListener((ListChangeListener<Savegame>)
+									 c -> table.getItems().setAll(saves.getEasySavegames()));
+		table.getItems().addAll(saves.getEasySavegames());
 	}
 }

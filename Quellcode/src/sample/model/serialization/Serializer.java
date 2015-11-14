@@ -1,6 +1,8 @@
-package sample.model;
+package sample.model.serialization;
 
 import java.io.*;
+import sample.model.Keyboard;
+import sample.model.Savegames;
 
 /**
  * @author Nils
@@ -61,7 +63,7 @@ public class Serializer {
 	public static void save(Savegames saves) {
 		createFilesIfNecessary();
 		saveSettings();
-		SerializableSavegames output = new SerializableSavegames(saves.savegames);
+		SerializableSavegames output = new SerializableSavegames(saves.getSavegames());
 		try (FileOutputStream fos = new FileOutputStream(file);
 			 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 			oos.writeObject(output);

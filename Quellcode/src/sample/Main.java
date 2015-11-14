@@ -9,7 +9,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.Gamelogic.Gamelogic;
 import sample.input.KeyboardManager;
-import sample.model.*;
+import sample.model.Savegames;
+import sample.model.UserData;
+import sample.model.serialization.Serializer;
 import sample.physics.Physics;
 import sample.sounds.Soundmanager;
 

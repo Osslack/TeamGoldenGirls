@@ -4,13 +4,14 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import sample.Difficulty;
+import sample.model.serialization.SerializableSavegame;
 
 /**
  * @author Nils
  */
 public class Savegames {
 
-	public  ObservableList<Savegame> savegames;
+	private ObservableList<Savegame> savegames;
 	private Savegame                 tempSave;
 
 	public Savegames() {
