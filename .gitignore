@@ -203,4 +203,4 @@ local.properties
 hs_err_pid*
 
 ## savegames
-saves.ser
+*.gg
