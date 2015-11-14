@@ -82,7 +82,7 @@ public class Physics extends AnimationTimer {
 	private void simBall(double deltaSecs) {
 		m_lastPosition.mX = m_Position.mX;
 		m_lastPosition.mY = m_Position.mY;
-		m_DragTrajectory.simNext(m_Velocity, m_Position, deltaSecs * 5);
+		m_DragTrajectory.simNext(m_Velocity, m_Position, deltaSecs * 8);
 		updateBallPos();
 	}
 
@@ -156,7 +156,7 @@ public class Physics extends AnimationTimer {
 							if(deltaangle>90 && deltaangle2<90){kickball = true;}
 							if(deltaangle<90 && deltaangle2>90){kickball = true;}
 							if(kickball==true) {
-								normal.scalarMultiplication2(-2*m_Main.getGamelogic().getLinealpower() * (distance / lineradius));
+								normal.scalarMultiplication2(-1*m_Main.getGamelogic().getLinealpower() * (distance / lineradius));
 								m_Velocity.add2(normal);
 							}
 						}

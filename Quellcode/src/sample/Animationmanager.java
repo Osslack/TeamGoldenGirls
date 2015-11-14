@@ -114,7 +114,7 @@ public class Animationmanager extends AnimationTimer {
         if(isIncreasingPower && m_Main.getGamelogic().getLinealpower()<200/3){
             m_Main.getPlayingfield().getPowerbar().setHeight(m_Main.getGamelogic().getLinealpower()*3);
             m_Main.getPlayingfield().getPowerbar().setY(-m_Main.getGamelogic().getLinealpower()*3);
-            m_Main.getGamelogic().setLinealpower(m_Main.getGamelogic().getLinealpower()+0.3);
+            m_Main.getGamelogic().setLinealpower(m_Main.getGamelogic().getLinealpower()+1);
         }
     }
 
