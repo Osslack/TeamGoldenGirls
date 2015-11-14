@@ -1,6 +1,7 @@
-package sample.model;
+package sample.model.serialization;
 
 import java.io.Serializable;
+import sample.model.Savegame;
 
 /**
  * @author Nils

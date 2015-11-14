@@ -1,4 +1,4 @@
-package sample.model;
+package sample.model.serialization;
 
 import java.io.Serializable;
 import javafx.scene.input.KeyCode;

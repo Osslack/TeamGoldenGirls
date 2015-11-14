@@ -1,9 +1,10 @@
-package sample.model;
+package sample.model.serialization;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.ObservableList;
+import sample.model.Savegame;
 
 /**
  * Serializable representation of Savegames, since its ObservableLists are not serializable.
