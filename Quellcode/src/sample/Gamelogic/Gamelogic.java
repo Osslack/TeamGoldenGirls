@@ -15,17 +15,13 @@ import sample.sounds.Soundmanager;
 public class Gamelogic{
     private Main m_Main;
     public static  Difficulty m_difficulty;
-    private String m_currentSceneName ="";
+    private String m_currentSceneName ="BaseGame";
     private double m_linealpower = 0;
     private double m_radierervelocity = 2;
     private double m_radierersizingspeed = 1;
 
     public Gamelogic(Main main){
         m_Main = main;
-        m_Main.getPlayingfield().getBall().setLayoutX(0);
-        m_Main.getPlayingfield().getBall().setLayoutY(0);
-        m_Main.getPlayingfield().getBall_Image().setLayoutX(m_Main.getPlayingfield().getBall().getLayoutX());
-        m_Main.getPlayingfield().getBall_Image().setLayoutY(m_Main.getPlayingfield().getBall().getLayoutY());
     }
 
     public double getRadierersizingspeed() {
@@ -66,7 +62,11 @@ public class Gamelogic{
         m_difficulty = d;
         m_currentSceneName = scenename;
         m_Main.setScene(scenename);
-//        m_Main.fusionSceneToCurrentScene("Level1");
+        m_Main.getPlayingfield().restore();
+        m_Main.getPlayingfield().getBall().setLayoutX(0);
+        m_Main.getPlayingfield().getBall().setLayoutY(0);
+        m_Main.getPlayingfield().getBall_Image().setLayoutX(m_Main.getPlayingfield().getBall().getLayoutX());
+        m_Main.getPlayingfield().getBall_Image().setLayoutY(m_Main.getPlayingfield().getBall().getLayoutY());
         m_Main.getKeyboardmanager().applyControlsToCurrentScene();
         m_Main.getAnimationmanager().start();
         newRound();

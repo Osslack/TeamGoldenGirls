@@ -16,9 +16,10 @@ public class Animationmanager extends AnimationTimer {
     private boolean isRadierermoving;
     private boolean isIncreasingPower;
     private boolean isSizingRadierer;
+    private int animcnt=0;
     public Animationmanager(Main main){
         m_Main = main;
-        reset();
+//        reset();
     }
 
     public boolean islineallaunched() {
@@ -42,6 +43,7 @@ public class Animationmanager extends AnimationTimer {
         handleLineal();
         handleRadierer();
         handlePower();
+        handleWindmesser();
     }
 
     public void startMovingRadierer(){
@@ -86,7 +88,6 @@ public class Animationmanager extends AnimationTimer {
             m_Main.getGamelogic().onLinealHitsGround();
             m_Main.getPlayingfield().getLineal().setRotate(m_Main.getPlayingfield().getLineal().getRotate()-deltarot);
         }
-
     }
 
     private void handleRadierer(){
@@ -105,21 +106,28 @@ public class Animationmanager extends AnimationTimer {
         }
     }
 
+    private void handleWindmesser(){
+        m_Main.getPlayingfield().getWindmesser().setRotate(270+Math.toDegrees(Math.cos(Math.toRadians(++animcnt)))); //nur schön zum anschauen :D
+    }
+
     private void handlePower(){
-        if(isIncreasingPower){
-//          m_Main.getPlayingfield().getPowerBar().... //powerbar ausdehnen
+        if(isIncreasingPower && m_Main.getGamelogic().getLinealpower()<200/3){
+            m_Main.getPlayingfield().getPowerbar().setHeight(m_Main.getGamelogic().getLinealpower()*3);
+            m_Main.getPlayingfield().getPowerbar().setY(-m_Main.getGamelogic().getLinealpower()*3);
             m_Main.getGamelogic().setLinealpower(m_Main.getGamelogic().getLinealpower()+0.3);
         }
     }
 
-    public void stopIncreasingPower() {
-        isIncreasingPower = false;
-//        m_Main.getPlayingfield().getPowerBar().... an alte stelle zurücksetzen
+    public void resetPowerbar(){
+        m_Main.getPlayingfield().getPowerbar().setHeight(1);
+        m_Main.getPlayingfield().getPowerbar().setY(0);
     }
 
-    public void startIncreasingPower() {
-        isIncreasingPower = true;
+    public void stopIncreasingPower() {
+        isIncreasingPower = false;
     }
+
+    public void startIncreasingPower() {isIncreasingPower = true;}
 
     public void reset() {
         stopLineal();
@@ -127,6 +135,7 @@ public class Animationmanager extends AnimationTimer {
         stopIncreasingPower();
         stopSizingRadierer();
         m_Main.getPlayingfield().getLineal().setRotate(0);
+        resetPowerbar();
     }
 
     public void stopSizingRadierer() {

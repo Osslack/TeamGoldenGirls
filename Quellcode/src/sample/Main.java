@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import sample.Gamelogic.Gamelogic;
 import sample.input.KeyboardManager;
@@ -42,10 +43,10 @@ Main extends Application {
 		primaryStage.setScene(getScene("MainMenu"));
 		primaryStage.setTitle("Kugellineal PhysX Sim");
 		primaryStage.show();
+		m_Gamelogic = new Gamelogic(this);
 		m_Playingfield = new Playingfield(this);
 		m_Physics = new Physics(this);
 		m_Soundmanager = new Soundmanager();
-		m_Gamelogic = new Gamelogic(this);
 		m_Animationmanager = new Animationmanager(this);
 		m_Keyboardmanager = new KeyboardManager(this);
 	}
@@ -75,6 +76,10 @@ Main extends Application {
 //		else {
 //			m_Physics.stop();
 //		}
+	}
+
+	public static void setScene(Scene scene) {
+		m_PrimaryStage.setScene(scene);
 	}
 
 	public Physics getPhysics() {
@@ -147,20 +152,7 @@ Main extends Application {
 		savegames.finalizeSavegame();
 		Serializer.save(savegames);
 	}
-
 	public static void main(String[] args) {
 		launch(args);
-	}
-
-	public Scene fusionSceneToCurrentScene(String scenename) {
-		Group allelems = new Group();
-		Scene scenetofusion = getScene(scenename);
-		for (Node child : scenetofusion.getRoot().getChildrenUnmodifiable()) {
-//			if (!(child instanceof javafx.scene.layout.Pane)) {
-
-
-//			}
-		}
-		return new Scene(allelems);
 	}
 }

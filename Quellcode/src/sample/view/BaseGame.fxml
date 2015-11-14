@@ -2,6 +2,7 @@
 
 <!-- Author: Nils Wende -->
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -46,5 +47,8 @@
             <fx:include fx:id="pauseMenu" source="PauseMenu.fxml" />
          </children>
       </Pane>
+      <Label fx:id="score" layoutX="682.0" layoutY="143.0" text="Score: " />
+      <Label fx:id="time" layoutX="683.0" layoutY="193.0" text="Time: " />
+      <Label fx:id="level" layoutX="683.0" layoutY="167.0" text="Level:" />
    </children>
 </Pane>

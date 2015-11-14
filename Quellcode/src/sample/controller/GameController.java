@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import sample.Main;
 
 /**
  * @author Jendrik
@@ -31,6 +32,5 @@ public class GameController implements Initializable  {
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-
 	}
 }

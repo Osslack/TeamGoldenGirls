@@ -9,30 +9,43 @@ import javafx.scene.shape.Shape;
 import java.util.ArrayList;
 
 public class Playingfield {
-	public static final double scene_width = 800;
-	public static final double scene_height = 600;
+	public double field_width = 800;
+	public double field_height = 600;
 	private javafx.scene.shape.Circle    m_Ball;
 	private javafx.scene.image.ImageView m_Ball_Image;
 	private javafx.scene.shape.Line      m_Lineal;
 	private javafx.scene.shape.Line      m_Radierer;
 	private javafx.scene.shape.Line      m_Ground;
+	private javafx.scene.shape.Polygon      m_Windmesser;
+	private javafx.scene.shape.Rectangle      m_Powerbar;
+	private javafx.scene.shape.Rectangle      m_Sidebar;
+
 	private Main m_Main;
 
 	public Playingfield(Main main){
 		m_Main = main;
-		m_Ball = (javafx.scene.shape.Circle) m_Main.getScene("MainGame").lookup("#circle");
-		m_Ball_Image = (javafx.scene.image.ImageView) m_Main.getScene("MainGame").lookup("#paperball");
-		m_Lineal = (javafx.scene.shape.Line) m_Main.getScene("MainGame").lookup("#lineal");
-		m_Radierer = (javafx.scene.shape.Line) m_Main.getScene("MainGame").lookup("#radierer");
-		m_Ground = (javafx.scene.shape.Line) m_Main.getScene("MainGame").lookup("#ground");
+		restore();
 	}
 
-	public static double getScene_width() {
-		return scene_width;
+	public void restore(){
+		m_Ball = (javafx.scene.shape.Circle) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#circle");
+		m_Ball_Image = (javafx.scene.image.ImageView) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#paperball");
+		m_Lineal = (javafx.scene.shape.Line) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#lineal");
+		m_Radierer = (javafx.scene.shape.Line) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#radierer");
+		m_Ground = (javafx.scene.shape.Line) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#ground");
+		m_Windmesser = (javafx.scene.shape.Polygon) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#windmesser");
+		m_Powerbar = (javafx.scene.shape.Rectangle) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#powerbar");
+		m_Sidebar = (javafx.scene.shape.Rectangle) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#sidebar");
 	}
 
-	public static double getScene_height() {
-		return scene_height;
+
+
+	public double getScene_width() {
+		return field_width - m_Sidebar.getWidth();
+	}
+
+	public double getScene_height() {
+		return field_height;
 	}
 
 	public javafx.scene.shape.Circle getBall(){
@@ -41,6 +54,12 @@ public class Playingfield {
 
 	public javafx.scene.image.ImageView getBall_Image(){
 		return m_Ball_Image;
+	}
+
+	public javafx.scene.shape.Rectangle getPowerbar() {return m_Powerbar;}
+
+	public javafx.scene.shape.Polygon getWindmesser() {
+		return m_Windmesser;
 	}
 
 	public Line getLineal() {

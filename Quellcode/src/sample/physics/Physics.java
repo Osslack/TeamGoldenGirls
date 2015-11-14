@@ -24,7 +24,7 @@ public class Physics extends AnimationTimer {
 
 	public Physics(Main main) {
 		m_Main = main;
-		m_DragTrajectory = new DragTrajectory(5, (m_Main.getPlayingfield().getBall().getRadius()) * (5 / 100), 1.2);
+		m_DragTrajectory = new DragTrajectory(5, (10) * (5 / 100), 1.2);
 		m_Collision = new Collision();
 	}
 
