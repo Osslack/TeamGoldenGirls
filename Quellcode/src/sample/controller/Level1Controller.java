@@ -2,10 +2,7 @@ package sample.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import sample.Difficulty;
 import sample.Main;
 
 import java.net.URL;
@@ -20,6 +17,6 @@ public class Level1Controller implements Initializable {
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        gamePane2.getChildren().addAll(Main.getScene("BaseGame").getRoot().getChildrenUnmodifiable());
+        gamePane2.getChildren().addAll(Main.getScene("BaseGame1").getRoot().getChildrenUnmodifiable());
     }
 }

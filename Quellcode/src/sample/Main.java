@@ -1,17 +1,23 @@
 package sample;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.Gamelogic.Gamelogic;
 import sample.input.KeyboardManager;
-import sample.model.*;
+import sample.model.Savegames;
+import sample.model.Serializer;
+import sample.model.UserData;
 import sample.physics.Physics;
 import sample.sounds.Soundmanager;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class
 Main extends Application {
@@ -127,7 +133,7 @@ Main extends Application {
 		for (String filename : files) {
 			try {
 				name = filename.split("\\.")[0];
-				if(name.startsWith("Level") && (!name.equals("Level1"))){
+				if(name.startsWith("Level")/* && (!name.equals("Level1"))*/){
 					m_ScenesMap.put("BaseGame"+name.substring(name.lastIndexOf('l')+1), loadSceneFromFXML("BaseGame.fxml"));
 				}
 				m_ScenesMap.put(name, loadSceneFromFXML(filename));
