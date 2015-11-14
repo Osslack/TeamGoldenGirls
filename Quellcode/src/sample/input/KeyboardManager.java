@@ -140,12 +140,12 @@ public class KeyboardManager {
 		Button nextlevelButton = (Button) m_CurrentScene.lookup("#nextlevelButton");
 		Button tryagainButton = (Button) m_CurrentScene.lookup("#tryagainButton");
 		tryagainButton.setOnAction(event -> {
+			m_PauseMenuPane.setVisible(false);
 			m_Main.getGamelogic().newRound();
-			closePauseMenu();
 		});
 		nextlevelButton.setOnAction(event -> {
+			m_PauseMenuPane.setVisible(false);
 			m_Main.getGamelogic().nextLevel();
-			closePauseMenu();
 		});
 		mainMenuButton.setOnAction(event -> m_Main.getGamelogic().GotoMainMenu());
 		settingsButton.setOnAction(event -> m_Main.setScene("SettingsPause"));
