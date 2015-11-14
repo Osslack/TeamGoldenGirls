@@ -29,6 +29,9 @@ public class GameController implements Initializable  {
 	@FXML
 	private Pane pauseMenu;
 
+	@FXML
+	private Pane endScreenPane;
+
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 	}

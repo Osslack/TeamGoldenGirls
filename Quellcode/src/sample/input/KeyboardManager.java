@@ -15,6 +15,7 @@ public class KeyboardManager {
 	private Main  m_Main;
 	private Scene m_CurrentScene;
 	private Pane  m_PauseMenuPane;
+	private Pane  m_endScreenPane;
 
 	private boolean physicsWasActive;
 
@@ -25,10 +26,13 @@ public class KeyboardManager {
 	public void applyControlsToCurrentScene() {
 		unsetIngameListener();
 		unsetPauseListener();
+		unsetEndScreenListener();
 		m_CurrentScene = m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName());
 		m_PauseMenuPane = (Pane) (m_CurrentScene.lookup("#pauseMenuPane"));
+		m_endScreenPane = (Pane) (m_CurrentScene.lookup("#endScreenPane"));
 		setIngameListener();
 		setPauseListener();
+		setEndScreenListener();
 	}
 
 	public void unsetIngameListener() {
@@ -50,6 +54,17 @@ public class KeyboardManager {
 			settingsButton.setOnAction(event -> {
 			});
 			resumeButton.setOnAction(event -> {
+			});
+		}
+	}
+
+	public void unsetEndScreenListener() {
+		if (m_CurrentScene != null) {
+			Button highscoreButton = (Button) m_CurrentScene.lookup("#highscoreButton");
+			Button nextButton = (Button) m_CurrentScene.lookup("#nextButton");
+			highscoreButton.setOnAction(event -> {
+			});
+			nextButton.setOnAction(event -> {
 			});
 		}
 	}
@@ -120,35 +135,52 @@ public class KeyboardManager {
 	}
 
 	public void openPauseMenu() {
-		m_PauseMenuPane.setVisible(true);
 		physicsWasActive = Main.getPhysics().isActive;
 		m_Main.getGamelogic().Pause();
-	}
-
-	public void unlockNextLevelButton() {
-		(m_CurrentScene.lookup("#nextlevelButton")).setDisable(false);
-	}
-
-	public void lockNextLevelButton() {
-		(m_CurrentScene.lookup("#nextlevelButton")).setDisable(true);
+		m_PauseMenuPane.setVisible(true);
 	}
 
 	public void setPauseListener() {
+		Button tryagainButton = (Button) m_CurrentScene.lookup("#tryagainButton");
 		Button mainMenuButton = (Button) m_CurrentScene.lookup("#mainMenuButton");
 		Button settingsButton = (Button) m_CurrentScene.lookup("#settingsButton");
 		Button resumeButton = (Button) m_CurrentScene.lookup("#resumeButton");
-		Button nextlevelButton = (Button) m_CurrentScene.lookup("#nextlevelButton");
-		Button tryagainButton = (Button) m_CurrentScene.lookup("#tryagainButton");
 		tryagainButton.setOnAction(event -> {
 			m_PauseMenuPane.setVisible(false);
 			m_Main.getGamelogic().newRound();
+			resumeButton.setDisable(false);
 		});
-		nextlevelButton.setOnAction(event -> {
+		mainMenuButton.setOnAction(event -> {
+			m_Main.getGamelogic().GotoMainMenu();
+			resumeButton.setDisable(false);
+		});
+		settingsButton.setOnAction(event -> {
+			m_Main.setScene("SettingsPause");
+			resumeButton.setDisable(false);
+		});
+		resumeButton.setOnAction(event -> closePauseMenu());
+	}
+
+	public void setEndScreenListener() {
+		Button highscoreButton = (Button) m_CurrentScene.lookup("#highscoreButton");
+		Button nextButton = (Button) m_CurrentScene.lookup("#nextButton");
+
+		highscoreButton.setOnAction(event -> {
+			m_PauseMenuPane.setVisible(false);
+			m_Main.setScene("HighscoreScreen");
+		});
+		nextButton.setOnAction(event -> {
 			m_PauseMenuPane.setVisible(false);
 			m_Main.getGamelogic().nextLevel();
 		});
-		mainMenuButton.setOnAction(event -> m_Main.getGamelogic().GotoMainMenu());
-		settingsButton.setOnAction(event -> m_Main.setScene("SettingsPause"));
-		resumeButton.setOnAction(event -> closePauseMenu());
+	}
+
+	public void openEndScreen() {
+		m_endScreenPane.setVisible(true);
+	}
+
+	public void disableResume() {
+		Button resumeButton = (Button) m_CurrentScene.lookup("#resumeButton");
+		resumeButton.setDisable(true);
 	}
 }

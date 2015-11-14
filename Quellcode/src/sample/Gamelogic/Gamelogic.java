@@ -75,6 +75,7 @@ public class Gamelogic {
 		}
 	}
 
+	//TODO last level intercept in menu
 	public void nextLevel() {
 		String nextLevel = "Level" + (m_level + 1);
 		setLevel(nextLevel, m_difficulty);
@@ -86,18 +87,17 @@ public class Gamelogic {
 		m_Main.getPhysics().setBallVelocity(0, 10);
 		m_Main.getAnimationmanager().reset();
 		m_linealpower = 0;
-		m_Main.getKeyboardmanager().lockNextLevelButton();
 		Pause();
 	}
 
 	public void onGoalHit() { //Enter
-		m_Main.getKeyboardmanager().openPauseMenu();
-		m_Main.getKeyboardmanager().unlockNextLevelButton();
+		Pause();
+		m_Main.getKeyboardmanager().openEndScreen();
 	}
 
 	public void onDeathHit() { //Enter
+		m_Main.getKeyboardmanager().disableResume();
 		m_Main.getKeyboardmanager().openPauseMenu();
-		Pause();
 	}
 
 	public void startRound() { //Enter
