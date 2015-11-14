@@ -21,6 +21,7 @@ public class Physics extends AnimationTimer {
 	private Collision m_Collision;
 	private double m_Dampening      = 0.7;
 	private String m_hitlastframe   = "";
+	public boolean isActive;
 
 
 	public Physics(Main main) {
@@ -34,6 +35,13 @@ public class Physics extends AnimationTimer {
 		super.start();
 		lastNano = System.nanoTime();
 		updateBallPos();
+		isActive = true;
+	}
+
+	@Override
+	public void stop() {
+		super.stop();
+		isActive = false;
 	}
 
 	public void setBallPosition(int x, int y){

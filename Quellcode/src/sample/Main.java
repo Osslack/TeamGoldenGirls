@@ -87,7 +87,7 @@ Main extends Application {
 		m_PrimaryStage.setScene(scene);
 	}
 
-	public Physics getPhysics() {
+	public static Physics getPhysics() {
 		return m_Physics;
 	}
 

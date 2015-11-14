@@ -14,7 +14,7 @@ public class Keyboard {
 	private static KeyCode moveUpKey     = KeyCode.W;
 	private static KeyCode moveDownKey   = KeyCode.S;
 	private static KeyCode startRoundKey = KeyCode.ENTER;
-	private static KeyCode pausemenuKey  = KeyCode.ESCAPE;
+	private static KeyCode pauseMenuKey  = KeyCode.ESCAPE;
 	private static KeyCode newRoundKey   = KeyCode.R;
 
 	public static KeyCode getNewRoundKey() {
@@ -25,8 +25,8 @@ public class Keyboard {
 		return startRoundKey;
 	}
 
-	public static KeyCode getPausemenuKey() {
-		return pausemenuKey;
+	public static KeyCode getPauseMenuKey() {
+		return pauseMenuKey;
 	}
 
 	public static KeyCode getLaunchKey() {
