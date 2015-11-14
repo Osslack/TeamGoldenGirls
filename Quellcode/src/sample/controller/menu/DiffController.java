@@ -1,4 +1,4 @@
-package sample.controller;
+package sample.controller.menu;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,7 +31,7 @@ public class DiffController implements Initializable {
 
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-		cancelButton.setOnAction(event -> Main.setScene("UserScreen"));
+		cancelButton.setOnAction(event -> Main.setScene("RegisterScreen"));
 
 		easyButton.setOnAction(event -> {
 			Main.getGamelogic().setLevel("Level1", Difficulty.EASY);
