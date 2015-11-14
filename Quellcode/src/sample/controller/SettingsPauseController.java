@@ -36,10 +36,10 @@ public class SettingsPauseController implements Initializable {
 			Keyboard.setMoveUpKey(KeyCode.getKeyCode(upField.getText()));
 			Keyboard.setMoveDownKey(KeyCode.getKeyCode(downField.getText()));
 			//TODO set sound on or off
-			Main.setScene("MainGame");
+			Main.setScene(Main.getGamelogic().getCurrentSceneName());
 		});
 
-		cancelButton.setOnAction(event -> Main.setScene("MainGame"));
+		cancelButton.setOnAction(event -> Main.setScene(Main.getGamelogic().getCurrentSceneName()));
 	}
 
 	private void getGridpaneChilds() {

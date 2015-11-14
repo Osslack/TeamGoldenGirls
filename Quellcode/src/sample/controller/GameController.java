@@ -7,11 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import sample.Main;
 
 /**
- * @author Jendrik
  * @author Nils
+ * @author Jendrik
  */
 public class GameController implements Initializable  {
 
