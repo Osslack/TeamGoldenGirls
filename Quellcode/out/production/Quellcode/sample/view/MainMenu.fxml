@@ -5,8 +5,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/null"
+<<<<<<< HEAD
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="sample.controller.MainmenuController">
+=======
+<<<<<<< HEAD
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.controller.MainmenuController">
+=======
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.menu.MainmenuController">
+>>>>>>> 6ae75955348570255f753a3fec8a622eb7edc8f0
+>>>>>>> 8fd7427a4d7e23a5f6f38ffdc5c8e3f290fe7460
    <center>
       <VBox alignment="CENTER" maxWidth="300.0" spacing="25.0" BorderPane.alignment="CENTER">
          <children>

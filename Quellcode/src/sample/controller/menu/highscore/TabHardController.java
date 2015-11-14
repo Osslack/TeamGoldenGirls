@@ -1,4 +1,4 @@
-package sample.controller;
+package sample.controller.menu.highscore;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +15,7 @@ import sample.model.Savegames;
 /**
  * @author Nils
  */
-public class TabMedController implements Initializable {
+public class TabHardController implements Initializable {
 
 	@FXML
 	private TableView<Savegame> table;
@@ -42,7 +42,7 @@ public class TabMedController implements Initializable {
 		Savegames saves = Main.getSavegames();
 		ObservableList<Savegame> allSaves = saves.getSavegames();
 		allSaves.addListener((ListChangeListener<Savegame>)
-									 c -> table.getItems().setAll(saves.getMediumSavegames()));
-		table.getItems().addAll(saves.getMediumSavegames());
+									 c -> table.getItems().setAll(saves.getHardSavegames()));
+		table.getItems().addAll(saves.getHardSavegames());
 	}
 }

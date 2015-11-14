@@ -1,4 +1,4 @@
-package sample.controller;
+package sample.controller.menu;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,7 +31,7 @@ public class MainmenuController implements Initializable {
 		b_highscore.setOnAction(event -> {
 			Main.setScene("HighscoreScreen");
 		});
-		b_newgame.setOnAction(event -> Main.setScene("UserScreen"));
+        b_newgame.setOnAction(event -> Main.setScene("RegisterScreen"));
         b_settings.setOnAction(event -> Main.setScene("SettingsMain"));
         b_loadgame.setOnAction(event -> Main.setScene("LoadScreen"));
         b_exit.setOnAction(event -> ((Stage)b_exit.getScene().getWindow()).close());

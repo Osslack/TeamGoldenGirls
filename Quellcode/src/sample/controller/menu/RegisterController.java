@@ -1,4 +1,4 @@
-package sample.controller;
+package sample.controller.menu;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,7 +12,7 @@ import sample.model.UserData;
 /**
  * @author Nils
  */
-public class UserController implements Initializable {
+public class RegisterController implements Initializable {
 
     @FXML
 	private TextField usernameTextfield;

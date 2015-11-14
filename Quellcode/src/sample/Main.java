@@ -7,8 +7,13 @@ import javafx.stage.Stage;
 import sample.Gamelogic.Gamelogic;
 import sample.input.KeyboardManager;
 import sample.model.Savegames;
+<<<<<<< HEAD
 import sample.model.Serializer;
 import sample.model.UserData;
+=======
+import sample.model.UserData;
+import sample.model.serialization.Serializer;
+>>>>>>> 8fd7427a4d7e23a5f6f38ffdc5c8e3f290fe7460
 import sample.physics.Physics;
 import sample.sounds.Soundmanager;
 
@@ -133,7 +138,13 @@ Main extends Application {
 		for (String filename : files) {
 			try {
 				name = filename.split("\\.")[0];
+<<<<<<< HEAD
 				if(name.startsWith("Level")/* && (!name.equals("Level1"))*/){
+=======
+				System.out.println(filename + "     " + name);
+				if(name.startsWith("Level") /*&& (!name.equals("Level1"))*/){
+					System.out.println("BaseGame"+name.substring(name.lastIndexOf('l')+1));
+>>>>>>> 8fd7427a4d7e23a5f6f38ffdc5c8e3f290fe7460
 					m_ScenesMap.put("BaseGame"+name.substring(name.lastIndexOf('l')+1), loadSceneFromFXML("BaseGame.fxml"));
 				}
 				m_ScenesMap.put(name, loadSceneFromFXML(filename));

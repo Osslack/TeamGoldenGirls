@@ -1,12 +1,11 @@
-package sample.controller;
+package sample.controller.menu.game;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import sample.Main;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * Created by JJ on 14.11.2015.

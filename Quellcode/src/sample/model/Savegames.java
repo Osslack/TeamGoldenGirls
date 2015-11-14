@@ -4,6 +4,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import sample.Difficulty;
+import sample.model.serialization.SerializableSavegame;
 
 /**
  * @author Nils
