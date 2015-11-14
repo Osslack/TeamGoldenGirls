@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.*?>
 <BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.SettingsPauseController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.menu.settings.SettingsPauseController">
     <center>
         <fx:include fx:id="settings" source="SettingsScreen.fxml"/>
     </center>
