@@ -18,7 +18,6 @@ import sample.model.UserData;
  */
 public class LoadController implements Initializable {
 
-	public  Button              addBtn;
 	@FXML
 	private TableView<Savegame> table;
 
@@ -46,20 +45,27 @@ public class LoadController implements Initializable {
 	@FXML
 	private Button cancelButton;
 
-	//TODO delete addBtn
-	int i = 0;
+	public Button addBtn;
+
 
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 		setTableViewContent();
 
-		addBtn.setOnAction(event -> Main.getSavegames().getSavegames().add(new Savegame(1, i++, "gg", "tinf", Difficulty.EASY.toString())));
+		table.setOnMousePressed(event -> {
+			if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+				Savegame selected = table.getSelectionModel().getSelectedItem();
+				setUserAndSelectedLevel(selected);
+			}
+		});
+
+		//TODO delete addBtn
+		addBtn.setOnAction(event -> Main.getSavegames().getSavegames().add(new Savegame(1, 1337, "gg", "tinf", Difficulty.EASY.toString())));
 
 		loadButton.setOnAction(event -> {
 			Savegame selected = table.getSelectionModel().getSelectedItem();
 			if (selected != null) {
-				Main.user = new UserData(selected.getUsername(), selected.getForm());
-				Main.getGamelogic().setLevel("Level" + selected.getLevel(), Main.getGamelogic().getDifficulty());
+				setUserAndSelectedLevel(selected);
 			}
 		});
 
@@ -77,5 +83,10 @@ public class LoadController implements Initializable {
 		ObservableList<Savegame> saves = Main.getSavegames().getSavegames();
 		saves.addListener((ListChangeListener<Savegame>) c -> table.getItems().setAll(saves));
 		table.getItems().addAll(saves);
+	}
+
+	private void setUserAndSelectedLevel(Savegame selected) {
+		Main.user = new UserData(selected.getUsername(), selected.getForm());
+		Main.getGamelogic().setLevel("Level" + selected.getLevel(), Main.getGamelogic().getDifficulty());
 	}
 }
