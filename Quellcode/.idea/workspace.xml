@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="317b8588-4eb0-4f41-b3f2-27a6a6c2834c" name="Default" comment="Some more Sounds,Audioclips now stored in an array,added Method to check if the ball is still moving.">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/savegames/saves.gg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/Level1Controller.java" afterPath="$PROJECT_DIR$/src/sample/controller/Level1Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Quellcode/sample/view/LoadScreen.fxml" afterPath="$PROJECT_DIR$/out/production/Quellcode/sample/view/LoadScreen.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Quellcode/sample/view/MainMenu.fxml" afterPath="$PROJECT_DIR$/out/production/Quellcode/sample/view/MainMenu.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Quellcode/sample/view/PauseMenu.fxml" afterPath="$PROJECT_DIR$/out/production/Quellcode/sample/view/PauseMenu.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Quellcode/sample/view/SettingsScreen.fxml" afterPath="$PROJECT_DIR$/out/production/Quellcode/sample/view/SettingsScreen.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="317b8588-4eb0-4f41-b3f2-27a6a6c2834c" name="Default" comment="Fixed some errors on linux" />
     <ignored path="Quellcode.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -36,14 +26,15 @@
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding>
-                <element signature="e#4008#4009#0" expanded="true" />
-                <element signature="e#4055#4056#0" expanded="true" />
-                <element signature="e#4098#4099#0" expanded="true" />
-                <element signature="e#4121#4122#0" expanded="true" />
-                <element signature="e#4262#4263#0" expanded="true" />
-                <element signature="e#4281#4282#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#4159#4160#0" expanded="true" />
+                <element signature="e#4206#4207#0" expanded="true" />
+                <element signature="e#4249#4250#0" expanded="true" />
+                <element signature="e#4272#4273#0" expanded="true" />
+                <element signature="e#4413#4414#0" expanded="true" />
+                <element signature="e#4432#4433#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,8 +106,10 @@
         <entry file="file://$PROJECT_DIR$/src/sample/controller/Level1Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
-              <folding />
+              <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -525,7 +518,7 @@
       <workItem from="1447245461439" duration="6782000" />
       <workItem from="1447413100740" duration="763000" />
       <workItem from="1447414057473" duration="7316000" />
-      <workItem from="1447511811717" duration="327000" />
+      <workItem from="1447511811717" duration="417000" />
     </task>
     <task id="LOCAL-00001" summary="Nils: added Menu scenes">
       <created>1447252357203</created>
@@ -569,11 +562,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447418387922</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixed some errors on linux">
+      <created>1447512165548</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1447512165548</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24171000" />
+    <option name="totallyTimeSpent" value="24261000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
@@ -623,7 +622,8 @@
     <MESSAGE value="Nils: added controllers" />
     <MESSAGE value="Nils: merge conflict" />
     <MESSAGE value="Some more Sounds,Audioclips now stored in an array,added Method to check if the ball is still moving." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some more Sounds,Audioclips now stored in an array,added Method to check if the ball is still moving." />
+    <MESSAGE value="Fixed some errors on linux" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some errors on linux" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -642,12 +642,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4008#4009#0" expanded="true" />
-            <element signature="e#4055#4056#0" expanded="true" />
-            <element signature="e#4098#4099#0" expanded="true" />
-            <element signature="e#4121#4122#0" expanded="true" />
-            <element signature="e#4262#4263#0" expanded="true" />
-            <element signature="e#4281#4282#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4159#4160#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
+            <element signature="e#4249#4250#0" expanded="true" />
+            <element signature="e#4272#4273#0" expanded="true" />
+            <element signature="e#4413#4414#0" expanded="true" />
+            <element signature="e#4432#4433#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -657,12 +658,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4008#4009#0" expanded="true" />
-            <element signature="e#4055#4056#0" expanded="true" />
-            <element signature="e#4098#4099#0" expanded="true" />
-            <element signature="e#4121#4122#0" expanded="true" />
-            <element signature="e#4262#4263#0" expanded="true" />
-            <element signature="e#4281#4282#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4159#4160#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
+            <element signature="e#4249#4250#0" expanded="true" />
+            <element signature="e#4272#4273#0" expanded="true" />
+            <element signature="e#4413#4414#0" expanded="true" />
+            <element signature="e#4432#4433#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -672,12 +674,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4008#4009#0" expanded="true" />
-            <element signature="e#4055#4056#0" expanded="true" />
-            <element signature="e#4098#4099#0" expanded="true" />
-            <element signature="e#4121#4122#0" expanded="true" />
-            <element signature="e#4262#4263#0" expanded="true" />
-            <element signature="e#4281#4282#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4159#4160#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
+            <element signature="e#4249#4250#0" expanded="true" />
+            <element signature="e#4272#4273#0" expanded="true" />
+            <element signature="e#4413#4414#0" expanded="true" />
+            <element signature="e#4432#4433#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -988,8 +991,10 @@
     <entry file="file://$PROJECT_DIR$/src/sample/controller/Level1Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
-          <folding />
+          <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1004,14 +1009,15 @@
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
-            <element signature="e#4008#4009#0" expanded="true" />
-            <element signature="e#4055#4056#0" expanded="true" />
-            <element signature="e#4098#4099#0" expanded="true" />
-            <element signature="e#4121#4122#0" expanded="true" />
-            <element signature="e#4262#4263#0" expanded="true" />
-            <element signature="e#4281#4282#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4159#4160#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
+            <element signature="e#4249#4250#0" expanded="true" />
+            <element signature="e#4272#4273#0" expanded="true" />
+            <element signature="e#4413#4414#0" expanded="true" />
+            <element signature="e#4432#4433#0" expanded="true" />
           </folding>
         </state>
       </provider>
