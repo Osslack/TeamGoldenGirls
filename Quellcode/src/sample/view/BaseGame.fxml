@@ -21,7 +21,7 @@
       </ImageView>
       <Line fx:id="lineal" endX="80.0" layoutX="151.0" layoutY="561.0" startX="-80.0" visible="false" />
       <Line fx:id="ground" endX="80.0" layoutX="150.0" layoutY="598.0" startX="-80.0" visible="false" />
-      <Line fx:id="radierer" endX="15.0" layoutX="154.0" layoutY="580.0" rotate="90.0" startX="-20.0" visible="false" />
+      <Line fx:id="radierer" endX="15.0" layoutX="154.0" layoutY="580.0" rotate="90.0" startX="-20.0" />
       <Rectangle fx:id="sidebar" arcHeight="5.0" arcWidth="5.0" fill="#221509" height="600.0" layoutX="678.0" layoutY="-1.0" opacity="0.62" stroke="BLACK" strokeType="INSIDE" width="122.0" />
       <Circle fill="#a18244" layoutX="739.0" layoutY="71.0" opacity="0.95" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="windmesser" fill="#ada389" layoutX="737.0" layoutY="82.0" rotate="-99.5" scaleX="0.2" stroke="BLACK" strokeType="INSIDE">

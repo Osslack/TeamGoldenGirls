@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Author: Nils Wende -->
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.*?>
+
+<Pane fx:id="gamePane2" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Level7Controller">
+   <children>
+      <ImageView fitHeight="609.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classroom.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="death" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="7.0" layoutX="-23.0" layoutY="588.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="793.0" />
+      <ImageView fitHeight="225.0" fitWidth="172.0" layoutX="213.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/teacher.png" />
+         </image>
+      </ImageView>
+      <Line endX="50.0" layoutX="256.0" layoutY="416.0" rotate="42.5" startX="-50.0" visible="false" />
+      <Line endX="70.0" layoutX="323.0" layoutY="514.0" rotate="87.6" startX="-70.0" visible="false" />
+      <Line endX="80.0" layoutX="379.0" layoutY="509.0" rotate="90.0" startX="-80.0" visible="false" />
+      <Line endX="10.0" layoutX="309.0" layoutY="452.0" startX="-10.0" visible="false" />
+      <Line endX="50.0" layoutX="328.0" layoutY="428.0" startX="-60.0" visible="false" />
+      <Line endX="13.0" layoutX="341.0" layoutY="377.0" startX="-13.0" visible="false" />
+      <Line endX="30.0" layoutX="349.0" layoutY="400.0" rotate="86.1" startX="-13.0" visible="false" />
+      <Line endX="30.0" layoutX="314.0" layoutY="401.0" rotate="97.4" startX="-13.0" visible="false" />
+      <ImageView fx:id="muelleimer" fitHeight="83.0" fitWidth="78.0" layoutX="411.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/trash.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="goal" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="456.0" layoutY="557.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="35.0" />
+      <Line endX="20.0" layoutX="420.0" layoutY="548.0" rotate="82.6" startX="-30.0" visible="false" />
+      <Line endX="20.0" layoutX="482.0" layoutY="548.0" rotate="98.4" startX="-30.0" visible="false" />
+      <Line endX="20.0" layoutX="451.0" layoutY="580.0" startX="-30.0" visible="false" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="299.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/monitor.png" />
+         </image>
+      </ImageView>
+      <Line endX="50.0" layoutX="300.0" layoutY="208.0" rotate="90.0" startX="-50.0" visible="false" />
+      <Line endX="50.0" layoutX="441.0" layoutY="209.0" rotate="86.5" startX="-50.0" visible="false" />
+      <Line endX="20.0" layoutX="310.0" layoutY="149.0" rotate="-26.6" startX="-10.0" visible="false" />
+      <Line endX="20.0" layoutX="310.0" layoutY="263.0" rotate="18.4" startX="-10.0" visible="false" />
+      <Line endX="50.0" layoutX="388.0" layoutY="149.0" rotate="7.1" startX="-50.0" visible="false" />
+      <Line endX="10.0" layoutX="338.0" layoutY="279.0" rotate="80.0" startX="-10.0" visible="false" />
+      <Line endX="10.0" layoutX="413.0" layoutY="269.0" rotate="-77.9" startX="-10.0" visible="false" />
+      <Line endX="25.0" layoutX="377.0" layoutY="285.0" rotate="-7.6" startX="-30.0" visible="false" />
+      <Line endX="10.0" layoutX="434.0" layoutY="263.0" startX="-10.0" visible="false" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="41.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/stapler.png" />
+         </image>
+      </ImageView>
+      <Line endX="70.0" layoutX="166.0" layoutY="102.0" rotate="-22.6" startX="-80.0" visible="false" />
+      <Line endX="60.0" layoutX="141.0" layoutY="35.0" rotate="-17.1" startX="-70.0" visible="false" />
+      <Line endX="25.0" layoutX="60.0" layoutY="85.0" rotate="113.2" startX="-30.0" visible="false" />
+      <Line endX="15.0" layoutX="69.0" layoutY="124.0" rotate="23.6" startX="-20.0" visible="false" />
+      <Line endX="20.0" layoutX="229.0" layoutY="45.0" rotate="70.3" startX="-20.0" visible="false" />
+      <Line endX="10.0" layoutX="213.0" layoutY="19.0" rotate="28.3" startX="-10.0" visible="false" />
+   </children>
+</Pane>
