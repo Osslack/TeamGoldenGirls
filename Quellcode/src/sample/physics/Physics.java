@@ -123,7 +123,7 @@ public class Physics extends AnimationTimer {
 					double angle = Math.atan2(yx, yy);
 					normal.rotate(angle);
 					if (m_hitlastframe == line.getId()) {
-						Vector2D n2 = normal.scalarMultiplication(10);
+						Vector2D n2 = normal.scalarMultiplication(-10);
 						m_Position.add2(n2);
 						m_Collision.getPostCollisionVelocity(m_Velocity, 1, normal);
 					}
