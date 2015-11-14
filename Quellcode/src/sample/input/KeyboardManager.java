@@ -102,7 +102,7 @@ public class KeyboardManager {
 		});
 	}
 
-	private void handleEscape() {
+	public void handleEscape() {
 		if(!m_PauseMenuPane.isVisible()) {
 			m_PauseMenuPane.setVisible(true);
 			m_Main.getGamelogic().Pause();
@@ -110,17 +110,28 @@ public class KeyboardManager {
 			m_PauseMenuPane.setVisible(false);
 			m_Main.getGamelogic().UnPause();
 		}
+	}
 
+	public void unlockNextLevelButton(){
+		(m_CurrentScene.lookup("#nextlevelButton")).setDisable(false);
+	}
+
+	public void lockNextLevelButton(){
+		(m_CurrentScene.lookup("#nextlevelButton")).setDisable(true);
 	}
 
 	public void setPauseListener() {
 		Button mainMenuButton = (Button) m_CurrentScene.lookup("#mainMenuButton");
 		Button settingsButton = (Button) m_CurrentScene.lookup("#settingsButton");
 		Button resumeButton = (Button) m_CurrentScene.lookup("#resumeButton");
+		Button nextlevelButton = (Button) m_CurrentScene.lookup("#nextlevelButton");
+		Button tryagainButton = (Button) m_CurrentScene.lookup("#tryagainButton");
+		tryagainButton.setOnAction(event -> {m_Main.getGamelogic().newRound();handleEscape();});
+		nextlevelButton.setOnAction(event -> {m_Main.getGamelogic().nextLevel();handleEscape();});
 		mainMenuButton.setOnAction(event -> m_Main.getGamelogic().GotoMainMenu());
 		settingsButton.setOnAction(event -> m_Main.setScene("SettingsPause"));
 		resumeButton.setOnAction(event -> {
-			m_Main.getSoundmanager().playSound(Soundmanager.CLICK_SOUND);
+//			m_Main.getSoundmanager().playSound(Soundmanager.CLICK_SOUND);
 			m_PauseMenuPane.setVisible(false);
 			m_Main.getGamelogic().UnPause();
 		});

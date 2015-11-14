@@ -29,6 +29,7 @@ public class Playingfield {
 
 	public void restore(){
 		m_Ball = (javafx.scene.shape.Circle) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#circle");
+
 		m_Ball_Image = (javafx.scene.image.ImageView) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#paperball");
 		m_Lineal = (javafx.scene.shape.Line) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#lineal");
 		m_Radierer = (javafx.scene.shape.Line) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#radierer");

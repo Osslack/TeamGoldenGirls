@@ -62,15 +62,25 @@ Main extends Application {
 
 	public KeyboardManager getKeyboardmanager() {return m_Keyboardmanager;}
 
-	public static void setScene(String name) {
+	public static boolean setScene(String name) {
 		Scene scene = getScene(name);
+		if(scene==null){return false;}
 		m_PrimaryStage.setScene(scene);
+		return true;
 //		if (name.equals("MainGame") && !scene.lookup("#pauseMenuPane").isVisible()) {
 //			m_Physics.start();
 //		}
 //		else {
 //			m_Physics.stop();
 //		}
+	}
+
+	public static void mapScene(String name, Scene scene){
+		m_ScenesMap.put(name,scene);
+	}
+
+	public static void killScene(String name){
+		m_ScenesMap.remove(name);
 	}
 
 	public static void setScene(Scene scene) {
@@ -117,6 +127,9 @@ Main extends Application {
 		for (String filename : files) {
 			try {
 				name = filename.split("\\.")[0];
+				if(name.startsWith("Level") && (!name.equals("Level1"))){
+					m_ScenesMap.put("BaseGame"+name.substring(name.lastIndexOf('l')+1), loadSceneFromFXML("BaseGame.fxml"));
+				}
 				m_ScenesMap.put(name, loadSceneFromFXML(filename));
 			}
 			catch (IOException e) {
@@ -125,9 +138,10 @@ Main extends Application {
 		}
 	}
 
-	private Scene loadSceneFromFXML(String name) throws IOException {
+	public Scene loadSceneFromFXML(String name) throws IOException {
 		return new Scene(FXMLLoader.load(getClass().getResource("view/" + name)));
 	}
+
 	public static String getOsName()
 	{
 		if(OS == null) { OS = System.getProperty("os.name"); }
