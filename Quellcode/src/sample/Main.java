@@ -127,7 +127,9 @@ Main extends Application {
 		for (String filename : files) {
 			try {
 				name = filename.split("\\.")[0];
-				if(name.startsWith("Level") && (!name.equals("Level1"))){
+				System.out.println(filename + "     " + name);
+				if(name.startsWith("Level") /*&& (!name.equals("Level1"))*/){
+					System.out.println("BaseGame"+name.substring(name.lastIndexOf('l')+1));
 					m_ScenesMap.put("BaseGame"+name.substring(name.lastIndexOf('l')+1), loadSceneFromFXML("BaseGame.fxml"));
 				}
 				m_ScenesMap.put(name, loadSceneFromFXML(filename));

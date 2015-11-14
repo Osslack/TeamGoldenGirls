@@ -5,8 +5,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<GridPane BorderPane.alignment="CENTER" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40"
-          xmlns:fx="http://javafx.com/fxml/1"
+<GridPane fx:id="grid" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER"
+          xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="sample.controller.SettingsController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -30,16 +30,16 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
                <children>
-                   <Label text="Launch"/>
-                   <Label text="Move Lineal Left" GridPane.rowIndex="1"/>
-                   <Label text="Move Lineal Right" GridPane.rowIndex="2"/>
-                   <Label text="Enlarge Rubber" GridPane.rowIndex="3"/>
-                   <Label text="Shrink Rubber" GridPane.rowIndex="4"/>
-                   <Label text="specControl" GridPane.columnIndex="1"/>
-                   <Label text="specControl" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                   <Label text="specControl" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                   <Label text="specControl" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                   <Label text="specControl" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                   <Label text="Launch:"/>
+                   <Label text="Move Lineal Left:" GridPane.rowIndex="1"/>
+                   <Label text="Move Lineal Right:" GridPane.rowIndex="2"/>
+                   <Label text="Enlarge Rubber:" GridPane.rowIndex="3"/>
+                   <Label text="Shrink Rubber:" GridPane.rowIndex="4"/>
+                   <Label fx:id="launchField" text="specControl" GridPane.columnIndex="1"/>
+                   <Label fx:id="leftField" text="specControl" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                   <Label fx:id="rightField" text="specControl" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                   <Label fx:id="upField" text="specControl" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                   <Label fx:id="downField" text="specControl" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
                </children>
         </GridPane>
         <GridPane maxHeight="50.0" prefHeight="50.0" prefWidth="346.0" GridPane.columnIndex="1"
@@ -55,7 +55,8 @@
                    <Label text="Sound:"/>
                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                         <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="80.0" text="Off">
+                         <RadioButton fx:id="radioOff" mnemonicParsing="false" prefHeight="18.0" prefWidth="80.0"
+                                      text="Off">
                              <toggleGroup>
                                  <ToggleGroup fx:id="radioGroup"/>
                              </toggleGroup>

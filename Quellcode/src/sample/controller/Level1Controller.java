@@ -20,6 +20,7 @@ public class Level1Controller implements Initializable {
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        gamePane2.getChildren().addAll(Main.getScene("BaseGame").getRoot().getChildrenUnmodifiable());
+        System.out.println(fxmlFileLocation.toString());
+        gamePane2.getChildren().addAll(Main.getScene("BaseGame1").getRoot().getChildrenUnmodifiable());
     }
 }
