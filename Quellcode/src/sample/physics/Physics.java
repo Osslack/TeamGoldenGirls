@@ -3,6 +3,7 @@ package sample.physics;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Point3D;
 import javafx.scene.Node;
+import javafx.scene.shape.Rectangle;
 import sample.Main;
 import sample.model.Vector2D;
 
@@ -113,7 +114,18 @@ public class Physics extends AnimationTimer {
 
 	private void checkShapeCollisions() {
 		boolean collisionhappened = false;
-		for (Node child : m_Main.getPrimaryStage().getScene().getRoot().getChildrenUnmodifiable()) {
+		String id = "";
+//		for (Node child : m_Main.getPrimaryStage().getScene().getRoot().getChildrenUnmodifiable()) {
+		for (Node child : m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).getRoot().getChildrenUnmodifiable()) {
+			id = child.getId();
+			if(id!=null){
+				if (id.equals("death")){
+					if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), (Rectangle)child)){m_Main.getGamelogic().onDeathHit();}
+				}
+				else if (id.equals("goal")){
+					if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), (Rectangle)child)){m_Main.getGamelogic().onGoalHit();}
+				}
+			}
 			if (child instanceof javafx.scene.shape.Line) {
 				javafx.scene.shape.Line line = (javafx.scene.shape.Line) child;
 				if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), line)) {

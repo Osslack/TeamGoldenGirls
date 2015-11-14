@@ -80,6 +80,14 @@ public class Gamelogic{
         Pause();
     }
 
+    public void onGoalHit(){ //Enter
+        newRound();
+    }
+
+    public void onDeathHit(){ //Enter
+        newRound();
+    }
+
     public void startRound(){ //Enter
         UnPause();
         m_Main.getAnimationmanager().startResettingLineal();

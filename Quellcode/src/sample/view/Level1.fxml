@@ -29,9 +29,8 @@
       </ImageView>
       <Line endX="50.0" layoutX="566.0" layoutY="526.0" rotate="90.0" startX="-40.0" visible="false" />
       <Line endX="30.0" layoutX="602.0" layoutY="574.0" startX="-30.0" visible="false" />
-      <Line endX="50.0" layoutX="632.0" layoutY="523.0" rotate="90.0" startX="-50.0" visible="false" />
+      <Line endX="50.0" layoutX="632.0" layoutY="523.0" rotate="104.0" startX="-50.0" visible="false" />
       <Rectangle fx:id="goal" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="579.0" layoutY="549.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="35.0" />
       <Rectangle fx:id="death" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="7.0" layoutX="4.0" layoutY="587.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="793.0" />
-      <Line endX="30.0" layoutX="620.0" layoutY="454.0" rotate="37.4" startX="-30.0" visible="false" />
    </children>
 </Pane>
