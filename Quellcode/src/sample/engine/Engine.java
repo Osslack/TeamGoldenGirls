@@ -14,10 +14,10 @@ public class Engine {
 		System.out.println("starting up");
 		m_processmanager = new Processmanager(this);
 		m_timer = new Timer(this);
-		m_keyboardmanager = new KeyboardManager(this);
+//		m_keyboardmanager = new KeyboardManager(this);
 		ControlSet cs1 = new ControlSet();
 		cs1.setControl(KeyEvent.VK_ESCAPE, -1, KeyboardActions.ESCAPE);
-		m_keyboardmanager.addControlSet(cs1);
+//		m_keyboardmanager.addControlSet(cs1);
 	}
 	
 	public Processmanager getProcessmanager(){

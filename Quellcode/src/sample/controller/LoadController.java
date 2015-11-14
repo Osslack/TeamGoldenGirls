@@ -51,8 +51,8 @@ public class LoadController implements Initializable {
 			Savegame selected = table.getSelectionModel().getSelectedItem();
 			if (selected != null) {
 				Main.user = new UserData(selected.getUsername(), selected.getForm());
-				Main.setDifficulty(Difficulty.toDifficulty(selected.getDifficulty()));
-				Main.setScene("MainGame");
+				Main.getGamelogic().setDifficulty(Difficulty.toDifficulty(selected.getDifficulty()));
+				Main.getGamelogic().setLevel("MainGame",Main.getGamelogic().getDifficulty());
 			}
 		});
 

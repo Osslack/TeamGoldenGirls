@@ -33,20 +33,16 @@ public class DiffController implements Initializable {
         cancelButton.setOnAction(event -> Main.setScene("UserScreen"));
 
         easyButton.setOnAction(event -> {
-            Main.setDifficulty(Difficulty.EASY);
-            Main.setScene("MainGame");
+            Main.getGamelogic().setLevel("MainGame",Difficulty.EASY);
         });
         medButton.setOnAction(event -> {
-            Main.setDifficulty(Difficulty.MEDIUM);
-            Main.setScene("MainGame");
+            Main.getGamelogic().setLevel("MainGame",Difficulty.MEDIUM);
         });
         hardButton.setOnAction(event -> {
-            Main.setDifficulty(Difficulty.HARD);
-            Main.setScene("MainGame");
+            Main.getGamelogic().setLevel("MainGame",Difficulty.HARD);
         });
         exButton.setOnAction(event -> {
-            Main.setDifficulty(Difficulty.EXTREME);
-            Main.setScene("MainGame");
+            Main.getGamelogic().setLevel("MainGame",Difficulty.EXTREME);
         });
     }
 

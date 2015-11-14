@@ -7,11 +7,20 @@ import javafx.scene.input.KeyCode;
  */
 public class Keyboard {
 
-	private static KeyCode launchKey = KeyCode.SPACE,
-			moveLeftKey              = KeyCode.A,
-			moveRightKey             = KeyCode.D,
-			moveUpKey                = KeyCode.W,
-			moveDownKey              = KeyCode.S;
+	private static KeyCode launchKey 				= KeyCode.SPACE;
+	private static KeyCode moveLeftKey              = KeyCode.A;
+	private static KeyCode moveRightKey             = KeyCode.D;
+	private static KeyCode moveUpKey                = KeyCode.W;
+	private static KeyCode moveDownKey              = KeyCode.S;
+	private static KeyCode startRoundKey            = KeyCode.ENTER;
+	private static KeyCode pausemenuKey             = KeyCode.ESCAPE;
+	private static KeyCode newRoundKey              = KeyCode.R;
+
+	public static KeyCode getNewRoundKey() {return newRoundKey;}
+
+	public static KeyCode getStartRoundKey() {return startRoundKey;}
+
+	public static KeyCode getPausemenuKey() {return pausemenuKey;}
 
 	public static KeyCode getLaunchKey() {
 		return launchKey;
