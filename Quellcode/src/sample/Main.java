@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
@@ -148,5 +150,17 @@ Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public Scene fusionSceneToCurrentScene(String scenename) {
+		Group allelems = new Group();
+		Scene scenetofusion = getScene(scenename);
+		for (Node child : scenetofusion.getRoot().getChildrenUnmodifiable()) {
+//			if (!(child instanceof javafx.scene.layout.Pane)) {
+
+
+//			}
+		}
+		return new Scene(allelems);
 	}
 }

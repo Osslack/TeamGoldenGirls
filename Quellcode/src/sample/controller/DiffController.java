@@ -36,13 +36,13 @@ public class DiffController implements Initializable {
             Main.getGamelogic().setLevel("MainGame",Difficulty.EASY);
         });
         medButton.setOnAction(event -> {
-            Main.getGamelogic().setLevel("MainGame",Difficulty.MEDIUM);
+            Main.getGamelogic().setLevel("Level1",Difficulty.MEDIUM);
         });
         hardButton.setOnAction(event -> {
-            Main.getGamelogic().setLevel("MainGame",Difficulty.HARD);
+            Main.getGamelogic().setLevel("Level1",Difficulty.HARD);
         });
         exButton.setOnAction(event -> {
-            Main.getGamelogic().setLevel("MainGame",Difficulty.EXTREME);
+            Main.getGamelogic().setLevel("Level1",Difficulty.EXTREME);
         });
     }
 

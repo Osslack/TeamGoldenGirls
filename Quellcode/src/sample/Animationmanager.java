@@ -2,6 +2,9 @@ package sample;
 
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Point3D;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
+//import javafx.scene.transform.
 
 /**
  * Created by JJ on 14.11.2015.
@@ -87,23 +90,25 @@ public class Animationmanager extends AnimationTimer {
     }
 
     private void handleRadierer(){
-//        if(isRadierermoving && !islineallaunched && !isLinealresetting){
-//            m_Main.getPlayingfield().getRadierer().setStartX(m_Main.getPlayingfield().getRadierer().getStartX()+m_Main.getGamelogic().getRadiererVelocity());
-//            m_Main.getPlayingfield().getRadierer().setEndX(m_Main.getPlayingfield().getRadierer().getEndX()+m_Main.getGamelogic().getRadiererVelocity());
-//            m_Main.getPlayingfield().getLineal().setRotationAxis(m_Main.getPlayingfield().getLineal().getRotationAxis().add(0,0,0));
-//        }
-//        if(isSizingRadierer && !islineallaunched && !isLinealresetting){
+        if(isRadierermoving && !islineallaunched && !isLinealresetting){
+            m_Main.getPlayingfield().getRadierer().setStartX(m_Main.getPlayingfield().getRadierer().getStartX()+m_Main.getGamelogic().getRadiererVelocity());
+            m_Main.getPlayingfield().getRadierer().setEndX(m_Main.getPlayingfield().getRadierer().getEndX()+m_Main.getGamelogic().getRadiererVelocity());
+            m_Main.getPlayingfield().getLineal().getTransforms().add(new Translate(-m_Main.getGamelogic().getRadiererVelocity(),0));
+            m_Main.getPlayingfield().getLineal().setLayoutX(m_Main.getPlayingfield().getLineal().getLayoutX()+m_Main.getGamelogic().getRadiererVelocity());
+            //m_Main.getPlayingfield().getLineal().getTransforms().add(new Rotate(angle, pivotX, pivotY, pivotZ, Rotate.Z_AXIS));
+        }
+        if(isSizingRadierer && !islineallaunched && !isLinealresetting){
 //            m_Main.getPlayingfield().getRadierer().setStartY(m_Main.getPlayingfield().getRadierer().getStartY()+m_Main.getGamelogic().getRadierersizingspeed());
-//            m_Main.getPlayingfield().getLineal().setRotationAxis(m_Main.getPlayingfield().getLineal().getRotationAxis().add(0,0,m_Main.getGamelogic().getRadierersizingspeed()));
-//            m_Main.getPlayingfield().getLineal().setStartY(m_Main.getPlayingfield().getLineal().getStartY()+m_Main.getGamelogic().getRadierersizingspeed());
-//            m_Main.getPlayingfield().getLineal().setEndY(m_Main.getPlayingfield().getLineal().getEndY()+m_Main.getGamelogic().getRadierersizingspeed());
-//        }
+            m_Main.getPlayingfield().getLineal().setStartY(m_Main.getPlayingfield().getLineal().getStartY()+m_Main.getGamelogic().getRadierersizingspeed());
+            m_Main.getPlayingfield().getLineal().setEndY(m_Main.getPlayingfield().getLineal().getEndY()+m_Main.getGamelogic().getRadierersizingspeed());
+
+        }
     }
 
     private void handlePower(){
         if(isIncreasingPower){
 //          m_Main.getPlayingfield().getPowerBar().... //powerbar ausdehnen
-            m_Main.getGamelogic().setLinealpower(m_Main.getGamelogic().getLinealpower()+1);
+            m_Main.getGamelogic().setLinealpower(m_Main.getGamelogic().getLinealpower()+0.3);
         }
     }
 

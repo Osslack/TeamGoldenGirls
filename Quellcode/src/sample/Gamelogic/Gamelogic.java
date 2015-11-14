@@ -66,13 +66,14 @@ public class Gamelogic{
         m_difficulty = d;
         m_currentSceneName = scenename;
         m_Main.setScene(scenename);
+//        m_Main.fusionSceneToCurrentScene("Level1");
         m_Main.getKeyboardmanager().applyControlsToCurrentScene();
         m_Main.getAnimationmanager().start();
         newRound();
     }
 
     public void newRound(){
-        m_Main.getPhysics().setBallPosition(90,200);
+        m_Main.getPhysics().setBallPosition(100,200);
         m_Main.getPhysics().setBallVelocity(0,10);
         m_Main.getAnimationmanager().reset();
         m_linealpower = 0;

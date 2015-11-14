@@ -2,6 +2,7 @@
 
 <!-- Author: Nils Wende -->
 
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
@@ -11,11 +12,6 @@
 <Pane fx:id="gamePane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.GameController">
    <children>
       <Circle fx:id="circle" fill="DODGERBLUE" layoutX="109.0" layoutY="211.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="504.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/lehrer.jpg" />
-         </image>
-      </ImageView>
       <Line endX="20.0" layoutX="563.0" layoutY="449.0" rotate="-21.8" startX="-16.0" visible="false" />
       <Line endX="70.0" layoutX="532.0" layoutY="501.0" rotate="80.5" startX="-16.0" visible="false" />
       <Line endX="100.0" layoutX="556.0" layoutY="490.0" rotate="-81.3" startX="-10.0" visible="false" />
@@ -29,14 +25,26 @@
          </image>
       </ImageView>
       <Line fx:id="lineal" endX="80.0" layoutX="151.0" layoutY="561.0" startX="-80.0" />
-
-       <!-- Pause Menu -->
-       <Pane fx:id="pauseMenuPane" layoutX="250.0" layoutY="208.0" visible="false">
-           <children>
-               <fx:include fx:id="pauseMenu" source="PauseMenu.fxml" />
-           </children>
-       </Pane>
       <Line fx:id="ground" endX="100.0" layoutX="154.0" layoutY="598.0" startX="-100.0" />
       <Line fx:id="radierer" endX="15.0" layoutX="154.0" layoutY="580.0" rotate="90.0" startX="-20.0" />
+      <Rectangle fx:id="sidebar" arcHeight="5.0" arcWidth="5.0" fill="#416c6f" height="600.0" layoutX="678.0" layoutY="-1.0" opacity="0.08" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+      <Circle fill="#649acd" layoutX="739.0" layoutY="71.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="windmesser" fill="#2c5780" layoutX="737.0" layoutY="82.0" rotate="-99.5" scaleX="0.2" stroke="BLACK" strokeType="INSIDE">
+        <points>
+          <Double fx:value="-50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="0.0" />
+          <Double fx:value="-60.0" />
+        </points>
+      </Polygon>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#408eb9" height="216.0" layoutX="705.0" layoutY="364.0" stroke="BLACK" strokeType="INSIDE" width="67.0" />
+      <Rectangle fx:id="powerbar" arcHeight="5.0" arcWidth="5.0" fill="#385361" height="1.0" layoutX="715.0" layoutY="568.0" stroke="BLACK" strokeType="INSIDE" width="47.0" />
+      <Pane fx:id="pauseMenuPane" layoutX="260.0" layoutY="218.0" visible="false">
+         <children>
+            <fx:include fx:id="pauseMenu" source="PauseMenu.fxml" />
+         </children>
+      </Pane>
    </children>
 </Pane>
