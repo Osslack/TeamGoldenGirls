@@ -1,15 +1,11 @@
-package sample.controller;
-
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import sample.Difficulty;
-import sample.Main;
+package sample.controller.menu.game;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.Pane;
+import sample.Main;
 
 /**
  * Created by JJ on 14.11.2015.

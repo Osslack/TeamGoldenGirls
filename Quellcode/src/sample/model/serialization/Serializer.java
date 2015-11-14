@@ -1,6 +1,8 @@
-package sample.model;
+package sample.model.serialization;
 
 import java.io.*;
+import sample.model.Keyboard;
+import sample.model.Savegames;
 
 /**
  * @author Nils
