@@ -19,6 +19,7 @@ public class Gamelogic{
     private double m_linealpower = 0;
     private double m_radierervelocity = 2;
     private double m_radierersizingspeed = 1;
+    private int m_level;
 
     public Gamelogic(Main main){
         m_Main = main;
@@ -58,18 +59,30 @@ public class Gamelogic{
         m_Main.getAnimationmanager().stopSizingRadierer();
     }
 
+    public int getLevel(){
+        return m_level;
+    }
+
     public void setLevel(String scenename, Difficulty d){
-        m_difficulty = d;
-        m_currentSceneName = scenename;
-        m_Main.setScene(scenename);
-        m_Main.getPlayingfield().restore();
-        m_Main.getPlayingfield().getBall().setLayoutX(0);
-        m_Main.getPlayingfield().getBall().setLayoutY(0);
-        m_Main.getPlayingfield().getBall_Image().setLayoutX(m_Main.getPlayingfield().getBall().getLayoutX());
-        m_Main.getPlayingfield().getBall_Image().setLayoutY(m_Main.getPlayingfield().getBall().getLayoutY());
-        m_Main.getKeyboardmanager().applyControlsToCurrentScene();
-        m_Main.getAnimationmanager().start();
-        newRound();
+        if(m_Main.setScene(scenename)){
+            m_difficulty = d;
+            m_currentSceneName = scenename;
+            m_level = Integer.parseInt(m_currentSceneName.substring(m_currentSceneName.lastIndexOf('l')+1));
+            m_Main.getPlayingfield().restore();
+            m_Main.getPlayingfield().getBall().setLayoutX(0);
+            m_Main.getPlayingfield().getBall().setLayoutY(0);
+            m_Main.getPlayingfield().getBall_Image().setLayoutX(m_Main.getPlayingfield().getBall().getLayoutX());
+            m_Main.getPlayingfield().getBall_Image().setLayoutY(m_Main.getPlayingfield().getBall().getLayoutY());
+            m_Main.getKeyboardmanager().applyControlsToCurrentScene();
+            m_Main.getAnimationmanager().start();
+            newRound();
+        }
+    }
+
+    public void nextLevel() {
+        String nextLevel = "Level"+(m_level+1);
+        setLevel(nextLevel, m_difficulty);
+        m_Main.getKeyboardmanager().handleEscape();
     }
 
     public void newRound(){
@@ -77,15 +90,18 @@ public class Gamelogic{
         m_Main.getPhysics().setBallVelocity(0,10);
         m_Main.getAnimationmanager().reset();
         m_linealpower = 0;
+        m_Main.getKeyboardmanager().lockNextLevelButton();
         Pause();
     }
 
     public void onGoalHit(){ //Enter
-        newRound();
+        m_Main.getKeyboardmanager().handleEscape();
+        m_Main.getKeyboardmanager().unlockNextLevelButton();
     }
 
     public void onDeathHit(){ //Enter
-        newRound();
+        m_Main.getKeyboardmanager().handleEscape();
+        Pause();
     }
 
     public void startRound(){ //Enter
