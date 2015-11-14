@@ -84,9 +84,11 @@ public class Animationmanager extends AnimationTimer {
             deltarot = -1;
         }
         m_Main.getPlayingfield().getLineal().setRotate(m_Main.getPlayingfield().getLineal().getRotate()+deltarot);
+        m_Main.getPlayingfield().getLineal_Image().setRotate(m_Main.getPlayingfield().getLineal_Image().getRotate()+deltarot);
         if(m_Main.getPhysics().isLinealHittingGround()){
             m_Main.getGamelogic().onLinealHitsGround();
             m_Main.getPlayingfield().getLineal().setRotate(m_Main.getPlayingfield().getLineal().getRotate()-deltarot);
+            m_Main.getPlayingfield().getLineal_Image().setRotate(m_Main.getPlayingfield().getLineal_Image().getRotate()-deltarot);
         }
     }
 
@@ -96,13 +98,16 @@ public class Animationmanager extends AnimationTimer {
             m_Main.getPlayingfield().getRadierer().setEndX(m_Main.getPlayingfield().getRadierer().getEndX()+m_Main.getGamelogic().getRadiererVelocity());
             m_Main.getPlayingfield().getLineal().getTransforms().add(new Translate(-m_Main.getGamelogic().getRadiererVelocity(),0));
             m_Main.getPlayingfield().getLineal().setLayoutX(m_Main.getPlayingfield().getLineal().getLayoutX()+m_Main.getGamelogic().getRadiererVelocity());
+            m_Main.getPlayingfield().getLineal_Image().getTransforms().add(new Translate(-m_Main.getGamelogic().getRadiererVelocity(),0));
+            m_Main.getPlayingfield().getLineal_Image().setLayoutX(m_Main.getPlayingfield().getLineal_Image().getLayoutX()+m_Main.getGamelogic().getRadiererVelocity());
             //m_Main.getPlayingfield().getLineal().getTransforms().add(new Rotate(angle, pivotX, pivotY, pivotZ, Rotate.Z_AXIS));
         }
         if(isSizingRadierer && !islineallaunched && !isLinealresetting){
 //            m_Main.getPlayingfield().getRadierer().setStartY(m_Main.getPlayingfield().getRadierer().getStartY()+m_Main.getGamelogic().getRadierersizingspeed());
             m_Main.getPlayingfield().getLineal().setStartY(m_Main.getPlayingfield().getLineal().getStartY()+m_Main.getGamelogic().getRadierersizingspeed());
             m_Main.getPlayingfield().getLineal().setEndY(m_Main.getPlayingfield().getLineal().getEndY()+m_Main.getGamelogic().getRadierersizingspeed());
-
+            m_Main.getPlayingfield().getLineal_Image().setY(m_Main.getPlayingfield().getLineal_Image().getY()+m_Main.getGamelogic().getRadierersizingspeed());
+            m_Main.getPlayingfield().getLineal_Image().setY(m_Main.getPlayingfield().getLineal_Image().getY()+m_Main.getGamelogic().getRadierersizingspeed());
         }
     }
 
@@ -135,6 +140,7 @@ public class Animationmanager extends AnimationTimer {
         stopIncreasingPower();
         stopSizingRadierer();
         m_Main.getPlayingfield().getLineal().setRotate(0);
+        m_Main.getPlayingfield().getLineal_Image().setRotate(0);
         resetPowerbar();
     }
 
