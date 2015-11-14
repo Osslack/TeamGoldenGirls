@@ -6,14 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import sample.Difficulty;
 import sample.Main;
 import sample.model.Savegame;
 import sample.model.UserData;
 
 /**
  * @author Nils
- * JENDRIK
+ *         JENDRIK
  */
 public class LoadController implements Initializable {
 
@@ -38,27 +37,26 @@ public class LoadController implements Initializable {
 	@FXML
 	private TableColumn<Savegame, String> dateCol;
 
-    @FXML
-    private Button loadButton;
+	@FXML
+	private Button loadButton;
 
-    @FXML
-    private Button cancelButton;
+	@FXML
+	private Button cancelButton;
 
-    @Override
-    public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+	@Override
+	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 		setTableViewContent();
 
 		loadButton.setOnAction(event -> {
 			Savegame selected = table.getSelectionModel().getSelectedItem();
 			if (selected != null) {
 				Main.user = new UserData(selected.getUsername(), selected.getForm());
-				Main.getGamelogic().setDifficulty(Difficulty.toDifficulty(selected.getDifficulty()));
-				Main.getGamelogic().setLevel("MainGame",Main.getGamelogic().getDifficulty());
+				Main.getGamelogic().setLevel("Level" + selected.getLevel(), Main.getGamelogic().getDifficulty());
 			}
 		});
 
-        cancelButton.setOnAction(event -> Main.setScene("MainMenu"));
-    }
+		cancelButton.setOnAction(event -> Main.setScene("MainMenu"));
+	}
 
 	private void setTableViewContent() {
 		levelCol.setCellValueFactory(data -> data.getValue().levelProperty().asObject());
