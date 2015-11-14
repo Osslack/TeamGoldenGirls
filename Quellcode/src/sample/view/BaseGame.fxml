@@ -2,15 +2,13 @@
 
 <!-- Author: Nils Wende -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.*?>
-
-<Pane fx:id="gamePane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.GameController">
+<Pane fx:id="gamePane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.GameController">
    <children>
       <Circle fx:id="circle" fill="DODGERBLUE" layoutX="109.0" layoutY="211.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <ImageView fx:id="paperball" fitHeight="20.0" fitWidth="20.0" layoutX="185.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true">
@@ -35,7 +33,7 @@
       </Polygon>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#408eb9" height="216.0" layoutX="705.0" layoutY="364.0" stroke="BLACK" strokeType="INSIDE" width="67.0" />
       <Rectangle fx:id="powerbar" arcHeight="5.0" arcWidth="5.0" fill="#385361" height="1.0" layoutX="715.0" layoutY="568.0" stroke="BLACK" strokeType="INSIDE" width="47.0" />
-      <Pane fx:id="pauseMenuPane" layoutX="260.0" layoutY="218.0" visible="false">
+      <Pane fx:id="pauseMenuPane" layoutX="250.0" layoutY="150.0" visible="false">
          <children>
             <fx:include fx:id="pauseMenu" source="PauseMenu.fxml" />
          </children>
