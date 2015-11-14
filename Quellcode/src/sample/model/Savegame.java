@@ -63,26 +63,26 @@ public class Savegame {
 
 
 	public int getLevel() {
-		return level.intValue();
+		return level.get();
 	}
 
 	public int getScore() {
-		return score.intValue();
+		return score.get();
 	}
 
 	public String getUsername() {
-		return username.getValue();
+		return username.get();
 	}
 
 	public String getForm() {
-		return form.getValue();
+		return form.get();
 	}
 
 	public String getDate() {
-		return date.getValue();
+		return date.get();
 	}
 
 	public String getDifficulty() {
-		return difficulty.getValue();
+		return difficulty.get();
 	}
 }

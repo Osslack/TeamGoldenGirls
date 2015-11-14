@@ -61,7 +61,7 @@ public class Serializer {
 	public static void save(Savegames saves) {
 		createFilesIfNecessary();
 		saveSettings();
-		SerializableSavegames output = new SerializableSavegames(saves.savegames);
+		SerializableSavegames output = new SerializableSavegames(saves.getSavegames());
 		try (FileOutputStream fos = new FileOutputStream(file);
 			 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 			oos.writeObject(output);

@@ -10,7 +10,7 @@ import sample.Difficulty;
  */
 public class Savegames {
 
-	public  ObservableList<Savegame> savegames;
+	private ObservableList<Savegame> savegames;
 	private Savegame                 tempSave;
 
 	public Savegames() {

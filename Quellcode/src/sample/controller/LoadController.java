@@ -2,10 +2,12 @@ package sample.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import sample.Difficulty;
 import sample.Main;
 import sample.model.Savegame;
 import sample.model.UserData;
@@ -16,6 +18,7 @@ import sample.model.UserData;
  */
 public class LoadController implements Initializable {
 
+	public  Button              addBtn;
 	@FXML
 	private TableView<Savegame> table;
 
@@ -43,9 +46,14 @@ public class LoadController implements Initializable {
 	@FXML
 	private Button cancelButton;
 
+	//TODO delete addBtn
+	int i = 0;
+
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 		setTableViewContent();
+
+		addBtn.setOnAction(event -> Main.getSavegames().getSavegames().add(new Savegame(1, i++, "gg", "tinf", Difficulty.EASY.toString())));
 
 		loadButton.setOnAction(event -> {
 			Savegame selected = table.getSelectionModel().getSelectedItem();
@@ -67,6 +75,7 @@ public class LoadController implements Initializable {
 		dateCol.setCellValueFactory(data -> data.getValue().dateProperty());
 
 		ObservableList<Savegame> saves = Main.getSavegames().getSavegames();
-		table.getItems().setAll(saves);
+		saves.addListener((ListChangeListener<Savegame>) c -> table.getItems().setAll(saves));
+		table.getItems().addAll(saves);
 	}
 }
