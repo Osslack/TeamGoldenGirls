@@ -100,8 +100,8 @@ public class Gamelogic {
 	}
 
 	public void onDeathHit() { //Enter
-		m_Main.getKeyboardmanager().disableResume();
-		m_Main.getKeyboardmanager().openPauseMenu();
+//		m_Main.getKeyboardmanager().disableResume();
+//		m_Main.getKeyboardmanager().openPauseMenu();
 	}
 
 	public void startRound() { //Enter
