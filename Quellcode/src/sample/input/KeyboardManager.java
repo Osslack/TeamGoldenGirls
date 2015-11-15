@@ -2,8 +2,7 @@ package sample.input;
 
 import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import sample.Gamelogic.Countdown;
 import sample.Main;
@@ -206,7 +205,24 @@ public class KeyboardManager {
 		highscoreButton.setOnAction(event -> {
 			m_PauseMenuPane.setVisible(false);
 			Main.getSavegames().finalizeSavegame();
-			m_Main.setScene("HighscoreScreen");
+			Scene high = Main.getScene("HighscoreScreen");
+			TabPane tabPane = (TabPane) high.lookup("#tabPane");
+			switch (Main.getGamelogic().getDifficulty()) {
+				case EASY:
+					//Tab tab = (Tab) high.lookup("#easyTab");
+					tabPane.getSelectionModel().select(0);
+					break;
+				case MEDIUM:
+					tabPane.getSelectionModel().select(1);
+					break;
+				case HARD:
+					tabPane.getSelectionModel().select(2);
+					break;
+				case EXTREME:
+					tabPane.getSelectionModel().select(3);
+					break;
+			}
+			Main.setScene(high);
 		});
 		nextButton.setOnAction(event -> {
 			m_PauseMenuPane.setVisible(false);
