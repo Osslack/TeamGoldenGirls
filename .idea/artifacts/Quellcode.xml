@@ -1,0 +1,31 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="Quellcode">
+    <output-path>$PROJECT_DIR$/out/artifacts/Quellcode</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="sample.Main" />
+        <option name="description" value="" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="Quellcode.jar">
+        <element id="module-output" name="Quellcode" />
+        <element id="directory" name="Quellcode">
+          <element id="directory" name="src">
+            <element id="directory" name="sample">
+              <element id="directory" name="sounds">
+                <element id="directory" name="sound">
+                  <element id="dir-copy" path="$PROJECT_DIR$/Quellcode/src/sample/sound/sounds" />
+                </element>
+              </element>
+            </element>
+          </element>
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
