@@ -168,7 +168,7 @@ public class Physics extends AnimationTimer {
 								m_Velocity.add2(normal);
 							}
 						}
-//						m_Main.getSoundmanager().playRandSound(1, 10);
+						m_Main.getSoundmanager().playRandSound(1, 10);
 						resetBall();
 					}
 					m_hitlastframe = line.getId();

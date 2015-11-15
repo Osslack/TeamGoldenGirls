@@ -2,6 +2,9 @@ package sample.sound;
 
 
 import java.io.File;
+import java.sql.Timestamp;
+import java.util.Date;
+
 import javafx.scene.media.AudioClip;
 import sample.Main;
 
@@ -17,6 +20,7 @@ public class Soundmanager {
     private       String generalNameSuf   = ".mp3";
     private       int    number_of_sounds = 11;
     private AudioClip[] sounds;
+    private Date lastSoundPlayed = null;
     public Soundmanager(){
         if(appendPath == null){
             if(Main.isWindows()){
@@ -31,14 +35,30 @@ public class Soundmanager {
         }
     }
     public void playSound(int number){
-        if(number <= number_of_sounds){
+        if(lastSoundPlayed == null){
+            lastSoundPlayed = new Timestamp(System.currentTimeMillis());
+        }
+        if(number <= number_of_sounds && okayToPlay()){
+
             sounds[number - 1].play();
+
         }
     }
     public void playRandSound(int min,int max){
-        if(max <= number_of_sounds){
+        if(max <= number_of_sounds && okayToPlay()){
             sounds[(int)(Math.random()*max)+min-1].play();
         }
+    }
+    public boolean okayToPlay(){
+        if(lastSoundPlayed == null){
+            lastSoundPlayed = new Date(System.currentTimeMillis());
+            return  true;
+        }
+        Date now = new Date(System.currentTimeMillis());
+        long difference = now.getTime() - lastSoundPlayed.getTime();
+        lastSoundPlayed = now;
+        return difference >= 500;
+
     }
 
 
