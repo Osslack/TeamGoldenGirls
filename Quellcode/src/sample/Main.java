@@ -49,6 +49,99 @@ Main extends Application {
 		m_Keyboardmanager = new KeyboardManager(this);
 	}
 
+	private void loadScenes() {
+		String path = "";
+		try {
+			path = new File(".").getCanonicalPath();
+			System.out.println(path);
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		List<String> files = getFilesOsDependent(path);
+		fillScenesMap(files);
+	}
+
+	private List<String> getFilesOsDependent(final String path) {
+		if (isWindows()) {
+			PATH_SEPARATOR = "\\";
+			return getAllFilesOfFolder(new File(path + "\\Quellcode\\src\\sample\\view"));
+		}
+		else {
+			PATH_SEPARATOR = "/";
+			return getAllFilesOfFolder(new File(path + "/src/sample/view"));
+		}
+	}
+
+	public static boolean isWindows() {
+		return getOsName().startsWith("Windows");
+	}
+
+	public static String getOsName() {
+		if (OS == null) {
+			OS = System.getProperty("os.name");
+		}
+		return OS;
+	}
+
+	private List<String> getAllFilesOfFolder(final File folder) {
+		List<String> files = new LinkedList<>();
+		for (final File fileEntry : folder.listFiles()) {
+			if (!fileEntry.isDirectory()) {
+				files.add(fileEntry.getName());
+			}
+		}
+		return files;
+	}
+
+	private void fillScenesMap(List<String> files) {
+		String name;
+		for (String filename : files) {
+			try {
+				name = filename.split("\\.")[0];
+				if (name.startsWith("Level") && (!name.equals("Level1")) && isWindows()) {
+					m_ScenesMap.put("BaseGame" + name.substring(name.lastIndexOf('l') + 1), loadSceneFromFXML("BaseGame.fxml"));
+				}
+				else if (name.startsWith("Level") && !isWindows()) {
+					m_ScenesMap.put("BaseGame" + name.substring(name.lastIndexOf('l') + 1), loadSceneFromFXML("BaseGame.fxml"));
+				}
+				m_ScenesMap.put(name, loadSceneFromFXML(filename));
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public Scene loadSceneFromFXML(String name) throws IOException {
+		return new Scene(FXMLLoader.load(getClass().getResource("view/" + name)));
+	}
+
+	public static boolean setScene(String name) {
+		Scene scene = getScene(name);
+		if (scene == null) {
+			return false;
+		}
+		m_PrimaryStage.setScene(scene);
+		return true;
+	}
+
+	public static Scene getScene(String name) { //unsauber!!!
+		return m_ScenesMap.get(name);
+	}
+
+	public static void setScene(Scene scene) {
+		m_PrimaryStage.setScene(scene);
+	}
+
+	public static void mapScene(String name, Scene scene) {
+		m_ScenesMap.put(name, scene);
+	}
+
+	public static void killScene(String name) {
+		m_ScenesMap.remove(name);
+	}
+
 	public static Gamelogic getGamelogic() {
 		return m_Gamelogic;
 	}
@@ -73,95 +166,8 @@ Main extends Application {
 		return m_Keyboardmanager;
 	}
 
-	public static boolean setScene(String name) {
-		Scene scene = getScene(name);
-		if (scene == null) {
-			return false;
-		}
-		m_PrimaryStage.setScene(scene);
-		return true;
-	}
-
-	public static void mapScene(String name, Scene scene) {
-		m_ScenesMap.put(name, scene);
-	}
-
-	public static void killScene(String name) {
-		m_ScenesMap.remove(name);
-	}
-
-	public static void setScene(Scene scene) {
-		m_PrimaryStage.setScene(scene);
-	}
-
 	public static Physics getPhysics() {
 		return m_Physics;
-	}
-
-	public static Scene getScene(String name) { //unsauber!!!
-		return m_ScenesMap.get(name);
-	}
-
-	public List<String> getAllFilesOfFolder(final File folder) {
-		List<String> files = new LinkedList<>();
-		for (final File fileEntry : folder.listFiles()) {
-			if (!fileEntry.isDirectory()) {
-				files.add(fileEntry.getName());
-			}
-		}
-		return files;
-	}
-
-	private void loadScenes() {
-		String path = "";
-		try {
-			path = new File(".").getCanonicalPath();
-			System.out.println(path);
-		}
-		catch (Exception e) {
-
-		}
-		List<String> files;
-		if (isWindows()) {
-			PATH_SEPARATOR = "\\";
-			files = getAllFilesOfFolder(new File(path + "\\Quellcode\\src\\sample\\view"));
-		}
-		else {
-			PATH_SEPARATOR = "/";
-			files = getAllFilesOfFolder(new File(path + "/src/sample/view"));
-		}
-
-		String name;
-		for (String filename : files) {
-			try {
-				name = filename.split("\\.")[0];
-				if (name.startsWith("Level") && (!name.equals("Level1")) && isWindows()) {
-					m_ScenesMap.put("BaseGame" + name.substring(name.lastIndexOf('l') + 1), loadSceneFromFXML("BaseGame.fxml"));
-				}
-				else if (name.startsWith("Level") && !isWindows()) {
-					m_ScenesMap.put("BaseGame" + name.substring(name.lastIndexOf('l') + 1), loadSceneFromFXML("BaseGame.fxml"));
-				}
-				m_ScenesMap.put(name, loadSceneFromFXML(filename));
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public Scene loadSceneFromFXML(String name) throws IOException {
-		return new Scene(FXMLLoader.load(getClass().getResource("view/" + name)));
-	}
-
-	public static String getOsName() {
-		if (OS == null) {
-			OS = System.getProperty("os.name");
-		}
-		return OS;
-	}
-
-	public static boolean isWindows() {
-		return getOsName().startsWith("Windows");
 	}
 
 	public static Savegames getSavegames() {
