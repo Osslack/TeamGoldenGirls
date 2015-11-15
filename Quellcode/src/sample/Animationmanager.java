@@ -43,7 +43,7 @@ public class Animationmanager extends AnimationTimer {
         handleLineal();
         handleRadierer();
         handlePower();
-        handleWindmesser();
+//        handleWindmesser();
     }
 
     public void startMovingRadierer(){

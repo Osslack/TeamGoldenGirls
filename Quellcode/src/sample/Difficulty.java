@@ -42,4 +42,23 @@ public enum Difficulty {
 		}
 		return null;
 	}
+
+	public static int toInteger(Difficulty d) {
+		int r = 1;
+		switch(d){
+			case EASY:
+				r = 1;
+				break;
+			case MEDIUM:
+				r = 3;
+				break;
+			case HARD:
+				r = 8;
+				break;
+			case EXTREME:
+				r = 20;
+				break;
+		}
+		return r;
+	}
 }
