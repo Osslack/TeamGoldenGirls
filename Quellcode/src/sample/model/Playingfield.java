@@ -18,6 +18,7 @@ public class Playingfield {
 	private javafx.scene.shape.Polygon      m_Windmesser;
 	private javafx.scene.shape.Rectangle      m_Powerbar;
 	private javafx.scene.shape.Rectangle      m_Sidebar;
+	private javafx.scene.image.ImageView m_Radierer_Image;
 
 	private Main m_Main;
 
@@ -37,6 +38,7 @@ public class Playingfield {
 		m_Powerbar = (javafx.scene.shape.Rectangle) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#powerbar");
 		m_Sidebar = (javafx.scene.shape.Rectangle) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#sidebar");
 		m_Lineal_Image = (javafx.scene.image.ImageView) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#linealimage");
+		m_Radierer_Image = (javafx.scene.image.ImageView) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#radiererimage");
 	}
 
 
@@ -51,6 +53,10 @@ public class Playingfield {
 
 	public javafx.scene.shape.Circle getBall(){
 		return m_Ball;
+	}
+
+	public javafx.scene.image.ImageView getRadierer_Image(){
+		return m_Radierer_Image;
 	}
 
 	public javafx.scene.image.ImageView getLineal_Image(){

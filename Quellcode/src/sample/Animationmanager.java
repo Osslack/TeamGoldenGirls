@@ -94,6 +94,7 @@ public class Animationmanager extends AnimationTimer {
         if(isRadierermoving && !islineallaunched && !isLinealresetting){
             m_Main.getPlayingfield().getRadierer().setStartX(m_Main.getPlayingfield().getRadierer().getStartX()+m_Main.getGamelogic().getRadiererVelocity());
             m_Main.getPlayingfield().getRadierer().setEndX(m_Main.getPlayingfield().getRadierer().getEndX()+m_Main.getGamelogic().getRadiererVelocity());
+            m_Main.getPlayingfield().getRadierer_Image().setX(m_Main.getPlayingfield().getRadierer_Image().getX()+m_Main.getGamelogic().getRadiererVelocity());
             m_Main.getPlayingfield().getLineal().getTransforms().add(new Translate(-m_Main.getGamelogic().getRadiererVelocity(),0));
             m_Main.getPlayingfield().getLineal().setLayoutX(m_Main.getPlayingfield().getLineal().getLayoutX()+m_Main.getGamelogic().getRadiererVelocity());
             m_Main.getPlayingfield().getLineal_Image().getTransforms().add(new Translate(-m_Main.getGamelogic().getRadiererVelocity(),0));
