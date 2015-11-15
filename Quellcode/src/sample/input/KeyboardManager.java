@@ -39,9 +39,7 @@ public class KeyboardManager {
 		setPauseListener();
 		setEndScreenListener();
 
-		Label levelField = (Label) m_CurrentScene.lookup("#levelField");
-		levelField.textProperty().bind(Bindings.format("%3d", Main.getGamelogic().getLevel()));
-
+		bindLabels();
 		setCountdown();
 	}
 
@@ -57,6 +55,18 @@ public class KeyboardManager {
 		countdown.getTimeline().setOnFinished(event -> {
 			openPauseAfterFail();
 		});
+	}
+
+	private void bindLabels() {
+		Label levelField = (Label) m_CurrentScene.lookup("#levelField");
+		levelField.textProperty().bind(Bindings.format("%3d", Main.getGamelogic().getLevel()));
+
+		Label scoreField = (Label) m_CurrentScene.lookup("#scoreField");
+		scoreField.textProperty().bind(Bindings.format("%3d", Main.getGamelogic().getScore()));
+	}
+
+	public int getTimeLeft() {
+		return countdown.getTimeLeft();
 	}
 
 	public void unsetIngameListener() {

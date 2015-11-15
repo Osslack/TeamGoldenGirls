@@ -21,9 +21,20 @@ public class Gamelogic {
 	private double m_radierersizingspeed = 1;
 	private int m_level;
 	private int m_score;
+	private int ballsUsed;
 
 	public Gamelogic(Main main) {
 		m_Main = main;
+		m_score = 0;
+		ballsUsed = 0;
+	}
+
+	public int getScore() {
+		return m_score;
+	}
+
+	public void setScore(int s) {
+		this.m_score = s;
 	}
 
 	public double getRadierersizingspeed() {
@@ -92,13 +103,14 @@ public class Gamelogic {
 		m_Main.getPhysics().setBallVelocity(0, 10);
 		m_Main.getAnimationmanager().reset();
 		m_linealpower = 0;
-		Main.getKeyboardmanager().setCountdown();
+		++ballsUsed;
 		pause();
 	}
 
 	public void onGoalHit() { //Enter
 		pause();
 		m_Main.getKeyboardmanager().openEndScreen();
+		m_score += Score.getScore(Main.getKeyboardmanager().getTimeLeft(), ballsUsed);
 		Main.getSavegames().cacheSavegame(m_level, m_score, user.name, user.form, m_difficulty);
 	}
 
