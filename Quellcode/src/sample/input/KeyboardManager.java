@@ -119,10 +119,10 @@ public class KeyboardManager {
 					Main.getGamelogic().startMovingRadiererToRight();
 				}
 				else if (event.getCode() == Preferences.getMoveUpKey()) {
-					Main.getGamelogic().startGrowingRadierer();
+//					Main.getGamelogic().startGrowingRadierer();
 				}
 				else if (event.getCode() == Preferences.getMoveDownKey()) {
-					Main.getGamelogic().startShrinkingRadierer();
+//					Main.getGamelogic().startShrinkingRadierer();
 				}
 			}
 		});
@@ -148,10 +148,10 @@ public class KeyboardManager {
 					Main.getGamelogic().stopMovingRadiererToRight();
 				}
 				else if (event.getCode() == Preferences.getMoveUpKey()) {
-					Main.getGamelogic().stopGrowingRadierer();
+//					Main.getGamelogic().stopGrowingRadierer();
 				}
 				else if (event.getCode() == Preferences.getMoveDownKey()) {
-					Main.getGamelogic().stopShrinkingRadierer();
+//					Main.getGamelogic().stopShrinkingRadierer();
 				}
 				else if (event.getCode() == Preferences.getStartKey()) {
 					Main.getGamelogic().startRound();
