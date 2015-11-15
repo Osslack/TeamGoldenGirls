@@ -18,7 +18,7 @@ import sample.sound.Soundmanager;
 
 public class
 Main extends Application {
-	private static Map<String,Scene> m_ScenesMap = new HashMap<>();
+	private static Map<String, Scene> m_ScenesMap = new HashMap<>();
 	private static Stage            m_PrimaryStage;
 	private static Physics          m_Physics;
 	private static Soundmanager     m_Soundmanager;
@@ -26,8 +26,8 @@ Main extends Application {
 	private        Animationmanager m_Animationmanager;
 	private        KeyboardManager  m_Keyboardmanager;
 	private static Gamelogic        m_Gamelogic;
-	private static String OS = null;
-	public static String PATH_SEPARATOR = null;
+	private static String OS             = null;
+	public static  String PATH_SEPARATOR = null;
 
 	private static Savegames savegames;
 	public static  UserData  user;
@@ -57,32 +57,36 @@ Main extends Application {
 		return m_PrimaryStage;
 	}
 
-	public Soundmanager getSoundmanager(){return m_Soundmanager;}
+	public Soundmanager getSoundmanager() {
+		return m_Soundmanager;
+	}
 
-	public Playingfield getPlayingfield(){return m_Playingfield;}
+	public Playingfield getPlayingfield() {
+		return m_Playingfield;
+	}
 
-	public Animationmanager getAnimationmanager() {return m_Animationmanager;}
+	public Animationmanager getAnimationmanager() {
+		return m_Animationmanager;
+	}
 
-	public KeyboardManager getKeyboardmanager() {return m_Keyboardmanager;}
+	public KeyboardManager getKeyboardmanager() {
+		return m_Keyboardmanager;
+	}
 
 	public static boolean setScene(String name) {
 		Scene scene = getScene(name);
-		if(scene==null){return false;}
+		if (scene == null) {
+			return false;
+		}
 		m_PrimaryStage.setScene(scene);
 		return true;
-//		if (name.equals("MainGame") && !scene.lookup("#pauseMenuPane").isVisible()) {
-//			m_Physics.start();
-//		}
-//		else {
-//			m_Physics.stop();
-//		}
 	}
 
-	public static void mapScene(String name, Scene scene){
-		m_ScenesMap.put(name,scene);
+	public static void mapScene(String name, Scene scene) {
+		m_ScenesMap.put(name, scene);
 	}
 
-	public static void killScene(String name){
+	public static void killScene(String name) {
 		m_ScenesMap.remove(name);
 	}
 
@@ -98,7 +102,7 @@ Main extends Application {
 		return m_ScenesMap.get(name);
 	}
 
-	public List<String> getallFilesOfFolder(final File folder) {
+	public List<String> getAllFilesOfFolder(final File folder) {
 		List<String> files = new LinkedList<>();
 		for (final File fileEntry : folder.listFiles()) {
 			if (!fileEntry.isDirectory()) {
@@ -118,12 +122,13 @@ Main extends Application {
 
 		}
 		List<String> files;
-		if(isWindows()) {
-			 PATH_SEPARATOR = "\\";
-			files = getallFilesOfFolder(new File(path + "\\Quellcode\\src\\sample\\view"));
-		} else {
-			 PATH_SEPARATOR = "/";
-			files = getallFilesOfFolder(new File(path + "/src/sample/view"));
+		if (isWindows()) {
+			PATH_SEPARATOR = "\\";
+			files = getAllFilesOfFolder(new File(path + "\\Quellcode\\src\\sample\\view"));
+		}
+		else {
+			PATH_SEPARATOR = "/";
+			files = getAllFilesOfFolder(new File(path + "/src/sample/view"));
 		}
 
 		String name;
@@ -131,9 +136,10 @@ Main extends Application {
 			try {
 				name = filename.split("\\.")[0];
 				if (name.startsWith("Level") && (!name.equals("Level1")) && isWindows()) {
-					m_ScenesMap.put("BaseGame"+name.substring(name.lastIndexOf('l')+1), loadSceneFromFXML("BaseGame.fxml"));
-				}else if(name.startsWith("Level") && !isWindows()){
-					m_ScenesMap.put("BaseGame"+name.substring(name.lastIndexOf('l')+1), loadSceneFromFXML("BaseGame.fxml"));
+					m_ScenesMap.put("BaseGame" + name.substring(name.lastIndexOf('l') + 1), loadSceneFromFXML("BaseGame.fxml"));
+				}
+				else if (name.startsWith("Level") && !isWindows()) {
+					m_ScenesMap.put("BaseGame" + name.substring(name.lastIndexOf('l') + 1), loadSceneFromFXML("BaseGame.fxml"));
 				}
 				m_ScenesMap.put(name, loadSceneFromFXML(filename));
 			}
@@ -147,13 +153,14 @@ Main extends Application {
 		return new Scene(FXMLLoader.load(getClass().getResource("view/" + name)));
 	}
 
-	public static String getOsName()
-	{
-		if(OS == null) { OS = System.getProperty("os.name"); }
+	public static String getOsName() {
+		if (OS == null) {
+			OS = System.getProperty("os.name");
+		}
 		return OS;
 	}
-	public static boolean isWindows()
-	{
+
+	public static boolean isWindows() {
 		return getOsName().startsWith("Windows");
 	}
 
@@ -166,6 +173,7 @@ Main extends Application {
 		savegames.finalizeSavegame();
 		Serializer.save(savegames);
 	}
+
 	public static void main(String[] args) {
 		launch(args);
 	}
