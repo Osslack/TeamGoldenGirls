@@ -25,6 +25,10 @@ public class Gamelogic {
 
 	public Gamelogic(Main main) {
 		m_Main = main;
+		reset();
+	}
+
+	public void reset() {
 		m_score = 0;
 		ballsUsed = 0;
 	}
@@ -76,7 +80,7 @@ public class Gamelogic {
 	}
 
 	public void setLevel(String scenename, Difficulty d) {
-		if (m_Main.setScene(scenename)) {
+		if (Main.setScene(scenename)) {
 			m_difficulty = d;
 			m_currentSceneName = scenename;
 			m_level = Integer.parseInt(m_currentSceneName.substring(m_currentSceneName.lastIndexOf('l') + 1));
@@ -85,22 +89,27 @@ public class Gamelogic {
 			m_Main.getPlayingfield().getBall().setLayoutY(0);
 			m_Main.getPlayingfield().getBall_Image().setLayoutX(m_Main.getPlayingfield().getBall().getLayoutX());
 			m_Main.getPlayingfield().getBall_Image().setLayoutY(m_Main.getPlayingfield().getBall().getLayoutY());
-			m_Main.getKeyboardmanager().applyControlsToCurrentScene();
+			Main.getKeyboardmanager().applyControlsToCurrentScene();
 			m_Main.getAnimationmanager().start();
-			newRound();
+			retry();
 		}
 	}
 
 	//TODO last level intercept in menu
 	public void nextLevel() {
-		newRound();
+		ballsUsed = 0;
 		String nextLevel = "Level" + (m_level + 1);
 		setLevel(nextLevel, m_difficulty);
 	}
 
-	public void newRound() {
-		m_Main.getPhysics().setBallPosition(100, 200);
-		m_Main.getPhysics().setBallVelocity(0, 10);
+	public void restart() {
+		ballsUsed = 0;
+		setLevel("Level" + m_level, m_difficulty);
+	}
+
+	public void retry() {
+		Main.getPhysics().setBallPosition(100, 200);
+		Main.getPhysics().setBallVelocity(0, 10);
 		m_Main.getAnimationmanager().reset();
 		m_linealpower = 0;
 		++ballsUsed;
@@ -109,13 +118,13 @@ public class Gamelogic {
 
 	public void onGoalHit() { //Enter
 		pause();
-		m_Main.getKeyboardmanager().openEndScreen();
+		Main.getKeyboardmanager().openEndScreen();
 		m_score += Score.getScore(Main.getKeyboardmanager().getTimeLeft(), ballsUsed);
 		Main.getSavegames().cacheSavegame(m_level, m_score, user.name, user.form, m_difficulty);
 	}
 
 	public void onDeathHit() { //Enter
-		//onGoalHit();
+		onGoalHit();
 		//m_Main.getKeyboardmanager().openPauseAfterFail();
 	}
 
@@ -129,17 +138,17 @@ public class Gamelogic {
 	}
 
 	public void unpause() {
-		m_Main.getPhysics().start();
+		Main.getPhysics().start();
 	}
 
 	public void pause() { //escape
-		m_Main.getPhysics().stop();
+		Main.getPhysics().stop();
 	}
 
 	public void goToMainMenu() {
 		pause();
 		m_Main.getAnimationmanager().stop();
-		m_Main.setScene("MainMenu");
+		Main.setScene("MainMenu");
 	}
 
 	public String getCurrentSceneName() {

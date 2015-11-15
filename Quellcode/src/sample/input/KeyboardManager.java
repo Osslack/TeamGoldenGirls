@@ -153,7 +153,7 @@ public class KeyboardManager {
 					m_Main.getGamelogic().startRound();
 				}
 				else if (event.getCode() == Preferences.getNewRoundKey()) {
-					m_Main.getGamelogic().newRound();
+					m_Main.getGamelogic().retry();
 				}
 			}
 
@@ -178,21 +178,22 @@ public class KeyboardManager {
 	}
 
 	public void setPauseListener() {
-		Button tryagainButton = (Button) m_CurrentScene.lookup("#tryagainButton");
+		Button restartButton = (Button) m_CurrentScene.lookup("#restartButton");
 		Button mainMenuButton = (Button) m_CurrentScene.lookup("#mainMenuButton");
 		Button settingsButton = (Button) m_CurrentScene.lookup("#settingsButton");
 		Button resumeButton = (Button) m_CurrentScene.lookup("#resumeButton");
-		tryagainButton.setOnAction(event -> {
+		restartButton.setOnAction(event -> {
 			m_PauseMenuPane.setVisible(false);
-			m_Main.getGamelogic().newRound();
+			Main.getGamelogic().restart();
+			setCountdown();
 			resumeButton.setDisable(false);
 		});
 		mainMenuButton.setOnAction(event -> {
-			m_Main.getGamelogic().goToMainMenu();
+			Main.getGamelogic().goToMainMenu();
 			resumeButton.setDisable(false);
 		});
 		settingsButton.setOnAction(event -> {
-			m_Main.setScene("SettingsPause");
+			Main.setScene("SettingsPause");
 			resumeButton.setDisable(false);
 		});
 		resumeButton.setOnAction(event -> closePauseMenu());
@@ -203,7 +204,7 @@ public class KeyboardManager {
 		Button nextButton = (Button) m_CurrentScene.lookup("#nextButton");
 
 		highscoreButton.setOnAction(event -> {
-			m_PauseMenuPane.setVisible(false);
+			m_endScreenPane.setVisible(false);
 			Main.getSavegames().finalizeSavegame();
 			Scene high = Main.getScene("HighscoreScreen");
 			TabPane tabPane = (TabPane) high.lookup("#tabPane");
@@ -225,7 +226,7 @@ public class KeyboardManager {
 			Main.setScene(high);
 		});
 		nextButton.setOnAction(event -> {
-			m_PauseMenuPane.setVisible(false);
+			m_endScreenPane.setVisible(false);
 			m_Main.getGamelogic().nextLevel();
 			closePauseMenu();
 		});

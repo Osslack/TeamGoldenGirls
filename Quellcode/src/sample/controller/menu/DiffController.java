@@ -29,20 +29,26 @@ public class DiffController implements Initializable {
 	@FXML
 	private Button exButton;
 
+	private Main main;
+
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 		cancelButton.setOnAction(event -> Main.setScene("UserScreen"));
 
 		easyButton.setOnAction(event -> {
+			Main.getGamelogic().reset();
 			Main.getGamelogic().setLevel("Level1", Difficulty.EASY);
 		});
 		medButton.setOnAction(event -> {
+			Main.getGamelogic().reset();
 			Main.getGamelogic().setLevel("Level1", Difficulty.MEDIUM);
 		});
 		hardButton.setOnAction(event -> {
+			Main.getGamelogic().reset();
 			Main.getGamelogic().setLevel("Level1", Difficulty.HARD);
 		});
 		exButton.setOnAction(event -> {
+			Main.getGamelogic().reset();
 			Main.getGamelogic().setLevel("Level1", Difficulty.EXTREME);
 		});
 	}
