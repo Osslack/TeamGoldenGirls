@@ -4,6 +4,7 @@ import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import sample.Difficulty;
 import sample.Gamelogic.Countdown;
 import sample.Main;
 import sample.model.data.Preferences;
@@ -43,7 +44,8 @@ public class KeyboardManager {
 	}
 
 	public void setCountdown() {
-		countdown = new Countdown(60);
+//		if(countdown){};
+		countdown = new Countdown((int)(20+160*((float)(Difficulty.toInteger(Difficulty.EASY))/(float)(Difficulty.toInteger(m_Main.getGamelogic().getDifficulty())))));
 		setTimelineFinishedListener();
 		Label timeField = (Label) m_CurrentScene.lookup("#timeField");
 		timeField.textProperty().bind(Bindings.format("%3d", countdown.timeLeftProperty()));
