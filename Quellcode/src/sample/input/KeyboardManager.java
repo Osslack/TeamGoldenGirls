@@ -38,6 +38,10 @@ public class KeyboardManager {
 		setIngameListener();
 		setPauseListener();
 		setEndScreenListener();
+
+		Label levelField = (Label) m_CurrentScene.lookup("#levelField");
+		levelField.textProperty().bind(Bindings.format("%3d", Main.getGamelogic().getLevel()));
+
 		countdown = new Countdown(60);
 		Label timeField = (Label) m_CurrentScene.lookup("#timeField");
 		timeField.textProperty().bind(Bindings.format("%3d", countdown.timeLeftProperty()));
@@ -184,6 +188,7 @@ public class KeyboardManager {
 		nextButton.setOnAction(event -> {
 			m_PauseMenuPane.setVisible(false);
 			m_Main.getGamelogic().nextLevel();
+			closePauseMenu();
 		});
 	}
 

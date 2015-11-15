@@ -85,7 +85,6 @@ public class Gamelogic {
 		newRound();
 		String nextLevel = "Level" + (m_level + 1);
 		setLevel(nextLevel, m_difficulty);
-		m_Main.getKeyboardmanager().closePauseMenu();
 	}
 
 	public void newRound() {
@@ -103,6 +102,7 @@ public class Gamelogic {
 	}
 
 	public void onDeathHit() { //Enter
+		//onGoalHit();
 		m_Main.getKeyboardmanager().disableResume();
 		m_Main.getKeyboardmanager().openPauseMenu();
 	}
