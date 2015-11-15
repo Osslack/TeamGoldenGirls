@@ -44,8 +44,8 @@ public class KeyboardManager {
 	}
 
 	public void setCountdown() {
-//		if(countdown){};
-		countdown = new Countdown((int)(20+160*((float)(Difficulty.toInteger(Difficulty.EASY))/(float)(Difficulty.toInteger(m_Main.getGamelogic().getDifficulty())))));
+		countdown.getTimeline().stop();
+		countdown = new Countdown((int) (20 + 160 * ((float) (Difficulty.toInteger(Difficulty.EASY)) / (float) (Difficulty.toInteger(Main.getGamelogic().getDifficulty())))));
 		setTimelineFinishedListener();
 		Label timeField = (Label) m_CurrentScene.lookup("#timeField");
 		timeField.textProperty().bind(Bindings.format("%3d", countdown.timeLeftProperty()));
