@@ -1,12 +1,15 @@
-package sample.model;
+package sample.model.data;
 
 import javafx.scene.input.KeyCode;
+import sample.Main;
 
 /**
  * @author Nils
  * JENDRIK
  */
-public class Keyboard {
+public class Preferences {
+
+	private static boolean muted = false;
 
 	private static KeyCode launchKey     = KeyCode.SPACE;
 	private static KeyCode moveLeftKey   = KeyCode.A;
@@ -34,7 +37,7 @@ public class Keyboard {
 	}
 
 	public static void setLaunchKey(final KeyCode launchKey) {
-		Keyboard.launchKey = launchKey;
+		Preferences.launchKey = launchKey;
 	}
 
 	public static KeyCode getMoveLeftKey() {
@@ -42,7 +45,7 @@ public class Keyboard {
 	}
 
 	public static void setMoveLeftKey(final KeyCode moveLeftKey) {
-		Keyboard.moveLeftKey = moveLeftKey;
+		Preferences.moveLeftKey = moveLeftKey;
 	}
 
 	public static KeyCode getMoveRightKey() {
@@ -50,7 +53,7 @@ public class Keyboard {
 	}
 
 	public static void setMoveRightKey(final KeyCode moveRightKey) {
-		Keyboard.moveRightKey = moveRightKey;
+		Preferences.moveRightKey = moveRightKey;
 	}
 
 	public static KeyCode getMoveUpKey() {
@@ -58,7 +61,7 @@ public class Keyboard {
 	}
 
 	public static void setMoveUpKey(final KeyCode moveUpKey) {
-		Keyboard.moveUpKey = moveUpKey;
+		Preferences.moveUpKey = moveUpKey;
 	}
 
 	public static KeyCode getMoveDownKey() {
@@ -66,6 +69,20 @@ public class Keyboard {
 	}
 
 	public static void setMoveDownKey(final KeyCode moveDownKey) {
-		Keyboard.moveDownKey = moveDownKey;
+		Preferences.moveDownKey = moveDownKey;
+	}
+
+	public static boolean isMuted() {
+		return muted;
+	}
+
+	public static void setMuted(final boolean muted) {
+		Preferences.muted = muted;
+		if (muted) {
+			Main.getSoundmanager().muteAll();
+		}
+		else {
+			Main.getSoundmanager().unmuteAll();
+		}
 	}
 }

@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import sample.Main;
-import sample.model.Keyboard;
+import sample.model.data.Preferences;
 
 /**
  * JENDRIK
@@ -72,19 +72,19 @@ public class KeyboardManager {
 	public void setIngameListener() {
 		m_CurrentScene.setOnKeyPressed(event -> {
 			if (!m_PauseMenuPane.isVisible()) {
-				if (event.getCode() == Keyboard.getLaunchKey()) {
+				if (event.getCode() == Preferences.getLaunchKey()) {
 					m_Main.getGamelogic().startIncreasingPower();
 				}
-				else if (event.getCode() == Keyboard.getMoveLeftKey()) {
+				else if (event.getCode() == Preferences.getMoveLeftKey()) {
 					m_Main.getGamelogic().startMovingRadiererToLeft();
 				}
-				else if (event.getCode() == Keyboard.getMoveRightKey()) {
+				else if (event.getCode() == Preferences.getMoveRightKey()) {
 					m_Main.getGamelogic().startMovingRadiererToRight();
 				}
-				else if (event.getCode() == Keyboard.getMoveUpKey()) {
+				else if (event.getCode() == Preferences.getMoveUpKey()) {
 					m_Main.getGamelogic().startGrowingRadierer();
 				}
-				else if (event.getCode() == Keyboard.getMoveDownKey()) {
+				else if (event.getCode() == Preferences.getMoveDownKey()) {
 					m_Main.getGamelogic().startShrinkingRadierer();
 				}
 			}
@@ -92,34 +92,34 @@ public class KeyboardManager {
 
 		m_CurrentScene.setOnKeyReleased(event -> {
 			if (m_PauseMenuPane.isVisible()) {
-				if (event.getCode() == Keyboard.getPauseMenuKey()) {
+				if (event.getCode() == Preferences.getPauseMenuKey()) {
 					closePauseMenu();
 				}
 			}
 			else {
-				if (event.getCode() == Keyboard.getPauseMenuKey()) {
+				if (event.getCode() == Preferences.getPauseMenuKey()) {
 					openPauseMenu();
 				}
-				else if (event.getCode() == Keyboard.getLaunchKey()) {
+				else if (event.getCode() == Preferences.getLaunchKey()) {
 					m_Main.getGamelogic().stopIncreasingPower();
 					m_Main.getGamelogic().launchLineal();
 				}
-				else if (event.getCode() == Keyboard.getMoveLeftKey()) {
+				else if (event.getCode() == Preferences.getMoveLeftKey()) {
 					m_Main.getGamelogic().stopMovingRadiererToLeft();
 				}
-				else if (event.getCode() == Keyboard.getMoveRightKey()) {
+				else if (event.getCode() == Preferences.getMoveRightKey()) {
 					m_Main.getGamelogic().stopMovingRadiererToRight();
 				}
-				else if (event.getCode() == Keyboard.getMoveUpKey()) {
+				else if (event.getCode() == Preferences.getMoveUpKey()) {
 					m_Main.getGamelogic().stopGrowingRadierer();
 				}
-				else if (event.getCode() == Keyboard.getMoveDownKey()) {
+				else if (event.getCode() == Preferences.getMoveDownKey()) {
 					m_Main.getGamelogic().stopShrinkingRadierer();
 				}
-				else if (event.getCode() == Keyboard.getStartRoundKey()) {
+				else if (event.getCode() == Preferences.getStartRoundKey()) {
 					m_Main.getGamelogic().startRound();
 				}
-				else if (event.getCode() == Keyboard.getNewRoundKey()) {
+				else if (event.getCode() == Preferences.getNewRoundKey()) {
 					m_Main.getGamelogic().newRound();
 				}
 			}

@@ -1,7 +1,7 @@
 package sample.model.serialization;
 
 import java.io.*;
-import sample.model.Keyboard;
+import sample.model.data.Preferences;
 import sample.model.data.Savegames;
 
 /**
@@ -20,12 +20,13 @@ public class Serializer {
 		if (prefs.exists()) {
 			try (FileInputStream fis = new FileInputStream(prefs);
 				 ObjectInputStream ois = new ObjectInputStream(fis)) {
-				SerializableKeyboard in = (SerializableKeyboard) ois.readObject();
-				Keyboard.setLaunchKey(in.launchKey);
-				Keyboard.setMoveLeftKey(in.moveLeftKey);
-				Keyboard.setMoveRightKey(in.moveRightKey);
-				Keyboard.setMoveUpKey(in.moveUpKey);
-				Keyboard.setMoveDownKey(in.moveDownKey);
+				SerializablePreferences in = (SerializablePreferences) ois.readObject();
+				Preferences.setLaunchKey(in.launchKey);
+				Preferences.setMoveLeftKey(in.moveLeftKey);
+				Preferences.setMoveRightKey(in.moveRightKey);
+				Preferences.setMoveUpKey(in.moveUpKey);
+				Preferences.setMoveDownKey(in.moveDownKey);
+				Preferences.setMuted(in.muted);
 			}
 			catch (IOException | ClassNotFoundException ex) {
 				ex.printStackTrace();
@@ -87,7 +88,7 @@ public class Serializer {
 	}
 
 	private static void saveSettings() {
-		SerializableKeyboard out = new SerializableKeyboard(Keyboard.getLaunchKey(), Keyboard.getMoveLeftKey(), Keyboard.getMoveRightKey(), Keyboard.getMoveUpKey(), Keyboard.getMoveDownKey());
+		SerializablePreferences out = new SerializablePreferences(Preferences.getLaunchKey(), Preferences.getMoveLeftKey(), Preferences.getMoveRightKey(), Preferences.getMoveUpKey(), Preferences.getMoveDownKey(), Preferences.isMuted());
 		try (FileOutputStream fos = new FileOutputStream(prefs);
 			 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 			oos.writeObject(out);

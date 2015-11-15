@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import sample.Main;
-import sample.model.Keyboard;
+import sample.model.data.Preferences;
 
 /**
  * @author Nils
@@ -30,16 +30,16 @@ public class SettingsPauseController implements Initializable {
 		getGridpaneChilds();
 
 		saveButton.setOnAction(event -> {
-			Keyboard.setLaunchKey(KeyCode.getKeyCode(launchField.getText()));
-			Keyboard.setMoveLeftKey(KeyCode.getKeyCode(leftField.getText()));
-			Keyboard.setMoveRightKey(KeyCode.getKeyCode(rightField.getText()));
-			Keyboard.setMoveUpKey(KeyCode.getKeyCode(upField.getText()));
-			Keyboard.setMoveDownKey(KeyCode.getKeyCode(downField.getText()));
+			Preferences.setLaunchKey(KeyCode.getKeyCode(launchField.getText()));
+			Preferences.setMoveLeftKey(KeyCode.getKeyCode(leftField.getText()));
+			Preferences.setMoveRightKey(KeyCode.getKeyCode(rightField.getText()));
+			Preferences.setMoveUpKey(KeyCode.getKeyCode(upField.getText()));
+			Preferences.setMoveDownKey(KeyCode.getKeyCode(downField.getText()));
 			if (radioOff.isSelected()) {
-				Main.getSoundmanager().muteAll();
+				Preferences.setMuted(true);
 			}
 			else {
-				Main.getSoundmanager().unmuteAll();
+				Preferences.setMuted(false);
 			}
 			Main.setScene(Main.getGamelogic().getCurrentSceneName());
 		});

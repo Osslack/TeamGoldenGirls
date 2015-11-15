@@ -39,6 +39,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		m_Soundmanager = new Soundmanager();
 		savegames = Serializer.load();
 		m_PrimaryStage = primaryStage;
 		loadScenes();
@@ -49,7 +50,6 @@ public class Main extends Application {
 		m_Gamelogic = new Gamelogic(this);
 		m_Playingfield = new Playingfield(this);
 		m_Physics = new Physics(this);
-		m_Soundmanager = new Soundmanager();
 		m_Animationmanager = new Animationmanager(this);
 		m_Keyboardmanager = new KeyboardManager(this);
 	}

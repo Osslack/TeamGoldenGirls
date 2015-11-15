@@ -4,29 +4,32 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
-import sample.model.Keyboard;
+import sample.model.data.Preferences;
 
 /**
  * @author Nils
  */
 public class SettingsController implements Initializable {
 
-	public GridPane grid;
-	public Label    launchField;
-	public Label    leftField;
-	public Label    rightField;
-	public Label    upField;
-	public Label    downField;
+	public GridPane    grid;
+	public Label       launchField;
+	public Label       leftField;
+	public Label       rightField;
+	public Label       upField;
+	public Label       downField;
+	public RadioButton radioOff;
 
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-		launchField.setText(Keyboard.getLaunchKey().getName());
-		leftField.setText(Keyboard.getMoveLeftKey().getName());
-		rightField.setText(Keyboard.getMoveRightKey().getName());
-		upField.setText(Keyboard.getMoveUpKey().getName());
-		downField.setText(Keyboard.getMoveDownKey().getName());
+		launchField.setText(Preferences.getLaunchKey().getName());
+		leftField.setText(Preferences.getMoveLeftKey().getName());
+		rightField.setText(Preferences.getMoveRightKey().getName());
+		upField.setText(Preferences.getMoveUpKey().getName());
+		downField.setText(Preferences.getMoveDownKey().getName());
+		radioOff.setSelected(Preferences.isMuted());
 
 		launchField.setOnMouseClicked(event -> launchField.requestFocus());
 
