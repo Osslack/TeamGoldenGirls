@@ -12,8 +12,16 @@ public class Countdown {
 	private final ReadOnlyDoubleWrapper  timeLeftDouble;
 	private final Timeline               timeline;
 
+	public Timeline getTimeline() {
+		return timeline;
+	}
+
 	public ReadOnlyIntegerProperty timeLeftProperty() {
 		return timeLeft.getReadOnlyProperty();
+	}
+
+	public int getTimeLeft() {
+		return timeLeft.get();
 	}
 
 	public Countdown(final int time) {

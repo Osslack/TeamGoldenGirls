@@ -92,23 +92,23 @@ public class Gamelogic {
 		m_Main.getPhysics().setBallVelocity(0, 10);
 		m_Main.getAnimationmanager().reset();
 		m_linealpower = 0;
-		Pause();
+		Main.getKeyboardmanager().setCountdown();
+		pause();
 	}
 
 	public void onGoalHit() { //Enter
-		Pause();
+		pause();
 		m_Main.getKeyboardmanager().openEndScreen();
 		Main.getSavegames().cacheSavegame(m_level, m_score, user.name, user.form, m_difficulty);
 	}
 
 	public void onDeathHit() { //Enter
 		//onGoalHit();
-//		m_Main.getKeyboardmanager().disableResume();
-//		m_Main.getKeyboardmanager().openPauseMenu();
+		//m_Main.getKeyboardmanager().openPauseAfterFail();
 	}
 
 	public void startRound() { //Enter
-		UnPause();
+		unpause();
 		m_Main.getAnimationmanager().startResettingLineal();
 	}
 
@@ -116,16 +116,16 @@ public class Gamelogic {
 		return m_linealpower;
 	}
 
-	public void UnPause() {
+	public void unpause() {
 		m_Main.getPhysics().start();
 	}
 
-	public void Pause() { //escape
+	public void pause() { //escape
 		m_Main.getPhysics().stop();
 	}
 
-	public void GotoMainMenu() {
-		Pause();
+	public void goToMainMenu() {
+		pause();
 		m_Main.getAnimationmanager().stop();
 		m_Main.setScene("MainMenu");
 	}

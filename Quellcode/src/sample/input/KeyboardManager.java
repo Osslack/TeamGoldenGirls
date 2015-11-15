@@ -42,10 +42,21 @@ public class KeyboardManager {
 		Label levelField = (Label) m_CurrentScene.lookup("#levelField");
 		levelField.textProperty().bind(Bindings.format("%3d", Main.getGamelogic().getLevel()));
 
+		setCountdown();
+	}
+
+	public void setCountdown() {
 		countdown = new Countdown(60);
+		setTimelineFinishedListener();
 		Label timeField = (Label) m_CurrentScene.lookup("#timeField");
 		timeField.textProperty().bind(Bindings.format("%3d", countdown.timeLeftProperty()));
 		countdown.start();
+	}
+
+	private void setTimelineFinishedListener() {
+		countdown.getTimeline().setOnFinished(event -> {
+			openPauseAfterFail();
+		});
 	}
 
 	public void unsetIngameListener() {
@@ -141,16 +152,18 @@ public class KeyboardManager {
 	}
 
 	public void closePauseMenu() {
-		m_PauseMenuPane.setVisible(false);
-		countdown.resume();
-		if (physicsWasActive) {
-			m_Main.getGamelogic().UnPause();
+		if (countdown.getTimeLeft() > 0) {
+			m_PauseMenuPane.setVisible(false);
+			countdown.resume();
+			if (physicsWasActive) {
+				m_Main.getGamelogic().unpause();
+			}
 		}
 	}
 
 	public void openPauseMenu() {
 		physicsWasActive = Main.getPhysics().isActive;
-		m_Main.getGamelogic().Pause();
+		m_Main.getGamelogic().pause();
 		countdown.pause();
 		m_PauseMenuPane.setVisible(true);
 	}
@@ -166,7 +179,7 @@ public class KeyboardManager {
 			resumeButton.setDisable(false);
 		});
 		mainMenuButton.setOnAction(event -> {
-			m_Main.getGamelogic().GotoMainMenu();
+			m_Main.getGamelogic().goToMainMenu();
 			resumeButton.setDisable(false);
 		});
 		settingsButton.setOnAction(event -> {
@@ -195,6 +208,11 @@ public class KeyboardManager {
 	public void openEndScreen() {
 		countdown.pause();
 		m_endScreenPane.setVisible(true);
+	}
+
+	public void openPauseAfterFail() {
+		disableResume();
+		openPauseMenu();
 	}
 
 	public void disableResume() {

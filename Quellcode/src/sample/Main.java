@@ -27,7 +27,7 @@ public class Main extends Application {
 	private static Soundmanager     m_Soundmanager;
 	private static Playingfield     m_Playingfield;
 	private        Animationmanager m_Animationmanager;
-	private        KeyboardManager  m_Keyboardmanager;
+	private static KeyboardManager  m_Keyboardmanager;
 	private static Gamelogic        m_Gamelogic;
 	private static String OS             = null;
 	public static  String PATH_SEPARATOR = null;
@@ -167,7 +167,7 @@ public class Main extends Application {
 		return m_Animationmanager;
 	}
 
-	public KeyboardManager getKeyboardmanager() {
+	public static KeyboardManager getKeyboardmanager() {
 		return m_Keyboardmanager;
 	}
 
