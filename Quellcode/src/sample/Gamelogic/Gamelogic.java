@@ -16,6 +16,7 @@ public class Gamelogic {
 	private double m_radierervelocity    = 2;
 	private double m_radierersizingspeed = 1;
 	private int m_level;
+	private int m_score;
 
 	public Gamelogic(Main main) {
 		m_Main = main;
@@ -93,6 +94,7 @@ public class Gamelogic {
 	public void onGoalHit() { //Enter
 		Pause();
 		m_Main.getKeyboardmanager().openEndScreen();
+		Main.getSavegames().cacheSavegame(m_level, m_score, Main.user.name, Main.user.form, m_difficulty.toString());
 	}
 
 	public void onDeathHit() { //Enter

@@ -16,8 +16,12 @@ import sample.model.serialization.Serializer;
 import sample.physics.Physics;
 import sample.sound.Soundmanager;
 
-public class
-Main extends Application {
+/**
+ * JENDRIK
+ *
+ * @author Nils
+ */
+public class Main extends Application {
 	private static Map<String, Scene> m_ScenesMap = new HashMap<>();
 	private static Stage            m_PrimaryStage;
 	private static Physics          m_Physics;
@@ -28,6 +32,7 @@ Main extends Application {
 	private static Gamelogic        m_Gamelogic;
 	private static String OS             = null;
 	public static  String PATH_SEPARATOR = null;
+	public static  int    maxLevel       = 0;
 
 	private static Savegames savegames;
 	public static  UserData  user;
@@ -101,9 +106,11 @@ Main extends Application {
 				name = filename.split("\\.")[0];
 				if (name.startsWith("Level") && (!name.equals("Level1")) && isWindows()) {
 					m_ScenesMap.put("BaseGame" + name.substring(name.lastIndexOf('l') + 1), loadSceneFromFXML("BaseGame.fxml"));
+					++maxLevel;
 				}
 				else if (name.startsWith("Level") && !isWindows()) {
 					m_ScenesMap.put("BaseGame" + name.substring(name.lastIndexOf('l') + 1), loadSceneFromFXML("BaseGame.fxml"));
+					++maxLevel;
 				}
 				m_ScenesMap.put(name, loadSceneFromFXML(filename));
 			}
