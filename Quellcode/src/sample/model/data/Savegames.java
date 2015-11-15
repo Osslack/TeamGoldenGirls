@@ -12,6 +12,7 @@ import sample.model.serialization.SerializableSavegame;
 public class Savegames {
 
 	private ObservableList<Savegame> savegames;
+	private Savegame                 loadedSave;
 	private Savegame                 tempSave;
 
 	public Savegames() {
@@ -86,7 +87,15 @@ public class Savegames {
 	 */
 	public void finalizeSavegame() {
 		if (tempSave != null) {
+			if (loadedSave != null) {
+				savegames.remove(loadedSave);
+				loadedSave = null;
+			}
 			savegames.add(tempSave);
 		}
+	}
+
+	public void setLoadedSave(final Savegame loadedSave) {
+		this.loadedSave = loadedSave;
 	}
 }

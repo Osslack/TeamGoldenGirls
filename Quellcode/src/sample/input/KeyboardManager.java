@@ -167,6 +167,7 @@ public class KeyboardManager {
 
 		highscoreButton.setOnAction(event -> {
 			m_PauseMenuPane.setVisible(false);
+			Main.getSavegames().finalizeSavegame();
 			m_Main.setScene("HighscoreScreen");
 		});
 		nextButton.setOnAction(event -> {
