@@ -35,7 +35,12 @@ public class SettingsPauseController implements Initializable {
 			Keyboard.setMoveRightKey(KeyCode.getKeyCode(rightField.getText()));
 			Keyboard.setMoveUpKey(KeyCode.getKeyCode(upField.getText()));
 			Keyboard.setMoveDownKey(KeyCode.getKeyCode(downField.getText()));
-			//TODO set sound on or off
+			if (radioOff.isSelected()) {
+				Main.getSoundmanager().muteAll();
+			}
+			else {
+				Main.getSoundmanager().unmuteAll();
+			}
 			Main.setScene(Main.getGamelogic().getCurrentSceneName());
 		});
 

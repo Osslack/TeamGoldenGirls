@@ -157,7 +157,7 @@ public class Main extends Application {
 		return m_PrimaryStage;
 	}
 
-	public Soundmanager getSoundmanager() {
+	public static Soundmanager getSoundmanager() {
 		return m_Soundmanager;
 	}
 
