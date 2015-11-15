@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="317b8588-4eb0-4f41-b3f2-27a6a6c2834c" name="Default" comment="Some more Sounds,Audioclips now stored in an array,added Method to check if the ball is still moving.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/physics/Physics.java" afterPath="$PROJECT_DIR$/src/sample/physics/Physics.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/sound/Soundmanager.java" afterPath="$PROJECT_DIR$/src/sample/sound/Soundmanager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -36,20 +35,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Soundmanager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Soundmanager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/sound/Soundmanager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="48" column="58" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.6242171">
+              <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Physics.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Physics.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/physics/Physics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6242171">
+            <state vertical-scroll-proportion="0.0">
               <caret line="179" column="32" selection-start-line="179" selection-start-column="32" selection-end-line="179" selection-end-column="32" />
               <folding />
             </state>
@@ -106,8 +105,8 @@
         <option value="$PROJECT_DIR$/src/sample/controller/menu/game/Level1Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/Level1Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/sound/Soundmanager.java" />
         <option value="$PROJECT_DIR$/src/sample/physics/Physics.java" />
+        <option value="$PROJECT_DIR$/src/sample/sound/Soundmanager.java" />
       </list>
     </option>
   </component>
@@ -595,7 +594,7 @@
       <workItem from="1447508360922" duration="2480000" />
       <workItem from="1447513238763" duration="436000" />
       <workItem from="1447513698025" duration="335000" />
-      <workItem from="1447588058414" duration="1633000" />
+      <workItem from="1447588058414" duration="2127000" />
     </task>
     <task id="LOCAL-00001" summary="Nils: added Menu scenes">
       <created>1447252357203</created>
@@ -649,7 +648,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29469000" />
+    <option name="totallyTimeSpent" value="29963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
@@ -771,18 +770,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/sound/Soundmanager.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/physics/Physics.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="58" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
+          <caret line="179" column="32" selection-start-line="179" selection-start-column="32" selection-end-line="179" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/physics/Physics.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/sound/Soundmanager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6242171">
-          <caret line="179" column="32" selection-start-line="179" selection-start-column="32" selection-end-line="179" selection-end-column="32" />
+          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
           <folding />
         </state>
       </provider>

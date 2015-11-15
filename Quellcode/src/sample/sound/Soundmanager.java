@@ -60,6 +60,16 @@ public class Soundmanager {
         return difference >= 500;
 
     }
+    public void muteAll(){
+        for(AudioClip a:sounds){
+            a.setVolume(0.0);
+        }
+    }
+    public void unmuteAll(){
+        for(AudioClip a:sounds){
+            a.setVolume(1.0);
+        }
+    }
 
 
 }
