@@ -9,25 +9,28 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.Gamelogic.Gamelogic;
 import sample.input.KeyboardManager;
-import sample.model.*;
+import sample.model.Playingfield;
+import sample.model.data.Savegames;
+import sample.model.data.UserData;
+import sample.model.serialization.Serializer;
 import sample.physics.Physics;
-import sample.sounds.Soundmanager;
+import sample.sound.Soundmanager;
 
 public class
 Main extends Application {
 	private static Map<String,Scene> m_ScenesMap = new HashMap<>();
-	private static Stage        m_PrimaryStage;
-	private static Physics      m_Physics;
-	private static Soundmanager m_Soundmanager;
-	private static Playingfield m_Playingfield;
-	private Animationmanager m_Animationmanager;
-	private KeyboardManager m_Keyboardmanager;
-	private static Gamelogic m_Gamelogic;
+	private static Stage            m_PrimaryStage;
+	private static Physics          m_Physics;
+	private static Soundmanager     m_Soundmanager;
+	private static Playingfield     m_Playingfield;
+	private        Animationmanager m_Animationmanager;
+	private        KeyboardManager  m_Keyboardmanager;
+	private static Gamelogic        m_Gamelogic;
 	private static String OS = null;
 	public static String PATH_SEPARATOR = null;
 
-	private static Savegames  savegames;
-	public static  UserData   user;
+	private static Savegames savegames;
+	public static  UserData  user;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
