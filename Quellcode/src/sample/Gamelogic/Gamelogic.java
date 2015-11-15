@@ -138,7 +138,7 @@ public class Gamelogic {
 		pause();
 		Main.getKeyboardmanager().openEndScreen();
 		m_score += Score.getScore(Main.getKeyboardmanager().getTimeLeft(), ballsUsed);
-		Main.getSavegames().cacheSavegame(m_level, m_score, user.name, user.form, m_difficulty);
+		Main.getSavegames().cacheSavegame(m_level+1, m_score, user.name, user.form, m_difficulty);
 	}
 
 	public void onDeathHit() { //Enter
