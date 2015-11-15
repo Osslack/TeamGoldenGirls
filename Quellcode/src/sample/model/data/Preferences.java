@@ -11,21 +11,21 @@ public class Preferences {
 
 	private static boolean muted = false;
 
-	private static KeyCode launchKey     = KeyCode.SPACE;
-	private static KeyCode moveLeftKey   = KeyCode.A;
-	private static KeyCode moveRightKey  = KeyCode.D;
-	private static KeyCode moveUpKey     = KeyCode.W;
-	private static KeyCode moveDownKey   = KeyCode.S;
-	private static KeyCode startRoundKey = KeyCode.ENTER;
-	private static KeyCode pauseMenuKey  = KeyCode.ESCAPE;
-	private static KeyCode newRoundKey   = KeyCode.R;
+	private static KeyCode launchKey    = KeyCode.SPACE;
+	private static KeyCode moveLeftKey  = KeyCode.A;
+	private static KeyCode moveRightKey = KeyCode.D;
+	private static KeyCode moveUpKey    = KeyCode.W;
+	private static KeyCode moveDownKey  = KeyCode.S;
+	private static KeyCode startKey     = KeyCode.ENTER;
+	private static KeyCode pauseMenuKey = KeyCode.ESCAPE;
+	private static KeyCode retryKey     = KeyCode.R;
 
-	public static KeyCode getNewRoundKey() {
-		return newRoundKey;
+	public static KeyCode getRetryKey() {
+		return retryKey;
 	}
 
-	public static KeyCode getStartRoundKey() {
-		return startRoundKey;
+	public static KeyCode getStartKey() {
+		return startKey;
 	}
 
 	public static KeyCode getPauseMenuKey() {

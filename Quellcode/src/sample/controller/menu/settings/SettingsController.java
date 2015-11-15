@@ -14,12 +14,15 @@ import sample.model.data.Preferences;
  */
 public class SettingsController implements Initializable {
 
-	public GridPane    grid;
-	public Label       launchField;
-	public Label       leftField;
-	public Label       rightField;
-	public Label       upField;
-	public Label       downField;
+	public GridPane grid;
+	public Label    launchField;
+	public Label    leftField;
+	public Label    rightField;
+	public Label    upField;
+	public Label    downField;
+	public Label    startField;
+	public Label    retryField;
+
 	public RadioButton radioOff;
 
 	@Override
@@ -29,17 +32,17 @@ public class SettingsController implements Initializable {
 		rightField.setText(Preferences.getMoveRightKey().getName());
 		upField.setText(Preferences.getMoveUpKey().getName());
 		downField.setText(Preferences.getMoveDownKey().getName());
+		startField.setText(Preferences.getStartKey().getName());
+		retryField.setText(Preferences.getRetryKey().getName());
 		radioOff.setSelected(Preferences.isMuted());
 
 		launchField.setOnMouseClicked(event -> launchField.requestFocus());
-
 		leftField.setOnMouseClicked(event -> leftField.requestFocus());
-
 		rightField.setOnMouseClicked(event -> rightField.requestFocus());
-
 		upField.setOnMouseClicked(event -> upField.requestFocus());
-
 		downField.setOnMouseClicked(event -> downField.requestFocus());
+		startField.setOnMouseClicked(event -> startField.requestFocus());
+		retryField.setOnMouseClicked(event -> retryField.requestFocus());
 
 		launchField.setOnKeyReleased(event -> {
 			KeyCode key = event.getCode();
@@ -85,6 +88,24 @@ public class SettingsController implements Initializable {
 			}
 			grid.requestFocus();
 		});
+
+		startField.setOnKeyReleased(event -> {
+			KeyCode key = event.getCode();
+			String name = key.getName();
+			if (isAllowedKey(key) && !alreadyAssigned(name)) {
+				startField.setText(name);
+			}
+			grid.requestFocus();
+		});
+
+		retryField.setOnKeyReleased(event -> {
+			KeyCode key = event.getCode();
+			String name = key.getName();
+			if (isAllowedKey(key) && !alreadyAssigned(name)) {
+				retryField.setText(name);
+			}
+			grid.requestFocus();
+		});
 	}
 
 	private boolean isAllowedKey(final KeyCode code) {
@@ -96,6 +117,8 @@ public class SettingsController implements Initializable {
 				|| name.equals(leftField.getText())
 				|| name.equals(rightField.getText())
 				|| name.equals(upField.getText())
-				|| name.equals(downField.getText());
+				|| name.equals(downField.getText())
+				|| name.equals(startField.getText())
+				|| name.equals(retryField.getText());
 	}
 }

@@ -149,10 +149,10 @@ public class KeyboardManager {
 				else if (event.getCode() == Preferences.getMoveDownKey()) {
 					m_Main.getGamelogic().stopShrinkingRadierer();
 				}
-				else if (event.getCode() == Preferences.getStartRoundKey()) {
+				else if (event.getCode() == Preferences.getStartKey()) {
 					m_Main.getGamelogic().startRound();
 				}
-				else if (event.getCode() == Preferences.getNewRoundKey()) {
+				else if (event.getCode() == Preferences.getRetryKey()) {
 					m_Main.getGamelogic().retry();
 				}
 			}
