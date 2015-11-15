@@ -82,6 +82,7 @@ public class Gamelogic {
 
 	//TODO last level intercept in menu
 	public void nextLevel() {
+		newRound();
 		String nextLevel = "Level" + (m_level + 1);
 		setLevel(nextLevel, m_difficulty);
 		m_Main.getKeyboardmanager().closePauseMenu();
@@ -102,8 +103,8 @@ public class Gamelogic {
 	}
 
 	public void onDeathHit() { //Enter
-//		m_Main.getKeyboardmanager().disableResume();
-//		m_Main.getKeyboardmanager().openPauseMenu();
+		m_Main.getKeyboardmanager().disableResume();
+		m_Main.getKeyboardmanager().openPauseMenu();
 	}
 
 	public void startRound() { //Enter

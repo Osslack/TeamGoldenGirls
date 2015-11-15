@@ -1,8 +1,11 @@
 package sample.input;
 
+import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import sample.Gamelogic.Countdown;
 import sample.Main;
 import sample.model.data.Preferences;
 
@@ -16,6 +19,8 @@ public class KeyboardManager {
 	private Scene m_CurrentScene;
 	private Pane  m_PauseMenuPane;
 	private Pane  m_endScreenPane;
+
+	private Countdown countdown;
 
 	private boolean physicsWasActive;
 
@@ -33,6 +38,10 @@ public class KeyboardManager {
 		setIngameListener();
 		setPauseListener();
 		setEndScreenListener();
+		countdown = new Countdown(60);
+		Label timeField = (Label) m_CurrentScene.lookup("#timeField");
+		timeField.textProperty().bind(Bindings.format("%3d", countdown.timeLeftProperty()));
+		countdown.start();
 	}
 
 	public void unsetIngameListener() {
@@ -129,6 +138,7 @@ public class KeyboardManager {
 
 	public void closePauseMenu() {
 		m_PauseMenuPane.setVisible(false);
+		countdown.resume();
 		if (physicsWasActive) {
 			m_Main.getGamelogic().UnPause();
 		}
@@ -137,6 +147,7 @@ public class KeyboardManager {
 	public void openPauseMenu() {
 		physicsWasActive = Main.getPhysics().isActive;
 		m_Main.getGamelogic().Pause();
+		countdown.pause();
 		m_PauseMenuPane.setVisible(true);
 	}
 
@@ -177,6 +188,7 @@ public class KeyboardManager {
 	}
 
 	public void openEndScreen() {
+		countdown.pause();
 		m_endScreenPane.setVisible(true);
 	}
 
