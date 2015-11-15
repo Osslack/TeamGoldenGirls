@@ -4,7 +4,6 @@ import javafx.animation.AnimationTimer;
 import javafx.geometry.Point3D;
 import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
-import sample.Animationmanager;
 import sample.Main;
 import sample.model.Vector2D;
 
@@ -73,7 +72,7 @@ public class Physics extends AnimationTimer {
 	}
 
 	private void simWind(){
-		if(m_Main.getGamelogic().getIsBallkicked()) {
+		if (m_Main.getGamelogic().getIsBallKicked()) {
 			double rotation = Math.toRadians(m_Main.getGamelogic().getWinddirection());
 			setBallVelocity(m_Velocity.mX + (Math.sin(rotation) * windfactor*0.7), m_Velocity.mY - (Math.cos(rotation) * windfactor*0.3));
 		}
@@ -183,7 +182,7 @@ public class Physics extends AnimationTimer {
 									kickball = true;
 								}
 								if (kickball == true) {
-									normal.scalarMultiplication2(-1 * m_Main.getGamelogic().getLinealpower() * (distance / lineradius));
+									normal.scalarMultiplication2(-1 * m_Main.getGamelogic().getLinealPower() * (distance / lineradius));
 									m_Velocity.add2(normal);
 								}
 							}

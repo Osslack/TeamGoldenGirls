@@ -1,4 +1,4 @@
-﻿package sample.Gamelogic;
+package sample.Gamelogic;
 
 import sample.Difficulty;
 import sample.Main;
@@ -21,8 +21,8 @@ public class Gamelogic {
 	private double m_radierersizingspeed = 1;
 	private int m_level;
 	private int m_score;
-	private int winddirectionindegrees = 0;
-	private boolean isballkicked = false;
+	private int     windDirectionInDegrees = 0;
+	private boolean isBallKicked           = false;
 	private int ballsUsed;
 
 	public Gamelogic(Main main) {
@@ -43,11 +43,11 @@ public class Gamelogic {
 		this.m_score = s;
 	}
 
-	public double getRadierersizingspeed() {
+	public double getRadiererSizingSpeed() {
 		return m_radierersizingspeed;
 	}
 
-	public void setLinealpower(double linealpower) {
+	public void setLinealPower(double linealpower) {
 		m_linealpower = linealpower;
 	}
 
@@ -93,16 +93,15 @@ public class Gamelogic {
 			m_Main.getPlayingfield().getBall_Image().setLayoutY(m_Main.getPlayingfield().getBall().getLayoutY());
 			Main.getKeyboardmanager().applyControlsToCurrentScene();
 			m_Main.getAnimationmanager().start();
-			Main.getPhysics().setWindfactor(((float)Difficulty.toInteger(d))/((float)Difficulty.toInteger(Difficulty.EXTREME)));
-			winddirectionindegrees=(int)(Math.random()*360);
-			m_Main.getPlayingfield().getWindmesser().setRotate(winddirectionindegrees);
-			newRound();
+			Main.getPhysics().setWindfactor(((float) Difficulty.toInteger(d)) / ((float) Difficulty.toInteger(Difficulty.EXTREME)));
+			windDirectionInDegrees = (int) (Math.random() * 360);
+			m_Main.getPlayingfield().getWindmesser().setRotate(windDirectionInDegrees);
 			retry();
 		}
 	}
 
-	public int getWinddirection(){
-		return winddirectionindegrees;
+	public int getWinddirection() {
+		return windDirectionInDegrees;
 	}
 
 	//TODO last level intercept in menu
@@ -121,18 +120,18 @@ public class Gamelogic {
 		Main.getPhysics().setBallPosition(100, 200);
 		Main.getPhysics().setBallVelocity(0, 10);
 		m_Main.getAnimationmanager().reset();
-		isballkicked = false;
+		isBallKicked = false;
 		m_linealpower = 0;
 		++ballsUsed;
 		pause();
 	}
 
-	public boolean getIsBallkicked(){
-		return isballkicked;
+	public boolean getIsBallKicked() {
+		return isBallKicked;
 	}
 
-	public void onLinealHit(){
-		isballkicked = true;
+	public void onLinealHit() {
+		isBallKicked = true;
 	}
 
 	public void onGoalHit() { //Enter
@@ -143,7 +142,7 @@ public class Gamelogic {
 	}
 
 	public void onDeathHit() { //Enter
-		onGoalHit();
+		//onGoalHit();
 		//m_Main.getKeyboardmanager().openPauseAfterFail();
 	}
 
@@ -152,7 +151,7 @@ public class Gamelogic {
 		m_Main.getAnimationmanager().startResettingLineal();
 	}
 
-	public double getLinealpower() {
+	public double getLinealPower() {
 		return m_linealpower;
 	}
 
