@@ -31,6 +31,10 @@ public class Savegames {
 
 	public ObservableList<Savegame> getEasySavegames() {
 		String diff = Difficulty.EASY.toString();
+		return getSpecificSavegames(diff);
+	}
+
+	private ObservableList<Savegame> getSpecificSavegames(String diff) {
 		ObservableList<Savegame> out = FXCollections.observableArrayList();
 		savegames.forEach(savegame -> {
 			if (savegame.getDifficulty().equals(diff)) {
@@ -42,35 +46,17 @@ public class Savegames {
 
 	public ObservableList<Savegame> getMediumSavegames() {
 		String diff = Difficulty.MEDIUM.toString();
-		ObservableList<Savegame> out = FXCollections.observableArrayList();
-		savegames.forEach(savegame -> {
-			if (savegame.getDifficulty().equals(diff)) {
-				out.add(savegame);
-			}
-		});
-		return out;
+		return getSpecificSavegames(diff);
 	}
 
 	public ObservableList<Savegame> getHardSavegames() {
 		String diff = Difficulty.HARD.toString();
-		ObservableList<Savegame> out = FXCollections.observableArrayList();
-		savegames.forEach(savegame -> {
-			if (savegame.getDifficulty().equals(diff)) {
-				out.add(savegame);
-			}
-		});
-		return out;
+		return getSpecificSavegames(diff);
 	}
 
 	public ObservableList<Savegame> getExtremeSavegames() {
 		String diff = Difficulty.EXTREME.toString();
-		ObservableList<Savegame> out = FXCollections.observableArrayList();
-		savegames.forEach(savegame -> {
-			if (savegame.getDifficulty().equals(diff)) {
-				out.add(savegame);
-			}
-		});
-		return out;
+		return getSpecificSavegames(diff);
 	}
 
 
