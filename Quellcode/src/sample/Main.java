@@ -11,7 +11,6 @@ import sample.Gamelogic.Gamelogic;
 import sample.input.KeyboardManager;
 import sample.model.Playingfield;
 import sample.model.data.Savegames;
-import sample.model.data.UserData;
 import sample.model.serialization.Serializer;
 import sample.physics.Physics;
 import sample.sound.Soundmanager;
@@ -35,7 +34,6 @@ public class Main extends Application {
 	public static  int    maxLevel       = 0;
 
 	private static Savegames savegames;
-	public static  UserData  user;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {

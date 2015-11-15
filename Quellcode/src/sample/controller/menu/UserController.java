@@ -29,10 +29,11 @@ public class UserController implements Initializable {
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 		nextButton.setOnAction(event -> {
-			String user = usernameTextfield.getText();
+			String username = usernameTextfield.getText();
 			String form = classTextfield.getText();
-			if (!user.equals("") && !form.equals("")) {
-				Main.user = new UserData(user, form);
+			if (!username.equals("") && !form.equals("")) {
+				UserData user = new UserData(username, form);
+				Main.getGamelogic().setUser(user);
 				Main.setScene("DifficultyScreen");
 			}
 		});

@@ -2,6 +2,7 @@ package sample.Gamelogic;
 
 import sample.Difficulty;
 import sample.Main;
+import sample.model.data.UserData;
 
 /**
  * Created by JJ on 14.11.2015.
@@ -10,8 +11,9 @@ import sample.Main;
  */
 public class Gamelogic {
 
-	private       Main       m_Main;
-	public static Difficulty m_difficulty;
+	private Main       m_Main;
+	private Difficulty m_difficulty;
+	private UserData   user;
 
 	private String m_currentSceneName    = "BaseGame";
 	private double m_linealpower         = 0;
@@ -96,7 +98,7 @@ public class Gamelogic {
 	public void onGoalHit() { //Enter
 		Pause();
 		m_Main.getKeyboardmanager().openEndScreen();
-		Main.getSavegames().cacheSavegame(m_level, m_score, Main.user.name, Main.user.form, m_difficulty);
+		Main.getSavegames().cacheSavegame(m_level, m_score, user.name, user.form, m_difficulty);
 	}
 
 	public void onDeathHit() { //Enter
@@ -167,6 +169,10 @@ public class Gamelogic {
 
 	public void stopIncreasingPower() { //space loslassen
 		m_Main.getAnimationmanager().stopIncreasingPower();
+	}
+
+	public void setUser(final UserData user) {
+		this.user = user;
 	}
 }
 
