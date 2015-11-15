@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.geometry.Point3D;
 import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
+import sample.Animationmanager;
 import sample.Main;
 import sample.model.Vector2D;
 
@@ -21,8 +22,8 @@ public class Physics extends AnimationTimer {
 	private Collision m_Collision;
 	private double m_Dampening      = 0.7;
 	private String m_hitlastframe   = "";
+	private double windfactor = 0;
 	public boolean isActive;
-
 
 	public Physics(Main main) {
 		m_Main = main;
@@ -44,13 +45,17 @@ public class Physics extends AnimationTimer {
 		isActive = false;
 	}
 
-	public void setBallPosition(int x, int y){
+	public void setWindfactor(double d){
+		windfactor = d;
+	}
+
+	public void setBallPosition(double x, double y){
 		m_Position.mX = x;
 		m_Position.mY = y;
 		updateBallPos();
 	}
 
-	public void setBallVelocity(int x, int y){
+	public void setBallVelocity(double x, double y){
 		m_Velocity.mX = x;
 		m_Velocity.mY = y;
 	}
@@ -59,10 +64,18 @@ public class Physics extends AnimationTimer {
 		double deltaSecs = ((double) (nowNano - lastNano)) / 1000000000.0;
 		lastNano = nowNano;
 		simBall(deltaSecs);
+		simWind();
 		checkShapeCollisions();
 		checkBounds();
 		if (isStopped()) {
 			//was just for testing m_Main.getSoundmanager().playSound(Soundmanager.CLICK_SOUND);
+		}
+	}
+
+	private void simWind(){
+		if(m_Main.getGamelogic().getIsBallkicked()) {
+			double rotation = Math.toRadians(m_Main.getGamelogic().getWinddirection());
+			setBallVelocity(m_Velocity.mX + (Math.sin(rotation) * windfactor*0.7), m_Velocity.mY - (Math.cos(rotation) * windfactor*0.3));
 		}
 	}
 
@@ -149,23 +162,30 @@ public class Physics extends AnimationTimer {
 					}
 					else {
 						m_Collision.getPostCollisionVelocity(m_Velocity, m_Dampening, normal);
-						if (line.getId() == m_Main.getPlayingfield().getLineal().getId() && m_Main.getAnimationmanager().islineallaunched()) {
-							Vector2D linestart = new Vector2D(line.getStartX()+line.getLayoutX(),line.getStartY()+line.getLayoutY());
-							Point3D rotaxis = line.getRotationAxis();
-							Vector2D linecenter = new Vector2D(rotaxis.getX()+line.getLayoutX(),rotaxis.getY()+line.getLayoutY());
-							double lineradius = linestart.subtract(linecenter).length();
-							Vector2D centertocircle = m_Position.subtract(linecenter);
-							double deltaangle = Math.toDegrees(normal.getAngleTo(centertocircle));
-							double distance = centertocircle.length();
-							Vector2D linevector = new Vector2D();
-							linevector.rotate((Math.PI/2.0)+angle);
-							double deltaangle2 = Math.toDegrees(linevector.getAngleTo(centertocircle));
-							boolean kickball = false;
-							if(deltaangle>90 && deltaangle2<90){kickball = true;}
-							if(deltaangle<90 && deltaangle2>90){kickball = true;}
-							if(kickball==true) {
-								normal.scalarMultiplication2(-1*m_Main.getGamelogic().getLinealpower() * (distance / lineradius));
-								m_Velocity.add2(normal);
+						if(line.getId()!=null) {
+							if (line.getId().equals(m_Main.getPlayingfield().getLineal().getId()) && m_Main.getAnimationmanager().islineallaunched()) {
+								m_Main.getGamelogic().onLinealHit();
+								Vector2D linestart = new Vector2D(line.getStartX() + line.getLayoutX(), line.getStartY() + line.getLayoutY());
+								Point3D rotaxis = line.getRotationAxis();
+								Vector2D linecenter = new Vector2D(rotaxis.getX() + line.getLayoutX(), rotaxis.getY() + line.getLayoutY());
+								double lineradius = linestart.subtract(linecenter).length();
+								Vector2D centertocircle = m_Position.subtract(linecenter);
+								double deltaangle = Math.toDegrees(normal.getAngleTo(centertocircle));
+								double distance = centertocircle.length();
+								Vector2D linevector = new Vector2D();
+								linevector.rotate((Math.PI / 2.0) + angle);
+								double deltaangle2 = Math.toDegrees(linevector.getAngleTo(centertocircle));
+								boolean kickball = false;
+								if (deltaangle > 90 && deltaangle2 < 90) {
+									kickball = true;
+								}
+								if (deltaangle < 90 && deltaangle2 > 90) {
+									kickball = true;
+								}
+								if (kickball == true) {
+									normal.scalarMultiplication2(-1 * m_Main.getGamelogic().getLinealpower() * (distance / lineradius));
+									m_Velocity.add2(normal);
+								}
 							}
 						}
 						m_Main.getSoundmanager().playRandSound(1, 10);
