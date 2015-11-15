@@ -30,11 +30,10 @@ public class Savegames {
 	}
 
 	public ObservableList<Savegame> getEasySavegames() {
-		String diff = Difficulty.EASY.toString();
-		return getSpecificSavegames(diff);
+		return getSpecificSavegames(Difficulty.EASY);
 	}
 
-	private ObservableList<Savegame> getSpecificSavegames(String diff) {
+	private ObservableList<Savegame> getSpecificSavegames(Difficulty diff) {
 		ObservableList<Savegame> out = FXCollections.observableArrayList();
 		savegames.forEach(savegame -> {
 			if (savegame.getDifficulty().equals(diff)) {
@@ -45,25 +44,22 @@ public class Savegames {
 	}
 
 	public ObservableList<Savegame> getMediumSavegames() {
-		String diff = Difficulty.MEDIUM.toString();
-		return getSpecificSavegames(diff);
+		return getSpecificSavegames(Difficulty.MEDIUM);
 	}
 
 	public ObservableList<Savegame> getHardSavegames() {
-		String diff = Difficulty.HARD.toString();
-		return getSpecificSavegames(diff);
+		return getSpecificSavegames(Difficulty.HARD);
 	}
 
 	public ObservableList<Savegame> getExtremeSavegames() {
-		String diff = Difficulty.EXTREME.toString();
-		return getSpecificSavegames(diff);
+		return getSpecificSavegames(Difficulty.EXTREME);
 	}
 
 
 	/**
 	 * is called everytime a level is finished
 	 */
-	public void cacheSavegame(int level, int score, String username, String form, String diff) {
+	public void cacheSavegame(int level, int score, String username, String form, Difficulty diff) {
 		tempSave = new Savegame(level, score, username, form, diff);
 	}
 

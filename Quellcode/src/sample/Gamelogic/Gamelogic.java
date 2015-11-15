@@ -96,7 +96,7 @@ public class Gamelogic {
 	public void onGoalHit() { //Enter
 		Pause();
 		m_Main.getKeyboardmanager().openEndScreen();
-		Main.getSavegames().cacheSavegame(m_level, m_score, Main.user.name, Main.user.form, m_difficulty.toString());
+		Main.getSavegames().cacheSavegame(m_level, m_score, Main.user.name, Main.user.form, m_difficulty);
 	}
 
 	public void onDeathHit() { //Enter

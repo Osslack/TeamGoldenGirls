@@ -60,7 +60,7 @@ public class LoadController implements Initializable {
 		});
 
 		//TODO delete addBtn
-		addBtn.setOnAction(event -> Main.getSavegames().getSavegames().add(new Savegame(1, 1337, "gg", "tinf", Difficulty.EASY.toString())));
+		addBtn.setOnAction(event -> Main.getSavegames().getSavegames().add(new Savegame(1, 1337, "gg", "tinf", Difficulty.EASY)));
 
 		loadButton.setOnAction(event -> {
 			Savegame selected = table.getSelectionModel().getSelectedItem();
@@ -88,6 +88,6 @@ public class LoadController implements Initializable {
 	private void setUserAndSelectedLevel(Savegame selected) {
 		Main.getSavegames().setLoadedSave(selected);
 		Main.user = new UserData(selected.getUsername(), selected.getForm());
-		Main.getGamelogic().setLevel("Level" + selected.getLevel(), Difficulty.toDifficulty(selected.getDifficulty()));
+		Main.getGamelogic().setLevel("Level" + selected.getLevel(), selected.getDifficulty());
 	}
 }

@@ -1,6 +1,7 @@
 package sample.model.serialization;
 
 import java.io.Serializable;
+import sample.Difficulty;
 import sample.model.data.Savegame;
 
 /**
@@ -8,7 +9,8 @@ import sample.model.data.Savegame;
  */
 public class SerializableSavegame implements Serializable {
 	private int level, score;
-	private String username, form, date, difficulty;
+	private String username, form, date;
+	private Difficulty difficulty;
 
 	public SerializableSavegame(Savegame save) {
 		this.level = save.getLevel();
@@ -39,7 +41,7 @@ public class SerializableSavegame implements Serializable {
 		return date;
 	}
 
-	public String getDifficulty() {
+	public Difficulty getDifficulty() {
 		return difficulty;
 	}
 }

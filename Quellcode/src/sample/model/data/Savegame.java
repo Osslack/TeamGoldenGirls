@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javafx.beans.property.*;
+import sample.Difficulty;
 import sample.model.serialization.SerializableSavegame;
 
 /**
@@ -11,7 +12,8 @@ import sample.model.serialization.SerializableSavegame;
  */
 public class Savegame {
 	private IntegerProperty level, score;
-	private StringProperty username, form, date, difficulty;
+	private StringProperty username, form, date;
+	private ObjectProperty<Difficulty> difficulty;
 
 	public Savegame(SerializableSavegame save) {
 		this.level = new SimpleIntegerProperty(save.getLevel());
@@ -19,16 +21,16 @@ public class Savegame {
 		this.username = new SimpleStringProperty(save.getUsername());
 		this.form = new SimpleStringProperty(save.getForm());
 		this.date = new SimpleStringProperty(save.getDate());
-		this.difficulty = new SimpleStringProperty(save.getDifficulty());
+		this.difficulty = new SimpleObjectProperty<Difficulty>(save.getDifficulty());
 	}
 
-	public Savegame(int level, int score, String username, String form, String diff) {
+	public Savegame(int level, int score, String username, String form, Difficulty diff) {
 		this.level = new SimpleIntegerProperty(level);
 		this.score = new SimpleIntegerProperty(score);
 		this.username = new SimpleStringProperty(username);
 		this.form = new SimpleStringProperty(form);
 		this.date = getTimestamp();
-		this.difficulty = new SimpleStringProperty(diff);
+		this.difficulty = new SimpleObjectProperty<Difficulty>(diff);
 	}
 
 	private SimpleStringProperty getTimestamp() {
@@ -58,7 +60,7 @@ public class Savegame {
 		return date;
 	}
 
-	public StringProperty difficultyProperty() {
+	public ObjectProperty difficultyProperty() {
 		return difficulty;
 	}
 
@@ -83,7 +85,7 @@ public class Savegame {
 		return date.get();
 	}
 
-	public String getDifficulty() {
+	public Difficulty getDifficulty() {
 		return difficulty.get();
 	}
 }
