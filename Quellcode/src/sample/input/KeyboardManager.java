@@ -32,7 +32,7 @@ public class KeyboardManager {
 		unsetIngameListener();
 		unsetPauseListener();
 		unsetEndScreenListener();
-		m_CurrentScene = m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName());
+		m_CurrentScene = Main.getScene(Main.getGamelogic().getCurrentSceneName());
 		m_PauseMenuPane = (Pane) (m_CurrentScene.lookup("#pauseMenuPane"));
 		m_endScreenPane = (Pane) (m_CurrentScene.lookup("#endScreenPane"));
 		setIngameListener();
@@ -110,19 +110,19 @@ public class KeyboardManager {
 		m_CurrentScene.setOnKeyPressed(event -> {
 			if (!m_PauseMenuPane.isVisible()) {
 				if (event.getCode() == Preferences.getLaunchKey()) {
-					m_Main.getGamelogic().startIncreasingPower();
+					Main.getGamelogic().startIncreasingPower();
 				}
 				else if (event.getCode() == Preferences.getMoveLeftKey()) {
-					m_Main.getGamelogic().startMovingRadiererToLeft();
+					Main.getGamelogic().startMovingRadiererToLeft();
 				}
 				else if (event.getCode() == Preferences.getMoveRightKey()) {
-					m_Main.getGamelogic().startMovingRadiererToRight();
+					Main.getGamelogic().startMovingRadiererToRight();
 				}
 				else if (event.getCode() == Preferences.getMoveUpKey()) {
-					m_Main.getGamelogic().startGrowingRadierer();
+					Main.getGamelogic().startGrowingRadierer();
 				}
 				else if (event.getCode() == Preferences.getMoveDownKey()) {
-					m_Main.getGamelogic().startShrinkingRadierer();
+					Main.getGamelogic().startShrinkingRadierer();
 				}
 			}
 		});
@@ -138,26 +138,26 @@ public class KeyboardManager {
 					openPauseMenu();
 				}
 				else if (event.getCode() == Preferences.getLaunchKey()) {
-					m_Main.getGamelogic().stopIncreasingPower();
-					m_Main.getGamelogic().launchLineal();
+					Main.getGamelogic().stopIncreasingPower();
+					Main.getGamelogic().launchLineal();
 				}
 				else if (event.getCode() == Preferences.getMoveLeftKey()) {
-					m_Main.getGamelogic().stopMovingRadiererToLeft();
+					Main.getGamelogic().stopMovingRadiererToLeft();
 				}
 				else if (event.getCode() == Preferences.getMoveRightKey()) {
-					m_Main.getGamelogic().stopMovingRadiererToRight();
+					Main.getGamelogic().stopMovingRadiererToRight();
 				}
 				else if (event.getCode() == Preferences.getMoveUpKey()) {
-					m_Main.getGamelogic().stopGrowingRadierer();
+					Main.getGamelogic().stopGrowingRadierer();
 				}
 				else if (event.getCode() == Preferences.getMoveDownKey()) {
-					m_Main.getGamelogic().stopShrinkingRadierer();
+					Main.getGamelogic().stopShrinkingRadierer();
 				}
 				else if (event.getCode() == Preferences.getStartKey()) {
-					m_Main.getGamelogic().startRound();
+					Main.getGamelogic().startRound();
 				}
 				else if (event.getCode() == Preferences.getRetryKey()) {
-					m_Main.getGamelogic().retry();
+					Main.getGamelogic().retry();
 				}
 			}
 
@@ -165,18 +165,20 @@ public class KeyboardManager {
 	}
 
 	public void closePauseMenu() {
-		if (countdown.getTimeLeft() > 0) {
-			m_PauseMenuPane.setVisible(false);
-			countdown.resume();
-			if (physicsWasActive) {
-				m_Main.getGamelogic().unpause();
+		if (countdown != null) {
+			if (countdown.getTimeLeft() > 0) {
+				m_PauseMenuPane.setVisible(false);
+				countdown.resume();
+				if (physicsWasActive) {
+					Main.getGamelogic().unpause();
+				}
 			}
 		}
 	}
 
 	public void openPauseMenu() {
 		physicsWasActive = Main.getPhysics().isActive;
-		m_Main.getGamelogic().pause();
+		Main.getGamelogic().pause();
 		countdown.pause();
 		m_PauseMenuPane.setVisible(true);
 	}
@@ -231,7 +233,7 @@ public class KeyboardManager {
 		});
 		nextButton.setOnAction(event -> {
 			m_endScreenPane.setVisible(false);
-			m_Main.getGamelogic().nextLevel();
+			Main.getGamelogic().nextLevel();
 			closePauseMenu();
 		});
 	}
