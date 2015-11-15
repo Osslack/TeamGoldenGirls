@@ -2,8 +2,7 @@ package sample.input;
 
 import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import sample.Gamelogic.Countdown;
 import sample.Main;
@@ -39,13 +38,34 @@ public class KeyboardManager {
 		setPauseListener();
 		setEndScreenListener();
 
-		Label levelField = (Label) m_CurrentScene.lookup("#levelField");
-		levelField.textProperty().bind(Bindings.format("%3d", Main.getGamelogic().getLevel()));
+		bindLabels();
+		setCountdown();
+	}
 
+	public void setCountdown() {
 		countdown = new Countdown(60);
+		setTimelineFinishedListener();
 		Label timeField = (Label) m_CurrentScene.lookup("#timeField");
 		timeField.textProperty().bind(Bindings.format("%3d", countdown.timeLeftProperty()));
 		countdown.start();
+	}
+
+	private void setTimelineFinishedListener() {
+		countdown.getTimeline().setOnFinished(event -> {
+			openPauseAfterFail();
+		});
+	}
+
+	private void bindLabels() {
+		Label levelField = (Label) m_CurrentScene.lookup("#levelField");
+		levelField.textProperty().bind(Bindings.format("%3d", Main.getGamelogic().getLevel()));
+
+		Label scoreField = (Label) m_CurrentScene.lookup("#scoreField");
+		scoreField.textProperty().bind(Bindings.format("%3d", Main.getGamelogic().getScore()));
+	}
+
+	public int getTimeLeft() {
+		return countdown.getTimeLeft();
 	}
 
 	public void unsetIngameListener() {
@@ -133,7 +153,7 @@ public class KeyboardManager {
 					m_Main.getGamelogic().startRound();
 				}
 				else if (event.getCode() == Preferences.getNewRoundKey()) {
-					m_Main.getGamelogic().newRound();
+					m_Main.getGamelogic().retry();
 				}
 			}
 
@@ -141,36 +161,39 @@ public class KeyboardManager {
 	}
 
 	public void closePauseMenu() {
-		m_PauseMenuPane.setVisible(false);
-		countdown.resume();
-		if (physicsWasActive) {
-			m_Main.getGamelogic().UnPause();
+		if (countdown.getTimeLeft() > 0) {
+			m_PauseMenuPane.setVisible(false);
+			countdown.resume();
+			if (physicsWasActive) {
+				m_Main.getGamelogic().unpause();
+			}
 		}
 	}
 
 	public void openPauseMenu() {
 		physicsWasActive = Main.getPhysics().isActive;
-		m_Main.getGamelogic().Pause();
+		m_Main.getGamelogic().pause();
 		countdown.pause();
 		m_PauseMenuPane.setVisible(true);
 	}
 
 	public void setPauseListener() {
-		Button tryagainButton = (Button) m_CurrentScene.lookup("#tryagainButton");
+		Button restartButton = (Button) m_CurrentScene.lookup("#restartButton");
 		Button mainMenuButton = (Button) m_CurrentScene.lookup("#mainMenuButton");
 		Button settingsButton = (Button) m_CurrentScene.lookup("#settingsButton");
 		Button resumeButton = (Button) m_CurrentScene.lookup("#resumeButton");
-		tryagainButton.setOnAction(event -> {
+		restartButton.setOnAction(event -> {
 			m_PauseMenuPane.setVisible(false);
-			m_Main.getGamelogic().newRound();
+			Main.getGamelogic().restart();
+			setCountdown();
 			resumeButton.setDisable(false);
 		});
 		mainMenuButton.setOnAction(event -> {
-			m_Main.getGamelogic().GotoMainMenu();
+			Main.getGamelogic().goToMainMenu();
 			resumeButton.setDisable(false);
 		});
 		settingsButton.setOnAction(event -> {
-			m_Main.setScene("SettingsPause");
+			Main.setScene("SettingsPause");
 			resumeButton.setDisable(false);
 		});
 		resumeButton.setOnAction(event -> closePauseMenu());
@@ -181,12 +204,29 @@ public class KeyboardManager {
 		Button nextButton = (Button) m_CurrentScene.lookup("#nextButton");
 
 		highscoreButton.setOnAction(event -> {
-			m_PauseMenuPane.setVisible(false);
+			m_endScreenPane.setVisible(false);
 			Main.getSavegames().finalizeSavegame();
-			m_Main.setScene("HighscoreScreen");
+			Scene high = Main.getScene("HighscoreScreen");
+			TabPane tabPane = (TabPane) high.lookup("#tabPane");
+			switch (Main.getGamelogic().getDifficulty()) {
+				case EASY:
+					//Tab tab = (Tab) high.lookup("#easyTab");
+					tabPane.getSelectionModel().select(0);
+					break;
+				case MEDIUM:
+					tabPane.getSelectionModel().select(1);
+					break;
+				case HARD:
+					tabPane.getSelectionModel().select(2);
+					break;
+				case EXTREME:
+					tabPane.getSelectionModel().select(3);
+					break;
+			}
+			Main.setScene(high);
 		});
 		nextButton.setOnAction(event -> {
-			m_PauseMenuPane.setVisible(false);
+			m_endScreenPane.setVisible(false);
 			m_Main.getGamelogic().nextLevel();
 			closePauseMenu();
 		});
@@ -195,6 +235,11 @@ public class KeyboardManager {
 	public void openEndScreen() {
 		countdown.pause();
 		m_endScreenPane.setVisible(true);
+	}
+
+	public void openPauseAfterFail() {
+		disableResume();
+		openPauseMenu();
 	}
 
 	public void disableResume() {

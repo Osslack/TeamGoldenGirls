@@ -89,6 +89,7 @@ public class LoadController implements Initializable {
 		Main.getSavegames().setLoadedSave(selected);
 		UserData user = new UserData(selected.getUsername(), selected.getForm());
 		Main.getGamelogic().setUser(user);
+		Main.getGamelogic().setScore(selected.getScore());
 		Main.getGamelogic().setLevel("Level" + selected.getLevel(), selected.getDifficulty());
 	}
 }

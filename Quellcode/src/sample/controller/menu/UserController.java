@@ -35,6 +35,8 @@ public class UserController implements Initializable {
 				UserData user = new UserData(username, form);
 				Main.getGamelogic().setUser(user);
 				Main.setScene("DifficultyScreen");
+				usernameTextfield.setText("");
+				classTextfield.setText("");
 			}
 		});
 

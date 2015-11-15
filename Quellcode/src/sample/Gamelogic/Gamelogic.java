@@ -1,4 +1,4 @@
-package sample.Gamelogic;
+﻿package sample.Gamelogic;
 
 import sample.Difficulty;
 import sample.Main;
@@ -23,9 +23,24 @@ public class Gamelogic {
 	private int m_score;
 	private int winddirectionindegrees = 0;
 	private boolean isballkicked = false;
+	private int ballsUsed;
 
 	public Gamelogic(Main main) {
 		m_Main = main;
+		reset();
+	}
+
+	public void reset() {
+		m_score = 0;
+		ballsUsed = 0;
+	}
+
+	public int getScore() {
+		return m_score;
+	}
+
+	public void setScore(int s) {
+		this.m_score = s;
 	}
 
 	public double getRadierersizingspeed() {
@@ -67,7 +82,7 @@ public class Gamelogic {
 	}
 
 	public void setLevel(String scenename, Difficulty d) {
-		if (m_Main.setScene(scenename)) {
+		if (Main.setScene(scenename)) {
 			m_difficulty = d;
 			m_currentSceneName = scenename;
 			m_level = Integer.parseInt(m_currentSceneName.substring(m_currentSceneName.lastIndexOf('l') + 1));
@@ -76,13 +91,13 @@ public class Gamelogic {
 			m_Main.getPlayingfield().getBall().setLayoutY(0);
 			m_Main.getPlayingfield().getBall_Image().setLayoutX(m_Main.getPlayingfield().getBall().getLayoutX());
 			m_Main.getPlayingfield().getBall_Image().setLayoutY(m_Main.getPlayingfield().getBall().getLayoutY());
-			m_Main.getKeyboardmanager().applyControlsToCurrentScene();
+			Main.getKeyboardmanager().applyControlsToCurrentScene();
 			m_Main.getAnimationmanager().start();
 			Main.getPhysics().setWindfactor(((float)Difficulty.toInteger(d))/((float)Difficulty.toInteger(Difficulty.EXTREME)));
 			winddirectionindegrees=(int)(Math.random()*360);
-			System.out.println(winddirectionindegrees);
 			m_Main.getPlayingfield().getWindmesser().setRotate(winddirectionindegrees);
 			newRound();
+			retry();
 		}
 	}
 
@@ -92,18 +107,24 @@ public class Gamelogic {
 
 	//TODO last level intercept in menu
 	public void nextLevel() {
-		newRound();
+		ballsUsed = 0;
 		String nextLevel = "Level" + (m_level + 1);
 		setLevel(nextLevel, m_difficulty);
 	}
 
-	public void newRound() {
-		m_Main.getPhysics().setBallPosition(100, 200);
-		m_Main.getPhysics().setBallVelocity(0, 10);
+	public void restart() {
+		ballsUsed = 0;
+		setLevel("Level" + m_level, m_difficulty);
+	}
+
+	public void retry() {
+		Main.getPhysics().setBallPosition(100, 200);
+		Main.getPhysics().setBallVelocity(0, 10);
 		m_Main.getAnimationmanager().reset();
 		isballkicked = false;
 		m_linealpower = 0;
-		Pause();
+		++ballsUsed;
+		pause();
 	}
 
 	public boolean getIsBallkicked(){
@@ -115,19 +136,19 @@ public class Gamelogic {
 	}
 
 	public void onGoalHit() { //Enter
-		Pause();
-		m_Main.getKeyboardmanager().openEndScreen();
+		pause();
+		Main.getKeyboardmanager().openEndScreen();
+		m_score += Score.getScore(Main.getKeyboardmanager().getTimeLeft(), ballsUsed);
 		Main.getSavegames().cacheSavegame(m_level, m_score, user.name, user.form, m_difficulty);
 	}
 
 	public void onDeathHit() { //Enter
-		//onGoalHit();
-//		m_Main.getKeyboardmanager().disableResume();
-//		m_Main.getKeyboardmanager().openPauseMenu();
+		onGoalHit();
+		//m_Main.getKeyboardmanager().openPauseAfterFail();
 	}
 
 	public void startRound() { //Enter
-		UnPause();
+		unpause();
 		m_Main.getAnimationmanager().startResettingLineal();
 	}
 
@@ -135,18 +156,18 @@ public class Gamelogic {
 		return m_linealpower;
 	}
 
-	public void UnPause() {
-		m_Main.getPhysics().start();
+	public void unpause() {
+		Main.getPhysics().start();
 	}
 
-	public void Pause() { //escape
-		m_Main.getPhysics().stop();
+	public void pause() { //escape
+		Main.getPhysics().stop();
 	}
 
-	public void GotoMainMenu() {
-		Pause();
+	public void goToMainMenu() {
+		pause();
 		m_Main.getAnimationmanager().stop();
-		m_Main.setScene("MainMenu");
+		Main.setScene("MainMenu");
 	}
 
 	public String getCurrentSceneName() {
