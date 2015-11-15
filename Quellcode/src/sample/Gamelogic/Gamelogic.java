@@ -5,6 +5,8 @@ import sample.Main;
 
 /**
  * Created by JJ on 14.11.2015.
+ *
+ * @author Nils
  */
 public class Gamelogic {
 
@@ -128,10 +130,6 @@ public class Gamelogic {
 	public String getCurrentSceneName() {
 		return m_currentSceneName;
 	}
-
-//    public static void setDifficulty(Difficulty diff) {
-//        chosenDifficulty = diff;
-//    }
 
 	public void launchLineal() { //space loslassen
 		m_Main.getAnimationmanager().launchLineal();
