@@ -27,10 +27,10 @@
                         GridPane.rowIndex="2"/>
                 <Button fx:id="exButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="EXTREME"
                         GridPane.rowIndex="3"/>
-                <Label text="180 s per Level, light Wind" GridPane.columnIndex="1"/>
-                <Label text=" 73 s per Level, medium Wind" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <Label text=" 40 s per Level, strong Wind" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                <Label text=" 28 s per Level, EXTREME Wind" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <Label text="180 s per level, light wind" GridPane.columnIndex="1"/>
+                <Label text=" 73 s per level, medium wind" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text=" 40 s per level, strong wind" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label text=" 28 s per level, EXTREME wind" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
             </children>
             <BorderPane.margin>
                 <Insets bottom="175.0" left="210.0" right="210.0" top="150.0"/>
