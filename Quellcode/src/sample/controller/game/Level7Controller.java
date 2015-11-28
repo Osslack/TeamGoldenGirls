@@ -12,11 +12,11 @@ import sample.Main;
  * Created by JJ on 14.11.2015.
  */
 public class Level7Controller implements Initializable {
-    @FXML
-    private Pane gamePane2;
+	@FXML
+	private Pane gamePane2;
 
-    @Override
-    public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        gamePane2.getChildren().addAll(Main.getScene("BaseGame7").getRoot().getChildrenUnmodifiable());
-    }
+	@Override
+	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+		gamePane2.getChildren().addAll(Main.getScene("BaseGame7").getRoot().getChildrenUnmodifiable());
+	}
 }

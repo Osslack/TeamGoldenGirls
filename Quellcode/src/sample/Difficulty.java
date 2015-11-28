@@ -46,7 +46,7 @@ public enum Difficulty {
 
 	public static int toInteger(Difficulty d) {
 		int r = 1;
-		switch(d){
+		switch (d) {
 			case EASY:
 				r = 1;
 				break;

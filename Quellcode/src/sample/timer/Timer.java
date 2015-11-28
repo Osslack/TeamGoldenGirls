@@ -8,13 +8,13 @@ public class Timer {
 	private       long   m_starttick;
 	private final Engine m_engine;
 
-	public Timer(Engine engine){
+	public Timer(Engine engine) {
 		m_engine = engine;
-		m_tickdelay=50;
-		m_starttick=System.currentTimeMillis();
+		m_tickdelay = 50;
+		m_starttick = System.currentTimeMillis();
 	}
 
-	public void setTickdelay(long delay){
+	public void setTickdelay(long delay) {
 		m_tickdelay = delay;
 	}
 
@@ -23,19 +23,21 @@ public class Timer {
 		long delta = now - m_starttick;
 		long wait = m_tickdelay - delta;
 
-		if(wait>0){
+		if (wait > 0) {
 			try {
 				Thread.sleep(wait);
-			} catch (InterruptedException e) {
+			}
+			catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		m_starttick = now+wait;
+		m_starttick = now + wait;
 		long elapsed;
-		if(wait>0){
-			elapsed = delta+wait;
-		}else{
+		if (wait > 0) {
+			elapsed = delta + wait;
+		}
+		else {
 			elapsed = delta;
 		}
 		return elapsed;

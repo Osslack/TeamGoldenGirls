@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
  * @author Nils
  * @author Jendrik
  */
-public class GameController implements Initializable  {
+public class GameController implements Initializable {
 
 	public Label scoreField;
 	public Label timeField;
@@ -30,7 +30,7 @@ public class GameController implements Initializable  {
 	@FXML
 	private Pane endScreenPane;
 
-    @Override
-    public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+	@Override
+	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 	}
 }

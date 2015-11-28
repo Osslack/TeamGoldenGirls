@@ -10,8 +10,8 @@ public class TargetRectangle extends Rectangle {
 		super();
 	}
 
-	public TargetRectangle(double x,double y,double width,double height, double dampening) {
-		super(x,y,width,height,dampening);
+	public TargetRectangle(double x, double y, double width, double height, double dampening) {
+		super(x, y, width, height, dampening);
 	}
 
 	@Override

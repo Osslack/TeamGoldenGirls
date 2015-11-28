@@ -13,13 +13,13 @@ import sample.Main;
  */
 public class HighController implements Initializable {
 
-    @FXML
-    private Button cancelButton;
+	@FXML
+	private Button cancelButton;
 
-    @Override
-    public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+	@Override
+	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 
-        cancelButton.setOnAction(event -> Main.setScene("MainMenu"));
-    }
+		cancelButton.setOnAction(event -> Main.setScene("MainMenu"));
+	}
 
 }

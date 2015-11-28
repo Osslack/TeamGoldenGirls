@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import sample.Difficulty;
 import sample.Main;
-import sample.Gamelogic.Countdown;
+import sample.gamelogic.Countdown;
 import sample.model.data.Preferences;
 
 /**

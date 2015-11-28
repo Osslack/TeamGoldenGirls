@@ -13,7 +13,7 @@ public class Engine {
 	private final Timer           m_timer;
 	private       KeyboardManager m_keyboardmanager;
 
-	public Engine(){
+	public Engine() {
 		System.out.println("starting up");
 		m_processmanager = new Processmanager(this);
 		m_timer = new Timer(this);
@@ -23,19 +23,19 @@ public class Engine {
 //		m_keyboardmanager.addControlSet(cs1);
 	}
 
-	public Processmanager getProcessmanager(){
+	public Processmanager getProcessmanager() {
 		return m_processmanager;
 	}
 
-	public Timer getTimer(){
+	public Timer getTimer() {
 		return m_timer;
 	}
 
-	public KeyboardManager getKeyboardManager(){
+	public KeyboardManager getKeyboardManager() {
 		return m_keyboardmanager;
 	}
 
-	public void shutdown(){
+	public void shutdown() {
 		System.out.println("shutting down");
 		m_processmanager.setRunning(false);
 	}

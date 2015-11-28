@@ -14,7 +14,8 @@ class Windmeter {
 		mStrength = 0.0;
 		mDirection = new Vector2D();
 	}
-	public Windmeter(Vector2D direction,double strength){
+
+	public Windmeter(Vector2D direction, double strength) {
 		mDirection = direction;
 		mStrength = strength;
 	}

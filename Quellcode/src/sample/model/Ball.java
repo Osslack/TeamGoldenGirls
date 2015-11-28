@@ -17,7 +17,7 @@ public class Ball extends Circle {
 	}
 
 	public Ball(Vector2D center, double dampening, double radius, Vector2D position, Vector2D velocity, double mass) {
-		super(center, dampening,radius);
+		super(center, dampening, radius);
 		mVelocity = velocity;
 		mMass = mass;
 	}

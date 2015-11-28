@@ -5,9 +5,9 @@ package sample.model;
 /**
  * @author Simon
  * @author Nils Wende
- * JENDRIK
- * This class represents a vector in a two-dimensional cartesian coordinate system.
- * It provides several methods for vector operations.
+ *         JENDRIK
+ *         This class represents a vector in a two-dimensional cartesian coordinate system.
+ *         It provides several methods for vector operations.
  */
 public class Vector2D {
 	public static final Vector2D X_AXIS = new Vector2D(1.0, 0.0);
@@ -48,7 +48,7 @@ public class Vector2D {
 		mY -= v.mY;
 	}
 
-	public void rotate(double f){
+	public void rotate(double f) {
 		mX = -Math.sin(f);
 		mY = Math.cos(f);
 	}
