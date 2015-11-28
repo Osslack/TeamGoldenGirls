@@ -7,59 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="317b8588-4eb0-4f41-b3f2-27a6a6c2834c" name="Default" comment="Some more Sounds,Audioclips now stored in an array,added Method to check if the ball is still moving.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../PJTagebücher_Timetracker/Projekttagebuch Jendrik.doc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../PJTagebücher_Timetracker/Time Tracker Nils.xlsx" afterPath="$PROJECT_DIR$/../PJTagebücher_Timetracker/Time Tracker Nils.xlsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Animationmanager.java" afterPath="$PROJECT_DIR$/src/sample/Animationmanager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/Ball.java" afterPath="$PROJECT_DIR$/src/sample/model/Ball.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/BaseGame.fxml" afterPath="$PROJECT_DIR$/src/sample/view/BaseGame.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/physics/Collision.java" afterPath="$PROJECT_DIR$/src/sample/physics/Collision.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/input/ControlSet.java" afterPath="$PROJECT_DIR$/src/sample/input/ControlSet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Gamelogic/Countdown.java" afterPath="$PROJECT_DIR$/src/sample/Gamelogic/Countdown.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/menu/DiffController.java" afterPath="$PROJECT_DIR$/src/sample/controller/menu/DiffController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Difficulty.java" afterPath="$PROJECT_DIR$/src/sample/Difficulty.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/DifficultyScreen.fxml" afterPath="$PROJECT_DIR$/src/sample/view/DifficultyScreen.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/physics/DragTrajectory.java" afterPath="$PROJECT_DIR$/src/sample/physics/DragTrajectory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/engine/Engine.java" afterPath="$PROJECT_DIR$/src/sample/engine/Engine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/game/GameController.java" afterPath="$PROJECT_DIR$/src/sample/controller/game/GameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Gamelogic/Gamelogic.java" afterPath="$PROJECT_DIR$/src/sample/Gamelogic/Gamelogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/menu/highscore/HighController.java" afterPath="$PROJECT_DIR$/src/sample/controller/menu/highscore/HighController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/input/KeyboardManager.java" afterPath="$PROJECT_DIR$/src/sample/input/KeyboardManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/Level1.fxml" afterPath="$PROJECT_DIR$/src/sample/view/Level1.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/game/Level1Controller.java" afterPath="$PROJECT_DIR$/src/sample/controller/game/Level1Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/Level2.fxml" afterPath="$PROJECT_DIR$/src/sample/view/Level2.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/game/Level2Controller.java" afterPath="$PROJECT_DIR$/src/sample/controller/game/Level2Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/Level3.fxml" afterPath="$PROJECT_DIR$/src/sample/view/Level3.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/game/Level3Controller.java" afterPath="$PROJECT_DIR$/src/sample/controller/game/Level3Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/Level4.fxml" afterPath="$PROJECT_DIR$/src/sample/view/Level4.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/game/Level4Controller.java" afterPath="$PROJECT_DIR$/src/sample/controller/game/Level4Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/Level5.fxml" afterPath="$PROJECT_DIR$/src/sample/view/Level5.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/game/Level5Controller.java" afterPath="$PROJECT_DIR$/src/sample/controller/game/Level5Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/Level6.fxml" afterPath="$PROJECT_DIR$/src/sample/view/Level6.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/game/Level6Controller.java" afterPath="$PROJECT_DIR$/src/sample/controller/game/Level6Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/Level7.fxml" afterPath="$PROJECT_DIR$/src/sample/view/Level7.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/game/Level7Controller.java" afterPath="$PROJECT_DIR$/src/sample/controller/game/Level7Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/LoadScreen.fxml" afterPath="$PROJECT_DIR$/src/sample/view/LoadScreen.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/MainMenu.fxml" afterPath="$PROJECT_DIR$/src/sample/view/MainMenu.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/menu/MainmenuController.java" afterPath="$PROJECT_DIR$/src/sample/controller/menu/MainmenuController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/PauseMenu.fxml" afterPath="$PROJECT_DIR$/src/sample/view/PauseMenu.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/physics/Physics.java" afterPath="$PROJECT_DIR$/src/sample/physics/Physics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/Playingfield.java" afterPath="$PROJECT_DIR$/src/sample/model/Playingfield.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/processmanager/Process.java" afterPath="$PROJECT_DIR$/src/sample/processmanager/Process.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/processmanager/Processmanager.java" afterPath="$PROJECT_DIR$/src/sample/processmanager/Processmanager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/Rectangle.java" afterPath="$PROJECT_DIR$/src/sample/model/Rectangle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Gamelogic/Score.java" afterPath="$PROJECT_DIR$/src/sample/Gamelogic/Score.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/menu/settings/SettingsController.java" afterPath="$PROJECT_DIR$/src/sample/controller/menu/settings/SettingsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/menu/settings/SettingsMainController.java" afterPath="$PROJECT_DIR$/src/sample/controller/menu/settings/SettingsMainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/menu/settings/SettingsPauseController.java" afterPath="$PROJECT_DIR$/src/sample/controller/menu/settings/SettingsPauseController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/SettingsScreen.fxml" afterPath="$PROJECT_DIR$/src/sample/view/SettingsScreen.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/TargetRectangle.java" afterPath="$PROJECT_DIR$/src/sample/model/TargetRectangle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/timer/Timer.java" afterPath="$PROJECT_DIR$/src/sample/timer/Timer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/menu/UserController.java" afterPath="$PROJECT_DIR$/src/sample/controller/menu/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/UserScreen.fxml" afterPath="$PROJECT_DIR$/src/sample/view/UserScreen.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/Vector2D.java" afterPath="$PROJECT_DIR$/src/sample/model/Vector2D.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/Windmeter.java" afterPath="$PROJECT_DIR$/src/sample/model/Windmeter.java" />
     </list>
     <ignored path="Quellcode.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -148,8 +96,8 @@
       <file leaf-file-name="Physics.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/physics/Physics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.8401256">
-              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.35993975">
+              <caret line="157" column="5" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
               <folding>
                 <element signature="e#1967#1968#0" expanded="true" />
                 <element signature="e#1988#1989#0" expanded="true" />
@@ -892,7 +840,7 @@
       <workItem from="1447605740546" duration="4212000" />
       <workItem from="1447660726030" duration="98000" />
       <workItem from="1447850831627" duration="14000" />
-      <workItem from="1448713557826" duration="9155000" />
+      <workItem from="1448713557826" duration="9245000" />
     </task>
     <task id="LOCAL-00001" summary="Nils: added Menu scenes">
       <created>1447252357203</created>
@@ -946,7 +894,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43996000" />
+    <option name="totallyTimeSpent" value="44086000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="-18" width="1924" height="1100" extended-state="6" />
@@ -1449,8 +1397,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/physics/Physics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8401256">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.35993975">
+          <caret line="157" column="5" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
           <folding>
             <element signature="e#1967#1968#0" expanded="true" />
             <element signature="e#1988#1989#0" expanded="true" />

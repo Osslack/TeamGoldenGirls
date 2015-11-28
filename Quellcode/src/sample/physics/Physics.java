@@ -153,9 +153,9 @@ public class Physics extends AnimationTimer {
 	}
 
 	//check if the lineal touches the ground
-	public boolean isLinealHittingGround(){
-		return(m_Collision.isColliding(m_Main.getPlayingfield().getLineal(), m_Main.getPlayingfield().getGround()));
-
+	public boolean isLinealHittingGround() {
+        return (m_Collision.isColliding(m_Main.getPlayingfield().getLineal(), m_Main.getPlayingfield().getGround()));
+    }
 	//check if the ball collides with an obstacle
 	private void checkShapeCollisions() {
 		boolean collisionHappened = false;
