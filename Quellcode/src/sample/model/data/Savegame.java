@@ -12,9 +12,12 @@ import sample.model.serialization.SerializableSavegame;
  * @author Nils
  */
 public class Savegame {
-	private IntegerProperty level, score;
-	private StringProperty username, form, date;
-	private ObjectProperty<Difficulty> difficulty;
+	private final IntegerProperty            level;
+	private final IntegerProperty            score;
+	private final StringProperty             username;
+	private final StringProperty             form;
+	private final StringProperty             date;
+	private final ObjectProperty<Difficulty> difficulty;
 
 	public Savegame(SerializableSavegame save) {
 		this.level = new SimpleIntegerProperty(save.getLevel());
@@ -22,7 +25,7 @@ public class Savegame {
 		this.username = new SimpleStringProperty(save.getUsername());
 		this.form = new SimpleStringProperty(save.getForm());
 		this.date = new SimpleStringProperty(save.getDate());
-		this.difficulty = new SimpleObjectProperty<Difficulty>(save.getDifficulty());
+		this.difficulty = new SimpleObjectProperty<>(save.getDifficulty());
 	}
 
 	public Savegame(int level, int score, String username, String form, Difficulty diff) {
@@ -31,7 +34,7 @@ public class Savegame {
 		this.username = new SimpleStringProperty(username);
 		this.form = new SimpleStringProperty(form);
 		this.date = getTimestamp();
-		this.difficulty = new SimpleObjectProperty<Difficulty>(diff);
+		this.difficulty = new SimpleObjectProperty<>(diff);
 	}
 
 	private SimpleStringProperty getTimestamp() {

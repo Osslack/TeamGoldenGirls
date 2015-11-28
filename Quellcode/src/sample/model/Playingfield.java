@@ -10,8 +10,8 @@ import javafx.scene.shape.Line;
 import sample.Main;
 
 public class Playingfield {
-	public double field_width = 800;
-	public double field_height = 600;
+	private final double field_width  = 800;
+	private final double field_height = 600;
 	private javafx.scene.shape.Circle    m_Ball;
 	private javafx.scene.image.ImageView m_Ball_Image;
 	private javafx.scene.image.ImageView m_Lineal_Image;
@@ -23,25 +23,22 @@ public class Playingfield {
 	private javafx.scene.shape.Rectangle      m_Sidebar;
 	private javafx.scene.image.ImageView m_Radierer_Image;
 
-	private Main m_Main;
-
-	public Playingfield(Main main){
-		m_Main = main;
+	public Playingfield(){
 		restore();
 	}
 
 	public void restore(){
-		m_Ball = (javafx.scene.shape.Circle) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#circle");
+		m_Ball = (javafx.scene.shape.Circle) Main.getScene(Main.getGamelogic().getCurrentSceneName()).lookup("#circle");
 
-		m_Ball_Image = (javafx.scene.image.ImageView) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#paperball");
-		m_Lineal = (javafx.scene.shape.Line) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#lineal");
-		m_Radierer = (javafx.scene.shape.Line) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#radierer");
-		m_Ground = (javafx.scene.shape.Line) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#ground");
-		m_Windmesser = (javafx.scene.shape.Polygon) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#windmesser");
-		m_Powerbar = (javafx.scene.shape.Rectangle) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#powerbar");
-		m_Sidebar = (javafx.scene.shape.Rectangle) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#sidebar");
-		m_Lineal_Image = (javafx.scene.image.ImageView) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#linealimage");
-		m_Radierer_Image = (javafx.scene.image.ImageView) m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).lookup("#radiererimage");
+		m_Ball_Image = (javafx.scene.image.ImageView) Main.getScene(Main.getGamelogic().getCurrentSceneName()).lookup("#paperball");
+		m_Lineal = (javafx.scene.shape.Line) Main.getScene(Main.getGamelogic().getCurrentSceneName()).lookup("#lineal");
+		m_Radierer = (javafx.scene.shape.Line) Main.getScene(Main.getGamelogic().getCurrentSceneName()).lookup("#radierer");
+		m_Ground = (javafx.scene.shape.Line) Main.getScene(Main.getGamelogic().getCurrentSceneName()).lookup("#ground");
+		m_Windmesser = (javafx.scene.shape.Polygon) Main.getScene(Main.getGamelogic().getCurrentSceneName()).lookup("#windmesser");
+		m_Powerbar = (javafx.scene.shape.Rectangle) Main.getScene(Main.getGamelogic().getCurrentSceneName()).lookup("#powerbar");
+		m_Sidebar = (javafx.scene.shape.Rectangle) Main.getScene(Main.getGamelogic().getCurrentSceneName()).lookup("#sidebar");
+		m_Lineal_Image = (javafx.scene.image.ImageView) Main.getScene(Main.getGamelogic().getCurrentSceneName()).lookup("#linealimage");
+		m_Radierer_Image = (javafx.scene.image.ImageView) Main.getScene(Main.getGamelogic().getCurrentSceneName()).lookup("#radiererimage");
 	}
 
 

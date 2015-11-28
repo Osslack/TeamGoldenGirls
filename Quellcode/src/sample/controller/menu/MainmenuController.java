@@ -29,9 +29,7 @@ public class MainmenuController implements Initializable {
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-		b_highscore.setOnAction(event -> {
-			Main.setScene("HighscoreScreen");
-		});
+		b_highscore.setOnAction(event -> Main.setScene("HighscoreScreen"));
         b_newgame.setOnAction(event -> Main.setScene("UserScreen"));
         b_settings.setOnAction(event -> Main.setScene("SettingsMain"));
         b_loadgame.setOnAction(event -> Main.setScene("LoadScreen"));

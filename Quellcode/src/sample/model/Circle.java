@@ -5,26 +5,25 @@ package sample.model;
  * @author Simon
  */
 
-public class Circle extends javafx.scene.shape.Circle{
-	public double mDampening;
-	public Circle(){
+class Circle extends javafx.scene.shape.Circle {
+	final double mDampening;
+
+	Circle() {
 		super();
 		mDampening = 1.0;
 	}
-	public Circle(Vector2D center,double dampening,double radius){
-		super(center.mX,center.mY,radius);
+
+	Circle(Vector2D center, double dampening, double radius) {
+		super(center.mX, center.mY, radius);
 		mDampening = dampening;
 	}
-	public Vector2D getCenter(){
-		Vector2D center = new Vector2D(this.getCenterX(),this.getCenterY());
-		return center;
+
+	Vector2D getCenter() {
+		return new Vector2D(this.getCenterX(), this.getCenterY());
 	}
 
 	@Override
-	public String toString(){
+	public String toString() {
 		return "Circle ( Center " + getCenter() + " | Radius " + this.getRadius() + " | Dampening " + mDampening + " )";
-	}
-	public static void main(String[] args){
-		System.out.println(new Circle());
 	}
 }

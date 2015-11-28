@@ -22,7 +22,7 @@ import sample.sound.Soundmanager;
  * @author Nils
  */
 public class Main extends Application {
-	private static Map<String, Scene> m_ScenesMap = new HashMap<>();
+	private static final Map<String, Scene> m_ScenesMap = new HashMap<>();
 	private static Stage            m_PrimaryStage;
 	private static Physics          m_Physics;
 	private static Soundmanager     m_Soundmanager;
@@ -31,8 +31,8 @@ public class Main extends Application {
 	private static KeyboardManager  m_Keyboardmanager;
 	private static Gamelogic        m_Gamelogic;
 	private static String OS             = null;
-	public static  String PATH_SEPARATOR = null;
-	public static  int    maxLevel       = 0;
+	private static String PATH_SEPARATOR = null;
+	private static int    maxLevel       = 0;
 
 	private static Savegames savegames;
 
@@ -47,10 +47,10 @@ public class Main extends Application {
 		primaryStage.setResizable(false);
 		primaryStage.show();
 		m_Gamelogic = new Gamelogic(this);
-		m_Playingfield = new Playingfield(this);
+		m_Playingfield = new Playingfield();
 		m_Physics = new Physics(this);
 		m_Animationmanager = new Animationmanager(this);
-		m_Keyboardmanager = new KeyboardManager(this);
+		m_Keyboardmanager = new KeyboardManager();
 	}
 
 	private void loadScenes() {
@@ -81,7 +81,7 @@ public class Main extends Application {
 		return getOsName().startsWith("Windows");
 	}
 
-	public static String getOsName() {
+	private static String getOsName() {
 		if (OS == null) {
 			OS = System.getProperty("os.name");
 		}
@@ -119,7 +119,7 @@ public class Main extends Application {
 		}
 	}
 
-	public Scene loadSceneFromFXML(String name) throws IOException {
+	private Scene loadSceneFromFXML(String name) throws IOException {
 		return new Scene(FXMLLoader.load(getClass().getResource("view/" + name)));
 	}
 

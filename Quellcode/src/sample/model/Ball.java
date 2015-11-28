@@ -7,8 +7,8 @@ package sample.model;
  */
 
 public class Ball extends Circle {
-	public       Vector2D mVelocity;
-	public final double   mMass;
+	private final Vector2D mVelocity;
+	private final double   mMass;
 
 	public Ball() {
 		super();
@@ -26,9 +26,5 @@ public class Ball extends Circle {
 	@Override
 	public String toString() {
 		return "Ball ( Center " + getCenter() + " | Radius " + this.getRadius() + " | Speed " + mVelocity + " | Mass " + mMass + " )";
-	}
-
-	public static void main(String[] args) {
-		System.out.println(new Ball());
 	}
 }

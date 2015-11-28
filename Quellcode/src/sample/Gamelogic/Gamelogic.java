@@ -1,5 +1,8 @@
+
 /*used*/
 package sample.Gamelogic;
+
+
 
 import sample.Difficulty;
 import sample.Main;
@@ -12,9 +15,9 @@ import sample.model.data.UserData;
  */
 public class Gamelogic {
 
-	private Main       m_Main;
-	private Difficulty m_difficulty;
-	private UserData   user;
+	private final Main       m_Main;
+	private       Difficulty m_difficulty;
+	private       UserData   user;
 
 	private String m_currentSceneName    = "BaseGame";
 	private double m_linealpower         = 0;

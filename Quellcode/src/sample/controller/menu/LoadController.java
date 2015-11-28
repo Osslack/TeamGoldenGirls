@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import sample.Difficulty;
 import sample.Main;
 import sample.model.data.Savegame;
 import sample.model.data.UserData;
@@ -46,8 +45,6 @@ public class LoadController implements Initializable {
 	@FXML
 	private Button cancelButton;
 
-	public Button addBtn;
-
 
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
@@ -59,9 +56,6 @@ public class LoadController implements Initializable {
 				setUserAndSelectedLevel(selected);
 			}
 		});
-
-		//TODO delete addBtn
-		addBtn.setOnAction(event -> Main.getSavegames().getSavegames().add(new Savegame(1, 1337, "gg", "tinf", Difficulty.EASY)));
 
 		loadButton.setOnAction(event -> {
 			Savegame selected = table.getSelectionModel().getSelectedItem();

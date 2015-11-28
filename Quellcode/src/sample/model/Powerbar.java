@@ -6,10 +6,10 @@
 
 package sample.model;
 
-public class Powerbar {
-	public static final double MAX_POWER = 100.0;
-	public double mPower;
-	public double mSpeed;
+class Powerbar {
+	private static final double MAX_POWER = 100.0;
+	private       double mPower;
+	private final double mSpeed;
 
 	public Powerbar() {
 		mPower = 0.0;
@@ -36,15 +36,5 @@ public class Powerbar {
 	@Override
 	public String toString() {
 		return "Powerbar ( Power " + mPower + " | Speed " + mSpeed + " )";
-	}
-
-	public static void main(String[] args) {
-		Powerbar pb = new Powerbar(0.0, 10.0);
-		int i = 0;
-		while (i < 1000) {
-			System.out.println(pb);
-			pb.computePower();
-			++i;
-		}
 	}
 }

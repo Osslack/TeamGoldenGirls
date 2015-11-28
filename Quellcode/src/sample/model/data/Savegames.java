@@ -12,9 +12,9 @@ import sample.model.serialization.SerializableSavegame;
  */
 public class Savegames {
 
-	private ObservableList<Savegame> savegames;
-	private Savegame                 loadedSave;
-	private Savegame                 tempSave;
+	private final ObservableList<Savegame> savegames;
+	private       Savegame                 loadedSave;
+	private       Savegame                 tempSave;
 
 	public Savegames() {
 		savegames = FXCollections.observableArrayList();

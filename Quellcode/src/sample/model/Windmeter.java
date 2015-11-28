@@ -6,9 +6,9 @@ package sample.model;
  * @author Simon
  */
 
-public class Windmeter{
-	public Vector2D mDirection;
-	public double   mStrength;
+class Windmeter {
+	private final Vector2D mDirection;
+	private final double   mStrength;
 
 	public Windmeter() {
 		mStrength = 0.0;

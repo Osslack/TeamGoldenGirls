@@ -11,9 +11,9 @@ import sample.model.data.Savegame;
  *
  * @author Nils
  */
-public class SerializableSavegames implements Serializable {
+class SerializableSavegames implements Serializable {
 
-	public List<SerializableSavegame> savegames;
+	public final List<SerializableSavegame> savegames;
 
 	public SerializableSavegames(ObservableList<Savegame> in) {
 		this.savegames = new ArrayList<>(in.size());

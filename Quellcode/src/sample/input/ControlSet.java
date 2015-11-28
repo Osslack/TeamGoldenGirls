@@ -2,7 +2,7 @@
 package sample.input;
 
 public class ControlSet {
-	private int[][] m_actions;
+	private final int[][] m_actions;
 	public ControlSet(){
 		m_actions=new int[255][2];
 		for(int i=0;i<255;i++){

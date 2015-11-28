@@ -6,7 +6,7 @@ import sample.Main;
 
 /**
  * @author Nils
- * JENDRIK
+ *         JENDRIK
  */
 public class Preferences {
 
@@ -17,17 +17,10 @@ public class Preferences {
 	private static KeyCode moveRightKey = KeyCode.D;
 	private static KeyCode moveUpKey    = KeyCode.W;
 	private static KeyCode moveDownKey  = KeyCode.S;
-	private static KeyCode startKey     = KeyCode.ENTER;
-	private static KeyCode pauseMenuKey = KeyCode.ESCAPE;
-	private static KeyCode retryKey     = KeyCode.R;
 
-	public static KeyCode getRetryKey() {
-		return retryKey;
-	}
-
-	public static KeyCode getStartKey() {
-		return startKey;
-	}
+	private static       KeyCode startKey     = KeyCode.ENTER;
+	private static final KeyCode pauseMenuKey = KeyCode.ESCAPE;
+	private static       KeyCode retryKey     = KeyCode.R;
 
 	public static KeyCode getPauseMenuKey() {
 		return pauseMenuKey;
@@ -71,6 +64,22 @@ public class Preferences {
 
 	public static void setMoveDownKey(final KeyCode moveDownKey) {
 		Preferences.moveDownKey = moveDownKey;
+	}
+
+	public static void setStartKey(final KeyCode startKey) {
+		Preferences.startKey = startKey;
+	}
+
+	public static void setRetryKey(final KeyCode retryKey) {
+		Preferences.retryKey = retryKey;
+	}
+
+	public static KeyCode getRetryKey() {
+		return retryKey;
+	}
+
+	public static KeyCode getStartKey() {
+		return startKey;
 	}
 
 	public static boolean isMuted() {

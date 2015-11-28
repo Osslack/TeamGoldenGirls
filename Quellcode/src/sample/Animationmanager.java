@@ -10,12 +10,12 @@ import javafx.scene.transform.Translate;
  * Created by JJ on 14.11.2015.
  */
 public class Animationmanager extends AnimationTimer {
-    private Main m_Main;
-    private boolean islineallaunched;
-    private boolean isLinealresetting;
-    private boolean isRadierermoving;
-    private boolean isIncreasingPower;
-    private boolean isSizingRadierer;
+    private final Main    m_Main;
+    private       boolean islineallaunched;
+    private       boolean isLinealresetting;
+    private       boolean isRadierermoving;
+    private       boolean isIncreasingPower;
+    private       boolean isSizingRadierer;
     private int animcnt=0;
     public Animationmanager(Main main){
         m_Main = main;
@@ -78,15 +78,15 @@ public class Animationmanager extends AnimationTimer {
     private void handleLineal() {
         double deltarot = 0;
         if(islineallaunched){
-            deltarot = m_Main.getGamelogic().getLinealPower() / 20;
+            deltarot = Main.getGamelogic().getLinealPower() / 20;
         }
         if(isLinealresetting){
             deltarot = -1;
         }
         m_Main.getPlayingfield().getLineal().setRotate(m_Main.getPlayingfield().getLineal().getRotate()+deltarot);
         m_Main.getPlayingfield().getLineal_Image().setRotate(m_Main.getPlayingfield().getLineal_Image().getRotate()+deltarot);
-        if(m_Main.getPhysics().isLinealHittingGround()){
-            m_Main.getGamelogic().onLinealHitsGround();
+        if (Main.getPhysics().isLinealHittingGround()) {
+            Main.getGamelogic().onLinealHitsGround();
             m_Main.getPlayingfield().getLineal().setRotate(m_Main.getPlayingfield().getLineal().getRotate()-deltarot);
             m_Main.getPlayingfield().getLineal_Image().setRotate(m_Main.getPlayingfield().getLineal_Image().getRotate()-deltarot);
         }
@@ -94,21 +94,21 @@ public class Animationmanager extends AnimationTimer {
 
     private void handleRadierer(){
         if(isRadierermoving && !islineallaunched && !isLinealresetting){
-            m_Main.getPlayingfield().getRadierer().setStartX(m_Main.getPlayingfield().getRadierer().getStartX()+m_Main.getGamelogic().getRadiererVelocity());
-            m_Main.getPlayingfield().getRadierer().setEndX(m_Main.getPlayingfield().getRadierer().getEndX()+m_Main.getGamelogic().getRadiererVelocity());
-            m_Main.getPlayingfield().getRadierer_Image().setX(m_Main.getPlayingfield().getRadierer_Image().getX()+m_Main.getGamelogic().getRadiererVelocity());
-            m_Main.getPlayingfield().getLineal().getTransforms().add(new Translate(-m_Main.getGamelogic().getRadiererVelocity(),0));
-            m_Main.getPlayingfield().getLineal().setLayoutX(m_Main.getPlayingfield().getLineal().getLayoutX()+m_Main.getGamelogic().getRadiererVelocity());
-            m_Main.getPlayingfield().getLineal_Image().getTransforms().add(new Translate(-m_Main.getGamelogic().getRadiererVelocity(),0));
-            m_Main.getPlayingfield().getLineal_Image().setLayoutX(m_Main.getPlayingfield().getLineal_Image().getLayoutX()+m_Main.getGamelogic().getRadiererVelocity());
+            m_Main.getPlayingfield().getRadierer().setStartX(m_Main.getPlayingfield().getRadierer().getStartX() + Main.getGamelogic().getRadiererVelocity());
+            m_Main.getPlayingfield().getRadierer().setEndX(m_Main.getPlayingfield().getRadierer().getEndX() + Main.getGamelogic().getRadiererVelocity());
+            m_Main.getPlayingfield().getRadierer_Image().setX(m_Main.getPlayingfield().getRadierer_Image().getX() + Main.getGamelogic().getRadiererVelocity());
+            m_Main.getPlayingfield().getLineal().getTransforms().add(new Translate(-Main.getGamelogic().getRadiererVelocity(), 0));
+            m_Main.getPlayingfield().getLineal().setLayoutX(m_Main.getPlayingfield().getLineal().getLayoutX() + Main.getGamelogic().getRadiererVelocity());
+            m_Main.getPlayingfield().getLineal_Image().getTransforms().add(new Translate(-Main.getGamelogic().getRadiererVelocity(), 0));
+            m_Main.getPlayingfield().getLineal_Image().setLayoutX(m_Main.getPlayingfield().getLineal_Image().getLayoutX() + Main.getGamelogic().getRadiererVelocity());
             //m_Main.getPlayingfield().getLineal().getTransforms().add(new Rotate(angle, pivotX, pivotY, pivotZ, Rotate.Z_AXIS));
         }
         if(isSizingRadierer && !islineallaunched && !isLinealresetting){
 //            m_Main.getPlayingfield().getRadierer().setStartY(m_Main.getPlayingfield().getRadierer().getStartY()+m_Main.getGamelogic().getRadiererSizingSpeed());
-            m_Main.getPlayingfield().getLineal().setStartY(m_Main.getPlayingfield().getLineal().getStartY() + m_Main.getGamelogic().getRadiererSizingSpeed());
-            m_Main.getPlayingfield().getLineal().setEndY(m_Main.getPlayingfield().getLineal().getEndY() + m_Main.getGamelogic().getRadiererSizingSpeed());
-            m_Main.getPlayingfield().getLineal_Image().setY(m_Main.getPlayingfield().getLineal_Image().getY() + m_Main.getGamelogic().getRadiererSizingSpeed());
-            m_Main.getPlayingfield().getLineal_Image().setY(m_Main.getPlayingfield().getLineal_Image().getY() + m_Main.getGamelogic().getRadiererSizingSpeed());
+            m_Main.getPlayingfield().getLineal().setStartY(m_Main.getPlayingfield().getLineal().getStartY() + Main.getGamelogic().getRadiererSizingSpeed());
+            m_Main.getPlayingfield().getLineal().setEndY(m_Main.getPlayingfield().getLineal().getEndY() + Main.getGamelogic().getRadiererSizingSpeed());
+            m_Main.getPlayingfield().getLineal_Image().setY(m_Main.getPlayingfield().getLineal_Image().getY() + Main.getGamelogic().getRadiererSizingSpeed());
+            m_Main.getPlayingfield().getLineal_Image().setY(m_Main.getPlayingfield().getLineal_Image().getY() + Main.getGamelogic().getRadiererSizingSpeed());
         }
     }
 
@@ -117,14 +117,14 @@ public class Animationmanager extends AnimationTimer {
     }
 
     private void handlePower(){
-        if (isIncreasingPower && m_Main.getGamelogic().getLinealPower() < 200 / 3) {
-            m_Main.getPlayingfield().getPowerbar().setHeight(m_Main.getGamelogic().getLinealPower() * 3);
-            m_Main.getPlayingfield().getPowerbar().setY(-m_Main.getGamelogic().getLinealPower() * 3);
-            m_Main.getGamelogic().setLinealPower(m_Main.getGamelogic().getLinealPower() + 1);
+        if (isIncreasingPower && Main.getGamelogic().getLinealPower() < 200 / 3) {
+            m_Main.getPlayingfield().getPowerbar().setHeight(Main.getGamelogic().getLinealPower() * 3);
+            m_Main.getPlayingfield().getPowerbar().setY(-Main.getGamelogic().getLinealPower() * 3);
+            Main.getGamelogic().setLinealPower(Main.getGamelogic().getLinealPower() + 1);
         }
     }
 
-    public void resetPowerbar(){
+    private void resetPowerbar(){
         m_Main.getPlayingfield().getPowerbar().setHeight(1);
         m_Main.getPlayingfield().getPowerbar().setY(0);
     }

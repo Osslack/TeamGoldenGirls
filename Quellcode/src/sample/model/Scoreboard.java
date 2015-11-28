@@ -5,8 +5,8 @@
 
 package sample.model;
 
-public class Scoreboard {
-	public int mScore;
+class Scoreboard {
+	private final int mScore;
 
 	public Scoreboard() {
 		mScore = 0;

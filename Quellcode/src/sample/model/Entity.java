@@ -7,9 +7,9 @@ package sample.model;
 
 import java.util.ArrayList;
 
-public class Entity {
-	protected ArrayList<Vector2D> mPositions = new ArrayList<Vector2D>();
-	public double mDampening;
+class Entity {
+	private ArrayList<Vector2D> mPositions = new ArrayList<Vector2D>();
+	private final double mDampening;
 
 	public Entity() {
 		mPositions.add(new Vector2D());
@@ -29,9 +29,5 @@ public class Entity {
 	@Override
 	public String toString() {
 		return "Entity ( Positions: " + mPositions.toString() + " | Dampening " + mDampening + " )";
-	}
-
-	public static void main(String[] args) {
-		System.out.println(new Entity());
 	}
 }

@@ -7,8 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 
 /**
  * @author Nils
@@ -22,12 +20,6 @@ public class GameController implements Initializable  {
 
 	@FXML
 	private Pane gamePane;
-
-	@FXML
-    private Rectangle s_rectangle;
-
-    @FXML
-    private Circle s_circle;
 
 	@FXML
 	private Pane pauseMenuPane;
