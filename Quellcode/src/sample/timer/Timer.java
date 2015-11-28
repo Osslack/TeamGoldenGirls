@@ -1,3 +1,4 @@
+/*unused*/
 package sample.timer;
 
 import sample.engine.*;

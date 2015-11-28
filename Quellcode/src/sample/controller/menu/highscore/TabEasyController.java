@@ -1,3 +1,4 @@
+/*used*/
 package sample.controller.menu.highscore;
 
 import java.net.URL;

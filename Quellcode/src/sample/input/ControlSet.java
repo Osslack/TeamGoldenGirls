@@ -1,3 +1,4 @@
+/*unused*/
 package sample.input;
 
 public class ControlSet {

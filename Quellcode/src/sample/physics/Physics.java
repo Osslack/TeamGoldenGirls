@@ -135,9 +135,10 @@ public class Physics extends AnimationTimer {
 	private void checkShapeCollisions() {
 		boolean collisionhappened = false;
 		String id = "";
-//		for (Node child : m_Main.getPrimaryStage().getScene().getRoot().getChildrenUnmodifiable()) {
+
 		for (Node child : m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).getRoot().getChildrenUnmodifiable()) {
 			id = child.getId();
+			// collision with death and goal objects are processed
 			if(id!=null){
 				if (id.equals("death")){
 					if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), (Rectangle)child)){m_Main.getGamelogic().onDeathHit();}
@@ -146,41 +147,68 @@ public class Physics extends AnimationTimer {
 					if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), (Rectangle)child)){m_Main.getGamelogic().onGoalHit();}
 				}
 			}
+			//supported are collisions with lines only
 			if (child instanceof javafx.scene.shape.Line) {
 				javafx.scene.shape.Line line = (javafx.scene.shape.Line) child;
+				//use colliding isColliding of Collision-Class that uses the intersects method of javafx-shapes
 				if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), line)) {
 					Vector2D normal = new Vector2D();
+					//get the angle of the line
 					double yx = line.getLocalToSceneTransform().getMyx();
 					double yy = line.getLocalToSceneTransform().getMyy();
 					double angle = Math.atan2(yx, yy);
+					//rotate our normal vector so that it resembles the normal of the line
 					normal.rotate(angle);
+					//in case we hit the same object as last time (this case occurs if the ball gets stuck)
 					if (m_hitlastframe == line.getId()) {
+						//we move the ball away from the line
 						Vector2D n2 = normal.scalarMultiplication(-10);
 						m_Position.add2(n2);
 						m_Collision.getPostCollisionVelocity(m_Velocity, 1, normal);
 					}
+					// new line is hit
 					else {
+						// post-collision velocity is calculated
 						m_Collision.getPostCollisionVelocity(m_Velocity, m_Dampening, normal);
+						// in case the ball just hit "Lineal"
 						if(line.getId()!=null) {
 							if (line.getId().equals(m_Main.getPlayingfield().getLineal().getId()) && m_Main.getAnimationmanager().islineallaunched()) {
+								//call the game logic
 								m_Main.getGamelogic().onLinealHit();
+								//the next part is for calculating the velocity that is applied to the ball according to the distance, the ball is away from the center of "Lineal"
+								//first we get the start of the line
 								Vector2D linestart = new Vector2D(line.getStartX() + line.getLayoutX(), line.getStartY() + line.getLayoutY());
+								//its rotation
 								Point3D rotaxis = line.getRotationAxis();
+								//we calculate the center of the line by subtracting the radius
 								Vector2D linecenter = new Vector2D(rotaxis.getX() + line.getLayoutX(), rotaxis.getY() + line.getLayoutY());
 								double lineradius = linestart.subtract(linecenter).length();
+								//we calculate the distance between the line center and ball
 								Vector2D centertocircle = m_Position.subtract(linecenter);
+
+								//the next part might seem redundant
+								//we calculate the angle to the ball two times
+								//this is necessary since the angle calculated only goes from 0-180 but we have to know on which side of the line we are
+
+								// the angle between the normal and the center of the ball is calculated
 								double deltaangle = Math.toDegrees(normal.getAngleTo(centertocircle));
 								double distance = centertocircle.length();
+								//this flips the normal of the line by 180°
 								Vector2D linevector = new Vector2D();
 								linevector.rotate((Math.PI / 2.0) + angle);
+								//again the angle to the ballcenter is calculated
 								double deltaangle2 = Math.toDegrees(linevector.getAngleTo(centertocircle));
+
 								boolean kickball = false;
+								//the next part is for checking if the ball is actually kicked or just bounces
+								//the angle-checking checks if the ball to be in front of "Lineal" and also in its direction of rotation
 								if (deltaangle > 90 && deltaangle2 < 90) {
 									kickball = true;
 								}
 								if (deltaangle < 90 && deltaangle2 > 90) {
 									kickball = true;
 								}
+								// if the ball is about to be kicked, we take the relation of lineradius and distance into the calculation of the new velocity of the ball
 								if (kickball == true) {
 									normal.scalarMultiplication2(-1 * m_Main.getGamelogic().getLinealPower() * (distance / lineradius));
 									m_Velocity.add2(normal);

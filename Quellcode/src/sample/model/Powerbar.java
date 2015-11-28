@@ -2,6 +2,8 @@
  * @author Simon
  * @author Nils Wende
  */
+/*unused*/
+
 package sample.model;
 
 public class Powerbar {

@@ -1,9 +1,12 @@
+/*used*/
+
 package sample.physics;
 
 import sample.model.Vector2D;
 
 /**
  * @author Nils Wende
+ * JENDRIK
  * Describes the trajectory of a sphere possibly influenced by drag.
  **/
 public class DragTrajectory {

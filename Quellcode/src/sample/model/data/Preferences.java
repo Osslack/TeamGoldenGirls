@@ -1,3 +1,4 @@
+/*used*/
 package sample.model.data;
 
 import javafx.scene.input.KeyCode;

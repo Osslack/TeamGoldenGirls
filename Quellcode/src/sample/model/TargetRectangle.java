@@ -1,6 +1,8 @@
 /**
  * @author Simon
  */
+/*unused*/
+
 package sample.model;
 
 public class TargetRectangle extends Rectangle {

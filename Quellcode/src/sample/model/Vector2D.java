@@ -1,8 +1,11 @@
+/*used*/
+
 package sample.model;
 
 /**
  * @author Simon
  * @author Nils Wende
+ * JENDRIK
  * This class represents a vector in a two-dimensional cartesian coordinate system.
  * It provides several methods for vector operations.
  */

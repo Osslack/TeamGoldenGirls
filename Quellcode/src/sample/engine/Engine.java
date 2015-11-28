@@ -1,3 +1,4 @@
+/*unused*/
 package sample.engine;
 import java.awt.event.KeyEvent;
 import sample.input.*;

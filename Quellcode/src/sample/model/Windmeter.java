@@ -1,3 +1,5 @@
+/*unused*/
+
 package sample.model;
 
 /**

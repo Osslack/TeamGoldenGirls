@@ -1,4 +1,5 @@
 package sample.model;
+/*unused*/
 
 /**
  * @author Simon

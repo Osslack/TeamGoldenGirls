@@ -1,6 +1,9 @@
 /**
  * @author Simon
+ * JENDRIK
  */
+/*used*/
+
 package sample.model;
 
 import javafx.scene.shape.Line;
