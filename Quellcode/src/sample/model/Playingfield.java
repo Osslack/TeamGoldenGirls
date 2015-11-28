@@ -1,6 +1,8 @@
 /**
  * @author Simon
  * JENDRIK
+ * This class contains the elements that can be found in every level
+ * Radierer,Lineal,Ball,Powerbar,Sidebar,Windmesser
  */
 /*used*/
 
@@ -12,6 +14,7 @@ import sample.Main;
 public class Playingfield {
 	private final double field_width  = 800;
 	private final double field_height = 600;
+	//The different elements that can be found in every level: Radierer,Lineal,Ball,Powerbar,Sidebar,Windmesser
 	private javafx.scene.shape.Circle    m_Ball;
 	private javafx.scene.image.ImageView m_Ball_Image;
 	private javafx.scene.image.ImageView m_Lineal_Image;
@@ -27,6 +30,7 @@ public class Playingfield {
 		restore();
 	}
 
+	//Loads the elements from the current scene
 	public void restore() {
 		m_Ball = (javafx.scene.shape.Circle) Main.getScene(Main.getGamelogic().getCurrentSceneName()).lookup("#circle");
 
@@ -85,6 +89,10 @@ public class Playingfield {
 	public Line getGround() {
 		return m_Ground;
 	}
+//This part is only left in for the sake of completeness.This is the old class Playingfield which is no longer in use
+//But apparently SOMEONE was too lazy,to just create a new class and instead reused the old class
+
+
 //	public ArrayList<Shape> mObstacles;
 //	public Ball              mBall;
 //	public Shape            mTarget;

@@ -4,6 +4,7 @@ package sample.gamelogic;
 
 /**
  * @author Nils
+ * This class is used for calculating the score
  */
 class Score {
 

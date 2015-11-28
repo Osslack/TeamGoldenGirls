@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Author: Nils Wende -->
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/null"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="sample.controller.menu.MainmenuController">
-   <center>
-      <VBox alignment="CENTER" maxWidth="300.0" spacing="25.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="b_newgame" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" text="New Game" />
-            <Button fx:id="b_loadgame" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" text="Load Game" />
-            <Button fx:id="b_settings" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" text="Settings" />
-            <Button fx:id="b_highscore" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" text="Highscore" />
-         </children>
-         <BorderPane.margin>
-            <Insets top="100.0" />
-         </BorderPane.margin>
-      </VBox>
-   </center>
-   <bottom>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER_RIGHT">
-         <children>
-            <Button fx:id="b_exit" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" text="Exit" />
-         </children>
-         <BorderPane.margin>
-            <Insets right="35.0" />
-         </BorderPane.margin>
-      </HBox>
-   </bottom>
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.menu.MainmenuController">
+    <center>
+        <VBox alignment="CENTER" maxWidth="300.0" spacing="25.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="b_newgame" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0"
+                        text="New Game"/>
+                <Button fx:id="b_loadgame" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0"
+                        text="Load Game"/>
+                <Button fx:id="b_settings" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0"
+                        text="Settings"/>
+                <Button fx:id="b_highscore" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0"
+                        text="Highscore"/>
+            </children>
+            <BorderPane.margin>
+                <Insets top="100.0"/>
+            </BorderPane.margin>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER_RIGHT">
+            <children>
+                <Button fx:id="b_exit" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        prefHeight="35.0" prefWidth="45.0" text="Exit"/>
+            </children>
+            <BorderPane.margin>
+                <Insets right="35.0"/>
+            </BorderPane.margin>
+        </HBox>
+    </bottom>
 </BorderPane>

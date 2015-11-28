@@ -24,13 +24,17 @@ public class KeyboardManager {
 
 	private boolean physicsWasActive;
 
+	//applys the controls to the current scene
 	public void applyControlsToCurrentScene() {
+		//Clear the listeners
 		unsetIngameListener();
 		unsetPauseListener();
 		unsetEndScreenListener();
+		//get the current scene and the pause- and endscreen
 		m_CurrentScene = Main.getScene(Main.getGamelogic().getCurrentSceneName());
 		m_PauseMenuPane = (Pane) (m_CurrentScene.lookup("#pauseMenuPane"));
 		m_endScreenPane = (Pane) (m_CurrentScene.lookup("#endScreenPane"));
+		//Set the listener
 		setIngameListener();
 		setPauseListener();
 		setEndScreenListener();
@@ -39,6 +43,7 @@ public class KeyboardManager {
 		setCountdown();
 	}
 
+	//start the countdown with the appropriate time,the time varies between the different difficulties
 	private void setCountdown() {
 		if (countdown != null) {
 			countdown.getTimeline().stop();
@@ -50,10 +55,12 @@ public class KeyboardManager {
 		countdown.start();
 	}
 
+	//listener to check if the time has run out, opens the Pause Menu
 	private void setTimelineFinishedListener() {
 		countdown.getTimeline().setOnFinished(event -> openPauseAfterFail());
 	}
 
+	//write the score and the current level in the appropriate places
 	private void bindLabels() {
 		Label levelField = (Label) m_CurrentScene.lookup("#levelField");
 		levelField.textProperty().bind(Bindings.format("%3d", Main.getGamelogic().getLevel()));
@@ -66,6 +73,7 @@ public class KeyboardManager {
 		return countdown.getTimeLeft();
 	}
 
+	//clear the listener
 	private void unsetIngameListener() {
 		if (m_CurrentScene != null) {
 			m_CurrentScene.setOnKeyPressed(event -> {
@@ -75,6 +83,7 @@ public class KeyboardManager {
 		}
 	}
 
+	//clear the listener
 	private void unsetPauseListener() {
 		if (m_CurrentScene != null) {
 			Button mainMenuButton = (Button) m_CurrentScene.lookup("#mainMenuButton");
@@ -89,6 +98,7 @@ public class KeyboardManager {
 		}
 	}
 
+	//clear the listener
 	private void unsetEndScreenListener() {
 		if (m_CurrentScene != null) {
 			Button highscoreButton = (Button) m_CurrentScene.lookup("#highscoreButton");
@@ -100,6 +110,7 @@ public class KeyboardManager {
 		}
 	}
 
+	//set the listener for events/user input while playing
 	private void setIngameListener() {
 		m_CurrentScene.setOnKeyPressed(event -> {
 			if (!m_PauseMenuPane.isVisible()) {
@@ -157,7 +168,7 @@ public class KeyboardManager {
 
 		});
 	}
-
+	//Close the pause menu and continue with the game
 	public void closePauseMenu() {
 		if (countdown != null) {
 			if (countdown.getTimeLeft() > 0) {
@@ -169,14 +180,14 @@ public class KeyboardManager {
 			}
 		}
 	}
-
+	//open the pause menu and halt the game
 	private void openPauseMenu() {
 		physicsWasActive = Main.getPhysics().isActive;
 		Main.getGamelogic().pause();
 		countdown.pause();
 		m_PauseMenuPane.setVisible(true);
 	}
-
+	//set the listener for events/user input while in the pause menu
 	private void setPauseListener() {
 		Button restartButton = (Button) m_CurrentScene.lookup("#restartButton");
 		Button mainMenuButton = (Button) m_CurrentScene.lookup("#mainMenuButton");
@@ -199,6 +210,7 @@ public class KeyboardManager {
 		resumeButton.setOnAction(event -> closePauseMenu());
 	}
 
+	//set the listener for events/user input while in the endscreen
 	private void setEndScreenListener() {
 		Button highscoreButton = (Button) m_CurrentScene.lookup("#highscoreButton");
 		Button nextButton = (Button) m_CurrentScene.lookup("#nextButton");
@@ -231,12 +243,12 @@ public class KeyboardManager {
 			closePauseMenu();
 		});
 	}
-
+	//pause the countdown and open the endscreen
 	public void openEndScreen() {
 		countdown.pause();
 		m_endScreenPane.setVisible(true);
 	}
-
+	//open the Pause menu but disable the "resume" button
 	private void openPauseAfterFail() {
 		disableResume();
 		openPauseMenu();

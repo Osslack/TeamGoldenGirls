@@ -8,8 +8,10 @@ import sample.model.data.UserData;
 
 /**
  * Created by JJ on 14.11.2015.
- *
  * @author Nils
+ * This class is used to control the game elements
+ * It basically handles everything besides moving the ball/collisions
+ * This class and the class Physics are responsible for "playing"
  */
 public class Gamelogic {
 
@@ -61,13 +63,16 @@ public class Gamelogic {
 		m_difficulty = d;
 	}
 
+    //start growing the radierer
 	public void startGrowingRadierer() {
 		m_Main.getAnimationmanager().startSizingRadierer();
+        //Negative value means growing
 		m_radierersizingspeed = -Math.abs(m_radierersizingspeed);
 	}
-
+    //start shrinking the radierer
 	public void startShrinkingRadierer() {
 		m_Main.getAnimationmanager().startSizingRadierer();
+        //Positive value means shrinking
 		m_radierersizingspeed = Math.abs(m_radierersizingspeed);
 	}
 
@@ -83,6 +88,7 @@ public class Gamelogic {
 		return m_level;
 	}
 
+    //Load all game elements and prepare everything to play
 	public void setLevel(String scenename, Difficulty d) {
 		if (Main.setScene(scenename)) {
 			m_difficulty = d;
@@ -107,17 +113,18 @@ public class Gamelogic {
 	}
 
 	//TODO last level intercept in menu
+    //start the next level
 	public void nextLevel() {
 		ballsUsed = 0;
 		String nextLevel = "Level" + (m_level + 1);
 		setLevel(nextLevel, m_difficulty);
 	}
-
+    //restart the level
 	public void restart() {
 		ballsUsed = 0;
 		setLevel("Level" + m_level, m_difficulty);
 	}
-
+    //reload everything to the initial position, the time keeps running and the number if balls used is increased
 	public void retry() {
 		Main.getPhysics().setBallPosition(100, 200);
 		Main.getPhysics().setBallVelocity(0, 10);
@@ -136,18 +143,19 @@ public class Gamelogic {
 		isBallKicked = true;
 	}
 
+    //When the target was hit, open the Endscreen, increase the score and save the game
 	public void onGoalHit() { //Enter
 		pause();
 		Main.getKeyboardmanager().openEndScreen();
 		m_score += Score.getScore(Main.getKeyboardmanager().getTimeLeft(), ballsUsed);
 		Main.getSavegames().cacheSavegame(m_level + 1, m_score, user.name, user.form, m_difficulty);
 	}
-
+    //no longer in use
 	public void onDeathHit() { //Enter
 		//onGoalHit();
 		//m_Main.getKeyboardmanager().openPauseAfterFail();
 	}
-
+    //start the round->The ball starts falling down and the lineal starts moving
 	public void startRound() { //Enter
 		unpause();
 		m_Main.getAnimationmanager().startResettingLineal();
@@ -181,11 +189,13 @@ public class Gamelogic {
 
 	public void startMovingRadiererToLeft() { //a drücken
 		m_Main.getAnimationmanager().startMovingRadierer();
+        //negative means left
 		m_radierervelocity = -Math.abs(m_radierervelocity);
 	}
 
 	public void startMovingRadiererToRight() { //d drücken
 		m_Main.getAnimationmanager().startMovingRadierer();
+        //postive means right
 		m_radierervelocity = Math.abs(m_radierervelocity);
 	}
 

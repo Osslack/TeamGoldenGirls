@@ -30,7 +30,7 @@ class DragTrajectory {
 		final double area = Math.PI * radius * radius;
 		capitalD = -(airDensity * DRAG_CONST * area) / (((double) 2) * mass);
 	}
-
+	//simulate moving the sphere for the number of steps specified
 	public Vector2D[] simulateNextSteps(Vector2D velocity, Vector2D position, int steps) {
 		Vector2D[] arr = {velocity, position};
 		for (int i = 0; i < steps; ++i) {
@@ -38,7 +38,7 @@ class DragTrajectory {
 		}
 		return arr;
 	}
-
+	//simulates moving the sphere and returns the new velocity and position
 	private Vector2D[] simulateNext(Vector2D velocity, Vector2D position) {
 		/* since we only simulate, we dont want to change the objects referenced by the parameters directly */
 		Vector2D newVel = new Vector2D(velocity.mX, velocity.mY),
@@ -58,7 +58,7 @@ class DragTrajectory {
 		}
 		return new Vector2D[]{newVel, newPos};
 	}
-
+	//moves the sphere
 	public void simNext(Vector2D velocity, Vector2D position, double timeelapsed) {
 		double factor,
 				acc;
