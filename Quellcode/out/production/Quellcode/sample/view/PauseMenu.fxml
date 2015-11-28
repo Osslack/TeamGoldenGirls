@@ -8,7 +8,7 @@
 <VBox fx:id="pauseMenu" alignment="CENTER" prefWidth="300.0" spacing="25.0" xmlns="http://javafx.com/javafx/8.0.40"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.menu.PauseMenuController">
     <children>
-        <Button fx:id="tryagainButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0"
+        <Button fx:id="restartButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0"
                 text="Restart Level"/>
         <Button fx:id="mainMenuButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" text="Main Menu" />
         <Button fx:id="settingsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0"
