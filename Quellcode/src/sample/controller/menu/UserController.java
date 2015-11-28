@@ -15,7 +15,7 @@ import sample.model.data.UserData;
  */
 public class UserController implements Initializable {
 
-    @FXML
+	@FXML
 	private TextField usernameTextfield;
 
 	@FXML
@@ -24,11 +24,11 @@ public class UserController implements Initializable {
 	@FXML
 	private Button nextButton;
 
-    @FXML
-    private Button cancelButton;
+	@FXML
+	private Button cancelButton;
 
-    @Override
-    public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+	@Override
+	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 		nextButton.setOnAction(event -> {
 			String username = usernameTextfield.getText();
 			String form = classTextfield.getText();
@@ -41,7 +41,7 @@ public class UserController implements Initializable {
 			}
 		});
 
-        cancelButton.setOnAction(event -> Main.setScene("MainMenu"));
-    }
+		cancelButton.setOnAction(event -> Main.setScene("MainMenu"));
+	}
 
 }

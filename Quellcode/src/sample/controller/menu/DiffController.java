@@ -11,7 +11,7 @@ import sample.Main;
 
 /**
  * @author Nils
- * JENDRIK
+ *         JENDRIK
  */
 public class DiffController implements Initializable {
 

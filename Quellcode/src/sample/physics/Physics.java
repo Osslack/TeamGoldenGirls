@@ -58,6 +58,7 @@ public class Physics extends AnimationTimer {
 		super.stop();
 		isActive = false;
 	}
+
 	//sets the windfactor to the supplied value
 	public void setWindfactor(double d){
 		windfactor = d;
@@ -68,6 +69,7 @@ public class Physics extends AnimationTimer {
 		m_Position.mY = y;
 		updateBallPos();
 	}
+
 	//sets the ball velocity to the supplied values
 	public void setBallVelocity(double x, double y){
 		m_Velocity.mX = x;
@@ -89,11 +91,12 @@ public class Physics extends AnimationTimer {
 		checkBounds();
 	}
 
+
 	//applys the influence of wind to the velocity of the ball
 	private void simWind(){
 		if (Main.getGamelogic().getIsBallKicked()) {
 			double rotation = Math.toRadians(Main.getGamelogic().getWinddirection());
-			setBallVelocity(m_Velocity.mX + (Math.sin(rotation) * windfactor*0.7), m_Velocity.mY - (Math.cos(rotation) * windfactor*0.3));
+			setBallVelocity(m_Velocity.mX + (Math.sin(rotation) * windfactor * 0.7), m_Velocity.mY - (Math.cos(rotation) * windfactor * 0.3));
 		}
 	}
 
@@ -138,7 +141,7 @@ public class Physics extends AnimationTimer {
 	//Check,if the ball is stopped according to the distance to the last position or the velocity and distance to the "floor"
 	private boolean isStopped() {
 		double distanceToLastPosition = m_Position.getDistanceTo(m_lastPosition);
-		return (((distanceToLastPosition < 1.2) || (m_Velocity.length() < 15.5)) && (m_Main.getPlayingfield().getBall().getCenterY() - m_Main.getPlayingfield().getBall().getRadius()) >= 377.0); //Check Speed and Position, if lying on floor and speed below threshhold->false
+		return (((distanceToLastPosition < 1.2) || (m_Velocity.length() < 15.5)) && (m_Main.getPlayingfield().getBall().getCenterY() - m_Main.getPlayingfield().getBall().getRadius()) >= 377.0);
 	}
 
 	//move the ball and the associated image to the new position
@@ -148,25 +151,26 @@ public class Physics extends AnimationTimer {
 		m_Main.getPlayingfield().getBall_Image().setX(m_Position.mX - m_Main.getPlayingfield().getBall().getRadius());
 		m_Main.getPlayingfield().getBall_Image().setY(m_Position.mY - m_Main.getPlayingfield().getBall().getRadius());
 	}
+
 	//check if the lineal touches the ground
 	public boolean isLinealHittingGround(){
 		return(m_Collision.isColliding(m_Main.getPlayingfield().getLineal(), m_Main.getPlayingfield().getGround()));
-	}
+
 	//check if the ball collides with an obstacle
 	private void checkShapeCollisions() {
-		boolean collisionhappened = false;
-		String id = "";
+		boolean collisionHappened = false;
+		String id;
 
 		for (Node child : Main.getScene(Main.getGamelogic().getCurrentSceneName()).getRoot().getChildrenUnmodifiable()) {
 			id = child.getId();
 			// collision with death and goal objects are processed
-			if(id!=null){
-				if (id.equals("death")){
+			if (id != null) {
+				if (id.equals("death")) {
 					if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), (Rectangle) child)) {
 						Main.getGamelogic().onDeathHit();
 					}
 				}
-				else if (id.equals("goal")){
+				else if (id.equals("goal")) {
 					if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), (Rectangle) child)) {
 						Main.getGamelogic().onGoalHit();
 					}
@@ -185,7 +189,7 @@ public class Physics extends AnimationTimer {
 					//rotate our normal vector so that it resembles the normal of the line
 					normal.rotate(angle);
 					//in case we hit the same object as last time (this case occurs if the ball gets stuck)
-					if(line.getId()!=null) {
+					if (line.getId() != null) {
 						if (m_hitlastframe.equals(line.getId())) {
 							//we move the ball away from the line
 							Vector2D n2 = normal.scalarMultiplication(-10);
@@ -198,10 +202,10 @@ public class Physics extends AnimationTimer {
 						// post-collision velocity is calculated
 						m_Collision.getPostCollisionVelocity(m_Velocity, m_Dampening, normal);
 						// in case the ball just hit "Lineal"
-						if(line.getId()!=null) {
+						if (line.getId() != null) {
 							if (line.getId().equals(m_Main.getPlayingfield().getLineal().getId()) && m_Main.getAnimationmanager().islineallaunched()) {
 								//call the game logic
-								m_Main.getGamelogic().onLinealHit();
+								Main.getGamelogic().onLinealHit();
 								//the next part is for calculating the velocity that is applied to the ball according to the distance, the ball is away from the center of "Lineal"
 								//first we get the start of the line
 								Vector2D linestart = new Vector2D(line.getStartX() + line.getLayoutX(), line.getStartY() + line.getLayoutY());
@@ -236,8 +240,8 @@ public class Physics extends AnimationTimer {
 									kickball = true;
 								}
 								// if the ball is about to be kicked, we take the relation of lineradius and distance into the calculation of the new velocity of the ball
-								if (kickball == true) {
-									normal.scalarMultiplication2(-1 * m_Main.getGamelogic().getLinealPower() * (distance / lineradius));
+								if (kickball) {
+									normal.scalarMultiplication2(-1 * Main.getGamelogic().getLinealPower() * (distance / lineradius));
 									m_Velocity.add2(normal);
 								}
 							}
@@ -246,11 +250,11 @@ public class Physics extends AnimationTimer {
 						resetBall();
 					}
 					m_hitlastframe = line.getId();
-					collisionhappened = true;
+					collisionHappened = true;
 				}
 			}
 		}
-		if (!collisionhappened) {
+		if (!collisionHappened) {
 			m_hitlastframe = "";
 		}
 	}

@@ -5,59 +5,62 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.66"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="sample.controller.menu.UserController">
-   <center>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Username:" />
-             <TextField fx:id="usernameTextfield" prefWidth="200.0" GridPane.columnIndex="1"/>
-            <Label text="Class:" GridPane.rowIndex="1" />
-             <TextField fx:id="classTextfield" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-         </children>
-         <BorderPane.margin>
-            <Insets bottom="225.0" left="250.0" right="250.0" top="200.0" />
-         </BorderPane.margin>
-      </GridPane>
-   </center>
-   <bottom>
-      <GridPane>
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="cancelButton" cancelButton="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Cancel" />
-               </children>
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <children>
-                  <Button fx:id="nextButton" defaultButton="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Next" />
-               </children>
-               <GridPane.margin>
-                  <Insets right="50.0" />
-               </GridPane.margin>
-            </HBox>
-         </children>
-         <BorderPane.margin>
-            <Insets bottom="25.0" />
-         </BorderPane.margin>
-      </GridPane>
-   </bottom>
+    <center>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Label text="Username:"/>
+                <TextField fx:id="usernameTextfield" prefWidth="200.0" GridPane.columnIndex="1"/>
+                <Label text="Class:" GridPane.rowIndex="1"/>
+                <TextField fx:id="classTextfield" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="225.0" left="250.0" right="250.0" top="200.0"/>
+            </BorderPane.margin>
+        </GridPane>
+    </center>
+    <bottom>
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="cancelButton" cancelButton="true" mnemonicParsing="false" prefHeight="30.0"
+                                prefWidth="100.0" text="Cancel"/>
+                    </children>
+                    <GridPane.margin>
+                        <Insets left="50.0"/>
+                    </GridPane.margin>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                    <children>
+                        <Button fx:id="nextButton" defaultButton="true" mnemonicParsing="false" prefHeight="30.0"
+                                prefWidth="100.0" text="Next"/>
+                    </children>
+                    <GridPane.margin>
+                        <Insets right="50.0"/>
+                    </GridPane.margin>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="25.0"/>
+            </BorderPane.margin>
+        </GridPane>
+    </bottom>
 </BorderPane>

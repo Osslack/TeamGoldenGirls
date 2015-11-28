@@ -17,12 +17,12 @@ class Rectangle extends javafx.scene.shape.Rectangle {
 	}
 
 	Rectangle(double x, double y, double width, double height, double dampening) {
-		super(x,y,width,height);
+		super(x, y, width, height);
 		mDampening = dampening;
-		mCorners.add(new Vector2D(x,y));
-		mCorners.add(new Vector2D(x,y-height));
-		mCorners.add(new Vector2D(x+width,y));
-		mCorners.add(new Vector2D(x+width,y-height));
+		mCorners.add(new Vector2D(x, y));
+		mCorners.add(new Vector2D(x, y - height));
+		mCorners.add(new Vector2D(x + width, y));
+		mCorners.add(new Vector2D(x + width, y - height));
 	}
 
 	public ArrayList<Vector2D> getCorners() {

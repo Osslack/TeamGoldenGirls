@@ -8,7 +8,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.Gamelogic.Gamelogic;
+import sample.gamelogic.Gamelogic;
 import sample.input.KeyboardManager;
 import sample.model.Playingfield;
 import sample.model.data.Savegames;
