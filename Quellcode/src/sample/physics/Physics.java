@@ -10,18 +10,33 @@ import sample.model.Vector2D;
 /**
  * Created by JJ on 10.11.2015.
  * Worked on by Simon
+ * This class contains the main game-loop
+ * It moves the ball each frame and handles collisions
+ * Influence of wind is applied here
+ * Sound are also triggered in this class
  */
 public class Physics extends AnimationTimer {
+	//used to calculate time since last frame
 	private       long lastNano;
+	//used to access the ball and other game elements
 	private final Main m_Main;
+	//velocity of the ball
 	private final Vector2D m_Velocity     = new Vector2D();
+	//last position of the ball
 	private final Vector2D m_lastPosition = new Vector2D();
+	//current position of the ball
 	private final Vector2D m_Position     = new Vector2D();
+	//used to calculate the flight path of the ball
 	private final DragTrajectory m_DragTrajectory;
+	//used for calculating what happens after a collision
 	private final Collision      m_Collision;
+	//how much energy/speed is lost when the ball collides with something
 	private final double m_Dampening    = 0.7;
+	//the object that was hit in the last frame, "" means that no object was hit in the last frame
 	private       String m_hitlastframe = "";
+	//will be set according to the level, indicates how strong the wind is
 	private       double windfactor     = 0;
+	//indicates if the game is currently active
 	public boolean isActive;
 
 	public Physics(Main main) {
@@ -43,34 +58,38 @@ public class Physics extends AnimationTimer {
 		super.stop();
 		isActive = false;
 	}
-
+	//sets the windfactor to the supplied value
 	public void setWindfactor(double d){
 		windfactor = d;
 	}
-
+	//sets the ball position to the supplied values
 	public void setBallPosition(double x, double y){
 		m_Position.mX = x;
 		m_Position.mY = y;
 		updateBallPos();
 	}
-
+	//sets the ball velocity to the supplied values
 	public void setBallVelocity(double x, double y){
 		m_Velocity.mX = x;
 		m_Velocity.mY = y;
 	}
 
+	//processes all things,that need to be done each frame, this is the main game-loop
 	public void handle(long nowNano) {
+		//time since last call of this method
 		double deltaSecs = ((double) (nowNano - lastNano)) / 1000000000.0;
 		lastNano = nowNano;
+		//move the ball to the new position
 		simBall(deltaSecs);
+		//Calculate the influence of wind on the ball
 		simWind();
+		//Check,if the ball collides with an obstacle
 		checkShapeCollisions();
+		//check if the ball collides with the border of the window
 		checkBounds();
-		if (isStopped()) {
-			//was just for testing m_Main.getSoundmanager().playSound(Soundmanager.CLICK_SOUND);
-		}
 	}
 
+	//applys the influence of wind to the velocity of the ball
 	private void simWind(){
 		if (Main.getGamelogic().getIsBallKicked()) {
 			double rotation = Math.toRadians(Main.getGamelogic().getWinddirection());
@@ -78,9 +97,11 @@ public class Physics extends AnimationTimer {
 		}
 	}
 
+	//check if the ball collides with the borders of the window
 	private void checkBounds() {
 		boolean outsidehorizontalbounds = m_Collision.isOutsideHorizontalBounds(m_Main.getPlayingfield().getBall().getCenterX() + m_Main.getPlayingfield().getBall().getLayoutX(), m_Main.getPlayingfield().getScene_width());
 		boolean outsideverticalbounds = m_Collision.isOutsideVerticalBounds(m_Main.getPlayingfield().getBall().getCenterY() + m_Main.getPlayingfield().getBall().getLayoutY(), m_Main.getPlayingfield().getScene_height());
+		//set the normal vector depending on where the collision happened
 		Vector2D normal = new Vector2D();
 		if (outsidehorizontalbounds) {
 			normal.mX = 1;
@@ -90,48 +111,48 @@ public class Physics extends AnimationTimer {
 			normal.mX = 0;
 			normal.mY = 1;
 		}
+		//play a sound if a collision happened
 		if (outsidehorizontalbounds || outsideverticalbounds) {
 			if (!isStopped()) {
 				Main.getSoundmanager().playRandSound(1, 10);
 			}
+			//apply the effects of the collision
 			resetBall();
 			m_Collision.getPostCollisionVelocity(m_Velocity, m_Dampening, normal);
 		}
 	}
 
+	//Moves the ball to the next position but save the old position
 	private void simBall(double deltaSecs) {
 		m_lastPosition.mX = m_Position.mX;
 		m_lastPosition.mY = m_Position.mY;
 		m_DragTrajectory.simNext(m_Velocity, m_Position, deltaSecs * 8);
 		updateBallPos();
 	}
-
+	//Move the ball back to the last position
 	private void resetBall() {
 		m_Position.mX = m_lastPosition.mX;
 		m_Position.mY = m_lastPosition.mY;
 		updateBallPos();
 	}
-
+	//Check,if the ball is stopped according to the distance to the last position or the velocity and distance to the "floor"
 	private boolean isStopped() {
 		double distanceToLastPosition = m_Position.getDistanceTo(m_lastPosition);
-		if (distanceToLastPosition < 0.1) {
-//			System.out.println("Distance:   " + distanceToLastPosition + "   Speed :" + m_Velocity.length() + "   |    Center Y:" + (m_Circle.getCenterY() - m_Circle.getRadius()));
-		}
 		return (((distanceToLastPosition < 1.2) || (m_Velocity.length() < 15.5)) && (m_Main.getPlayingfield().getBall().getCenterY() - m_Main.getPlayingfield().getBall().getRadius()) >= 377.0); //Check Speed and Position, if lying on floor and speed below threshhold->false
 	}
 
-
+	//move the ball and the associated image to the new position
 	private void updateBallPos() {
 		m_Main.getPlayingfield().getBall().setCenterX(m_Position.mX);
 		m_Main.getPlayingfield().getBall().setCenterY(m_Position.mY);
 		m_Main.getPlayingfield().getBall_Image().setX(m_Position.mX - m_Main.getPlayingfield().getBall().getRadius());
 		m_Main.getPlayingfield().getBall_Image().setY(m_Position.mY - m_Main.getPlayingfield().getBall().getRadius());
 	}
-
+	//check if the lineal touches the ground
 	public boolean isLinealHittingGround(){
 		return(m_Collision.isColliding(m_Main.getPlayingfield().getLineal(), m_Main.getPlayingfield().getGround()));
 	}
-
+	//check if the ball collides with an obstacle
 	private void checkShapeCollisions() {
 		boolean collisionhappened = false;
 		String id = "";
