@@ -6,9 +6,9 @@ package sample.model;
 
 import java.util.ArrayList;
 
-public class Entity {
-	protected ArrayList<Vector2D> mPositions = new ArrayList<Vector2D>();
-	public final double mDampening;
+class Entity {
+	private ArrayList<Vector2D> mPositions = new ArrayList<Vector2D>();
+	private final double mDampening;
 
 	public Entity() {
 		mPositions.add(new Vector2D());

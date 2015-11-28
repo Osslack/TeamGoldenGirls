@@ -6,7 +6,7 @@ import javafx.scene.input.KeyCode;
 /**
  * @author Nils
  */
-public class SerializablePreferences implements Serializable {
+class SerializablePreferences implements Serializable {
 
 	public final boolean muted;
 	public final KeyCode launchKey;

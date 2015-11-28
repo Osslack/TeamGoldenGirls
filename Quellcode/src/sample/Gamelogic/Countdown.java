@@ -1,4 +1,4 @@
-package sample.Gamelogic;
+package sample.gamelogic;
 
 import javafx.animation.*;
 import javafx.beans.property.*;

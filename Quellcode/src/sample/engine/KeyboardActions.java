@@ -1,5 +1,5 @@
 package sample.engine;
 
-public interface KeyboardActions {
+interface KeyboardActions {
 	int ESCAPE = 1;
 }

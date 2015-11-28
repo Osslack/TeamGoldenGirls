@@ -4,10 +4,10 @@
  */
 package sample.model;
 
-public class Powerbar {
-	public static final double MAX_POWER = 100.0;
-	public       double mPower;
-	public final double mSpeed;
+class Powerbar {
+	private static final double MAX_POWER = 100.0;
+	private       double mPower;
+	private final double mSpeed;
 
 	public Powerbar() {
 		mPower = 0.0;

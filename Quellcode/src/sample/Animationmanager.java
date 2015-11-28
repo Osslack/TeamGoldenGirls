@@ -122,7 +122,7 @@ public class Animationmanager extends AnimationTimer {
         }
     }
 
-    public void resetPowerbar(){
+    private void resetPowerbar(){
         m_Main.getPlayingfield().getPowerbar().setHeight(1);
         m_Main.getPlayingfield().getPowerbar().setY(0);
     }

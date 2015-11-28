@@ -52,7 +52,7 @@ public class Soundmanager {
 		}
 	}
 
-	public boolean okayToPlay() {
+	private boolean okayToPlay() {
 		if (lastSoundPlayed == null) {
 			lastSoundPlayed = new Date(System.currentTimeMillis());
 			return true;

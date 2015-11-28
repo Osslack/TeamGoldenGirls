@@ -8,10 +8,10 @@ import javafx.scene.shape.Polygon;
  * @author Nils Wende
  *         Assuming coordinate system with point of origin in lower left corner
  */
-public class Catapult {
-	Polygon  rubber;
-	Line     ruler;
-	Vector2D pivotPoint;
+class Catapult {
+	private Polygon  rubber;
+	private Line     ruler;
+	private Vector2D pivotPoint;
 
 	private final double rulerLength = 15.0, // in cm
 			rubberSideLength         = 3.0, // in cm

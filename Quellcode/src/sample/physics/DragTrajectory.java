@@ -6,7 +6,7 @@ import sample.model.Vector2D;
  * @author Nils Wende
  * Describes the trajectory of a sphere possibly influenced by drag.
  **/
-public class DragTrajectory {
+class DragTrajectory {
 	private static final double DRAG_CONST = 0.5, // drag-coefficient for a sphere
 			GRAV_CONST                     = 9.81;
 
@@ -36,7 +36,7 @@ public class DragTrajectory {
 		return arr;
 	}
 
-	public Vector2D[] simulateNext(Vector2D velocity, Vector2D position) {
+	private Vector2D[] simulateNext(Vector2D velocity, Vector2D position) {
 		/* since we only simulate, we dont want to change the objects referenced by the parameters directly */
 		Vector2D newVel = new Vector2D(velocity.mX, velocity.mY),
 				newPos = new Vector2D(position.mX, position.mY);

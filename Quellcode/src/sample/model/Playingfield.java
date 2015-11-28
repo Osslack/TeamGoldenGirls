@@ -7,8 +7,8 @@ import javafx.scene.shape.Line;
 import sample.Main;
 
 public class Playingfield {
-	public final double field_width  = 800;
-	public final double field_height = 600;
+	private final double field_width  = 800;
+	private final double field_height = 600;
 	private javafx.scene.shape.Circle    m_Ball;
 	private javafx.scene.image.ImageView m_Ball_Image;
 	private javafx.scene.image.ImageView m_Lineal_Image;

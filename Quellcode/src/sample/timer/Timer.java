@@ -3,9 +3,9 @@ package sample.timer;
 import sample.engine.Engine;
 
 public class Timer {
-	long m_tickdelay;
-	long m_starttick;
-	final Engine m_engine;
+	private       long   m_tickdelay;
+	private       long   m_starttick;
+	private final Engine m_engine;
 
 	public Timer(Engine engine){
 		m_engine = engine;

@@ -1,10 +1,10 @@
 package sample.processmanager;
 
-public class Process {
-	int m_ID;
-	final Processowner m_Owner;
-	final long         m_Tickdelay;
-	long m_Waited;
+class Process {
+	private       int          m_ID;
+	private final Processowner m_Owner;
+	private final long         m_Tickdelay;
+	private       long         m_Waited;
 
 	public Process(long tickrate, Processowner owner){
 		m_Tickdelay = tickrate;

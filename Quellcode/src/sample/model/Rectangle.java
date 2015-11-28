@@ -6,15 +6,16 @@ package sample.model;
 
 import java.util.ArrayList;
 
-public class Rectangle extends javafx.scene.shape.Rectangle{
-	public final double              mDampening;
-	public       ArrayList<Vector2D> mCorners;
-	public Rectangle() {
+class Rectangle extends javafx.scene.shape.Rectangle {
+	final double mDampening;
+	ArrayList<Vector2D> mCorners;
+
+	Rectangle() {
 		super();
 		mDampening = 1.0;
 	}
 
-	public Rectangle(double x,double y,double width,double height, double dampening) {
+	Rectangle(double x, double y, double width, double height, double dampening) {
 		super(x,y,width,height);
 		mDampening = dampening;
 		mCorners.add(new Vector2D(x,y));

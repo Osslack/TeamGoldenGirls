@@ -6,8 +6,8 @@ package sample.model;
  */
 
 public class Ball extends Circle {
-	public final Vector2D mVelocity;
-	public final double   mMass;
+	private final Vector2D mVelocity;
+	private final double   mMass;
 
 	public Ball() {
 		super();

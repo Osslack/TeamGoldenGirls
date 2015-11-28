@@ -1,9 +1,9 @@
-package sample.Gamelogic;
+package sample.gamelogic;
 
 /**
  * @author Nils
  */
-public class Score {
+class Score {
 
 	public static int getScore(final int timeLeft, final int ballsUsed) {
 		int score = timeLeft - ballsUsed;

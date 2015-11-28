@@ -7,7 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.Gamelogic.Gamelogic;
+import sample.gamelogic.Gamelogic;
 import sample.input.KeyboardManager;
 import sample.model.Playingfield;
 import sample.model.data.Savegames;
@@ -30,8 +30,8 @@ public class Main extends Application {
 	private static KeyboardManager  m_Keyboardmanager;
 	private static Gamelogic        m_Gamelogic;
 	private static String OS             = null;
-	public static  String PATH_SEPARATOR = null;
-	public static  int    maxLevel       = 0;
+	private static String PATH_SEPARATOR = null;
+	private static int    maxLevel       = 0;
 
 	private static Savegames savegames;
 
@@ -80,7 +80,7 @@ public class Main extends Application {
 		return getOsName().startsWith("Windows");
 	}
 
-	public static String getOsName() {
+	private static String getOsName() {
 		if (OS == null) {
 			OS = System.getProperty("os.name");
 		}
@@ -118,7 +118,7 @@ public class Main extends Application {
 		}
 	}
 
-	public Scene loadSceneFromFXML(String name) throws IOException {
+	private Scene loadSceneFromFXML(String name) throws IOException {
 		return new Scene(FXMLLoader.load(getClass().getResource("view/" + name)));
 	}
 

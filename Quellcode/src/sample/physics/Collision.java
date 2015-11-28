@@ -8,7 +8,7 @@ import sample.model.Vector2D;
  * @author Simon Oswald
  * @author Jendrik Jordan
  */
-public class Collision {
+class Collision {
     public boolean isColliding(Shape obj1, Shape obj2) {
         return Shape.intersect(obj1, obj2).getBoundsInLocal().getWidth() != -1;
     }

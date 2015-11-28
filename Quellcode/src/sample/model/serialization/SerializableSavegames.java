@@ -11,7 +11,7 @@ import sample.model.data.Savegame;
  *
  * @author Nils
  */
-public class SerializableSavegames implements Serializable {
+class SerializableSavegames implements Serializable {
 
 	public final List<SerializableSavegame> savegames;
 

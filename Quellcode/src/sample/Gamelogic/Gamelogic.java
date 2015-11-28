@@ -1,4 +1,4 @@
-package sample.Gamelogic;
+package sample.gamelogic;
 
 import sample.Difficulty;
 import sample.Main;

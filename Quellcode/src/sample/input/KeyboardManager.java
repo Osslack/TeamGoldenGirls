@@ -5,8 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import sample.Difficulty;
-import sample.Gamelogic.Countdown;
 import sample.Main;
+import sample.gamelogic.Countdown;
 import sample.model.data.Preferences;
 
 /**
@@ -38,7 +38,7 @@ public class KeyboardManager {
 		setCountdown();
 	}
 
-	public void setCountdown() {
+	private void setCountdown() {
 		if (countdown != null) {
 			countdown.getTimeline().stop();
 		}
@@ -65,7 +65,7 @@ public class KeyboardManager {
 		return countdown.getTimeLeft();
 	}
 
-	public void unsetIngameListener() {
+	private void unsetIngameListener() {
 		if (m_CurrentScene != null) {
 			m_CurrentScene.setOnKeyPressed(event -> {
 			});
@@ -74,7 +74,7 @@ public class KeyboardManager {
 		}
 	}
 
-	public void unsetPauseListener() {
+	private void unsetPauseListener() {
 		if (m_CurrentScene != null) {
 			Button mainMenuButton = (Button) m_CurrentScene.lookup("#mainMenuButton");
 			Button settingsButton = (Button) m_CurrentScene.lookup("#settingsButton");
@@ -88,7 +88,7 @@ public class KeyboardManager {
 		}
 	}
 
-	public void unsetEndScreenListener() {
+	private void unsetEndScreenListener() {
 		if (m_CurrentScene != null) {
 			Button highscoreButton = (Button) m_CurrentScene.lookup("#highscoreButton");
 			Button nextButton = (Button) m_CurrentScene.lookup("#nextButton");
@@ -99,7 +99,7 @@ public class KeyboardManager {
 		}
 	}
 
-	public void setIngameListener() {
+	private void setIngameListener() {
 		m_CurrentScene.setOnKeyPressed(event -> {
 			if (!m_PauseMenuPane.isVisible()) {
 				if (event.getCode() == Preferences.getLaunchKey()) {
@@ -169,14 +169,14 @@ public class KeyboardManager {
 		}
 	}
 
-	public void openPauseMenu() {
+	private void openPauseMenu() {
 		physicsWasActive = Main.getPhysics().isActive;
 		Main.getGamelogic().pause();
 		countdown.pause();
 		m_PauseMenuPane.setVisible(true);
 	}
 
-	public void setPauseListener() {
+	private void setPauseListener() {
 		Button restartButton = (Button) m_CurrentScene.lookup("#restartButton");
 		Button mainMenuButton = (Button) m_CurrentScene.lookup("#mainMenuButton");
 		Button settingsButton = (Button) m_CurrentScene.lookup("#settingsButton");
@@ -198,7 +198,7 @@ public class KeyboardManager {
 		resumeButton.setOnAction(event -> closePauseMenu());
 	}
 
-	public void setEndScreenListener() {
+	private void setEndScreenListener() {
 		Button highscoreButton = (Button) m_CurrentScene.lookup("#highscoreButton");
 		Button nextButton = (Button) m_CurrentScene.lookup("#nextButton");
 
@@ -236,12 +236,12 @@ public class KeyboardManager {
 		m_endScreenPane.setVisible(true);
 	}
 
-	public void openPauseAfterFail() {
+	private void openPauseAfterFail() {
 		disableResume();
 		openPauseMenu();
 	}
 
-	public void disableResume() {
+	private void disableResume() {
 		Button resumeButton = (Button) m_CurrentScene.lookup("#resumeButton");
 		resumeButton.setDisable(true);
 	}

@@ -2,6 +2,7 @@ package sample.controller.menu.settings;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -14,18 +15,23 @@ import sample.model.data.Preferences;
  */
 public class SettingsMainController implements Initializable {
 
-	public Button   cancelButton;
-	public Button   saveButton;
-	public GridPane settings;
+	@FXML
+	private Button cancelButton;
 
-	public Label       launchField;
-	public Label       leftField;
-	public Label       rightField;
-	public Label       upField;
-	public Label       downField;
-	public Label    startField;
-	public Label    retryField;
-	public RadioButton radioOff;
+	@FXML
+	private Button saveButton;
+
+	@FXML
+	private GridPane settings;
+
+	private Label       launchField;
+	private Label       leftField;
+	private Label       rightField;
+	private Label       upField;
+	private Label       downField;
+	private Label       startField;
+	private Label       retryField;
+	private RadioButton radioOff;
 
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
