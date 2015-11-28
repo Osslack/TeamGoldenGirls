@@ -21,7 +21,7 @@ import sample.sound.Soundmanager;
  * @author Nils
  */
 public class Main extends Application {
-	private static Map<String, Scene> m_ScenesMap = new HashMap<>();
+	private static final Map<String, Scene> m_ScenesMap = new HashMap<>();
 	private static Stage            m_PrimaryStage;
 	private static Physics          m_Physics;
 	private static Soundmanager     m_Soundmanager;
@@ -46,10 +46,10 @@ public class Main extends Application {
 		primaryStage.setResizable(false);
 		primaryStage.show();
 		m_Gamelogic = new Gamelogic(this);
-		m_Playingfield = new Playingfield(this);
+		m_Playingfield = new Playingfield();
 		m_Physics = new Physics(this);
 		m_Animationmanager = new Animationmanager(this);
-		m_Keyboardmanager = new KeyboardManager(this);
+		m_Keyboardmanager = new KeyboardManager();
 	}
 
 	private void loadScenes() {

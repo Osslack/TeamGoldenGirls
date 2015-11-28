@@ -8,9 +8,12 @@ import sample.model.data.Savegame;
  * @author Nils
  */
 public class SerializableSavegame implements Serializable {
-	private int level, score;
-	private String username, form, date;
-	private Difficulty difficulty;
+	private final int        level;
+	private final int        score;
+	private final String     username;
+	private final String     form;
+	private final String     date;
+	private final Difficulty difficulty;
 
 	public SerializableSavegame(Savegame save) {
 		this.level = save.getLevel();

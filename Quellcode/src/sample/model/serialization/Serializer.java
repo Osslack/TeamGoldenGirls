@@ -26,6 +26,8 @@ public class Serializer {
 				Preferences.setMoveRightKey(in.moveRightKey);
 				Preferences.setMoveUpKey(in.moveUpKey);
 				Preferences.setMoveDownKey(in.moveDownKey);
+				Preferences.setStartKey(in.startKey);
+				Preferences.setRetryKey(in.retryKey);
 				Preferences.setMuted(in.muted);
 			}
 			catch (IOException | ClassNotFoundException ex) {
@@ -88,7 +90,10 @@ public class Serializer {
 	}
 
 	private static void saveSettings() {
-		SerializablePreferences out = new SerializablePreferences(Preferences.getLaunchKey(), Preferences.getMoveLeftKey(), Preferences.getMoveRightKey(), Preferences.getMoveUpKey(), Preferences.getMoveDownKey(), Preferences.isMuted());
+		SerializablePreferences out = new SerializablePreferences(Preferences.getLaunchKey(), Preferences.getMoveLeftKey(),
+																  Preferences.getMoveRightKey(), Preferences.getMoveUpKey(),
+																  Preferences.getMoveDownKey(), Preferences.getStartKey(),
+																  Preferences.getRetryKey(), Preferences.isMuted());
 		try (FileOutputStream fos = new FileOutputStream(prefs);
 			 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 			oos.writeObject(out);

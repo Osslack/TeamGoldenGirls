@@ -15,7 +15,6 @@ import sample.model.data.Preferences;
  * @author Nils
  */
 public class KeyboardManager {
-	private Main  m_Main;
 	private Scene m_CurrentScene;
 	private Pane  m_PauseMenuPane;
 	private Pane  m_endScreenPane;
@@ -23,10 +22,6 @@ public class KeyboardManager {
 	private Countdown countdown;
 
 	private boolean physicsWasActive;
-
-	public KeyboardManager(Main main) {
-		m_Main = main;
-	}
 
 	public void applyControlsToCurrentScene() {
 		unsetIngameListener();
@@ -55,9 +50,7 @@ public class KeyboardManager {
 	}
 
 	private void setTimelineFinishedListener() {
-		countdown.getTimeline().setOnFinished(event -> {
-			openPauseAfterFail();
-		});
+		countdown.getTimeline().setOnFinished(event -> openPauseAfterFail());
 	}
 
 	private void bindLabels() {

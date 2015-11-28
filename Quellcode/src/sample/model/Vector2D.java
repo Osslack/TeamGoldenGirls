@@ -101,7 +101,4 @@ public class Vector2D {
 	public String toString() {
 		return "(" + mX + ", " + mY + ")";
 	}
-
-	public static void main(String[] args) {
-	}
 }

@@ -7,8 +7,8 @@ package sample.model;
 import java.util.ArrayList;
 
 public class Rectangle extends javafx.scene.shape.Rectangle{
-	public double mDampening;
-	public ArrayList<Vector2D> mCorners;
+	public final double              mDampening;
+	public       ArrayList<Vector2D> mCorners;
 	public Rectangle() {
 		super();
 		mDampening = 1.0;

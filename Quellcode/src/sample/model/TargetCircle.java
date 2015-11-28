@@ -17,8 +17,4 @@ public class TargetCircle extends Circle {
 	public String toString() {
 		return "TargetCircle ( Center " + getCenter() + " | Radius " + this.getRadius() + " | Dampening " + mDampening + " )";
 	}
-
-	public static void main(String[] args) {
-		System.out.println(new TargetCircle());
-	}
 }

@@ -5,7 +5,7 @@
 package sample.model;
 
 public class Scoreboard {
-	public int mScore;
+	public final int mScore;
 
 	public Scoreboard() {
 		mScore = 0;

@@ -12,16 +12,16 @@ import sample.model.Vector2D;
  * Worked on by Simon
  */
 public class Physics extends AnimationTimer {
-	private long lastNano;
-	private Main m_Main;
-	private Vector2D m_Velocity     = new Vector2D();
-	private Vector2D m_lastPosition = new Vector2D();
-	private Vector2D m_Position     = new Vector2D();
-	private DragTrajectory               m_DragTrajectory;
-	private Collision m_Collision;
-	private double m_Dampening      = 0.7;
-	private String m_hitlastframe   = "";
-	private double windfactor = 0;
+	private       long lastNano;
+	private final Main m_Main;
+	private final Vector2D m_Velocity     = new Vector2D();
+	private final Vector2D m_lastPosition = new Vector2D();
+	private final Vector2D m_Position     = new Vector2D();
+	private final DragTrajectory m_DragTrajectory;
+	private final Collision      m_Collision;
+	private final double m_Dampening    = 0.7;
+	private       String m_hitlastframe = "";
+	private       double windfactor     = 0;
 	public boolean isActive;
 
 	public Physics(Main main) {
@@ -72,8 +72,8 @@ public class Physics extends AnimationTimer {
 	}
 
 	private void simWind(){
-		if (m_Main.getGamelogic().getIsBallKicked()) {
-			double rotation = Math.toRadians(m_Main.getGamelogic().getWinddirection());
+		if (Main.getGamelogic().getIsBallKicked()) {
+			double rotation = Math.toRadians(Main.getGamelogic().getWinddirection());
 			setBallVelocity(m_Velocity.mX + (Math.sin(rotation) * windfactor*0.7), m_Velocity.mY - (Math.cos(rotation) * windfactor*0.3));
 		}
 	}
@@ -92,7 +92,7 @@ public class Physics extends AnimationTimer {
 		}
 		if (outsidehorizontalbounds || outsideverticalbounds) {
 			if (!isStopped()) {
-				m_Main.getSoundmanager().playRandSound(1, 10);
+				Main.getSoundmanager().playRandSound(1, 10);
 			}
 			resetBall();
 			m_Collision.getPostCollisionVelocity(m_Velocity, m_Dampening, normal);
@@ -136,14 +136,18 @@ public class Physics extends AnimationTimer {
 		boolean collisionhappened = false;
 		String id = "";
 //		for (Node child : m_Main.getPrimaryStage().getScene().getRoot().getChildrenUnmodifiable()) {
-		for (Node child : m_Main.getScene(m_Main.getGamelogic().getCurrentSceneName()).getRoot().getChildrenUnmodifiable()) {
+		for (Node child : Main.getScene(Main.getGamelogic().getCurrentSceneName()).getRoot().getChildrenUnmodifiable()) {
 			id = child.getId();
 			if(id!=null){
 				if (id.equals("death")){
-					if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), (Rectangle)child)){m_Main.getGamelogic().onDeathHit();}
+					if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), (Rectangle) child)) {
+						Main.getGamelogic().onDeathHit();
+					}
 				}
 				else if (id.equals("goal")){
-					if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), (Rectangle)child)){m_Main.getGamelogic().onGoalHit();}
+					if (m_Collision.isColliding(m_Main.getPlayingfield().getBall(), (Rectangle) child)) {
+						Main.getGamelogic().onGoalHit();
+					}
 				}
 			}
 			if (child instanceof javafx.scene.shape.Line) {
@@ -154,7 +158,7 @@ public class Physics extends AnimationTimer {
 					double yy = line.getLocalToSceneTransform().getMyy();
 					double angle = Math.atan2(yx, yy);
 					normal.rotate(angle);
-					if (m_hitlastframe == line.getId()) {
+					if (m_hitlastframe.equals(line.getId())) {
 						Vector2D n2 = normal.scalarMultiplication(-10);
 						m_Position.add2(n2);
 						m_Collision.getPostCollisionVelocity(m_Velocity, 1, normal);
@@ -163,7 +167,7 @@ public class Physics extends AnimationTimer {
 						m_Collision.getPostCollisionVelocity(m_Velocity, m_Dampening, normal);
 						if(line.getId()!=null) {
 							if (line.getId().equals(m_Main.getPlayingfield().getLineal().getId()) && m_Main.getAnimationmanager().islineallaunched()) {
-								m_Main.getGamelogic().onLinealHit();
+								Main.getGamelogic().onLinealHit();
 								Vector2D linestart = new Vector2D(line.getStartX() + line.getLayoutX(), line.getStartY() + line.getLayoutY());
 								Point3D rotaxis = line.getRotationAxis();
 								Vector2D linecenter = new Vector2D(rotaxis.getX() + line.getLayoutX(), rotaxis.getY() + line.getLayoutY());
@@ -181,13 +185,13 @@ public class Physics extends AnimationTimer {
 								if (deltaangle < 90 && deltaangle2 > 90) {
 									kickball = true;
 								}
-								if (kickball == true) {
-									normal.scalarMultiplication2(-1 * m_Main.getGamelogic().getLinealPower() * (distance / lineradius));
+								if (kickball) {
+									normal.scalarMultiplication2(-1 * Main.getGamelogic().getLinealPower() * (distance / lineradius));
 									m_Velocity.add2(normal);
 								}
 							}
 						}
-						m_Main.getSoundmanager().playRandSound(1, 10);
+						Main.getSoundmanager().playRandSound(1, 10);
 						resetBall();
 					}
 					m_hitlastframe = line.getId();
@@ -195,7 +199,7 @@ public class Physics extends AnimationTimer {
 				}
 			}
 		}
-		if (collisionhappened == false) {
+		if (!collisionhappened) {
 			m_hitlastframe = "";
 		}
 	}
