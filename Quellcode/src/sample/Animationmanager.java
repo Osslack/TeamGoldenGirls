@@ -8,6 +8,7 @@ import javafx.scene.transform.Translate;
 
 /**
  * Created by JJ on 14.11.2015.
+ * This class handles all animations
  */
 public class Animationmanager extends AnimationTimer {
 	private final Main    m_Main;

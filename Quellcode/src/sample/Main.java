@@ -35,24 +35,28 @@ public class Main extends Application {
 	private static int    maxLevel       = 0;
 
 	private static Savegames savegames;
-
+	//The program starts with this method.
+	//This method gets everything up and running
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+
 		m_Soundmanager = new Soundmanager();
 		savegames = Serializer.load();
 		m_PrimaryStage = primaryStage;
+		//load all scenes and start the main menu
 		loadScenes();
 		primaryStage.setScene(getScene("MainMenu"));
 		primaryStage.setTitle("Kugellineal PhysX Sim");
 		primaryStage.setResizable(false);
 		primaryStage.show();
+		//Create the objects responsible for actually playing the game
 		m_Gamelogic = new Gamelogic(this);
 		m_Playingfield = new Playingfield();
 		m_Physics = new Physics(this);
 		m_Animationmanager = new Animationmanager(this);
 		m_Keyboardmanager = new KeyboardManager();
 	}
-
+	//load all scenes from the view folder
 	private void loadScenes() {
 		String path = "";
 		try {
@@ -65,7 +69,7 @@ public class Main extends Application {
 		List<String> files = getFilesOsDependent(path);
 		fillScenesMap(files);
 	}
-
+	//to fix issues between the way linux stores files and the way windows does
 	private List<String> getFilesOsDependent(final String path) {
 		if (isWindows()) {
 			PATH_SEPARATOR = "\\";
@@ -76,7 +80,7 @@ public class Main extends Application {
 			return getAllFilesOfFolder(new File(path + "/src/sample/view"));
 		}
 	}
-
+	//check if the os is windows
 	public static boolean isWindows() {
 		return getOsName().startsWith("Windows");
 	}
@@ -87,7 +91,7 @@ public class Main extends Application {
 		}
 		return OS;
 	}
-
+	//load all files from the specified folder
 	private List<String> getAllFilesOfFolder(final File folder) {
 		List<String> files = new LinkedList<>();
 		for (final File fileEntry : folder.listFiles()) {
@@ -97,7 +101,7 @@ public class Main extends Application {
 		}
 		return files;
 	}
-
+	//Fill the different levels with objects etc.
 	private void fillScenesMap(List<String> files) {
 		String name;
 		for (String filename : files) {
@@ -118,11 +122,11 @@ public class Main extends Application {
 			}
 		}
 	}
-
+	//load a scene from XML
 	private Scene loadSceneFromFXML(String name) throws IOException {
 		return new Scene(FXMLLoader.load(getClass().getResource("view/" + name)));
 	}
-
+	//switch to the scene with the title (name)
 	public static boolean setScene(String name) {
 		Scene scene = getScene(name);
 		if (scene == null) {
